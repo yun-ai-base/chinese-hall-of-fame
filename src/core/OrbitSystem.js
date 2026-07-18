@@ -87,7 +87,7 @@ export class OrbitSystem {
     for (const o of this.orbits) {
       const m = o.mesh.material;
       let target = this.ringFadeTarget;
-      if (this.ringKeepDimId && o.dimId === this.ringKeepDimId) target = this.ringDeep ? 0.15 : 0.3;
+      if (this.ringKeepDimId && o.dimId === this.ringKeepDimId) target = this.ringDeep ? 0.12 : 0.3;
       m.opacity += (target - m.opacity) * k;
     }
     // 行星淡出始终更新；轨道公转仅在 running 时推进
@@ -96,7 +96,7 @@ export class OrbitSystem {
       if (!this.dimActive) {
         t = 1.0;
       } else if (planet.dimId === this.planetFadeExempt) {
-        t = this.planetDeepDim ? 0.35 : 1.0;
+        t = this.planetDeepDim ? 0.25 : 1.0;
       } else {
         t = 0.12;
       }
