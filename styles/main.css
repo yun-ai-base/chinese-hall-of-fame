@@ -72,6 +72,35 @@ html, body {
   margin-top: 4px;
   font-weight: 300;
 }
+/* 标题品牌区：题字 + 朱红印章 */
+.brand {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+}
+.seal {
+  width: 50px;
+  height: 50px;
+  flex: 0 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  place-items: center;
+  padding: 3px;
+  box-sizing: border-box;
+  background: #b22f28;
+  border-radius: 7px;
+  box-shadow: 0 2px 10px rgba(178, 47, 40, 0.45), inset 0 0 0 2px rgba(255, 255, 255, 0.14);
+  transform: rotate(-4deg);
+  font-family: 'Noto Serif SC', serif;
+  color: #fbeede;
+  font-weight: 700;
+  font-size: 17px;
+  line-height: 1;
+  user-select: none;
+}
+.seal span { display: block; }
 /* 选中名人时的「第四级」头部：下移到面包屑下方，避免重叠 */
 .title-display.figure-header {
   top: 56px;

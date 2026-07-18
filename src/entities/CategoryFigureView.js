@@ -37,6 +37,7 @@ export class CategoryFigureView {
     const innerR = 4.5;     // 内圈半径，让出中央恒星
     const ringGap = 1.2;    // 轨道间距（紧凑但可区分）
     const SPEED_K = 1.5;    // 公转速度系数，整体减慢
+    let curRing = null;     // 当前轨道环（供 hover 回链）
 
     // 分类主色：在维度色环上取「本分类」对应的那一档（与 L3 分类星球颜色一致，保证下钻连续性）
     const cats = (this.meta.categories || []).filter(c => c.count > 0);
@@ -80,10 +81,12 @@ export class CategoryFigureView {
       this.moons.push(moon);
 
       if (idxInRing === 0) {
-        const ring = new OrbitRing(R, colorHex);
+        const ring = new OrbitRing(R, OrbitRing.desat(colorHex, 0.3, 0.6), { linewidth: 1.3, dashed: true, opacity: 0.42 });
         ring.create(this.group);
         this.rings.push(ring);
+        curRing = ring;
       }
+      moon.hit.userData.orbitRing = curRing; // hover 回链：悬停名人卫星高亮其轨道
     });
   }
 
@@ -108,7 +111,8 @@ export class CategoryFigureView {
     const target = faded ? 0.04 : 0.42;
     for (const r of this.rings) {
       const m = r.mesh.material;
-      m.opacity += (target - m.opacity) * 0.1;
+      const t = r.highlight ? Math.max(target, 0.9) : target; // hover 高亮抬升
+      m.opacity += (t - m.opacity) * 0.1;
     }
   }
 

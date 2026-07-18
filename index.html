@@ -18,7 +18,10 @@
     </svg>
   </button>
   <div id="title-display" class="title-display">
-    <h1 class="main-title">中华名人堂</h1>
+    <div class="brand">
+      <h1 class="main-title">中华名人堂</h1>
+      <div class="seal" aria-hidden="true"><span>中</span><span>華</span><span>名</span><span>人</span></div>
+    </div>
     <p class="subtitle">点击星球探索上下五千年</p>
   </div>
   <div id="tooltip" class="tooltip hidden"></div>
@@ -28,6 +31,7 @@
 {
   "imports": {
     "three": "./vendor/three/three.module.js",
+    "three/addons/": "https://unpkg.com/three@0.170.0/examples/jsm/",
     "three/addons/OrbitControls.js": "./vendor/three/OrbitControls.js"
   }
 }

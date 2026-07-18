@@ -39,7 +39,8 @@ export class DimensionView {
 
     cats.forEach((cat, order) => {
       const ringR = baseR + order * layerGap;
-      const ring = new OrbitRing(ringR, colorHex);
+      // L2 分类层轨道：虚线 + 低饱和维度色（与 L1 实线区分层级）
+      const ring = new OrbitRing(ringR, OrbitRing.desat(colorHex, 0.3, 0.6), { linewidth: 1.6, dashed: true, opacity: 0.42 });
       ring.create(this.group);
 
       const catFigures = figures
@@ -62,6 +63,7 @@ export class DimensionView {
         });
         moon.group.position.set(x, 0, z);
         this.group.add(moon.group);
+        moon.hit.userData.orbitRing = ring; // hover 回链：悬停分类卫星高亮其轨道
         return moon;
       });
 
@@ -77,8 +79,9 @@ export class DimensionView {
       hub.mesh.userData.categoryIndex = order;
       hub.hit.userData.categoryIndex = order;
       // 分类节点光环：标出这是一个分类锚点，使分类层与名人卫星（L4）视觉上区分开
-      const halo = new OrbitRing(1.05, colorHex);
+      const halo = new OrbitRing(1.05, OrbitRing.desat(colorHex, 0.3, 0.6));
       halo.create(hub.group);
+      hub.hit.userData.orbitRing = halo; // 悬停分类 hub 高亮其光环
       this.group.add(hub.group);
 
       const visible = !this.isMobile; // 移动端默认折叠
@@ -132,7 +135,9 @@ export class DimensionView {
     const k = 0.1;
     for (const cg of this.categoryGroups) {
       const m = cg.ring.mesh.material;
-      m.opacity += (this.ringFadeTarget - m.opacity) * k;
+      let target = this.ringFadeTarget;
+      if (cg.ring.highlight) target = Math.max(target, 0.9); // hover 高亮抬升
+      m.opacity += (target - m.opacity) * k;
     }
     this.forEachMoon(m => m.update(time));
   }

@@ -73,7 +73,7 @@ export class FigureView {
 
       // 每环首颗时补一条轨道环
       if (idxInRing === 0) {
-        const ring = new OrbitRing(R, new THREE.Color(this.color).getHex());
+        const ring = new OrbitRing(R, OrbitRing.desat(this.color, 0.3, 0.6), { linewidth: 1.3, dashed: true, opacity: 0.42 });
         ring.create(this.group);
         this.rings.push(ring);
       }

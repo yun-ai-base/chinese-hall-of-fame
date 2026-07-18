@@ -101,7 +101,7 @@ class App {
 
   _bindEvents() {
     this.raycaster.on('click', (hit) => this._onClick(hit));
-    this.raycaster.on('hover', (hit) => this._onHover(hit));
+    this.raycaster.on('hover', (hit, prev) => this._onHover(hit, prev));
 
     this.btnBack.addEventListener('click', () => this.back());
     window.addEventListener('pointermove', (e) => {
@@ -472,7 +472,10 @@ class App {
     }
   }
 
-  _onHover(hit) {
+  _onHover(hit, prev) {
+    // 悬停对应星球时，其所属轨道同步高亮发光；移开则复原
+    if (prev && prev.userData && prev.userData.orbitRing) prev.userData.orbitRing.setHighlight(false);
+    if (hit && hit.userData && hit.userData.orbitRing) hit.userData.orbitRing.setHighlight(true);
     if (!this.tooltip) return;
     if (!hit) { this.tooltip.classList.add('hidden'); return; }
     const ud = hit.userData;

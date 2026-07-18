@@ -92,7 +92,7 @@ export class CategoryView {
 
       // 每圈首颗为该半径补一条轨道环（轨迹），颜色取该圈首颗分类色
       if (idxInRing === 0) {
-        const ring = new OrbitRing(R, new THREE.Color(catColor).getHex());
+        const ring = new OrbitRing(R, OrbitRing.desat(catColor, 0.3, 0.6), { linewidth: 1.4, dashed: true, opacity: 0.42 });
         ring.create(this.group);
         this.rings.push(ring);
       }
@@ -130,7 +130,10 @@ export class CategoryView {
       this.star.update(time);
     }
     for (const r of this.rings) {
-      if (r.mesh) r.mesh.material.opacity = 0.42 * this.fade;
+      if (r.mesh) {
+        const base = 0.42 * this.fade;
+        r.mesh.material.opacity = r.highlight ? Math.max(base, 0.9) : base;
+      }
     }
     for (const p of this.planets) {
       // 各自沿独立轨道公转（错位轨道 + 不同速度）

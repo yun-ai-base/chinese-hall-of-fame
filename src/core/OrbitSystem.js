@@ -50,7 +50,15 @@ export class OrbitSystem {
       const orbitSpeed = OrbitSystem.SPEED_K / Math.pow(orbitRadius, 1.5);
       const initialAngle = (i / n) * Math.PI * 2;
 
-      const orbit = new OrbitRing(orbitRadius, new THREE.Color(dim.color).getHex());
+      // L1 宇宙层轨道：实线 + 按轨道半径做「内层细、外层粗」+ 低饱和维度色
+      const minR = OrbitSystem.ORBIT[1], maxR = OrbitSystem.ORBIT[8];
+      const tNorm = Math.min(1, Math.max(0, (orbitRadius - minR) / (maxR - minR)));
+      const orbitLW = 1.5 + tNorm * 1.8; // 1.5px（内）→ 3.3px（外）
+      const orbit = new OrbitRing(
+        orbitRadius,
+        OrbitRing.desat(dim.color, 0.32, 0.6),
+        { linewidth: orbitLW, dashed: false, opacity: 0.42 }
+      );
       orbit.dimId = dim.id;
       orbit.create(this.scene);
       this.orbits.push(orbit);
@@ -71,6 +79,8 @@ export class OrbitSystem {
       });
       planet.create(this.scene);
       this.planets.push(planet);
+      // hover 回链：悬停该行星时，其所属轨道同步高亮
+      if (planet.mesh) planet.mesh.userData.orbitRing = orbit;
     });
   }
 
@@ -114,6 +124,7 @@ export class OrbitSystem {
       const m = o.mesh.material;
       let target = this.ringFadeTarget;
       if (this.ringKeepDimId && o.dimId === this.ringKeepDimId) target = this.ringDeep ? 0.12 : 0.3;
+      if (o.highlight) target = Math.max(target, 0.9); // hover 高亮时抬升透明度
       m.opacity += (target - m.opacity) * k;
     }
     // 行星淡出始终更新；轨道公转仅在 running 时推进

@@ -1,6 +1,7 @@
 import * as THREE from 'three';
 import { OrbitControls } from 'three/addons/OrbitControls.js';
-import { StarField } from '../ui/StarField.js';
+import { ChineseStarMap } from '../ui/ChineseStarMap.js';
+import { OrbitRing } from '../entities/OrbitRing.js';
 
 export class SceneManager {
   constructor() {
@@ -52,7 +53,9 @@ export class SceneManager {
   }
 
   _initStarField() {
-    this.starField = new StarField(this.scene, this.isMobile);
+    // Line2 轨道环依赖像素级分辨率，需在创建轨道前设定（创建轨道在 OrbitSystem 构造时）
+    OrbitRing.setResolution(window.innerWidth, window.innerHeight);
+    this.starField = new ChineseStarMap(this.scene, this.isMobile);
   }
 
   _initLights() {
@@ -81,6 +84,7 @@ export class SceneManager {
       this.camera.aspect = w / h;
       this.camera.updateProjectionMatrix();
       this.renderer.setSize(w, h);
+      OrbitRing.setResolution(w, h); // 同步 Line2 轨道环分辨率
     });
   }
 
