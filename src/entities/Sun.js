@@ -1,5 +1,6 @@
 import * as THREE from 'three';
 import { sunVertexShader, sunFragmentShader } from '../utils/shaders.js';
+import { createPlanetNameSprite } from '../ui/Label.js';
 
 export class Sun {
   constructor(scene, isMobile = false) {
@@ -7,6 +8,7 @@ export class Sun {
     this.isMobile = isMobile;
     this._createSun();
     this._createGlow();
+    this._createCenterText();
   }
 
   _createSun() {
@@ -23,8 +25,15 @@ export class Sun {
     });
 
     this.mesh = new THREE.Mesh(geometry, material);
-    this.mesh.userData = { isSun: true, name: '中华文明' };
+    this.mesh.userData = { isSun: true, name: '中华名人堂' };
     this.scene.add(this.mesh);
+  }
+
+  // 太阳中心嵌入「中华」二字：白字 + 深色描边 + 朝相机，depthTest:false 始终绘制于球体之上
+  _createCenterText() {
+    this.centerLabel = createPlanetNameSprite('中华', '#ffd27a', 5);
+    this.centerLabel.position.set(0, 0, 0);
+    this.scene.add(this.centerLabel);
   }
 
   _createGlow() {
@@ -62,4 +71,6 @@ export class Sun {
     this.mesh.rotation.y += 0.0009;
     if (this.glow) this.glow.rotation.y -= 0.0004;
   }
+
+  setCenterTextVisible(v) { if (this.centerLabel) this.centerLabel.visible = v; }
 }

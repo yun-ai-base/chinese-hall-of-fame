@@ -2,6 +2,7 @@ import * as THREE from 'three';
 import { CategoryPlanet } from './CategoryPlanet.js';
 import { OrbitRing } from './OrbitRing.js';
 import { CentralStar } from './CentralStar.js';
+import { categoryPalette } from '../utils/colorScale.js';
 import { disposeObject } from '../utils/dispose.js';
 
 // CategoryView —— L3「分类层」：进入某维度后，将该维度的所有子分类渲染为行星级球体，
@@ -31,7 +32,7 @@ export class CategoryView {
     const dim = this.meta;
     const colorHex = new THREE.Color(dim.color).getHex();
 
-    // 中央维度恒星：位于视图中心，持续自转，作为本层级的「恒星」
+    // 中央维度恒星：位于视图中心，持续自转，作为本层级的「恒星」（沿用维度主色）
     this.star = new CentralStar({
       name: dim.name, color: dim.color, radius: 2.6,
       categoryName: dim.name, dimId: this.dimId, kind: 'dimStar',
@@ -40,6 +41,8 @@ export class CategoryView {
 
     const cats = (dim.categories || []).filter(c => c.count > 0);
     const n = cats.length || 1;
+    // 每个子分类在维度主色锚定的色环上均匀铺开 —— 彼此区分度最大（修复「同维度分类星球颜色差不多」）
+    const pal = categoryPalette(dim.color, n);
 
     // 错位轨道：按数量分 1~2 圈，每圈不同半径与相位偏移，避免「排成一个圆圈」
     const perRing = Math.max(1, Math.ceil(n / 2));
@@ -54,10 +57,11 @@ export class CategoryView {
       const angle = (idxInRing / perRing) * Math.PI * 2 + ringIndex * 0.6;
       const speed = SPEED_K / Math.pow(R, 1.5);
       const radius = Math.max(0.9, Math.min(1.7, 0.9 + cat.count * 0.05));
+      const catColor = pal[i].hex;
 
       const planet = new CategoryPlanet({
         name: cat.name,
-        color: dim.color,
+        color: catColor,
         radius,
         categoryName: cat.name,
         dimId: this.dimId,
@@ -66,9 +70,9 @@ export class CategoryView {
       this.group.add(planet.group);
       this.planets.push({ name: cat.name, planet, angle, speed, orbitRadius: R });
 
-      // 每圈首颗为该半径补一条轨道环（轨迹）
+      // 每圈首颗为该半径补一条轨道环（轨迹），颜色取该圈首颗分类色
       if (idxInRing === 0) {
-        const ring = new OrbitRing(R, colorHex);
+        const ring = new OrbitRing(R, new THREE.Color(catColor).getHex());
         ring.create(this.group);
         this.rings.push(ring);
       }

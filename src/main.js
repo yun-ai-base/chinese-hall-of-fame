@@ -38,6 +38,8 @@ class App {
     this.viewLevel = 'universe';
     this.currentDimId = null;
     this.currentFigureId = null;
+    this.currentCategory = null;
+    this.selectedFigureId = null;
     this.currentCenter = new THREE.Vector3();
     this._suppressHash = false;
     this._idleTimer = null;
@@ -162,6 +164,9 @@ class App {
   }
 
   _apply(state) {
+    // 进入任何非宇宙层级时，收起太阳中心的「中华」字样与可能残留的名人选中态
+    this.sun.setCenterTextVisible(state.level === 'universe');
+    this._clearFigureSelection();
     if (state.level === 'universe') this._applyUniverse();
     else if (state.level === 'dimension') this._applyDimension(state.dimId, state.center);
     else if (state.level === 'category') this._applyCategory(state.dimId, state.categoryName, state.center);
@@ -182,7 +187,7 @@ class App {
     this.cameraCtrl.focusUniverse();
     this.btnBack.classList.add('hidden');
     if (this.titleDisplay) this.titleDisplay.style.display = '';
-    this._updateTitle('中华文明', '点击星球探索上下五千年');
+    this._updateTitle('中华名人堂', '点击星球探索上下五千年');
     this._refreshClickables();
     this.breadcrumb.render([]);
     this._setHash('u');
@@ -213,7 +218,7 @@ class App {
       this.cameraCtrl.focusOn(center.clone());
       this._refreshClickables();
       this.breadcrumb.render([
-        { label: '中华文明', level: 'universe' },
+        { label: '中华名人堂', level: 'universe' },
         { label: dim.name, level: 'dimension', payload: { dimId } },
       ]);
       this._setHash('d', dimId);
@@ -250,7 +255,7 @@ class App {
     this.cameraCtrl.focusOn(center.clone());
     this._refreshClickables();
     this.breadcrumb.render([
-      { label: '中华文明', level: 'universe' },
+      { label: '中华名人堂', level: 'universe' },
       { label: dim.name, level: 'dimension', payload: { dimId } },
     ]);
     this._setHash('d', dimId);
@@ -295,7 +300,7 @@ class App {
     this.cameraCtrl.focusOn(center.clone());
     this._refreshClickables();
     this.breadcrumb.render([
-      { label: '中华文明', level: 'universe' },
+      { label: '中华名人堂', level: 'universe' },
       { label: dim.name, level: 'dimension', payload: { dimId } },
       { label: categoryName, level: 'category', payload: { dimId, categoryName } },
     ]);
@@ -362,7 +367,7 @@ class App {
     this.cameraCtrl.focusOn(center.clone());
     this._refreshClickables();
     this.breadcrumb.render([
-      { label: '中华文明', level: 'universe' },
+      { label: '中华名人堂', level: 'universe' },
       { label: dim ? dim.name : '', level: 'dimension', payload: { dimId: this.currentDimId } },
       { label: basic ? basic.basic.name : figureId, level: 'figure' },
     ]);
@@ -417,6 +422,7 @@ class App {
 
   // ---------- 点击路由 ----------
   _onClick(hit) {
+    if (!hit) { this._onBackgroundClick(); return; }
     const ud = hit.userData;
     if (!ud) return;
 
@@ -432,11 +438,9 @@ class App {
       return;
     }
     if (ud.kind === 'figure') {
-      // L4 分类名人层：点击名人弹详情面板 + 聚焦（严格四层，不进关系网 3D）
+      // L4 分类名人层：点击名人 → 聚焦 + 选中高亮 + 四级头部 + 背景染色（严格四层）
       if (this.viewLevel === 'category') {
-        const c = ud.moon.getWorldPosition(new THREE.Vector3());
-        this.cameraCtrl.focusOn(c.clone());
-        this.panel.showFigure(ud.figureId);
+        this._selectFigure(ud.figureId, ud.moon);
         return;
       }
       const c = ud.moon.getWorldPosition(new THREE.Vector3());
@@ -478,6 +482,54 @@ class App {
     this.tooltip.style.left = x + 'px';
     this.tooltip.style.top = y + 'px';
     this.tooltip.classList.remove('hidden');
+  }
+
+  // ---------- 名人选中（L4 第四级）----------
+  // 点击分类名人层中的某颗名人卫星：聚焦 + 高亮 + 头部四级文字 + 背景染色，
+  // 构成明确可感知的「第四级结构」，而非仅弹侧面板。
+  _selectFigure(figureId, moon) {
+    const c = moon.getWorldPosition(new THREE.Vector3());
+    this.cameraCtrl.focusOn(c.clone());
+    this.selectedFigureId = figureId;
+    if (this.activeView && this.activeView.selectFigure) this.activeView.selectFigure(figureId);
+    this.panel.showFigure(figureId);
+
+    const basic = this.dm.getFigureBasic(figureId);
+    const dim = basic ? this.dm.getDim(basic.dimId) : null;
+    if (this.titleDisplay) {
+      this.titleDisplay.classList.add('figure-header');
+      this.titleDisplay.style.display = '';
+      this._updateTitle(basic ? basic.basic.name : figureId,
+        `${dim ? dim.name : ''} · ${this.currentCategory || ''}`);
+    }
+    this.breadcrumb.render([
+      { label: '中华名人堂', level: 'universe' },
+      { label: dim ? dim.name : '', level: 'dimension', payload: { dimId: this.currentDimId } },
+      { label: this.currentCategory || '', level: 'category', payload: { dimId: this.currentDimId, categoryName: this.currentCategory } },
+      { label: basic ? basic.basic.name : figureId, level: 'figure' },
+    ]);
+
+    // 背景染色：取该名人卫星主色，转成极淡的暗色相，强化聚焦凸显度
+    const col = moon.color ? new THREE.Color(moon.color) : new THREE.Color('#ffffff');
+    const hsl = {};
+    col.getHSL(hsl);
+    this.scene.setBackgroundTint(new THREE.Color().setHSL(hsl.h, 0.5, 0.06).getStyle());
+  }
+
+  _clearFigureSelection() {
+    if (!this.selectedFigureId) return;
+    this.selectedFigureId = null;
+    if (this.activeView && this.activeView.clearSelection) this.activeView.clearSelection();
+    this.scene.setBackgroundTint(null);
+    if (this.titleDisplay) {
+      this.titleDisplay.classList.remove('figure-header');
+      this.titleDisplay.style.display = 'none';
+    }
+  }
+
+  // 点击空白处：若已选中某位名人，则取消选中（恢复分类层视图）
+  _onBackgroundClick() {
+    if (this.selectedFigureId) this._clearFigureSelection();
   }
 
   // ---------- 面板触发 ----------

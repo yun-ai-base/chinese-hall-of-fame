@@ -28,9 +28,8 @@ export class Raycaster {
     canvas.addEventListener('click', (e) => {
       this._updateMouse(e);
       const hit = this._hitTest();
-      if (hit) {
-        this._handlers.click.forEach((h) => h(hit));
-      }
+      // 命中则传命中体；未命中也照常派发（hit 为 null），供上层处理「点击空白」逻辑
+      this._handlers.click.forEach((h) => h(hit));
     });
 
     canvas.addEventListener('pointermove', (e) => {

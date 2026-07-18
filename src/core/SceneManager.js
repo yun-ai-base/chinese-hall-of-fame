@@ -81,6 +81,13 @@ export class SceneManager {
     });
   }
 
+  // 选中名人时给背景叠加一层极淡的色相染色，强化「当前聚焦某位名人」的凸显度；
+  // 传入 null 还原为默认（黑色虚空）。
+  setBackgroundTint(hex) {
+    if (hex) this.scene.background = new THREE.Color(hex);
+    else this.scene.background = null;
+  }
+
   // 资源释放协议
   disposeEntity(object) {
     if (!object) return;

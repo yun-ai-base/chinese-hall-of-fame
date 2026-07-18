@@ -1,5 +1,5 @@
 import * as THREE from 'three';
-import { createTextSprite } from '../ui/Label.js';
+import { createPlanetNameSprite } from '../ui/Label.js';
 import { disposeObject } from '../utils/dispose.js';
 
 // Moon —— 可点击的卫星实体（名人卫星 / 关联人物卫星 / 分类 hub）。
@@ -47,13 +47,9 @@ export class Moon {
     const glow = this._makeGlow(col, this.radius);
     this.group.add(glow);
 
-    // 标签
-    this.label = createTextSprite(this.name, {
-      color: this.isInList ? this.color : '#cfd3da',
-      sub: this.sub,
-      baseHeight: Math.max(0.45, this.radius * 0.9),
-    });
-    this.label.position.set(0, this.radius + 0.7, 0);
+    // 名字内嵌于球体「内部」（居中、朝相机、depthTest:false 始终绘制于球体之上），不再浮在外侧
+    this.label = createPlanetNameSprite(this.name, this.color, this.radius);
+    this.label.position.set(0, 0, 0);
     this.group.add(this.label);
 
     // 不可见放大碰撞体（移动端热区 +50%）
@@ -101,6 +97,15 @@ export class Moon {
 
   // 淡出控制（上一层轨道变淡时，卫星一起变暗）
   setFade(target) { this.fadeTarget = target; }
+
+  // 选中高亮：点击名人时放大并增强自发光，其余卫星保持常态（凸显度）
+  setSelected(sel) {
+    this._selected = sel;
+    if (this.mesh && this.mesh.material) {
+      this.mesh.material.emissiveIntensity = sel ? 0.95 : (this.isInList ? 0.3 : 0.12);
+    }
+    this.group.scale.setScalar(sel ? 1.5 : 1.0);
+  }
 
   update(time) {
     this.mesh.rotation.y += 0.012;

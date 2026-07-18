@@ -2,6 +2,7 @@ import * as THREE from 'three';
 import { Moon } from './Moon.js';
 import { OrbitRing } from './OrbitRing.js';
 import { CentralStar } from './CentralStar.js';
+import { categoryPalette, figureColor } from '../utils/colorScale.js';
 import { disposeObject } from '../utils/dispose.js';
 
 // CategoryFigureView —— L4「分类名人层」：进入某分类后，将该分类下的名人渲染为卫星，
@@ -36,11 +37,18 @@ export class CategoryFigureView {
     const innerR = 4.2;   // 让出中央恒星空间
     const ringGap = 1.8;
     const SPEED_K = 3.0;
-    const colorHex = new THREE.Color(this.meta.color).getHex();
 
-    // 中央分类恒星：固定位于视图中心，持续自转，代表当前分类
+    // 分类主色：在维度色环上取「本分类」对应的那一档（与 L3 分类星球颜色一致，保证下钻连续性）
+    const cats = (this.meta.categories || []).filter(c => c.count > 0);
+    const catIdx = Math.max(0, cats.findIndex(c => c.name === this.categoryName));
+    const pal = categoryPalette(this.meta.color, cats.length);
+    const catHex = pal[catIdx].hex;
+    const catHue = pal[catIdx].hueDeg;
+    const colorHex = new THREE.Color(catHex).getHex();
+
+    // 中央分类恒星：固定位于视图中心，持续自转，代表当前分类（=该分类主色）
     this.star = new CentralStar({
-      name: this.categoryName, color: this.meta.color, radius: 1.8,
+      name: this.categoryName, color: catHex, radius: 1.8,
       categoryName: this.categoryName, dimId: this.dimId, kind: 'catStar',
     }).create();
     this.group.add(this.star.group);
@@ -51,10 +59,12 @@ export class CategoryFigureView {
       const R = innerR + ringIndex * ringGap;
       const angle = (idxInRing / perRing) * Math.PI * 2 + ringIndex * 0.4;
       const speed = SPEED_K / Math.pow(R, 1.5);
+      // 名人卫星：在分类主色附近均匀铺开，彼此区分且与中央恒星不同
+      const figColor = figureColor(catHue, i, figures.length);
 
       const moon = new Moon({
         name: fe.basic.name,
-        color: this.meta.color,
+        color: figColor,
         radius: 0.42,
         kind: 'figure',
         figureId: fe.id,
@@ -75,6 +85,17 @@ export class CategoryFigureView {
         this.rings.push(ring);
       }
     });
+  }
+
+  // 选中某名人：高亮该卫星、其余变暗（凸显度），供 main 在点击名人时调用
+  selectFigure(figureId) {
+    this._selectedId = figureId;
+    for (const m of this.moons) m.setSelected(m.figureId === figureId);
+  }
+
+  clearSelection() {
+    this._selectedId = null;
+    for (const m of this.moons) m.setSelected(false);
   }
 
   setCenter(center) {

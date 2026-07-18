@@ -72,6 +72,18 @@ html, body {
   margin-top: 4px;
   font-weight: 300;
 }
+/* 选中名人时的「第四级」头部：下移到面包屑下方，避免重叠 */
+.title-display.figure-header {
+  top: 56px;
+}
+.title-display.figure-header .main-title {
+  font-size: 24px;
+  color: #fff;
+  text-shadow: 0 0 18px rgba(255,255,255,0.35);
+}
+.title-display.figure-header .subtitle {
+  color: rgba(255,255,255,0.7);
+}
 
 /* 悬停提示 */
 .tooltip {

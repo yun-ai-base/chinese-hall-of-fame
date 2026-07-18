@@ -44,7 +44,7 @@ export class InfoPanel {
     const idx = this.dm.index;
     this.scroll.append(
       el('div', { class: 'panel-hero' },
-        el('h2', { class: 'panel-title' }, '中华文明'),
+        el('h2', { class: 'panel-title' }, '中华名人堂'),
         el('p', { class: 'panel-sub' }, 'Celestial Mandate · 天命星系'),
         el('p', { class: 'panel-lead' }, `以太阳系为隐喻，将上下五千年 ${idx.totalFigures} 位杰出人物，归入八大文化维度，编织成一座可探索的交互星系。`),
       )
