@@ -1,0 +1,83 @@
+{
+  "details": {
+    "bio": "崔致远（857年—约951年），字孤云，号海云，新罗（今韩国）庆州人。朝鲜半岛学者、诗人。十二岁入唐留学，十八岁考中进士。在唐任宣州溧水县尉等职。在唐期间与晚唐文人广泛交往，著有《桂苑笔耕集》二十卷。884年归国后在新罗朝任职，传播汉文学和儒家思想。被尊为东国儒宗、韩国汉文学的鼻祖。",
+    "ideology": "儒学为本，汉文学传播",
+    "group": "新罗留唐学者",
+    "timeline": [
+      {
+        "year": "857年",
+        "event": "生于新罗庆州",
+        "type": "birth"
+      },
+      {
+        "year": "868年",
+        "event": "十二岁入唐留学",
+        "type": "milestone"
+      },
+      {
+        "year": "874年",
+        "event": "十八岁中进士",
+        "type": "milestone"
+      },
+      {
+        "year": "884年",
+        "event": "归国",
+        "type": "milestone"
+      },
+      {
+        "year": "约951年",
+        "event": "去世",
+        "type": "death"
+      }
+    ],
+    "works": [
+      {
+        "title": "《桂苑笔耕集》",
+        "type": "文集",
+        "summary": "崔致远在唐期间的诗文集，是韩国最早的汉文诗集"
+      }
+    ],
+    "achievements": [
+      "十二岁入唐十八岁中进士的传奇经历",
+      "被尊为东国儒宗韩国汉文学鼻祖"
+    ],
+    "quotes": [
+      "云帆高挂向何处，万里江山归路遥。"
+    ],
+    "appraisals": [
+      "崔致远是韩国汉文学的始祖——韩国学界共识"
+    ],
+    "influence": "崔致远是中韩文化交流史上最杰出的人物，他在韩国被尊为汉文学的始祖，其文集是研究晚唐与新罗关系的重要史料。",
+    "controversies": [],
+    "mediaPortrayals": [],
+    "memorials": [
+      "韩国庆州：崔致远纪念馆"
+    ],
+    "gallery": [],
+    "trivia": [
+      "崔致远十二岁独自入唐留学，堪称最早的留学少年",
+      "他是韩国历史上最著名的汉文学代表人物"
+    ],
+    "references": [
+      "崔致远《桂苑笔耕集》"
+    ],
+    "baiduBaike": "https://baike.baidu.com/item/%E5%B4%94%E8%87%B4%E8%BF%9C"
+  },
+  "relations": [
+    {
+      "targetId": "abe_nakamaro",
+      "relation": "同朝留学",
+      "description": "崔致远与阿倍仲麻吕同为唐代来华的外国留学生并考中进士"
+    },
+    {
+      "targetId": "li_bai",
+      "relation": "唐代诗人交游",
+      "description": "崔致远在唐期间与晚唐文人广泛交往，传承唐诗文化"
+    },
+    {
+      "targetId": "jian_zhen",
+      "relation": "中日韩佛教文化交流",
+      "description": "崔致远与新罗佛教和汉文化传播，与鉴真东渡构成双向交流"
+    }
+  ]
+}

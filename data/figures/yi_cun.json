@@ -1,0 +1,55 @@
+{
+  "details": {
+    "bio": "伊存（生卒年不详），大月氏人。西汉时期来华的佛教传教士。据《三国志·魏书》注引《魏略·西戎传》记载，前2年（西汉元寿元年）大月氏使臣伊存向西汉博士弟子景卢口授佛经，这是中国历史上有明确记载的佛教传入的最早事件。伊存授经被视为佛教传入中国的开端。",
+    "ideology": "传播佛法",
+    "group": "大月氏使团",
+    "timeline": [
+      {
+        "year": "前2年",
+        "event": "向景卢口授佛经，佛教最早传入中国记载",
+        "type": "milestone"
+      }
+    ],
+    "works": [],
+    "achievements": [
+      "最早向中国人传授佛经的记录者"
+    ],
+    "quotes": [],
+    "appraisals": [
+      "伊存授经是佛教传入中国之始——汤用彤《汉魏晋南北朝佛教史》"
+    ],
+    "influence": "伊存授经标志着佛教正式传入中国，此后佛教在中国扎根发展并影响了中华文明的各个方面。",
+    "controversies": [
+      "关于佛教最早传入还有多种说法（如东汉明帝感梦求法）"
+    ],
+    "mediaPortrayals": [],
+    "memorials": [],
+    "gallery": [],
+    "trivia": [
+      "佛教传入中国的确切时间和方式在学术界有多种说法",
+      "伊存授经是正史文献中关于佛教传华的最早明确记载"
+    ],
+    "references": [
+      "《三国志·魏书》注引《魏略》",
+      "汤用彤《汉魏晋南北朝佛教史》"
+    ],
+    "baiduBaike": "https://baike.baidu.com/item/%E4%BC%8A%E5%AD%98"
+  },
+  "relations": [
+    {
+      "targetId": "jiu_mo_luo_shi",
+      "relation": "佛教传入",
+      "description": "伊存授经为佛教传入中国之始，鸠摩罗什为翻译佛经之集大成者"
+    },
+    {
+      "targetId": "xuan_zang",
+      "relation": "佛教传承",
+      "description": "伊存首传佛经至中国，玄奘西行取经为中国佛教交流高峰"
+    },
+    {
+      "targetId": "da_mo",
+      "relation": "佛教传承",
+      "description": "伊存开佛教东传先河，达摩来华开创禅宗"
+    }
+  ]
+}

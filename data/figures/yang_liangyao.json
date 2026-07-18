@@ -1,0 +1,68 @@
+{
+  "details": {
+    "bio": "杨良瑶（736年—806年），唐朝宦官、外交使节。785年奉唐德宗之命出使阿拉伯帝国（黑衣大食），从广州乘船出发经海路抵达巴格达，代表唐朝与大食建立直接联系。杨良瑶的航海比郑和下西洋早约600年，是唐代海外交流的重要事件。其出使被记录于神道碑中，是研究唐代中外交通的重要史料。",
+    "ideology": "外交通商，沟通大食",
+    "group": "唐代使节",
+    "timeline": [
+      {
+        "year": "736年",
+        "event": "出生",
+        "type": "birth"
+      },
+      {
+        "year": "785年",
+        "event": "奉使出海赴大食",
+        "type": "milestone"
+      },
+      {
+        "year": "约787年",
+        "event": "抵达巴格达完成使命",
+        "type": "milestone"
+      },
+      {
+        "year": "806年",
+        "event": "去世",
+        "type": "death"
+      }
+    ],
+    "works": [],
+    "achievements": [
+      "唐代最早经海路出使阿拉伯的使者"
+    ],
+    "quotes": [],
+    "appraisals": [
+      "杨良瑶是中国最早经海路到达阿拉伯的外交使节——张广达"
+    ],
+    "influence": "杨良瑶出使阿拉伯是唐代海路外交的重要事件，比郑和下西洋早六百年，说明唐代已有成熟的海上丝绸之路。",
+    "controversies": [],
+    "mediaPortrayals": [],
+    "memorials": [],
+    "gallery": [],
+    "trivia": [
+      "杨良瑶的墓志铭（神道碑）在1980年代被发现证实了这次出使",
+      "他的出使路线是广州-南海-马六甲-印度洋-波斯湾-巴格达"
+    ],
+    "references": [
+      "《杨良瑶神道碑》",
+      "《唐故杨府君神道之碑》"
+    ],
+    "baiduBaike": "https://baike.baidu.com/item/%E6%9D%A8%E8%89%AF%E7%91%B6"
+  },
+  "relations": [
+    {
+      "targetId": "zheng_he",
+      "relation": "航海先驱",
+      "description": "杨良瑶的航海比郑和下西洋早约600年，是唐代远航先驱"
+    },
+    {
+      "targetId": "wang_jinghong",
+      "relation": "海外使者",
+      "description": "杨良瑶与王景弘同为中国古代重要外交航海使节"
+    },
+    {
+      "targetId": "du_huan",
+      "relation": "中西交流",
+      "description": "杨良瑶出使大食与杜环游历阿拉伯同为唐代中西交流的重要事件"
+    }
+  ]
+}

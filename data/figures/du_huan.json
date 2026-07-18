@@ -1,0 +1,69 @@
+{
+  "details": {
+    "bio": "杜环（生卒年不详），京兆人。唐代旅行家。751年唐军在怛罗斯之战中败于阿拉伯帝国，杜环被俘。后被带到中亚、西亚各地，游历了今中亚、西亚、北非广大地区。762年搭乘商船经海路回到广州。回国后著《经行记》，详细记载了被俘期间的见闻，包括伊斯兰教、波斯、大食风土人情，是中国人最早关于伊斯兰世界的记录。原书已佚，仅存杜佑《通典》所引片段。",
+    "ideology": "记录异域见闻，沟通中西文明",
+    "group": "唐代旅人",
+    "timeline": [
+      {
+        "year": "751年",
+        "event": "怛罗斯之战被俘",
+        "type": "milestone"
+      },
+      {
+        "year": "751-762年",
+        "event": "游历中亚、西亚、北非",
+        "type": "milestone"
+      },
+      {
+        "year": "762年",
+        "event": "经海路返回广州",
+        "type": "milestone"
+      }
+    ],
+    "works": [
+      {
+        "title": "《经行记》",
+        "type": "游记",
+        "summary": "记载中亚西亚见闻，最早记录伊斯兰世界的中国文献（原书已佚）"
+      }
+    ],
+    "achievements": [
+      "最早游历伊斯兰世界的中国旅行家",
+      "著《经行记》记录中亚西亚风土"
+    ],
+    "quotes": [],
+    "appraisals": [
+      "杜环之行，开中国人游历伊斯兰世界之先河——向达"
+    ],
+    "influence": "《经行记》是中国关于中亚西亚的最早的第一手记录，对了解唐代中西交通有重要价值。",
+    "controversies": [],
+    "mediaPortrayals": [],
+    "memorials": [],
+    "gallery": [],
+    "trivia": [
+      "杜环是唐代著名史学家杜佑的侄子",
+      "他在《经行记》中记载了伊斯兰教的教义和仪式，是中文最早关于伊斯兰教的记录"
+    ],
+    "references": [
+      "杜佑《通典》引《经行记》"
+    ],
+    "baiduBaike": "https://baike.baidu.com/item/%E6%9D%9C%E7%8E%AF"
+  },
+  "relations": [
+    {
+      "targetId": "zhang_qian",
+      "relation": "旅行先驱",
+      "description": "杜环与张骞同为被俘后游历异域并记录见闻的中国人"
+    },
+    {
+      "targetId": "wang_dayuan",
+      "relation": "元代旅行家",
+      "description": "杜环与汪大渊同为亲历海外并著书记录的先驱"
+    },
+    {
+      "targetId": "xu_xiake",
+      "relation": "旅行家传统",
+      "description": "杜环的《经行记》与徐霞客游记同为中国古代旅行记传统"
+    }
+  ]
+}

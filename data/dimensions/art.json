@@ -1,0 +1,1656 @@
+[
+  {
+    "id": "wang_xizhi",
+    "name": "王羲之",
+    "pinyin": "Wang Xizhi",
+    "dynasty": "晋",
+    "era": {
+      "start": 303,
+      "end": 361,
+      "approximate": true
+    },
+    "eraLabel": "东晋",
+    "gender": "男",
+    "honor": "书圣",
+    "dimension": "art",
+    "dimensionCategory": "书法",
+    "tags": [
+      "书法家",
+      "书圣",
+      "东晋名士"
+    ],
+    "summary": "东晋书法家，被誉为书圣，代表作《兰亭序》被称为天下第一行书。",
+    "birthplace": "琅琊临沂（今山东临沂）",
+    "deathplace": null,
+    "locations": [
+      "山东临沂",
+      "浙江绍兴"
+    ]
+  },
+  {
+    "id": "wang_xianzhi",
+    "name": "王献之",
+    "pinyin": "Wang Xianzhi",
+    "dynasty": "晋",
+    "era": {
+      "start": 344,
+      "end": 386,
+      "approximate": false
+    },
+    "eraLabel": "东晋",
+    "gender": "男",
+    "honor": "小圣",
+    "dimension": "art",
+    "dimensionCategory": "书法",
+    "tags": [
+      "书法家",
+      "小圣",
+      "东晋名士"
+    ],
+    "summary": "东晋书法家，王羲之第七子，与父并称二王，擅长行草书。",
+    "birthplace": "琅琊临沂（今山东临沂）",
+    "deathplace": null,
+    "locations": [
+      "山东临沂",
+      "浙江绍兴"
+    ]
+  },
+  {
+    "id": "yan_zhenqing",
+    "name": "颜真卿",
+    "pinyin": "Yan Zhenqing",
+    "dynasty": "唐",
+    "era": {
+      "start": 709,
+      "end": 785,
+      "approximate": false
+    },
+    "eraLabel": "唐",
+    "gender": "男",
+    "honor": "楷圣",
+    "dimension": "art",
+    "dimensionCategory": "书法",
+    "tags": [
+      "书法家",
+      "楷书四大家",
+      "忠臣"
+    ],
+    "summary": "唐代书法家、忠臣，创颜体楷书，与柳公权并称颜柳，对后世影响深远。",
+    "birthplace": "京兆万年（今陕西西安）",
+    "deathplace": null,
+    "locations": [
+      "陕西西安"
+    ]
+  },
+  {
+    "id": "liu_gongquan",
+    "name": "柳公权",
+    "pinyin": "Liu Gongquan",
+    "dynasty": "唐",
+    "era": {
+      "start": 778,
+      "end": 865,
+      "approximate": false
+    },
+    "eraLabel": "唐",
+    "gender": "男",
+    "honor": "柳体",
+    "dimension": "art",
+    "dimensionCategory": "书法",
+    "tags": [
+      "书法家",
+      "楷书四大家",
+      "柳体"
+    ],
+    "summary": "唐代书法家，创柳体楷书，与颜真卿并称颜柳，笔法遒劲有力。",
+    "birthplace": "京兆华原（今陕西铜川）",
+    "deathplace": null,
+    "locations": [
+      "陕西铜川",
+      "西安"
+    ]
+  },
+  {
+    "id": "ouyang_xun",
+    "name": "欧阳询",
+    "pinyin": "Ouyang Xun",
+    "dynasty": "唐",
+    "era": {
+      "start": 557,
+      "end": 641,
+      "approximate": false
+    },
+    "eraLabel": "唐",
+    "gender": "男",
+    "honor": "欧体",
+    "dimension": "art",
+    "dimensionCategory": "书法",
+    "tags": [
+      "书法家",
+      "楷书四大家",
+      "欧体"
+    ],
+    "summary": "唐代书法家，创欧体楷书，结构险峻严谨，被誉为唐人楷书第一。",
+    "birthplace": "潭州临湘（今湖南长沙）",
+    "deathplace": null,
+    "locations": [
+      "湖南长沙",
+      "西安"
+    ]
+  },
+  {
+    "id": "zhao_mengfu",
+    "name": "赵孟頫",
+    "pinyin": "Zhao Mengfu",
+    "dynasty": "元",
+    "era": {
+      "start": 1254,
+      "end": 1322,
+      "approximate": false
+    },
+    "eraLabel": "元",
+    "gender": "男",
+    "honor": "楷书四大家",
+    "dimension": "art",
+    "dimensionCategory": "书法",
+    "tags": [
+      "书法家",
+      "画家",
+      "楷书四大家"
+    ],
+    "summary": "元代书画家、文学家，创赵体书法，书法绘画俱佳，为楷书四大家之一。",
+    "birthplace": "湖州（今浙江湖州）",
+    "deathplace": null,
+    "locations": [
+      "浙江湖州",
+      "北京"
+    ]
+  },
+  {
+    "id": "zhang_xu",
+    "name": "张旭",
+    "pinyin": "Zhang Xu",
+    "dynasty": "唐",
+    "era": {
+      "start": 675,
+      "end": 750,
+      "approximate": true
+    },
+    "eraLabel": "唐",
+    "gender": "男",
+    "honor": "草圣",
+    "dimension": "art",
+    "dimensionCategory": "书法",
+    "tags": [
+      "书法家",
+      "草圣",
+      "狂草"
+    ],
+    "summary": "唐代书法家，擅长狂草，被誉为草圣，与怀素并称颠张醉素。",
+    "birthplace": "吴郡（今江苏苏州）",
+    "deathplace": null,
+    "locations": [
+      "江苏苏州"
+    ]
+  },
+  {
+    "id": "huai_su",
+    "name": "怀素",
+    "pinyin": "Huai Su",
+    "dynasty": "唐",
+    "era": {
+      "start": 737,
+      "end": 799,
+      "approximate": true
+    },
+    "eraLabel": "唐",
+    "gender": "男",
+    "honor": "狂草",
+    "dimension": "art",
+    "dimensionCategory": "书法",
+    "tags": [
+      "书法家",
+      "草书",
+      "僧侣"
+    ],
+    "summary": "唐代书法家、僧侣，以狂草闻名，与张旭并称颠张醉素。",
+    "birthplace": "零陵（今湖南永州）",
+    "deathplace": null,
+    "locations": [
+      "湖南永州"
+    ]
+  },
+  {
+    "id": "mi_fu",
+    "name": "米芾",
+    "pinyin": "Mi Fu",
+    "dynasty": "宋",
+    "era": {
+      "start": 1051,
+      "end": 1107,
+      "approximate": false
+    },
+    "eraLabel": "北宋",
+    "gender": "男",
+    "honor": "宋四家",
+    "dimension": "art",
+    "dimensionCategory": "书法",
+    "tags": [
+      "书法家",
+      "画家",
+      "收藏家"
+    ],
+    "summary": "北宋书法家、画家、收藏家，宋四家之一，以行书成就最高，个性狂放。",
+    "birthplace": "太原（今山西太原）",
+    "deathplace": null,
+    "locations": [
+      "山西太原",
+      "江苏镇江"
+    ]
+  },
+  {
+    "id": "yu_shinan",
+    "name": "虞世南",
+    "pinyin": "Yu Shinan",
+    "dynasty": "唐",
+    "era": {
+      "start": 558,
+      "end": 638,
+      "approximate": false
+    },
+    "eraLabel": "唐",
+    "gender": "男",
+    "honor": "初唐四大家",
+    "dimension": "art",
+    "dimensionCategory": "书法",
+    "tags": [
+      "书法家",
+      "文学家",
+      "政治家"
+    ],
+    "summary": "唐代书法家、文学家，初唐四大家之一，书法圆润遒丽，深受唐太宗推崇。",
+    "birthplace": "越州余姚（今浙江余姚）",
+    "deathplace": null,
+    "locations": [
+      "浙江余姚",
+      "西安"
+    ]
+  },
+  {
+    "id": "chu_suiliang",
+    "name": "褚遂良",
+    "pinyin": "Chu Suiliang",
+    "dynasty": "唐",
+    "era": {
+      "start": 596,
+      "end": 658,
+      "approximate": false
+    },
+    "eraLabel": "唐",
+    "gender": "男",
+    "honor": "初唐四大家",
+    "dimension": "art",
+    "dimensionCategory": "书法",
+    "tags": [
+      "书法家",
+      "政治家",
+      "楷书"
+    ],
+    "summary": "唐代书法家、政治家，初唐四大家之一，楷书婉媚遒健，对后世影响深远。",
+    "birthplace": "杭州钱塘（今浙江杭州）",
+    "deathplace": null,
+    "locations": [
+      "浙江杭州",
+      "西安"
+    ]
+  },
+  {
+    "id": "gu_kaizhi",
+    "name": "顾恺之",
+    "pinyin": "Gu Kaizhi",
+    "dynasty": "晋",
+    "era": {
+      "start": 348,
+      "end": 409,
+      "approximate": true
+    },
+    "eraLabel": "东晋",
+    "gender": "男",
+    "honor": "画绝",
+    "dimension": "art",
+    "dimensionCategory": "人物花鸟",
+    "tags": [
+      "画家",
+      "人物画",
+      "画论"
+    ],
+    "summary": "东晋画家，以人物画著称，提出传神写照理论，代表作《女史箴图》《洛神赋图》。",
+    "birthplace": "晋陵无锡（今江苏无锡）",
+    "deathplace": null,
+    "locations": [
+      "江苏无锡",
+      "南京"
+    ]
+  },
+  {
+    "id": "wu_daozi",
+    "name": "吴道子",
+    "pinyin": "Wu Daozi",
+    "dynasty": "唐",
+    "era": {
+      "start": 685,
+      "end": 758,
+      "approximate": true
+    },
+    "eraLabel": "唐",
+    "gender": "男",
+    "honor": "画圣",
+    "dimension": "art",
+    "dimensionCategory": "人物花鸟",
+    "tags": [
+      "画家",
+      "画圣",
+      "人物画"
+    ],
+    "summary": "唐代画家，被尊为画圣，擅长佛道人物画，创吴带当风画风。",
+    "birthplace": "阳翟（今河南禹州）",
+    "deathplace": null,
+    "locations": [
+      "河南禹州",
+      "洛阳"
+    ]
+  },
+  {
+    "id": "yan_liben",
+    "name": "阎立本",
+    "pinyin": "Yan Liben",
+    "dynasty": "唐",
+    "era": {
+      "start": 601,
+      "end": 673,
+      "approximate": true
+    },
+    "eraLabel": "唐",
+    "gender": "男",
+    "honor": null,
+    "dimension": "art",
+    "dimensionCategory": "人物花鸟",
+    "tags": [
+      "画家",
+      "人物画",
+      "政治家"
+    ],
+    "summary": "唐代画家、政治家，擅长人物肖像画和历史题材，代表作《步辇图》《历代帝王图》。",
+    "birthplace": "雍州万年（今陕西西安）",
+    "deathplace": null,
+    "locations": [
+      "陕西西安"
+    ]
+  },
+  {
+    "id": "zhou_fang",
+    "name": "周昉",
+    "pinyin": "Zhou Fang",
+    "dynasty": "唐",
+    "era": {
+      "start": 730,
+      "end": 800,
+      "approximate": true
+    },
+    "eraLabel": "唐",
+    "gender": "男",
+    "honor": null,
+    "dimension": "art",
+    "dimensionCategory": "人物花鸟",
+    "tags": [
+      "画家",
+      "仕女画",
+      "人物画"
+    ],
+    "summary": "唐代画家，以仕女画著称，创周家样画风，代表作《簪花仕女图》。",
+    "birthplace": "京兆（今陕西西安）",
+    "deathplace": null,
+    "locations": [
+      "陕西西安"
+    ]
+  },
+  {
+    "id": "gu_hongzhong",
+    "name": "顾闳中",
+    "pinyin": "Gu Hongzhong",
+    "dynasty": "五代",
+    "era": {
+      "start": 910,
+      "end": 980,
+      "approximate": true
+    },
+    "eraLabel": "南唐",
+    "gender": "男",
+    "honor": null,
+    "dimension": "art",
+    "dimensionCategory": "人物花鸟",
+    "tags": [
+      "画家",
+      "人物画",
+      "南唐"
+    ],
+    "summary": "五代南唐画家，以人物画著称，代表作《韩熙载夜宴图》为传世人物画杰作。",
+    "birthplace": "江南（今江苏南京一带）",
+    "deathplace": null,
+    "locations": [
+      "江苏南京"
+    ]
+  },
+  {
+    "id": "xu_wei",
+    "name": "徐渭",
+    "pinyin": "Xu Wei",
+    "dynasty": "明",
+    "era": {
+      "start": 1521,
+      "end": 1593,
+      "approximate": false
+    },
+    "eraLabel": "明",
+    "gender": "男",
+    "honor": null,
+    "dimension": "art",
+    "dimensionCategory": "人物花鸟",
+    "tags": [
+      "画家",
+      "文学家",
+      "书法家"
+    ],
+    "summary": "明代文学家、书画家，开创大写意花鸟画风，对后世影响深远。",
+    "birthplace": "绍兴府山阴（今浙江绍兴）",
+    "deathplace": null,
+    "locations": [
+      "浙江绍兴"
+    ]
+  },
+  {
+    "id": "bada_shanren",
+    "name": "八大山人",
+    "pinyin": "Bada Shanren",
+    "dynasty": "清",
+    "era": {
+      "start": 1626,
+      "end": 1705,
+      "approximate": true
+    },
+    "eraLabel": "清",
+    "gender": "男",
+    "honor": null,
+    "dimension": "art",
+    "dimensionCategory": "人物花鸟",
+    "tags": [
+      "画家",
+      "花鸟画",
+      "遗民"
+    ],
+    "summary": "明末清初画家，明宗室后裔，花鸟画以简练夸张著称，风格独树一帜。",
+    "birthplace": "南昌（今江西南昌）",
+    "deathplace": null,
+    "locations": [
+      "江西南昌"
+    ]
+  },
+  {
+    "id": "zheng_banqiao",
+    "name": "郑板桥",
+    "pinyin": "Zheng Banqiao",
+    "dynasty": "清",
+    "era": {
+      "start": 1693,
+      "end": 1766,
+      "approximate": false
+    },
+    "eraLabel": "清",
+    "gender": "男",
+    "honor": null,
+    "dimension": "art",
+    "dimensionCategory": "人物花鸟",
+    "tags": [
+      "画家",
+      "书法家",
+      "扬州八怪"
+    ],
+    "summary": "清代书画家、文学家，扬州八怪之一，以画竹兰石和六分半书闻名。",
+    "birthplace": "江苏兴化",
+    "deathplace": null,
+    "locations": [
+      "江苏兴化"
+    ]
+  },
+  {
+    "id": "bian_luan",
+    "name": "边鸾",
+    "pinyin": "Bian Luan",
+    "dynasty": "唐",
+    "era": {
+      "start": 720,
+      "end": 790,
+      "approximate": true
+    },
+    "eraLabel": "唐",
+    "gender": "男",
+    "honor": "花鸟画之祖",
+    "dimension": "art",
+    "dimensionCategory": "人物花鸟",
+    "tags": [
+      "画家",
+      "花鸟画",
+      "工笔"
+    ],
+    "summary": "唐代花鸟画家，擅长工笔重彩花鸟，被尊为花鸟画之祖。",
+    "birthplace": "京兆（今陕西西安）",
+    "deathplace": null,
+    "locations": [
+      "陕西西安"
+    ]
+  },
+  {
+    "id": "huang_quan",
+    "name": "黄筌",
+    "pinyin": "Huang Quan",
+    "dynasty": "五代",
+    "era": {
+      "start": 903,
+      "end": 965,
+      "approximate": true
+    },
+    "eraLabel": "后蜀",
+    "gender": "男",
+    "honor": null,
+    "dimension": "art",
+    "dimensionCategory": "人物花鸟",
+    "tags": [
+      "画家",
+      "花鸟画",
+      "工笔"
+    ],
+    "summary": "五代西蜀画家，以工笔花鸟画著称，创黄家富贵画风，对宋代花鸟画影响深远。",
+    "birthplace": "成都（今四川成都）",
+    "deathplace": null,
+    "locations": [
+      "四川成都"
+    ]
+  },
+  {
+    "id": "zhao_ji",
+    "name": "赵佶",
+    "pinyin": "Zhao Ji",
+    "dynasty": "宋",
+    "era": {
+      "start": 1082,
+      "end": 1135,
+      "approximate": false
+    },
+    "eraLabel": "北宋",
+    "gender": "男",
+    "honor": "瘦金体",
+    "dimension": "art",
+    "dimensionCategory": "人物花鸟",
+    "tags": [
+      "画家",
+      "书法家",
+      "皇帝"
+    ],
+    "summary": "宋徽宗，北宋皇帝，书法创瘦金体，绘画精工花鸟，大力推动画院发展。",
+    "birthplace": "开封（今河南开封）",
+    "deathplace": "五国城（今黑龙江依兰）",
+    "locations": [
+      "河南开封",
+      "黑龙江依兰"
+    ]
+  },
+  {
+    "id": "huang_gongwang",
+    "name": "黄公望",
+    "pinyin": "Huang Gongwang",
+    "dynasty": "元",
+    "era": {
+      "start": 1269,
+      "end": 1354,
+      "approximate": false
+    },
+    "eraLabel": "元",
+    "gender": "男",
+    "honor": "元四家之首",
+    "dimension": "art",
+    "dimensionCategory": "山水画",
+    "tags": [
+      "画家",
+      "山水画",
+      "元四家"
+    ],
+    "summary": "元代画家，元四家之首，代表作《富春山居图》为传世山水画经典。",
+    "birthplace": "平江常熟（今江苏常熟）",
+    "deathplace": null,
+    "locations": [
+      "江苏常熟",
+      "浙江富阳"
+    ]
+  },
+  {
+    "id": "zhang_zeduan",
+    "name": "张择端",
+    "pinyin": "Zhang Zeduan",
+    "dynasty": "宋",
+    "era": {
+      "start": 1085,
+      "end": 1145,
+      "approximate": true
+    },
+    "eraLabel": "北宋",
+    "gender": "男",
+    "honor": null,
+    "dimension": "art",
+    "dimensionCategory": "山水画",
+    "tags": [
+      "画家",
+      "风俗画",
+      "北宋"
+    ],
+    "summary": "北宋画家，代表作《清明上河图》为古代风俗画杰作，记录汴京繁华景象。",
+    "birthplace": "琅琊东武（今山东诸城）",
+    "deathplace": null,
+    "locations": [
+      "山东诸城",
+      "开封"
+    ]
+  },
+  {
+    "id": "fan_kuan",
+    "name": "范宽",
+    "pinyin": "Fan Kuan",
+    "dynasty": "宋",
+    "era": {
+      "start": 950,
+      "end": 1032,
+      "approximate": true
+    },
+    "eraLabel": "北宋",
+    "gender": "男",
+    "honor": null,
+    "dimension": "art",
+    "dimensionCategory": "山水画",
+    "tags": [
+      "画家",
+      "山水画",
+      "北宋"
+    ],
+    "summary": "北宋山水画家，与李成、关仝并称三家山水，代表作《溪山行旅图》。",
+    "birthplace": "华原（今陕西铜川）",
+    "deathplace": null,
+    "locations": [
+      "陕西铜川"
+    ]
+  },
+  {
+    "id": "guo_xi",
+    "name": "郭熙",
+    "pinyin": "Guo Xi",
+    "dynasty": "宋",
+    "era": {
+      "start": 1000,
+      "end": 1087,
+      "approximate": true
+    },
+    "eraLabel": "北宋",
+    "gender": "男",
+    "honor": null,
+    "dimension": "art",
+    "dimensionCategory": "山水画",
+    "tags": [
+      "画家",
+      "山水画",
+      "画论"
+    ],
+    "summary": "北宋山水画家、绘画理论家，著《林泉高致》，提出三远法构图理论。",
+    "birthplace": "河阳温县（今河南孟州）",
+    "deathplace": null,
+    "locations": [
+      "河南孟州",
+      "开封"
+    ]
+  },
+  {
+    "id": "li_tang",
+    "name": "李唐",
+    "pinyin": "Li Tang",
+    "dynasty": "宋",
+    "era": {
+      "start": 1066,
+      "end": 1150,
+      "approximate": true
+    },
+    "eraLabel": "南宋",
+    "gender": "男",
+    "honor": null,
+    "dimension": "art",
+    "dimensionCategory": "山水画",
+    "tags": [
+      "画家",
+      "山水画",
+      "南宋四家"
+    ],
+    "summary": "南宋画家，南宋四家之首，创大斧劈皴画法，代表作《万壑松风图》。",
+    "birthplace": "河阳三城（今河南孟州）",
+    "deathplace": null,
+    "locations": [
+      "河南孟州",
+      "杭州"
+    ]
+  },
+  {
+    "id": "liu_songnian",
+    "name": "刘松年",
+    "pinyin": "Liu Songnian",
+    "dynasty": "宋",
+    "era": {
+      "start": 1155,
+      "end": 1218,
+      "approximate": true
+    },
+    "eraLabel": "南宋",
+    "gender": "男",
+    "honor": null,
+    "dimension": "art",
+    "dimensionCategory": "山水画",
+    "tags": [
+      "画家",
+      "山水画",
+      "南宋四家"
+    ],
+    "summary": "南宋画家，南宋四家之一，画风工致严谨，代表作《四景山水图》。",
+    "birthplace": "钱塘（今浙江杭州）",
+    "deathplace": null,
+    "locations": [
+      "浙江杭州"
+    ]
+  },
+  {
+    "id": "ma_yuan",
+    "name": "马远",
+    "pinyin": "Ma Yuan",
+    "dynasty": "宋",
+    "era": {
+      "start": 1140,
+      "end": 1225,
+      "approximate": true
+    },
+    "eraLabel": "南宋",
+    "gender": "男",
+    "honor": null,
+    "dimension": "art",
+    "dimensionCategory": "山水画",
+    "tags": [
+      "画家",
+      "山水画",
+      "南宋四家"
+    ],
+    "summary": "南宋画家，南宋四家之一，创边角构图，被称马一角，代表作《踏歌图》。",
+    "birthplace": "河中（今山西永济）",
+    "deathplace": null,
+    "locations": [
+      "山西永济",
+      "杭州"
+    ]
+  },
+  {
+    "id": "xia_gui",
+    "name": "夏圭",
+    "pinyin": "Xia Gui",
+    "dynasty": "宋",
+    "era": {
+      "start": 1190,
+      "end": 1240,
+      "approximate": true
+    },
+    "eraLabel": "南宋",
+    "gender": "男",
+    "honor": null,
+    "dimension": "art",
+    "dimensionCategory": "山水画",
+    "tags": [
+      "画家",
+      "山水画",
+      "南宋四家"
+    ],
+    "summary": "南宋画家，南宋四家之一，与马远并称马夏，创半边构图，代表作《溪山清远图》。",
+    "birthplace": "钱塘（今浙江杭州）",
+    "deathplace": null,
+    "locations": [
+      "浙江杭州"
+    ]
+  },
+  {
+    "id": "ni_zan",
+    "name": "倪瓒",
+    "pinyin": "Ni Zan",
+    "dynasty": "元",
+    "era": {
+      "start": 1301,
+      "end": 1374,
+      "approximate": true
+    },
+    "eraLabel": "元",
+    "gender": "男",
+    "honor": "元四家",
+    "dimension": "art",
+    "dimensionCategory": "山水画",
+    "tags": [
+      "画家",
+      "山水画",
+      "元四家"
+    ],
+    "summary": "元代画家，元四家之一，画风简淡疏朗，创折带皴法，影响明清文人画。",
+    "birthplace": "无锡（今江苏无锡）",
+    "deathplace": null,
+    "locations": [
+      "江苏无锡"
+    ]
+  },
+  {
+    "id": "wang_meng",
+    "name": "王蒙",
+    "pinyin": "Wang Meng",
+    "dynasty": "元",
+    "era": {
+      "start": 1308,
+      "end": 1385,
+      "approximate": true
+    },
+    "eraLabel": "元",
+    "gender": "男",
+    "honor": "元四家",
+    "dimension": "art",
+    "dimensionCategory": "山水画",
+    "tags": [
+      "画家",
+      "山水画",
+      "元四家"
+    ],
+    "summary": "元代画家，元四家之一，画风繁密苍郁，代表作《青卞隐居图》。",
+    "birthplace": "湖州（今浙江湖州）",
+    "deathplace": null,
+    "locations": [
+      "浙江湖州"
+    ]
+  },
+  {
+    "id": "shi_tao",
+    "name": "石涛",
+    "pinyin": "Shi Tao",
+    "dynasty": "清",
+    "era": {
+      "start": 1642,
+      "end": 1707,
+      "approximate": true
+    },
+    "eraLabel": "清",
+    "gender": "男",
+    "honor": "清四僧",
+    "dimension": "art",
+    "dimensionCategory": "山水画",
+    "tags": [
+      "画家",
+      "山水画",
+      "画论"
+    ],
+    "summary": "清初画家，明宗室后裔，清四僧之一，著《苦瓜和尚画语录》，影响深远。",
+    "birthplace": "桂林（今广西桂林）",
+    "deathplace": null,
+    "locations": [
+      "广西桂林",
+      "扬州"
+    ]
+  },
+  {
+    "id": "qiu_ying",
+    "name": "仇英",
+    "pinyin": "Qiu Ying",
+    "dynasty": "明",
+    "era": {
+      "start": 1498,
+      "end": 1552,
+      "approximate": true
+    },
+    "eraLabel": "明",
+    "gender": "男",
+    "honor": "明四家",
+    "dimension": "art",
+    "dimensionCategory": "山水画",
+    "tags": [
+      "画家",
+      "山水画",
+      "人物画"
+    ],
+    "summary": "明代画家，明四家之一，擅长山水、人物、仕女，画风工细艳丽。",
+    "birthplace": "太仓（今江苏太仓）",
+    "deathplace": null,
+    "locations": [
+      "江苏太仓",
+      "苏州"
+    ]
+  },
+  {
+    "id": "jing_hao",
+    "name": "荆浩",
+    "pinyin": "Jing Hao",
+    "dynasty": "五代",
+    "era": {
+      "start": 870,
+      "end": 935,
+      "approximate": true
+    },
+    "eraLabel": "五代",
+    "gender": "男",
+    "honor": null,
+    "dimension": "art",
+    "dimensionCategory": "山水画",
+    "tags": [
+      "画家",
+      "山水画",
+      "画论"
+    ],
+    "summary": "五代后梁画家、理论家，著《笔法记》，提出六要论，为北方山水画派开创者。",
+    "birthplace": "沁水（今山西晋城）",
+    "deathplace": null,
+    "locations": [
+      "山西晋城"
+    ]
+  },
+  {
+    "id": "guan_tong",
+    "name": "关仝",
+    "pinyin": "Guan Tong",
+    "dynasty": "五代",
+    "era": {
+      "start": 900,
+      "end": 960,
+      "approximate": true
+    },
+    "eraLabel": "五代",
+    "gender": "男",
+    "honor": null,
+    "dimension": "art",
+    "dimensionCategory": "山水画",
+    "tags": [
+      "画家",
+      "山水画",
+      "关家山水"
+    ],
+    "summary": "五代后梁画家，荆浩弟子，创关家山水画风，与荆浩并称荆关。",
+    "birthplace": "长安（今陕西西安）",
+    "deathplace": null,
+    "locations": [
+      "陕西西安"
+    ]
+  },
+  {
+    "id": "dong_yuan",
+    "name": "董源",
+    "pinyin": "Dong Yuan",
+    "dynasty": "五代",
+    "era": {
+      "start": 934,
+      "end": 962,
+      "approximate": true
+    },
+    "eraLabel": "南唐",
+    "gender": "男",
+    "honor": null,
+    "dimension": "art",
+    "dimensionCategory": "山水画",
+    "tags": [
+      "画家",
+      "山水画",
+      "江南画派"
+    ],
+    "summary": "五代南唐画家，江南山水画派开创者，创披麻皴画法，影响元明山水画。",
+    "birthplace": "钟陵（今江西南昌）",
+    "deathplace": null,
+    "locations": [
+      "江西南昌",
+      "南京"
+    ]
+  },
+  {
+    "id": "tang_yin",
+    "name": "唐寅",
+    "pinyin": "Tang Yin",
+    "dynasty": "明",
+    "era": {
+      "start": 1470,
+      "end": 1524,
+      "approximate": false
+    },
+    "eraLabel": "明",
+    "gender": "男",
+    "honor": "明四家",
+    "dimension": "art",
+    "dimensionCategory": "明清文人",
+    "tags": [
+      "画家",
+      "文学家",
+      "明四家"
+    ],
+    "summary": "明代画家、文学家，明四家之一，号六如居士，山水人物花鸟皆精。",
+    "birthplace": "南直隶苏州府吴县（今江苏苏州）",
+    "deathplace": null,
+    "locations": [
+      "江苏苏州"
+    ]
+  },
+  {
+    "id": "wen_zhengming",
+    "name": "文徵明",
+    "pinyin": "Wen Zhengming",
+    "dynasty": "明",
+    "era": {
+      "start": 1470,
+      "end": 1559,
+      "approximate": false
+    },
+    "eraLabel": "明",
+    "gender": "男",
+    "honor": "明四家",
+    "dimension": "art",
+    "dimensionCategory": "明清文人",
+    "tags": [
+      "画家",
+      "书法家",
+      "明四家"
+    ],
+    "summary": "明代画家、书法家、文学家，明四家之一，诗文书画俱佳，影响深远。",
+    "birthplace": "南直隶苏州府长洲（今江苏苏州）",
+    "deathplace": null,
+    "locations": [
+      "江苏苏州"
+    ]
+  },
+  {
+    "id": "shen_zhou",
+    "name": "沈周",
+    "pinyin": "Shen Zhou",
+    "dynasty": "明",
+    "era": {
+      "start": 1427,
+      "end": 1509,
+      "approximate": false
+    },
+    "eraLabel": "明",
+    "gender": "男",
+    "honor": "明四家",
+    "dimension": "art",
+    "dimensionCategory": "明清文人",
+    "tags": [
+      "画家",
+      "书法家",
+      "明四家"
+    ],
+    "summary": "明代画家、书法家，明四家之首，吴门画派创始人，山水花鸟皆精。",
+    "birthplace": "南直隶苏州府长洲（今江苏苏州）",
+    "deathplace": null,
+    "locations": [
+      "江苏苏州"
+    ]
+  },
+  {
+    "id": "dong_qichang",
+    "name": "董其昌",
+    "pinyin": "Dong Qichang",
+    "dynasty": "明",
+    "era": {
+      "start": 1555,
+      "end": 1636,
+      "approximate": false
+    },
+    "eraLabel": "明",
+    "gender": "男",
+    "honor": "华亭画派",
+    "dimension": "art",
+    "dimensionCategory": "明清文人",
+    "tags": [
+      "画家",
+      "书法家",
+      "画论"
+    ],
+    "summary": "明代书画家、理论家，华亭画派代表人物，提出南北宗论，影响后世画坛。",
+    "birthplace": "松江府上海县（今上海）",
+    "deathplace": null,
+    "locations": [
+      "上海"
+    ]
+  },
+  {
+    "id": "lang_shining",
+    "name": "郎世宁",
+    "pinyin": "Lang Shining",
+    "dynasty": "清",
+    "era": {
+      "start": 1688,
+      "end": 1766,
+      "approximate": false
+    },
+    "eraLabel": "清",
+    "gender": "男",
+    "honor": "宫廷画家",
+    "dimension": "art",
+    "dimensionCategory": "明清文人",
+    "tags": [
+      "画家",
+      "传教士",
+      "中西合璧"
+    ],
+    "summary": "清代宫廷画家，意大利传教士，融合中西画法，擅长人物、花鸟、走兽。",
+    "birthplace": "米兰（今意大利米兰）",
+    "deathplace": "北京（今北京）",
+    "locations": [
+      "意大利米兰",
+      "北京"
+    ]
+  },
+  {
+    "id": "chen_hongshou",
+    "name": "陈洪绶",
+    "pinyin": "Chen Hongshou",
+    "dynasty": "明",
+    "era": {
+      "start": 1598,
+      "end": 1652,
+      "approximate": false
+    },
+    "eraLabel": "明",
+    "gender": "男",
+    "honor": "明末大家",
+    "dimension": "art",
+    "dimensionCategory": "明清文人",
+    "tags": [
+      "画家",
+      "人物画",
+      "版画"
+    ],
+    "summary": "明末画家，擅长人物画，造型夸张古拙，对清代人物画影响深远。",
+    "birthplace": "绍兴府诸暨（今浙江诸暨）",
+    "deathplace": null,
+    "locations": [
+      "浙江诸暨",
+      "绍兴"
+    ]
+  },
+  {
+    "id": "wang_shimin",
+    "name": "王时敏",
+    "pinyin": "Wang Shimin",
+    "dynasty": "清",
+    "era": {
+      "start": 1592,
+      "end": 1680,
+      "approximate": false
+    },
+    "eraLabel": "清",
+    "gender": "男",
+    "honor": "清初四王",
+    "dimension": "art",
+    "dimensionCategory": "明清文人",
+    "tags": [
+      "画家",
+      "山水画",
+      "清初四王"
+    ],
+    "summary": "明末清初画家，清初四王之首，山水画推崇黄公望，影响有清一代画坛。",
+    "birthplace": "南直隶太仓（今江苏太仓）",
+    "deathplace": null,
+    "locations": [
+      "江苏太仓"
+    ]
+  },
+  {
+    "id": "qi_baishi",
+    "name": "齐白石",
+    "pinyin": "Qi Baishi",
+    "dynasty": "近现代",
+    "era": {
+      "start": 1864,
+      "end": 1957,
+      "approximate": false
+    },
+    "eraLabel": "近现代",
+    "gender": "男",
+    "honor": null,
+    "dimension": "art",
+    "dimensionCategory": "近现代",
+    "tags": [
+      "画家",
+      "花鸟画",
+      "篆刻家"
+    ],
+    "summary": "近现代画家、篆刻家，以花鸟虫鱼画著称，画风质朴天真，自成一派。",
+    "birthplace": "湖南湘潭",
+    "deathplace": "北京",
+    "locations": [
+      "湖南湘潭",
+      "北京"
+    ]
+  },
+  {
+    "id": "xu_beihong",
+    "name": "徐悲鸿",
+    "pinyin": "Xu Beihong",
+    "dynasty": "近现代",
+    "era": {
+      "start": 1895,
+      "end": 1953,
+      "approximate": false
+    },
+    "eraLabel": "近现代",
+    "gender": "男",
+    "honor": null,
+    "dimension": "art",
+    "dimensionCategory": "近现代",
+    "tags": [
+      "画家",
+      "美术教育家",
+      "写实主义"
+    ],
+    "summary": "近现代画家、美术教育家，以画马闻名，倡导写实主义，推动中国美术教育。",
+    "birthplace": "江苏宜兴",
+    "deathplace": "北京",
+    "locations": [
+      "江苏宜兴",
+      "北京",
+      "南京"
+    ]
+  },
+  {
+    "id": "zhang_daqian",
+    "name": "张大千",
+    "pinyin": "Zhang Daqian",
+    "dynasty": "近现代",
+    "era": {
+      "start": 1899,
+      "end": 1983,
+      "approximate": false
+    },
+    "eraLabel": "近现代",
+    "gender": "男",
+    "honor": null,
+    "dimension": "art",
+    "dimensionCategory": "近现代",
+    "tags": [
+      "画家",
+      "山水画",
+      "泼墨"
+    ],
+    "summary": "近现代画家，画路宽广，山水人物花鸟皆精，晚年创泼墨泼彩画风。",
+    "birthplace": "四川内江",
+    "deathplace": "台北",
+    "locations": [
+      "四川内江",
+      "北京",
+      "台北"
+    ]
+  },
+  {
+    "id": "huang_binhong",
+    "name": "黄宾虹",
+    "pinyin": "Huang Binhong",
+    "dynasty": "近现代",
+    "era": {
+      "start": 1865,
+      "end": 1955,
+      "approximate": false
+    },
+    "eraLabel": "近现代",
+    "gender": "男",
+    "honor": null,
+    "dimension": "art",
+    "dimensionCategory": "近现代",
+    "tags": [
+      "画家",
+      "山水画",
+      "画论"
+    ],
+    "summary": "近现代山水画家、画论家，创黑密厚重画风，晚年画风浑厚华滋。",
+    "birthplace": "浙江金华",
+    "deathplace": "浙江杭州",
+    "locations": [
+      "浙江金华",
+      "杭州"
+    ]
+  },
+  {
+    "id": "li_keran",
+    "name": "李可染",
+    "pinyin": "Li Keran",
+    "dynasty": "近现代",
+    "era": {
+      "start": 1907,
+      "end": 1989,
+      "approximate": false
+    },
+    "eraLabel": "近现代",
+    "gender": "男",
+    "honor": null,
+    "dimension": "art",
+    "dimensionCategory": "近现代",
+    "tags": [
+      "画家",
+      "山水画",
+      "写生"
+    ],
+    "summary": "近现代山水画家，重视写生，创积墨法，代表作《万山红遍》。",
+    "birthplace": "江苏徐州",
+    "deathplace": "北京",
+    "locations": [
+      "江苏徐州",
+      "北京"
+    ]
+  },
+  {
+    "id": "fu_baoshi",
+    "name": "傅抱石",
+    "pinyin": "Fu Baoshi",
+    "dynasty": "近现代",
+    "era": {
+      "start": 1904,
+      "end": 1965,
+      "approximate": false
+    },
+    "eraLabel": "近现代",
+    "gender": "男",
+    "honor": null,
+    "dimension": "art",
+    "dimensionCategory": "近现代",
+    "tags": [
+      "画家",
+      "山水画",
+      "美术史家"
+    ],
+    "summary": "近现代画家、美术史家，创抱石皴画法，与关山月合作《江山如此多娇》。",
+    "birthplace": "江西新余",
+    "deathplace": "江苏南京",
+    "locations": [
+      "江西新余",
+      "南京"
+    ]
+  },
+  {
+    "id": "pan_tianshou",
+    "name": "潘天寿",
+    "pinyin": "Pan Tianshou",
+    "dynasty": "近现代",
+    "era": {
+      "start": 1897,
+      "end": 1971,
+      "approximate": false
+    },
+    "eraLabel": "近现代",
+    "gender": "男",
+    "honor": null,
+    "dimension": "art",
+    "dimensionCategory": "近现代",
+    "tags": [
+      "画家",
+      "花鸟画",
+      "美术教育家"
+    ],
+    "summary": "近现代画家、美术教育家，擅长写意花鸟画，画风雄浑奇崛。",
+    "birthplace": "浙江宁海",
+    "deathplace": "浙江杭州",
+    "locations": [
+      "浙江宁海",
+      "杭州"
+    ]
+  },
+  {
+    "id": "wu_guanzhong",
+    "name": "吴冠中",
+    "pinyin": "Wu Guanzhong",
+    "dynasty": "近现代",
+    "era": {
+      "start": 1919,
+      "end": 2010,
+      "approximate": false
+    },
+    "eraLabel": "近现代",
+    "gender": "男",
+    "honor": null,
+    "dimension": "art",
+    "dimensionCategory": "近现代",
+    "tags": [
+      "画家",
+      "油画",
+      "水墨画"
+    ],
+    "summary": "近现代画家，融汇中西画法，油画水墨兼擅，作品富有诗意的形式美感。",
+    "birthplace": "江苏宜兴",
+    "deathplace": "北京",
+    "locations": [
+      "江苏宜兴",
+      "北京"
+    ]
+  },
+  {
+    "id": "wen_peng",
+    "name": "文彭",
+    "pinyin": "Wen Peng",
+    "dynasty": "明",
+    "era": {
+      "start": 1498,
+      "end": 1573,
+      "approximate": false
+    },
+    "eraLabel": "明",
+    "gender": "男",
+    "honor": "篆刻宗师",
+    "dimension": "art",
+    "dimensionCategory": "篆刻",
+    "tags": [
+      "篆刻家",
+      "书法家",
+      "文人篆刻"
+    ],
+    "summary": "明代篆刻家、书法家，文人篆刻开创者，与何震并称文何。",
+    "birthplace": "南直隶苏州府长洲（今江苏苏州）",
+    "deathplace": null,
+    "locations": [
+      "江苏苏州"
+    ]
+  },
+  {
+    "id": "he_zhen",
+    "name": "何震",
+    "pinyin": "He Zhen",
+    "dynasty": "明",
+    "era": {
+      "start": 1530,
+      "end": 1606,
+      "approximate": true
+    },
+    "eraLabel": "明",
+    "gender": "男",
+    "honor": "徽派创始人",
+    "dimension": "art",
+    "dimensionCategory": "篆刻",
+    "tags": [
+      "篆刻家",
+      "徽派",
+      "印学"
+    ],
+    "summary": "明代篆刻家，徽派篆刻创始人，与文彭并称文何，影响明清印坛。",
+    "birthplace": "婺源（今江西婺源）",
+    "deathplace": null,
+    "locations": [
+      "江西婺源",
+      "南京"
+    ]
+  },
+  {
+    "id": "deng_shiru",
+    "name": "邓石如",
+    "pinyin": "Deng Shiru",
+    "dynasty": "清",
+    "era": {
+      "start": 1743,
+      "end": 1805,
+      "approximate": false
+    },
+    "eraLabel": "清",
+    "gender": "男",
+    "honor": "皖派",
+    "dimension": "art",
+    "dimensionCategory": "篆刻",
+    "tags": [
+      "篆刻家",
+      "书法家",
+      "皖派"
+    ],
+    "summary": "清代篆刻家、书法家，皖派代表人物，以篆隶入印，开邓派印风。",
+    "birthplace": "安徽怀宁",
+    "deathplace": null,
+    "locations": [
+      "安徽怀宁"
+    ]
+  },
+  {
+    "id": "wu_changshuo",
+    "name": "吴昌硕",
+    "pinyin": "Wu Changshuo",
+    "dynasty": "近现代",
+    "era": {
+      "start": 1844,
+      "end": 1927,
+      "approximate": false
+    },
+    "eraLabel": "近现代",
+    "gender": "男",
+    "honor": "西泠印社",
+    "dimension": "art",
+    "dimensionCategory": "篆刻",
+    "tags": [
+      "篆刻家",
+      "书画家",
+      "西泠印社"
+    ],
+    "summary": "近现代篆刻家、书画家，西泠印社首任社长，以金石入印入画，影响深远。",
+    "birthplace": "浙江安吉",
+    "deathplace": "上海",
+    "locations": [
+      "浙江安吉",
+      "上海"
+    ]
+  },
+  {
+    "id": "ding_jing",
+    "name": "丁敬",
+    "pinyin": "Ding Jing",
+    "dynasty": "清",
+    "era": {
+      "start": 1695,
+      "end": 1765,
+      "approximate": false
+    },
+    "eraLabel": "清",
+    "gender": "男",
+    "honor": "浙派创始人",
+    "dimension": "art",
+    "dimensionCategory": "篆刻",
+    "tags": [
+      "篆刻家",
+      "浙派",
+      "西泠八家"
+    ],
+    "summary": "清代篆刻家，浙派篆刻创始人，西泠八家之首，以切刀法著称。",
+    "birthplace": "钱塘（今浙江杭州）",
+    "deathplace": null,
+    "locations": [
+      "浙江杭州"
+    ]
+  },
+  {
+    "id": "zhao_zhiqian",
+    "name": "赵之谦",
+    "pinyin": "Zhao Zhiqian",
+    "dynasty": "清",
+    "era": {
+      "start": 1829,
+      "end": 1884,
+      "approximate": false
+    },
+    "eraLabel": "清",
+    "gender": "男",
+    "honor": null,
+    "dimension": "art",
+    "dimensionCategory": "篆刻",
+    "tags": [
+      "篆刻家",
+      "书画家",
+      "金石学家"
+    ],
+    "summary": "清代篆刻家、书画家，以金石文字入印入画，风格独特，影响吴昌硕等人。",
+    "birthplace": "浙江绍兴",
+    "deathplace": null,
+    "locations": [
+      "浙江绍兴"
+    ]
+  },
+  {
+    "id": "huang_yi",
+    "name": "黄易",
+    "pinyin": "Huang Yi",
+    "dynasty": "清",
+    "era": {
+      "start": 1744,
+      "end": 1802,
+      "approximate": false
+    },
+    "eraLabel": "清",
+    "gender": "男",
+    "honor": null,
+    "dimension": "art",
+    "dimensionCategory": "篆刻",
+    "tags": [
+      "篆刻家",
+      "书画家",
+      "西泠八家"
+    ],
+    "summary": "清代篆刻家、书画家，西泠八家之一，擅金石考据，篆刻苍劲浑厚。",
+    "birthplace": "浙江钱塘（今浙江杭州）",
+    "deathplace": null,
+    "locations": [
+      "浙江杭州"
+    ]
+  },
+  {
+    "id": "chen_shizeng",
+    "name": "陈师曾",
+    "pinyin": "Chen Shizeng",
+    "dynasty": "近现代",
+    "era": {
+      "start": 1876,
+      "end": 1923,
+      "approximate": false
+    },
+    "eraLabel": "近现代",
+    "gender": "男",
+    "honor": null,
+    "dimension": "art",
+    "dimensionCategory": "篆刻",
+    "tags": [
+      "篆刻家",
+      "书画家",
+      "美术史家"
+    ],
+    "summary": "近现代篆刻家、书画家、美术史家，著《中国绘画史》，对齐白石有知遇之恩。",
+    "birthplace": "江西义宁（今江西修水）",
+    "deathplace": null,
+    "locations": [
+      "江西修水",
+      "北京"
+    ]
+  }
+]

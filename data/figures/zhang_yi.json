@@ -1,0 +1,81 @@
+{
+  "details": {
+    "bio": "张仪（约前378年—前309年），魏国安邑人。战国时期著名纵横家，连横策略的首创者。与苏秦同为鬼谷子学生。入秦后得秦惠文王重用，推行连横之策，破坏东方六国的合纵联盟。游说魏国事秦、离间齐楚联盟、劝韩攻赵等，为秦国各个击破东方六国创造了条件。张仪的连横外交极大地加速了秦国统一进程。",
+    "ideology": "连横破纵，远交近攻，各个击破",
+    "group": "战国纵横家",
+    "timeline": [
+      {
+        "year": "约前378年",
+        "event": "生于魏国安邑",
+        "type": "birth"
+      },
+      {
+        "year": "约前330年",
+        "event": "入秦为客卿",
+        "type": "milestone"
+      },
+      {
+        "year": "前328年",
+        "event": "任秦相",
+        "type": "milestone"
+      },
+      {
+        "year": "前313年",
+        "event": "骗楚怀王绝齐，楚失地",
+        "type": "milestone"
+      },
+      {
+        "year": "前310年",
+        "event": "离秦入魏为相",
+        "type": "milestone"
+      },
+      {
+        "year": "前309年",
+        "event": "病逝",
+        "type": "death"
+      }
+    ],
+    "works": [],
+    "achievements": [
+      "连横策略破六国合纵",
+      "为秦统一大业奠定外交基础"
+    ],
+    "quotes": [
+      "以三寸之舌，胜于百万之师。",
+      "连横之道，在于分而治之。"
+    ],
+    "appraisals": [
+      "张仪之舌辩，战国第一——司马迁"
+    ],
+    "influence": "张仪的连横策略是中国古代外交谋略的经典范例，其远交近攻、分化瓦解的外交思想对后世影响深远。",
+    "controversies": [
+      "纵横家以欺诈为术被儒家诟病"
+    ],
+    "mediaPortrayals": [
+      "《大秦帝国》电视剧",
+      "《芈月传》电视剧"
+    ],
+    "memorials": [],
+    "gallery": [],
+    "trivia": [
+      "张仪和苏秦同为鬼谷子学生的故事广为流传",
+      "张仪骗楚怀王绝齐是战国著名外交事件"
+    ],
+    "references": [
+      "司马迁《史记·张仪列传》"
+    ],
+    "baiduBaike": "https://baike.baidu.com/item/%E5%BC%A0%E4%BB%AA"
+  },
+  "relations": [
+    {
+      "targetId": "su_qin",
+      "relation": "同学/对手",
+      "description": "张仪连横破苏秦合纵"
+    },
+    {
+      "targetId": "qin_huiwenwang",
+      "relation": "秦王/支持者",
+      "description": "张仪为秦惠文王效力"
+    }
+  ]
+}

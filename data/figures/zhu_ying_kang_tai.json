@@ -1,0 +1,74 @@
+{
+  "details": {
+    "bio": "朱应和康泰是三国孙吴时期的外交使节。约225年奉吴王孙权之命出使南洋（今东南亚）诸国，宣示孙吴国威，开拓海外联系。他们到达了林邑（今越南中南部）、扶南（今柬埔寨及周边）等十余国。朱应著《扶南异物志》、康泰著《吴时外国传》（均已散佚，部分内容被其他典籍引用），是中国人最早系统记述东南亚地区的文献。两人是中国古代官方海外探索的先驱之一。",
+    "ideology": "海外拓交，记录异域",
+    "group": "孙吴外交使团",
+    "timeline": [
+      {
+        "year": "约225年",
+        "event": "奉命出使南洋",
+        "type": "milestone"
+      },
+      {
+        "year": "约226年",
+        "event": "到达扶南等国",
+        "type": "milestone"
+      },
+      {
+        "year": "约227年",
+        "event": "返回交州",
+        "type": "milestone"
+      }
+    ],
+    "works": [
+      {
+        "title": "《扶南异物志》",
+        "type": "地理志",
+        "summary": "朱应著，记述扶南等国的风土物产（已佚）"
+      },
+      {
+        "title": "《吴时外国传》",
+        "type": "地理志",
+        "summary": "康泰著，记录南洋诸国情况（已佚）"
+      }
+    ],
+    "achievements": [
+      "孙吴时期出使南洋的先驱",
+      "留下最早关于东南亚的文献记录"
+    ],
+    "quotes": [],
+    "appraisals": [
+      "朱应康泰之行开中国官方考察东南亚之先河"
+    ],
+    "influence": "朱应和康泰的出使是中国人早期对东南亚的系统考察，他们的著作是研究三国时期中外关系的重要史料。",
+    "controversies": [],
+    "mediaPortrayals": [],
+    "memorials": [],
+    "gallery": [],
+    "trivia": [
+      "朱应康泰的出使比郑和下西洋早约1180年"
+    ],
+    "references": [
+      "《梁书·扶南国传》",
+      "《太平御览》引《吴时外国传》"
+    ],
+    "baiduBaike": "https://baike.baidu.com/item/%E6%9C%B1%E5%BA%94%C2%B7%E5%BA%B7%E6%B3%B0"
+  },
+  "relations": [
+    {
+      "targetId": "zheng_he",
+      "relation": "海外探索",
+      "description": "朱应康泰与郑和同为从海路出使南洋的中国官方使节"
+    },
+    {
+      "targetId": "wang_jinghong",
+      "relation": "航海使节",
+      "description": "朱应康泰与王景弘同为古代中国重要的海外使者"
+    },
+    {
+      "targetId": "fa_xian",
+      "relation": "中外交流先驱",
+      "description": "朱应康泰出使南洋，法显从海路归国，同为早期海上交流的先驱"
+    }
+  ]
+}

@@ -1,0 +1,734 @@
+[
+  {
+    "id": "pan_gu",
+    "name": "盘古",
+    "pinyin": "Pan Gu",
+    "dynasty": "远古",
+    "era": {
+      "start": null,
+      "end": null,
+      "approximate": true
+    },
+    "eraLabel": "远古神话时期",
+    "gender": "男",
+    "honor": "创世神",
+    "dimension": "mythology",
+    "dimensionCategory": "上古创世·始祖",
+    "tags": [
+      "创世神",
+      "开天辟地",
+      "上古神话"
+    ],
+    "summary": "盘古是中国神话中开天辟地的创世神，'盘古开天'是最著名的创世传说。",
+    "birthplace": null,
+    "deathplace": null,
+    "locations": null
+  },
+  {
+    "id": "nü_wa",
+    "name": "女娲",
+    "pinyin": "Nü Wa",
+    "dynasty": "远古",
+    "era": {
+      "start": null,
+      "end": null,
+      "approximate": true
+    },
+    "eraLabel": "远古神话时期",
+    "gender": "女",
+    "honor": "补天圣母",
+    "dimension": "mythology",
+    "dimensionCategory": "上古创世·始祖",
+    "tags": [
+      "创世神",
+      "补天造人",
+      "始祖"
+    ],
+    "summary": "女娲是中国神话中的创世女神，以抟土造人、炼五色石补天闻名。",
+    "birthplace": null,
+    "deathplace": null,
+    "locations": null
+  },
+  {
+    "id": "fu_xi",
+    "name": "伏羲",
+    "pinyin": "Fu Xi",
+    "dynasty": "远古",
+    "era": {
+      "start": null,
+      "end": null,
+      "approximate": true
+    },
+    "eraLabel": "远古神话时期",
+    "gender": "男",
+    "honor": "人文始祖",
+    "dimension": "mythology",
+    "dimensionCategory": "上古创世·始祖",
+    "tags": [
+      "人文始祖",
+      "八卦",
+      "上古神话"
+    ],
+    "summary": "伏羲是中华民族的人文始祖，创制八卦、教民渔猎，开启中华文明。",
+    "birthplace": null,
+    "deathplace": null,
+    "locations": null
+  },
+  {
+    "id": "shen_nong",
+    "name": "神农",
+    "pinyin": "Shen Nong",
+    "dynasty": "远古",
+    "era": {
+      "start": null,
+      "end": null,
+      "approximate": true
+    },
+    "eraLabel": "远古神话时期",
+    "gender": "男",
+    "honor": "神农氏",
+    "dimension": "mythology",
+    "dimensionCategory": "上古创世·始祖",
+    "tags": [
+      "农业之神",
+      "医药之神",
+      "上古神话"
+    ],
+    "summary": "神农是传说中的农业和医药始祖，尝百草、教民农耕，被称为神农氏。",
+    "birthplace": null,
+    "deathplace": null,
+    "locations": null
+  },
+  {
+    "id": "huang_di",
+    "name": "黄帝",
+    "pinyin": "Huang Di",
+    "dynasty": "远古",
+    "era": {
+      "start": null,
+      "end": null,
+      "approximate": true
+    },
+    "eraLabel": "远古神话时期",
+    "gender": "男",
+    "honor": "人文初祖",
+    "dimension": "mythology",
+    "dimensionCategory": "上古创世·始祖",
+    "tags": [
+      "人文初祖",
+      "五帝之首",
+      "华夏始祖"
+    ],
+    "summary": "黄帝是中华民族的人文初祖，统一华夏部落，奠定中华文明根基。",
+    "birthplace": null,
+    "deathplace": null,
+    "locations": null
+  },
+  {
+    "id": "yan_di",
+    "name": "炎帝",
+    "pinyin": "Yan Di",
+    "dynasty": "远古",
+    "era": {
+      "start": null,
+      "end": null,
+      "approximate": true
+    },
+    "eraLabel": "远古神话时期",
+    "gender": "男",
+    "honor": "炎帝",
+    "dimension": "mythology",
+    "dimensionCategory": "上古创世·始祖",
+    "tags": [
+      "炎帝",
+      "部落首领",
+      "上古神话"
+    ],
+    "summary": "炎帝是上古部落首领，与黄帝并称为中华民族的祖先，炎黄子孙由此而来。",
+    "birthplace": null,
+    "deathplace": null,
+    "locations": null
+  },
+  {
+    "id": "da_yu",
+    "name": "大禹",
+    "pinyin": "Da Yu",
+    "dynasty": "夏",
+    "era": {
+      "start": null,
+      "end": null,
+      "approximate": true
+    },
+    "eraLabel": "上古传说时期",
+    "gender": "男",
+    "honor": "治水英雄",
+    "dimension": "mythology",
+    "dimensionCategory": "上古创世·始祖",
+    "tags": [
+      "治水英雄",
+      "夏朝",
+      "上古神话"
+    ],
+    "summary": "大禹治理洪水三过家门而不入，建立夏朝，开创中国世袭制王朝先河。",
+    "birthplace": null,
+    "deathplace": null,
+    "locations": null
+  },
+  {
+    "id": "cang_jie",
+    "name": "仓颉",
+    "pinyin": "Cang Jie",
+    "dynasty": "远古",
+    "era": {
+      "start": null,
+      "end": null,
+      "approximate": true
+    },
+    "eraLabel": "远古神话时期",
+    "gender": "男",
+    "honor": "造字圣人",
+    "dimension": "mythology",
+    "dimensionCategory": "上古创世·始祖",
+    "tags": [
+      "造字圣人",
+      "上古神话",
+      "史官"
+    ],
+    "summary": "仓颉是黄帝时期的史官，传说中汉字的创造者，'天雨粟，鬼夜哭'。",
+    "birthplace": null,
+    "deathplace": null,
+    "locations": null
+  },
+  {
+    "id": "hou_yi",
+    "name": "后羿",
+    "pinyin": "Hou Yi",
+    "dynasty": "远古",
+    "era": {
+      "start": null,
+      "end": null,
+      "approximate": true
+    },
+    "eraLabel": "上古神话时期",
+    "gender": "男",
+    "honor": "射日英雄",
+    "dimension": "mythology",
+    "dimensionCategory": "山海经·上古神话",
+    "tags": [
+      "射日",
+      "上古神话",
+      "神射手"
+    ],
+    "summary": "后羿是上古神话中的神射手，以射落九日拯救苍生而闻名，嫦娥之夫。",
+    "birthplace": null,
+    "deathplace": null,
+    "locations": null
+  },
+  {
+    "id": "chang_e",
+    "name": "嫦娥",
+    "pinyin": "Chang E",
+    "dynasty": "远古",
+    "era": {
+      "start": null,
+      "end": null,
+      "approximate": true
+    },
+    "eraLabel": "上古神话时期",
+    "gender": "女",
+    "honor": "月宫仙子",
+    "dimension": "mythology",
+    "dimensionCategory": "山海经·上古神话",
+    "tags": [
+      "嫦娥奔月",
+      "月宫",
+      "上古神话"
+    ],
+    "summary": "嫦娥是月宫仙子，因服下不死药飞升月宫，与后羿分离，是中秋传说核心人物。",
+    "birthplace": null,
+    "deathplace": null,
+    "locations": null
+  },
+  {
+    "id": "kua_fu",
+    "name": "夸父",
+    "pinyin": "Kua Fu",
+    "dynasty": "远古",
+    "era": {
+      "start": null,
+      "end": null,
+      "approximate": true
+    },
+    "eraLabel": "上古神话时期",
+    "gender": "男",
+    "honor": "逐日巨人",
+    "dimension": "mythology",
+    "dimensionCategory": "山海经·上古神话",
+    "tags": [
+      "夸父逐日",
+      "上古神话",
+      "巨人"
+    ],
+    "summary": "夸父逐日的神话体现了先民征服自然的顽强意志，夸父最终渴死道中。",
+    "birthplace": null,
+    "deathplace": null,
+    "locations": null
+  },
+  {
+    "id": "jing_wei",
+    "name": "精卫",
+    "pinyin": "Jing Wei",
+    "dynasty": "远古",
+    "era": {
+      "start": null,
+      "end": null,
+      "approximate": true
+    },
+    "eraLabel": "上古神话时期",
+    "gender": "女",
+    "honor": "填海神鸟",
+    "dimension": "mythology",
+    "dimensionCategory": "山海经·上古神话",
+    "tags": [
+      "精卫填海",
+      "上古神话",
+      "神鸟",
+      "不屈"
+    ],
+    "summary": "精卫是炎帝之女女娃所化的神鸟，衔木石誓填东海，象征不屈不挠的精神。",
+    "birthplace": null,
+    "deathplace": null,
+    "locations": null
+  },
+  {
+    "id": "xing_tian",
+    "name": "刑天",
+    "pinyin": "Xing Tian",
+    "dynasty": "远古",
+    "era": {
+      "start": null,
+      "end": null,
+      "approximate": true
+    },
+    "eraLabel": "上古神话时期",
+    "gender": "男",
+    "honor": "不屈战神",
+    "dimension": "mythology",
+    "dimensionCategory": "山海经·上古神话",
+    "tags": [
+      "战神",
+      "上古神话",
+      "不屈",
+      "山海经"
+    ],
+    "summary": "刑天与黄帝争位被斩首，以乳为目、脐为口继续战斗，象征永不屈服的意志。",
+    "birthplace": null,
+    "deathplace": null,
+    "locations": null
+  },
+  {
+    "id": "gong_gong",
+    "name": "共工",
+    "pinyin": "Gong Gong",
+    "dynasty": "远古",
+    "era": {
+      "start": null,
+      "end": null,
+      "approximate": true
+    },
+    "eraLabel": "上古神话时期",
+    "gender": "男",
+    "honor": "水神",
+    "dimension": "mythology",
+    "dimensionCategory": "山海经·上古神话",
+    "tags": [
+      "水神",
+      "怒触不周山",
+      "上古神话"
+    ],
+    "summary": "共工是水神，与颛顼争帝失败后怒触不周山，导致天倾地陷，引发女娲补天。",
+    "birthplace": null,
+    "deathplace": null,
+    "locations": null
+  },
+  {
+    "id": "chi_you",
+    "name": "蚩尤",
+    "pinyin": "Chi You",
+    "dynasty": "远古",
+    "era": {
+      "start": null,
+      "end": null,
+      "approximate": true
+    },
+    "eraLabel": "上古神话时期",
+    "gender": "男",
+    "honor": "兵主战神",
+    "dimension": "mythology",
+    "dimensionCategory": "山海经·上古神话",
+    "tags": [
+      "战神",
+      "兵主",
+      "九黎",
+      "上古神话"
+    ],
+    "summary": "蚩尤是上古九黎部落首领，与黄帝大战于涿鹿，被尊为兵主与战神。",
+    "birthplace": null,
+    "deathplace": null,
+    "locations": null
+  },
+  {
+    "id": "zhu_rong",
+    "name": "祝融",
+    "pinyin": "Zhu Rong",
+    "dynasty": "远古",
+    "era": {
+      "start": null,
+      "end": null,
+      "approximate": true
+    },
+    "eraLabel": "上古神话时期",
+    "gender": "男",
+    "honor": "火神",
+    "dimension": "mythology",
+    "dimensionCategory": "山海经·上古神话",
+    "tags": [
+      "火神",
+      "南方之神",
+      "上古神话"
+    ],
+    "summary": "祝融是火神，居于南方，曾奉天帝之命诛杀水神共工，掌管天下之火。",
+    "birthplace": null,
+    "deathplace": null,
+    "locations": null
+  },
+  {
+    "id": "xi_wang_mu",
+    "name": "西王母",
+    "pinyin": "Xi Wang Mu",
+    "dynasty": "远古",
+    "era": {
+      "start": null,
+      "end": null,
+      "approximate": true
+    },
+    "eraLabel": "上古神话时期",
+    "gender": "女",
+    "honor": "王母娘娘",
+    "dimension": "mythology",
+    "dimensionCategory": "山海经·上古神话",
+    "tags": [
+      "王母娘娘",
+      "昆仑",
+      "女仙之首",
+      "上古神话"
+    ],
+    "summary": "西王母是昆仑山上的女神，掌管长生不老药，道教尊为女仙之首。",
+    "birthplace": null,
+    "deathplace": null,
+    "locations": null
+  },
+  {
+    "id": "gun",
+    "name": "鲧",
+    "pinyin": "Gun",
+    "dynasty": "远古",
+    "era": {
+      "start": null,
+      "end": null,
+      "approximate": true
+    },
+    "eraLabel": "上古神话时期",
+    "gender": "男",
+    "honor": "治水先驱",
+    "dimension": "mythology",
+    "dimensionCategory": "山海经·上古神话",
+    "tags": [
+      "治水",
+      "上古神话",
+      "大禹之父"
+    ],
+    "summary": "鲧是大禹之父，窃天帝息壤以堵洪水，治水失败被殛于羽山，是悲剧英雄。",
+    "birthplace": null,
+    "deathplace": null,
+    "locations": null
+  },
+  {
+    "id": "sun_wu_kong",
+    "name": "孙悟空",
+    "pinyin": "Sun Wu Kong",
+    "dynasty": "明",
+    "era": {
+      "start": null,
+      "end": null,
+      "approximate": true
+    },
+    "eraLabel": "明代神魔小说",
+    "gender": "男",
+    "honor": "齐天大圣",
+    "dimension": "mythology",
+    "dimensionCategory": "神魔小说",
+    "tags": [
+      "齐天大圣",
+      "西游记",
+      "斗战胜佛"
+    ],
+    "summary": "孙悟空是《西游记》核心人物，从石猴成长为斗战胜佛，神通广大、桀骜不驯。",
+    "birthplace": null,
+    "deathplace": null,
+    "locations": null
+  },
+  {
+    "id": "ne_zha",
+    "name": "哪吒",
+    "pinyin": "Ne Zha",
+    "dynasty": "明",
+    "era": {
+      "start": null,
+      "end": null,
+      "approximate": true
+    },
+    "eraLabel": "明代神魔小说",
+    "gender": "男",
+    "honor": "三坛海会大神",
+    "dimension": "mythology",
+    "dimensionCategory": "神魔小说",
+    "tags": [
+      "哪吒",
+      "封神演义",
+      "风火轮",
+      "神魔小说"
+    ],
+    "summary": "哪吒是《西游记》《封神演义》中的神童，三头六臂，脚踩风火轮，武艺高强。",
+    "birthplace": null,
+    "deathplace": null,
+    "locations": null
+  },
+  {
+    "id": "jiang_zi_ya",
+    "name": "姜子牙",
+    "pinyin": "Jiang Zi Ya",
+    "dynasty": "明",
+    "era": {
+      "start": null,
+      "end": null,
+      "approximate": true
+    },
+    "eraLabel": "明代神魔小说",
+    "gender": "男",
+    "honor": "百家宗师",
+    "dimension": "mythology",
+    "dimensionCategory": "神魔小说",
+    "tags": [
+      "姜太公",
+      "封神演义",
+      "封神榜",
+      "神魔小说"
+    ],
+    "summary": "姜子牙是《封神演义》核心人物，辅佐周武王伐纣，执掌封神榜分封诸神。",
+    "birthplace": null,
+    "deathplace": null,
+    "locations": null
+  },
+  {
+    "id": "zhu_ba_jie",
+    "name": "猪八戒",
+    "pinyin": "Zhu Ba Jie",
+    "dynasty": "明",
+    "era": {
+      "start": null,
+      "end": null,
+      "approximate": true
+    },
+    "eraLabel": "明代神魔小说",
+    "gender": "男",
+    "honor": "天蓬元帅",
+    "dimension": "mythology",
+    "dimensionCategory": "神魔小说",
+    "tags": [
+      "天蓬元帅",
+      "西游记",
+      "神魔小说"
+    ],
+    "summary": "猪八戒是《西游记》人物，原为天蓬元帅，因调戏嫦娥被贬，后随唐僧西天取经。",
+    "birthplace": null,
+    "deathplace": null,
+    "locations": null
+  },
+  {
+    "id": "yu_huang_da_di",
+    "name": "玉皇大帝",
+    "pinyin": "Yu Huang Da Di",
+    "dynasty": "明",
+    "era": {
+      "start": null,
+      "end": null,
+      "approximate": true
+    },
+    "eraLabel": "明代神魔小说",
+    "gender": "男",
+    "honor": "昊天金阙至尊",
+    "dimension": "mythology",
+    "dimensionCategory": "神魔小说",
+    "tags": [
+      "天庭之主",
+      "西游记",
+      "神魔小说"
+    ],
+    "summary": "玉皇大帝是《西游记》等神话中的天庭最高统治者，掌管三界众生。",
+    "birthplace": null,
+    "deathplace": null,
+    "locations": null
+  },
+  {
+    "id": "tai_bai_jin_xing",
+    "name": "太白金星",
+    "pinyin": "Tai Bai Jin Xing",
+    "dynasty": "明",
+    "era": {
+      "start": null,
+      "end": null,
+      "approximate": true
+    },
+    "eraLabel": "明代神魔小说",
+    "gender": "男",
+    "honor": "太白星君",
+    "dimension": "mythology",
+    "dimensionCategory": "神魔小说",
+    "tags": [
+      "太白星君",
+      "西游记",
+      "神魔小说"
+    ],
+    "summary": "太白金星是《西游记》中玉皇大帝的使者，以和事佬形象出现，多次招安孙悟空。",
+    "birthplace": null,
+    "deathplace": null,
+    "locations": null
+  },
+  {
+    "id": "tie_shan_gong_zhu",
+    "name": "铁扇公主",
+    "pinyin": "Tie Shan Gong Zhu",
+    "dynasty": "明",
+    "era": {
+      "start": null,
+      "end": null,
+      "approximate": true
+    },
+    "eraLabel": "明代神魔小说",
+    "gender": "女",
+    "honor": "罗刹女",
+    "dimension": "mythology",
+    "dimensionCategory": "神魔小说",
+    "tags": [
+      "芭蕉扇",
+      "西游记",
+      "牛魔王",
+      "神魔小说"
+    ],
+    "summary": "铁扇公主是《西游记》中的女妖，牛魔王之妻，拥有法宝芭蕉扇。",
+    "birthplace": null,
+    "deathplace": null,
+    "locations": null
+  },
+  {
+    "id": "bai_su_zhen",
+    "name": "白素贞",
+    "pinyin": "Bai Su Zhen",
+    "dynasty": "宋",
+    "era": {
+      "start": null,
+      "end": null,
+      "approximate": true
+    },
+    "eraLabel": "宋代民间传说",
+    "gender": "女",
+    "honor": "白娘子",
+    "dimension": "mythology",
+    "dimensionCategory": "民间传说",
+    "tags": [
+      "白蛇传",
+      "民间传说",
+      "蛇仙"
+    ],
+    "summary": "白素贞是《白蛇传》中的蛇仙，修行千年化为人形，为报恩下凡与许仙结为夫妻。",
+    "birthplace": null,
+    "deathplace": null,
+    "locations": null
+  },
+  {
+    "id": "niu_lang",
+    "name": "牛郎",
+    "pinyin": "Niu Lang",
+    "dynasty": "远古",
+    "era": {
+      "start": null,
+      "end": null,
+      "approximate": true
+    },
+    "eraLabel": "远古民间传说",
+    "gender": "男",
+    "honor": "牵牛郎",
+    "dimension": "mythology",
+    "dimensionCategory": "民间传说",
+    "tags": [
+      "牛郎织女",
+      "民间传说",
+      "七夕"
+    ],
+    "summary": "牛郎是民间传说'牛郎织女'中的男主角，与织女相爱，被王母划天河相隔。",
+    "birthplace": null,
+    "deathplace": null,
+    "locations": null
+  },
+  {
+    "id": "zhi_nü",
+    "name": "织女",
+    "pinyin": "Zhi Nü",
+    "dynasty": "远古",
+    "era": {
+      "start": null,
+      "end": null,
+      "approximate": true
+    },
+    "eraLabel": "远古民间传说",
+    "gender": "女",
+    "honor": "织女星",
+    "dimension": "mythology",
+    "dimensionCategory": "民间传说",
+    "tags": [
+      "牛郎织女",
+      "民间传说",
+      "七夕"
+    ],
+    "summary": "织女是民间传说'牛郎织女'中的女主角，天帝之女，善织云锦，与牛郎鹊桥相会。",
+    "birthplace": null,
+    "deathplace": null,
+    "locations": null
+  },
+  {
+    "id": "meng_jiang_nü",
+    "name": "孟姜女",
+    "pinyin": "Meng Jiang Nü",
+    "dynasty": "秦",
+    "era": {
+      "start": null,
+      "end": null,
+      "approximate": true
+    },
+    "eraLabel": "秦代民间传说",
+    "gender": "女",
+    "honor": "贞烈之女",
+    "dimension": "mythology",
+    "dimensionCategory": "民间传说",
+    "tags": [
+      "孟姜女哭长城",
+      "民间传说",
+      "秦朝"
+    ],
+    "summary": "孟姜女是民间传说中哭倒长城的贞烈女子，其夫万喜良被征筑长城死于役中。",
+    "birthplace": null,
+    "deathplace": null,
+    "locations": null
+  }
+]

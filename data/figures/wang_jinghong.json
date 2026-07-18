@@ -1,0 +1,49 @@
+{
+  "details": {
+    "bio": "王景弘（生卒年不详），福建人。明代航海家。郑和下西洋的副使，与郑和共同组织和指挥七下西洋船队。郑和去世后，王景弘于1434年独立率船队出使南洋诸国，是下西洋活动的延续者。对航海技术（特别是指南针导航和航海图的绘制）有重要贡献。",
+    "ideology": "航海通商，宣扬国威",
+    "group": "明成祖航海集团",
+    "timeline": [
+      {
+        "year": "1405-1433年",
+        "event": "七下西洋副使",
+        "type": "milestone"
+      },
+      {
+        "year": "1434年",
+        "event": "独立率船队出使南洋",
+        "type": "milestone"
+      }
+    ],
+    "works": [],
+    "achievements": [
+      "郑和副使协助七下西洋",
+      "独立率船队出使南洋"
+    ],
+    "quotes": [],
+    "appraisals": [
+      "王景弘是明代仅次于郑和的航海家"
+    ],
+    "influence": "王景弘在郑和去世后继续推进航海事业，延续了下西洋的外交使命。",
+    "controversies": [],
+    "mediaPortrayals": [],
+    "memorials": [
+      "福建漳平：王景弘纪念馆"
+    ],
+    "gallery": [],
+    "trivia": [
+      "福建民间流传着王景弘在爪哇留下后裔的传说"
+    ],
+    "references": [
+      "张廷玉《明史·郑和传》"
+    ],
+    "baiduBaike": "https://baike.baidu.com/item/%E7%8E%8B%E6%99%AF%E5%BC%98"
+  },
+  "relations": [
+    {
+      "targetId": "zheng_he",
+      "relation": "正使/搭档",
+      "description": "王景弘为郑和副使，共同下西洋"
+    }
+  ]
+}

@@ -1,0 +1,85 @@
+{
+  "details": {
+    "bio": "赵武灵王（约前340年—前295年），嬴姓赵氏，名雍，战国时期赵国君主。最著名的胡服骑射改革——学习北方游牧民族服饰和骑兵战术，创建中原第一支骑兵部队，使赵国成为军事强国。灭中山国，开拓疆土。后因废长立幼（传位幼子赵何自称主父）引发内乱，被围困沙丘宫中饿死。其改革精神在战国史上独树一帜。",
+    "ideology": "胡服骑射，因时变法，不拘古制",
+    "group": "赵国改革集团",
+    "timeline": [
+      {
+        "year": "约前340年",
+        "event": "出生",
+        "type": "birth"
+      },
+      {
+        "year": "前325年",
+        "event": "即位",
+        "type": "milestone"
+      },
+      {
+        "year": "前307年",
+        "event": "推行胡服骑射改革",
+        "type": "milestone"
+      },
+      {
+        "year": "前306年",
+        "event": "拓地千里",
+        "type": "milestone"
+      },
+      {
+        "year": "前296年",
+        "event": "灭中山国",
+        "type": "milestone"
+      },
+      {
+        "year": "前295年",
+        "event": "沙丘之乱饿死",
+        "type": "death"
+      }
+    ],
+    "works": [],
+    "achievements": [
+      "胡服骑射改革创建中原骑兵",
+      "灭中山国扩展赵国疆域"
+    ],
+    "quotes": [
+      "虽千万人，吾往矣——改革何惧？",
+      "法古之学，不足以制今。"
+    ],
+    "appraisals": [
+      "赵武灵王胡服骑射是战国最成功的军事改革——钱穆"
+    ],
+    "influence": "胡服骑射是中国历史上首次大规模向游牧民族学习的军事改革，赵武灵王的开放精神和务实态度对后世有重要启示。",
+    "controversies": [
+      "废长立幼导致沙丘之变饿死宫中"
+    ],
+    "mediaPortrayals": [
+      "《大秦帝国》电视剧"
+    ],
+    "memorials": [],
+    "gallery": [],
+    "trivia": [
+      "赵武灵王是史上唯一被饿死的国君之一",
+      "他化妆成使者入秦侦察的故事很传奇"
+    ],
+    "references": [
+      "司马迁《史记·赵世家》"
+    ],
+    "baiduBaike": "https://baike.baidu.com/item/%E8%B5%B5%E6%AD%A6%E7%81%B5%E7%8E%8B"
+  },
+  "relations": [
+    {
+      "targetId": "shang_yang",
+      "relation": "变法改革",
+      "description": "赵武灵王胡服骑射与商鞅变法同为战国时期最著名的改革"
+    },
+    {
+      "targetId": "qin_shihuang",
+      "relation": "战国君主",
+      "description": "赵武灵王与秦始皇同为战国时期变革图强的君主"
+    },
+    {
+      "targetId": "li_mu",
+      "relation": "赵国名将",
+      "description": "李牧为赵国后期名将，继承赵武灵王胡服骑射改革的军事成果"
+    }
+  ]
+}

@@ -1,0 +1,69 @@
+{
+  "details": {
+    "bio": "杜如晦（585年—630年），字克明，京兆杜陵人。唐朝名相。隋末曾任县尉，后投李世民为秦王府兵曹参军。玄武门之变主要策划者之一。贞观年间任尚书右仆射。以善于决断著称，与房玄龄合称房谋杜断。年轻太宗三岁却先于房玄龄去世，太宗痛惜不已。封莱国公。凌烟阁二十四功臣之一。",
+    "ideology": "决断大事，辅佐明君",
+    "group": "秦王府旧属/贞观名相",
+    "timeline": [
+      {
+        "year": "585年",
+        "event": "生于京兆",
+        "type": "birth"
+      },
+      {
+        "year": "626年",
+        "event": "策划玄武门之变",
+        "type": "milestone"
+      },
+      {
+        "year": "629年",
+        "event": "任尚书右仆射",
+        "type": "milestone"
+      },
+      {
+        "year": "630年",
+        "event": "病逝",
+        "type": "death"
+      }
+    ],
+    "works": [],
+    "achievements": [
+      "玄武门之变策划者之一",
+      "贞观名相善断大事"
+    ],
+    "quotes": [
+      "天下之事，当断则断。"
+    ],
+    "appraisals": [
+      "房谋杜断——玄龄善谋、如晦善断，二人同心共辅太宗"
+    ],
+    "influence": "房谋杜断成为中国政治史上最著名的搭档组合之一，为后世所传颂。",
+    "controversies": [],
+    "mediaPortrayals": [
+      "《贞观长歌》电视剧"
+    ],
+    "memorials": [
+      "陕西西安：杜如晦墓"
+    ],
+    "gallery": [],
+    "trivia": [
+      "杜如晦是凌烟阁二十四功臣之一",
+      "他去世时年仅46岁太宗痛惜不已"
+    ],
+    "references": [
+      "刘昫《旧唐书·杜如晦传》"
+    ],
+    "baiduBaike": "https://baike.baidu.com/item/%E6%9D%9C%E5%A6%82%E6%99%A6"
+  },
+  "relations": [
+    {
+      "targetId": "fang_xuanling",
+      "relation": "搭档",
+      "description": "房谋杜断——玄龄善谋、如晦善断"
+    },
+    {
+      "targetId": "li_shi_min",
+      "relation": "皇帝",
+      "description": "辅佐唐太宗"
+    }
+  ]
+}

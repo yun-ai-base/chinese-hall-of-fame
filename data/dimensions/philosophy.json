@@ -1,0 +1,1615 @@
+[
+  {
+    "id": "kong_zi",
+    "name": "孔子",
+    "pinyin": "Kong Zi",
+    "dynasty": "春秋",
+    "era": {
+      "start": -551,
+      "end": -479,
+      "approximate": false
+    },
+    "eraLabel": "春秋",
+    "gender": "男",
+    "honor": "至圣先师",
+    "dimension": "philosophy",
+    "dimensionCategory": "儒家",
+    "tags": [
+      "儒家",
+      "至圣先师",
+      "教育家",
+      "思想家"
+    ],
+    "summary": "孔子是中国古代伟大的思想家、教育家，儒家学派创始人，倡导仁礼之道。",
+    "birthplace": "陬邑（今山东曲阜）",
+    "deathplace": "鲁国（今山东曲阜）",
+    "locations": [
+      "山东曲阜"
+    ]
+  },
+  {
+    "id": "meng_zi",
+    "name": "孟子",
+    "pinyin": "Meng Zi",
+    "dynasty": "战国",
+    "era": {
+      "start": -372,
+      "end": -289,
+      "approximate": false
+    },
+    "eraLabel": "战国",
+    "gender": "男",
+    "honor": "亚圣",
+    "dimension": "philosophy",
+    "dimensionCategory": "儒家",
+    "tags": [
+      "儒家",
+      "亚圣",
+      "性善论",
+      "仁政"
+    ],
+    "summary": "孟子是战国时期儒家代表人物，提出性善论和仁政学说，被尊为亚圣。",
+    "birthplace": "邹国（今山东邹城）",
+    "deathplace": null,
+    "locations": [
+      "山东"
+    ]
+  },
+  {
+    "id": "xun_zi",
+    "name": "荀子",
+    "pinyin": "Xun Zi",
+    "dynasty": "战国",
+    "era": {
+      "start": -313,
+      "end": -238,
+      "approximate": false
+    },
+    "eraLabel": "战国",
+    "gender": "男",
+    "honor": "后圣",
+    "dimension": "philosophy",
+    "dimensionCategory": "儒家",
+    "tags": [
+      "儒家",
+      "性恶论",
+      "隆礼重法",
+      "思想家"
+    ],
+    "summary": "荀子是战国末期儒家代表，提出性恶论，主张隆礼重法，培养出韩非、李斯。",
+    "birthplace": "赵国（今山西安泽）",
+    "deathplace": "楚国（今湖北）",
+    "locations": [
+      "山西",
+      "湖北"
+    ]
+  },
+  {
+    "id": "zhu_xi",
+    "name": "朱熹",
+    "pinyin": "Zhu Xi",
+    "dynasty": "宋",
+    "era": {
+      "start": 1130,
+      "end": 1200,
+      "approximate": false
+    },
+    "eraLabel": "南宋",
+    "gender": "男",
+    "honor": "朱子",
+    "dimension": "philosophy",
+    "dimensionCategory": "儒家",
+    "tags": [
+      "儒家",
+      "理学",
+      "朱子",
+      "四书章句"
+    ],
+    "summary": "朱熹是南宋理学集大成者，创立朱子学，四书章句集注成为后世科举标准。",
+    "birthplace": "尤溪（今福建三明）",
+    "deathplace": "建阳（今福建南平）",
+    "locations": [
+      "福建"
+    ]
+  },
+  {
+    "id": "wang_yang_ming",
+    "name": "王阳明",
+    "pinyin": "Wang Yang Ming",
+    "dynasty": "明",
+    "era": {
+      "start": 1472,
+      "end": 1529,
+      "approximate": false
+    },
+    "eraLabel": "明",
+    "gender": "男",
+    "honor": "阳明先生",
+    "dimension": "philosophy",
+    "dimensionCategory": "儒家",
+    "tags": [
+      "儒家",
+      "心学",
+      "知行合一",
+      "致良知"
+    ],
+    "summary": "王阳明是明代心学大师，提出致良知和知行合一学说，影响东亚思想界数百年。",
+    "birthplace": "余姚（今浙江宁波）",
+    "deathplace": "南安（今江西大余）",
+    "locations": [
+      "浙江",
+      "江西"
+    ]
+  },
+  {
+    "id": "cheng_yi",
+    "name": "程颐",
+    "pinyin": "Cheng Yi",
+    "dynasty": "宋",
+    "era": {
+      "start": 1033,
+      "end": 1107,
+      "approximate": false
+    },
+    "eraLabel": "北宋",
+    "gender": "男",
+    "honor": "伊川先生",
+    "dimension": "philosophy",
+    "dimensionCategory": "儒家",
+    "tags": [
+      "儒家",
+      "理学",
+      "二程",
+      "北宋"
+    ],
+    "summary": "程颐是北宋理学家，与兄程颢并称二程，奠定宋明理学基础。",
+    "birthplace": "洛阳（今河南洛阳）",
+    "deathplace": "洛阳（今河南洛阳）",
+    "locations": [
+      "河南洛阳"
+    ]
+  },
+  {
+    "id": "cheng_hao",
+    "name": "程颢",
+    "pinyin": "Cheng Hao",
+    "dynasty": "宋",
+    "era": {
+      "start": 1032,
+      "end": 1085,
+      "approximate": false
+    },
+    "eraLabel": "北宋",
+    "gender": "男",
+    "honor": "明道先生",
+    "dimension": "philosophy",
+    "dimensionCategory": "儒家",
+    "tags": [
+      "儒家",
+      "理学",
+      "二程",
+      "北宋"
+    ],
+    "summary": "程颢是北宋理学家，与弟程颐共创洛学，提出天理即心的观点。",
+    "birthplace": "洛阳（今河南洛阳）",
+    "deathplace": "洛阳（今河南洛阳）",
+    "locations": [
+      "河南洛阳"
+    ]
+  },
+  {
+    "id": "zhou_dun_yi",
+    "name": "周敦颐",
+    "pinyin": "Zhou Dun Yi",
+    "dynasty": "宋",
+    "era": {
+      "start": 1017,
+      "end": 1073,
+      "approximate": false
+    },
+    "eraLabel": "北宋",
+    "gender": "男",
+    "honor": "濂溪先生",
+    "dimension": "philosophy",
+    "dimensionCategory": "儒家",
+    "tags": [
+      "儒家",
+      "理学",
+      "太极图说",
+      "北宋"
+    ],
+    "summary": "周敦颐是北宋理学家，著《太极图说》《爱莲说》，被尊为宋明理学开山鼻祖。",
+    "birthplace": "道州营道（今湖南永州）",
+    "deathplace": "庐山（今江西九江）",
+    "locations": [
+      "湖南",
+      "江西"
+    ]
+  },
+  {
+    "id": "zhang_zai",
+    "name": "张载",
+    "pinyin": "Zhang Zai",
+    "dynasty": "宋",
+    "era": {
+      "start": 1020,
+      "end": 1077,
+      "approximate": false
+    },
+    "eraLabel": "北宋",
+    "gender": "男",
+    "honor": "横渠先生",
+    "dimension": "philosophy",
+    "dimensionCategory": "儒家",
+    "tags": [
+      "儒家",
+      "理学",
+      "横渠四句",
+      "关学"
+    ],
+    "summary": "张载是北宋理学家，提出'为天地立心'的横渠四句，创立关学学派。",
+    "birthplace": "凤翔郿县（今陕西宝鸡）",
+    "deathplace": "开封（今河南开封）",
+    "locations": [
+      "陕西",
+      "河南"
+    ]
+  },
+  {
+    "id": "lu_jiu_yuan",
+    "name": "陆九渊",
+    "pinyin": "Lu Jiu Yuan",
+    "dynasty": "宋",
+    "era": {
+      "start": 1139,
+      "end": 1193,
+      "approximate": false
+    },
+    "eraLabel": "南宋",
+    "gender": "男",
+    "honor": "象山先生",
+    "dimension": "philosophy",
+    "dimensionCategory": "儒家",
+    "tags": [
+      "儒家",
+      "心学",
+      "心即理",
+      "南宋"
+    ],
+    "summary": "陆九渊是南宋心学创始人，提出'心即理'，与朱熹展开鹅湖之辩。",
+    "birthplace": "抚州金溪（今江西抚州）",
+    "deathplace": "荆门（今湖北荆门）",
+    "locations": [
+      "江西",
+      "湖北"
+    ]
+  },
+  {
+    "id": "dong_zhong_shu",
+    "name": "董仲舒",
+    "pinyin": "Dong Zhong Shu",
+    "dynasty": "汉",
+    "era": {
+      "start": -179,
+      "end": -104,
+      "approximate": false
+    },
+    "eraLabel": "西汉",
+    "gender": "男",
+    "honor": "汉代儒宗",
+    "dimension": "philosophy",
+    "dimensionCategory": "儒家",
+    "tags": [
+      "儒家",
+      "天人感应",
+      "独尊儒术",
+      "西汉"
+    ],
+    "summary": "董仲舒是西汉儒学家，提出罢黜百家独尊儒术，确立儒家在中国思想界的正统地位。",
+    "birthplace": "广川（今河北景县）",
+    "deathplace": "长安（今陕西西安）",
+    "locations": [
+      "河北",
+      "陕西西安"
+    ]
+  },
+  {
+    "id": "zeng_zi",
+    "name": "曾子",
+    "pinyin": "Zeng Zi",
+    "dynasty": "春秋",
+    "era": {
+      "start": -505,
+      "end": -435,
+      "approximate": false
+    },
+    "eraLabel": "春秋",
+    "gender": "男",
+    "honor": "宗圣",
+    "dimension": "philosophy",
+    "dimensionCategory": "儒家",
+    "tags": [
+      "儒家",
+      "宗圣",
+      "孝道",
+      "大学"
+    ],
+    "summary": "曾子是孔子弟子，以孝著称，相传著《大学》，被后世尊为宗圣。",
+    "birthplace": "鲁国南武城（今山东平邑）",
+    "deathplace": null,
+    "locations": [
+      "山东"
+    ]
+  },
+  {
+    "id": "zi_si",
+    "name": "子思",
+    "pinyin": "Zi Si",
+    "dynasty": "春秋",
+    "era": {
+      "start": -483,
+      "end": -402,
+      "approximate": false
+    },
+    "eraLabel": "春秋",
+    "gender": "男",
+    "honor": "述圣",
+    "dimension": "philosophy",
+    "dimensionCategory": "儒家",
+    "tags": [
+      "儒家",
+      "述圣",
+      "中庸",
+      "孔子之孙"
+    ],
+    "summary": "子思是孔子之孙，相传著《中庸》，继承和发展了孔子思想，被尊为述圣。",
+    "birthplace": "鲁国（今山东）",
+    "deathplace": null,
+    "locations": [
+      "山东"
+    ]
+  },
+  {
+    "id": "yan_hui",
+    "name": "颜回",
+    "pinyin": "Yan Hui",
+    "dynasty": "春秋",
+    "era": {
+      "start": -521,
+      "end": -481,
+      "approximate": false
+    },
+    "eraLabel": "春秋",
+    "gender": "男",
+    "honor": "复圣",
+    "dimension": "philosophy",
+    "dimensionCategory": "儒家",
+    "tags": [
+      "儒家",
+      "复圣",
+      "安贫乐道",
+      "孔门弟子"
+    ],
+    "summary": "颜回是孔子最得意的弟子，以德行著称，安贫乐道，被尊为复圣。",
+    "birthplace": "鲁国（今山东）",
+    "deathplace": null,
+    "locations": [
+      "山东"
+    ]
+  },
+  {
+    "id": "shao_yong",
+    "name": "邵雍",
+    "pinyin": "Shao Yong",
+    "dynasty": "宋",
+    "era": {
+      "start": 1011,
+      "end": 1077,
+      "approximate": false
+    },
+    "eraLabel": "北宋",
+    "gender": "男",
+    "honor": "康节先生",
+    "dimension": "philosophy",
+    "dimensionCategory": "儒家",
+    "tags": [
+      "儒家",
+      "理学",
+      "易学",
+      "北宋"
+    ],
+    "summary": "邵雍是北宋理学家、易学家，创立先天象数学，著有《皇极经世》。",
+    "birthplace": "范阳（今河北涿州）",
+    "deathplace": "洛阳（今河南洛阳）",
+    "locations": [
+      "河北",
+      "河南洛阳"
+    ]
+  },
+  {
+    "id": "zheng_xuan",
+    "name": "郑玄",
+    "pinyin": "Zheng Xuan",
+    "dynasty": "汉",
+    "era": {
+      "start": 127,
+      "end": 200,
+      "approximate": false
+    },
+    "eraLabel": "东汉",
+    "gender": "男",
+    "honor": "经学大师",
+    "dimension": "philosophy",
+    "dimensionCategory": "儒家",
+    "tags": [
+      "儒家",
+      "经学",
+      "东汉",
+      "郑注"
+    ],
+    "summary": "郑玄是东汉经学大师，遍注群经，融合今古文经学，对后世经学影响深远。",
+    "birthplace": "北海高密（今山东高密）",
+    "deathplace": null,
+    "locations": [
+      "山东"
+    ]
+  },
+  {
+    "id": "gu_yan_wu",
+    "name": "顾炎武",
+    "pinyin": "Gu Yan Wu",
+    "dynasty": "清",
+    "era": {
+      "start": 1613,
+      "end": 1682,
+      "approximate": false
+    },
+    "eraLabel": "明末清初",
+    "gender": "男",
+    "honor": "亭林先生",
+    "dimension": "philosophy",
+    "dimensionCategory": "儒家",
+    "tags": [
+      "儒家",
+      "经世致用",
+      "清学",
+      "思想家"
+    ],
+    "summary": "顾炎武是明末清初思想家，提出'天下兴亡匹夫有责'，倡导经世致用学风。",
+    "birthplace": "昆山（今江苏苏州）",
+    "deathplace": "曲沃（今山西临汾）",
+    "locations": [
+      "江苏",
+      "山西"
+    ]
+  },
+  {
+    "id": "huang_zong_xi",
+    "name": "黄宗羲",
+    "pinyin": "Huang Zong Xi",
+    "dynasty": "清",
+    "era": {
+      "start": 1610,
+      "end": 1695,
+      "approximate": false
+    },
+    "eraLabel": "明末清初",
+    "gender": "男",
+    "honor": "梨洲先生",
+    "dimension": "philosophy",
+    "dimensionCategory": "儒家",
+    "tags": [
+      "儒家",
+      "民主启蒙",
+      "明夷待访录",
+      "清学"
+    ],
+    "summary": "黄宗羲是明末清初思想家，著《明夷待访录》，批判君主专制，具有启蒙思想。",
+    "birthplace": "余姚（今浙江宁波）",
+    "deathplace": "余姚（今浙江宁波）",
+    "locations": [
+      "浙江"
+    ]
+  },
+  {
+    "id": "wang_fu_zhi",
+    "name": "王夫之",
+    "pinyin": "Wang Fu Zhi",
+    "dynasty": "清",
+    "era": {
+      "start": 1619,
+      "end": 1692,
+      "approximate": false
+    },
+    "eraLabel": "明末清初",
+    "gender": "男",
+    "honor": "船山先生",
+    "dimension": "philosophy",
+    "dimensionCategory": "儒家",
+    "tags": [
+      "儒家",
+      "气一元论",
+      "清学",
+      "思想家"
+    ],
+    "summary": "王夫之是明末清初思想家，总结宋明理学，提出气一元论哲学体系。",
+    "birthplace": "衡州（今湖南衡阳）",
+    "deathplace": "衡州（今湖南衡阳）",
+    "locations": [
+      "湖南"
+    ]
+  },
+  {
+    "id": "lao_zi",
+    "name": "老子",
+    "pinyin": "Lao Zi",
+    "dynasty": "春秋",
+    "era": {
+      "start": null,
+      "end": null,
+      "approximate": true
+    },
+    "eraLabel": "春秋",
+    "gender": "男",
+    "honor": "道家始祖",
+    "dimension": "philosophy",
+    "dimensionCategory": "道家",
+    "tags": [
+      "道家",
+      "道德经",
+      "道教始祖",
+      "无为而治"
+    ],
+    "summary": "老子是道家学派创始人，著《道德经》，主张道法自然、无为而治。",
+    "birthplace": "苦县（今河南鹿邑）",
+    "deathplace": null,
+    "locations": [
+      "河南"
+    ]
+  },
+  {
+    "id": "zhuang_zi",
+    "name": "庄子",
+    "pinyin": "Zhuang Zi",
+    "dynasty": "战国",
+    "era": {
+      "start": -369,
+      "end": -286,
+      "approximate": false
+    },
+    "eraLabel": "战国",
+    "gender": "男",
+    "honor": "南华真人",
+    "dimension": "philosophy",
+    "dimensionCategory": "道家",
+    "tags": [
+      "道家",
+      "庄子",
+      "逍遥游",
+      "齐物"
+    ],
+    "summary": "庄子是战国道家代表人物，著《庄子》，主张齐物逍遥、天人合一。",
+    "birthplace": "宋国蒙（今河南商丘）",
+    "deathplace": null,
+    "locations": [
+      "河南"
+    ]
+  },
+  {
+    "id": "lie_zi",
+    "name": "列子",
+    "pinyin": "Lie Zi",
+    "dynasty": "战国",
+    "era": {
+      "start": -450,
+      "end": -375,
+      "approximate": true
+    },
+    "eraLabel": "战国",
+    "gender": "男",
+    "honor": "冲虚真人",
+    "dimension": "philosophy",
+    "dimensionCategory": "道家",
+    "tags": [
+      "道家",
+      "列子",
+      "冲虚经",
+      "贵虚"
+    ],
+    "summary": "列子是战国道家思想家，著《列子》（冲虚经），主张贵虚。",
+    "birthplace": "郑国圃田（今河南郑州）",
+    "deathplace": null,
+    "locations": [
+      "河南"
+    ]
+  },
+  {
+    "id": "zhang_dao_ling",
+    "name": "张道陵",
+    "pinyin": "Zhang Dao Ling",
+    "dynasty": "汉",
+    "era": {
+      "start": 34,
+      "end": 156,
+      "approximate": false
+    },
+    "eraLabel": "东汉",
+    "gender": "男",
+    "honor": "张天师",
+    "dimension": "philosophy",
+    "dimensionCategory": "道家",
+    "tags": [
+      "道家",
+      "道教",
+      "天师道",
+      "五斗米道"
+    ],
+    "summary": "张道陵是道教创始人之一，在四川创立五斗米道（天师道），被尊为张天师。",
+    "birthplace": "沛国丰（今江苏丰县）",
+    "deathplace": "鹤鸣山（今四川大邑）",
+    "locations": [
+      "江苏",
+      "四川"
+    ]
+  },
+  {
+    "id": "ge_hong",
+    "name": "葛洪",
+    "pinyin": "Ge Hong",
+    "dynasty": "晋",
+    "era": {
+      "start": 283,
+      "end": 363,
+      "approximate": false
+    },
+    "eraLabel": "东晋",
+    "gender": "男",
+    "honor": "抱朴子",
+    "dimension": "philosophy",
+    "dimensionCategory": "道家",
+    "tags": [
+      "道家",
+      "道教",
+      "炼丹术",
+      "抱朴子"
+    ],
+    "summary": "葛洪是东晋道教学者、炼丹家、医药学家，著《抱朴子》，系统论述神仙道教理论。",
+    "birthplace": "丹阳句容（今江苏句容）",
+    "deathplace": "罗浮山（今广东博罗）",
+    "locations": [
+      "江苏",
+      "广东"
+    ]
+  },
+  {
+    "id": "wei_bo_yang",
+    "name": "魏伯阳",
+    "pinyin": "Wei Bo Yang",
+    "dynasty": "汉",
+    "era": {
+      "start": 151,
+      "end": null,
+      "approximate": true
+    },
+    "eraLabel": "东汉",
+    "gender": "男",
+    "honor": "万古丹王",
+    "dimension": "philosophy",
+    "dimensionCategory": "道家",
+    "tags": [
+      "道家",
+      "炼丹",
+      "周易参同契",
+      "道教"
+    ],
+    "summary": "魏伯阳是东汉炼丹家，著《周易参同契》，被尊为万古丹王，奠定道教丹鼎学说。",
+    "birthplace": "会稽上虞（今浙江绍兴）",
+    "deathplace": null,
+    "locations": [
+      "浙江"
+    ]
+  },
+  {
+    "id": "wang_bi",
+    "name": "王弼",
+    "pinyin": "Wang Bi",
+    "dynasty": "三国",
+    "era": {
+      "start": 226,
+      "end": 249,
+      "approximate": false
+    },
+    "eraLabel": "三国",
+    "gender": "男",
+    "honor": "玄学宗师",
+    "dimension": "philosophy",
+    "dimensionCategory": "道家",
+    "tags": [
+      "道家",
+      "玄学",
+      "魏晋",
+      "贵无论"
+    ],
+    "summary": "王弼是三国魏玄学家，注《老子》《周易》，开创魏晋玄学贵无论。",
+    "birthplace": "山阳（今河南焦作）",
+    "deathplace": "洛阳（今河南洛阳）",
+    "locations": [
+      "河南"
+    ]
+  },
+  {
+    "id": "guo_xiang",
+    "name": "郭象",
+    "pinyin": "Guo Xiang",
+    "dynasty": "晋",
+    "era": {
+      "start": 252,
+      "end": 312,
+      "approximate": false
+    },
+    "eraLabel": "西晋",
+    "gender": "男",
+    "honor": "玄学宗师",
+    "dimension": "philosophy",
+    "dimensionCategory": "道家",
+    "tags": [
+      "道家",
+      "玄学",
+      "庄子注",
+      "独化论"
+    ],
+    "summary": "郭象是西晋玄学家，注《庄子》，提出独化论，将魏晋玄学推向高峰。",
+    "birthplace": "河南（今河南洛阳）",
+    "deathplace": null,
+    "locations": [
+      "河南"
+    ]
+  },
+  {
+    "id": "hui_neng",
+    "name": "慧能",
+    "pinyin": "Hui Neng",
+    "dynasty": "唐",
+    "era": {
+      "start": 638,
+      "end": 713,
+      "approximate": false
+    },
+    "eraLabel": "唐",
+    "gender": "男",
+    "honor": "禅宗六祖",
+    "dimension": "philosophy",
+    "dimensionCategory": "佛家",
+    "tags": [
+      "佛家",
+      "禅宗",
+      "六祖坛经",
+      "顿悟"
+    ],
+    "summary": "慧能是禅宗第六祖，著《六祖坛经》，主张顿悟成佛，开创禅宗南宗。",
+    "birthplace": "范阳（今河北涿州）",
+    "deathplace": "曹溪（今广东韶关）",
+    "locations": [
+      "河北",
+      "广东"
+    ]
+  },
+  {
+    "id": "xuan_zang",
+    "name": "玄奘",
+    "pinyin": "Xuan Zang",
+    "dynasty": "唐",
+    "era": {
+      "start": 602,
+      "end": 664,
+      "approximate": false
+    },
+    "eraLabel": "唐",
+    "gender": "男",
+    "honor": "三藏法师",
+    "dimension": "philosophy",
+    "dimensionCategory": "佛家",
+    "tags": [
+      "佛家",
+      "翻译",
+      "大唐西域记",
+      "取经"
+    ],
+    "summary": "玄奘是唐代高僧，西行取经十七年，归国译经，著《大唐西域记》。",
+    "birthplace": "洛州缑氏（今河南洛阳偃师）",
+    "deathplace": "长安（今陕西西安）",
+    "locations": [
+      "河南",
+      "陕西西安"
+    ]
+  },
+  {
+    "id": "da_mo",
+    "name": "达摩",
+    "pinyin": "Da Mo",
+    "dynasty": "南北朝",
+    "era": {
+      "start": null,
+      "end": null,
+      "approximate": true
+    },
+    "eraLabel": "南北朝",
+    "gender": "男",
+    "honor": "禅宗初祖",
+    "dimension": "philosophy",
+    "dimensionCategory": "佛家",
+    "tags": [
+      "佛家",
+      "禅宗",
+      "面壁",
+      "少林寺"
+    ],
+    "summary": "达摩是南天竺僧人，来华传法，在少林寺面壁九年，被尊为禅宗初祖。",
+    "birthplace": "南天竺（古印度）",
+    "deathplace": "洛滨（今河南洛阳）",
+    "locations": [
+      "河南"
+    ]
+  },
+  {
+    "id": "jiu_mo_luo_shi",
+    "name": "鸠摩罗什",
+    "pinyin": "Jiu Mo Luo Shi",
+    "dynasty": "南北朝",
+    "era": {
+      "start": 344,
+      "end": 413,
+      "approximate": false
+    },
+    "eraLabel": "南北朝",
+    "gender": "男",
+    "honor": "译经大师",
+    "dimension": "philosophy",
+    "dimensionCategory": "佛家",
+    "tags": [
+      "佛家",
+      "翻译",
+      "金刚经",
+      "般若"
+    ],
+    "summary": "鸠摩罗什是后秦高僧、翻译家，译出《金刚经》等大量佛经，开创中国译经事业。",
+    "birthplace": "龟兹（今新疆库车）",
+    "deathplace": "长安（今陕西西安）",
+    "locations": [
+      "新疆",
+      "陕西西安"
+    ]
+  },
+  {
+    "id": "jian_zhen",
+    "name": "鉴真",
+    "pinyin": "Jian Zhen",
+    "dynasty": "唐",
+    "era": {
+      "start": 688,
+      "end": 763,
+      "approximate": false
+    },
+    "eraLabel": "唐",
+    "gender": "男",
+    "honor": "鉴真大师",
+    "dimension": "philosophy",
+    "dimensionCategory": "佛家",
+    "tags": [
+      "佛家",
+      "律宗",
+      "东渡日本",
+      "文化交流"
+    ],
+    "summary": "鉴真是唐代高僧，六次东渡日本终成功，传播佛法与中华文化于东瀛。",
+    "birthplace": "扬州（今江苏扬州）",
+    "deathplace": "奈良（今日本奈良）",
+    "locations": [
+      "江苏扬州",
+      "日本"
+    ]
+  },
+  {
+    "id": "fa_xian",
+    "name": "法显",
+    "pinyin": "Fa Xian",
+    "dynasty": "晋",
+    "era": {
+      "start": 337,
+      "end": 422,
+      "approximate": false
+    },
+    "eraLabel": "东晋",
+    "gender": "男",
+    "honor": "法显法师",
+    "dimension": "philosophy",
+    "dimensionCategory": "佛家",
+    "tags": [
+      "佛家",
+      "取经",
+      "佛国记",
+      "天竺"
+    ],
+    "summary": "法显是东晋高僧，西行天竺取经，著《佛国记》，记录西域和印度见闻。",
+    "birthplace": "平阳武阳（今山西临汾）",
+    "deathplace": "荆州（今湖北荆州）",
+    "locations": [
+      "山西",
+      "湖北"
+    ]
+  },
+  {
+    "id": "dao_an",
+    "name": "道安",
+    "pinyin": "Dao An",
+    "dynasty": "晋",
+    "era": {
+      "start": 312,
+      "end": 385,
+      "approximate": false
+    },
+    "eraLabel": "东晋",
+    "gender": "男",
+    "honor": "道安法师",
+    "dimension": "philosophy",
+    "dimensionCategory": "佛家",
+    "tags": [
+      "佛家",
+      "僧制",
+      "翻译",
+      "佛教中国化"
+    ],
+    "summary": "道安是东晋高僧，统一僧尼姓氏为释，制定僧团规范，推动佛教中国化进程。",
+    "birthplace": "常山扶柳（今河北衡水）",
+    "deathplace": "长安（今陕西西安）",
+    "locations": [
+      "河北",
+      "陕西西安"
+    ]
+  },
+  {
+    "id": "seng_zhao",
+    "name": "僧肇",
+    "pinyin": "Seng Zhao",
+    "dynasty": "晋",
+    "era": {
+      "start": 384,
+      "end": 414,
+      "approximate": false
+    },
+    "eraLabel": "东晋",
+    "gender": "男",
+    "honor": "解空第一",
+    "dimension": "philosophy",
+    "dimensionCategory": "佛家",
+    "tags": [
+      "佛家",
+      "般若",
+      "肇论",
+      "鸠摩罗什弟子"
+    ],
+    "summary": "僧肇是东晋高僧，鸠摩罗什弟子，著《肇论》，被誉为解空第一。",
+    "birthplace": "京兆（今陕西西安）",
+    "deathplace": "长安（今陕西西安）",
+    "locations": [
+      "陕西西安"
+    ]
+  },
+  {
+    "id": "hui_yuan",
+    "name": "慧远",
+    "pinyin": "Hui Yuan",
+    "dynasty": "晋",
+    "era": {
+      "start": 334,
+      "end": 416,
+      "approximate": false
+    },
+    "eraLabel": "东晋",
+    "gender": "男",
+    "honor": "庐山慧远",
+    "dimension": "philosophy",
+    "dimensionCategory": "佛家",
+    "tags": [
+      "佛家",
+      "净土宗",
+      "庐山",
+      "莲社"
+    ],
+    "summary": "慧远是东晋高僧，在庐山创立莲社，被尊为净土宗初祖。",
+    "birthplace": "雁门楼烦（今山西宁武）",
+    "deathplace": "庐山（今江西九江）",
+    "locations": [
+      "山西",
+      "江西"
+    ]
+  },
+  {
+    "id": "bai_zhang_huai_hai",
+    "name": "百丈怀海",
+    "pinyin": "Bai Zhang Huai Hai",
+    "dynasty": "唐",
+    "era": {
+      "start": 720,
+      "end": 814,
+      "approximate": false
+    },
+    "eraLabel": "唐",
+    "gender": "男",
+    "honor": "百丈禅师",
+    "dimension": "philosophy",
+    "dimensionCategory": "佛家",
+    "tags": [
+      "佛家",
+      "禅宗",
+      "百丈清规",
+      "农禅"
+    ],
+    "summary": "百丈怀海是唐代禅宗高僧，制定《百丈清规》，确立农禅并重的丛林制度。",
+    "birthplace": "福州长乐（今福建福州）",
+    "deathplace": "百丈山（今江西奉新）",
+    "locations": [
+      "福建",
+      "江西"
+    ]
+  },
+  {
+    "id": "hong_yi_fa_shi",
+    "name": "弘一法师",
+    "pinyin": "Hong Yi Fa Shi",
+    "dynasty": "近现代",
+    "era": {
+      "start": 1880,
+      "end": 1942,
+      "approximate": false
+    },
+    "eraLabel": "近现代",
+    "gender": "男",
+    "honor": "弘一大师",
+    "dimension": "philosophy",
+    "dimensionCategory": "佛家",
+    "tags": [
+      "佛家",
+      "律宗",
+      "弘一",
+      "李叔同"
+    ],
+    "summary": "弘一法师（李叔同）是近代高僧，精研律宗，同时是杰出的艺术家与教育家。",
+    "birthplace": "天津（今天津）",
+    "deathplace": "泉州（今福建泉州）",
+    "locations": [
+      "天津",
+      "福建"
+    ]
+  },
+  {
+    "id": "mo_zi",
+    "name": "墨子",
+    "pinyin": "Mo Zi",
+    "dynasty": "战国",
+    "era": {
+      "start": -468,
+      "end": -376,
+      "approximate": false
+    },
+    "eraLabel": "战国",
+    "gender": "男",
+    "honor": "墨家始祖",
+    "dimension": "philosophy",
+    "dimensionCategory": "诸子百家",
+    "tags": [
+      "墨家",
+      "兼爱",
+      "非攻",
+      "显学"
+    ],
+    "summary": "墨子是墨家学派创始人，主张兼爱非攻、尚贤节用，战国时与儒家并称显学。",
+    "birthplace": "鲁国（今山东滕州）",
+    "deathplace": null,
+    "locations": [
+      "山东"
+    ]
+  },
+  {
+    "id": "han_fei_zi",
+    "name": "韩非子",
+    "pinyin": "Han Fei Zi",
+    "dynasty": "战国",
+    "era": {
+      "start": -280,
+      "end": -233,
+      "approximate": false
+    },
+    "eraLabel": "战国",
+    "gender": "男",
+    "honor": "法家集大成者",
+    "dimension": "philosophy",
+    "dimensionCategory": "诸子百家",
+    "tags": [
+      "法家",
+      "韩非子",
+      "法治",
+      "法术势"
+    ],
+    "summary": "韩非子是战国法家集大成者，著《韩非子》，主张法、术、势相结合。",
+    "birthplace": "韩国（今河南新郑）",
+    "deathplace": "秦国（今陕西）",
+    "locations": [
+      "河南",
+      "陕西"
+    ]
+  },
+  {
+    "id": "gong_sun_long",
+    "name": "公孙龙",
+    "pinyin": "Gong Sun Long",
+    "dynasty": "战国",
+    "era": {
+      "start": -320,
+      "end": -250,
+      "approximate": true
+    },
+    "eraLabel": "战国",
+    "gender": "男",
+    "honor": "名家代表",
+    "dimension": "philosophy",
+    "dimensionCategory": "诸子百家",
+    "tags": [
+      "名家",
+      "白马非马",
+      "诡辩",
+      "战国"
+    ],
+    "summary": "公孙龙是战国名家代表人物，提出'白马非马''坚白同异'等著名命题。",
+    "birthplace": "赵国（今河北邯郸）",
+    "deathplace": null,
+    "locations": [
+      "河北"
+    ]
+  },
+  {
+    "id": "hui_shi",
+    "name": "惠施",
+    "pinyin": "Hui Shi",
+    "dynasty": "战国",
+    "era": {
+      "start": -370,
+      "end": -310,
+      "approximate": false
+    },
+    "eraLabel": "战国",
+    "gender": "男",
+    "honor": "名家代表",
+    "dimension": "philosophy",
+    "dimensionCategory": "诸子百家",
+    "tags": [
+      "名家",
+      "合同异",
+      "战国",
+      "庄子之友"
+    ],
+    "summary": "惠施是战国名家代表人物，提出合同异学说，与庄子为友，常相辩驳。",
+    "birthplace": "宋国（今河南商丘）",
+    "deathplace": null,
+    "locations": [
+      "河南"
+    ]
+  },
+  {
+    "id": "zou_yan",
+    "name": "邹衍",
+    "pinyin": "Zou Yan",
+    "dynasty": "战国",
+    "era": {
+      "start": -305,
+      "end": -240,
+      "approximate": true
+    },
+    "eraLabel": "战国",
+    "gender": "男",
+    "honor": "阴阳家代表",
+    "dimension": "philosophy",
+    "dimensionCategory": "诸子百家",
+    "tags": [
+      "阴阳家",
+      "五行",
+      "五德终始",
+      "战国"
+    ],
+    "summary": "邹衍是战国阴阳家代表人物，创立五德终始说，以金木水火土五行解释历史变迁。",
+    "birthplace": "齐国（今山东）",
+    "deathplace": null,
+    "locations": [
+      "山东"
+    ]
+  },
+  {
+    "id": "gui_gu_zi",
+    "name": "鬼谷子",
+    "pinyin": "Gui Gu Zi",
+    "dynasty": "战国",
+    "era": {
+      "start": null,
+      "end": null,
+      "approximate": true
+    },
+    "eraLabel": "战国",
+    "gender": "男",
+    "honor": "纵横家始祖",
+    "dimension": "philosophy",
+    "dimensionCategory": "诸子百家",
+    "tags": [
+      "纵横家",
+      "鬼谷子",
+      "谋略",
+      "战国"
+    ],
+    "summary": "鬼谷子是战国隐士，纵横家始祖，精通谋略兵法，相传为苏秦、张仪之师。",
+    "birthplace": null,
+    "deathplace": null,
+    "locations": null
+  },
+  {
+    "id": "yang_zhu",
+    "name": "杨朱",
+    "pinyin": "Yang Zhu",
+    "dynasty": "战国",
+    "era": {
+      "start": -440,
+      "end": -360,
+      "approximate": true
+    },
+    "eraLabel": "战国",
+    "gender": "男",
+    "honor": "杨朱学派",
+    "dimension": "philosophy",
+    "dimensionCategory": "诸子百家",
+    "tags": [
+      "杨朱",
+      "为我",
+      "贵己",
+      "战国"
+    ],
+    "summary": "杨朱是战国时期思想家，主张'贵己''为我'，拔一毛而利天下不为也。",
+    "birthplace": "魏国（今河南开封）",
+    "deathplace": null,
+    "locations": [
+      "河南"
+    ]
+  },
+  {
+    "id": "xu_xing",
+    "name": "许行",
+    "pinyin": "Xu Xing",
+    "dynasty": "战国",
+    "era": {
+      "start": -390,
+      "end": -315,
+      "approximate": true
+    },
+    "eraLabel": "战国",
+    "gender": "男",
+    "honor": "农家代表",
+    "dimension": "philosophy",
+    "dimensionCategory": "诸子百家",
+    "tags": [
+      "农家",
+      "许行",
+      "君民并耕",
+      "战国"
+    ],
+    "summary": "许行是战国农家代表人物，主张君民并耕、自食其力，反对剥削。",
+    "birthplace": "楚国（今湖北/湖南）",
+    "deathplace": null,
+    "locations": [
+      "湖北"
+    ]
+  },
+  {
+    "id": "shen_dao",
+    "name": "慎到",
+    "pinyin": "Shen Dao",
+    "dynasty": "战国",
+    "era": {
+      "start": -350,
+      "end": -275,
+      "approximate": true
+    },
+    "eraLabel": "战国",
+    "gender": "男",
+    "honor": "法家先驱",
+    "dimension": "philosophy",
+    "dimensionCategory": "诸子百家",
+    "tags": [
+      "法家",
+      "势治",
+      "战国",
+      "道家"
+    ],
+    "summary": "慎到是战国法家思想家，主张势治，强调君主权势的重要性，兼具道家色彩。",
+    "birthplace": "赵国（今河北邯郸）",
+    "deathplace": null,
+    "locations": [
+      "河北"
+    ]
+  },
+  {
+    "id": "shen_bu_hai",
+    "name": "申不害",
+    "pinyin": "Shen Bu Hai",
+    "dynasty": "战国",
+    "era": {
+      "start": -385,
+      "end": -337,
+      "approximate": false
+    },
+    "eraLabel": "战国",
+    "gender": "男",
+    "honor": "法家代表",
+    "dimension": "philosophy",
+    "dimensionCategory": "诸子百家",
+    "tags": [
+      "法家",
+      "术治",
+      "韩国",
+      "变法"
+    ],
+    "summary": "申不害是战国法家代表人物，相韩十五年，主张术治，使韩国一时强盛。",
+    "birthplace": "郑国京（今河南荥阳）",
+    "deathplace": null,
+    "locations": [
+      "河南"
+    ]
+  },
+  {
+    "id": "wang_guowei",
+    "name": "王国维",
+    "pinyin": "Wang Guowei",
+    "dynasty": "清",
+    "era": {
+      "start": 1877,
+      "end": 1927,
+      "approximate": false
+    },
+    "eraLabel": "清末民初",
+    "gender": "男",
+    "honor": "国学大师",
+    "dimension": "philosophy",
+    "dimensionCategory": "儒家",
+    "tags": [
+      "学者",
+      "美学家",
+      "史学家"
+    ],
+    "summary": "近代学术大师，提出境界说，在文学、史学、哲学领域均有卓越贡献。",
+    "birthplace": "浙江海宁",
+    "deathplace": "北京颐和园",
+    "locations": [
+      "浙江",
+      "北京"
+    ]
+  },
+  {
+    "id": "qian_mu",
+    "name": "钱穆",
+    "pinyin": "Qian Mu",
+    "dynasty": "近现代",
+    "era": {
+      "start": 1895,
+      "end": 1990,
+      "approximate": false
+    },
+    "eraLabel": "近现代",
+    "gender": "男",
+    "honor": "国学宗师",
+    "dimension": "philosophy",
+    "dimensionCategory": "儒家",
+    "tags": [
+      "史学家",
+      "思想家",
+      "教育家"
+    ],
+    "summary": "现代著名历史学家、思想家，代表作《国史大纲》，弘扬中华传统文化。",
+    "birthplace": "江苏无锡",
+    "deathplace": "台湾台北",
+    "locations": [
+      "江苏",
+      "香港",
+      "台湾"
+    ]
+  },
+  {
+    "id": "xiong_shili",
+    "name": "熊十力",
+    "pinyin": "Xiong Shili",
+    "dynasty": "近现代",
+    "era": {
+      "start": 1885,
+      "end": 1968,
+      "approximate": false
+    },
+    "eraLabel": "近现代",
+    "gender": "男",
+    "honor": "新儒家开山",
+    "dimension": "philosophy",
+    "dimensionCategory": "儒家",
+    "tags": [
+      "哲学家",
+      "新儒家",
+      "思想家"
+    ],
+    "summary": "现代新儒家开山人物，创立体用论哲学体系，代表作《新唯识论》。",
+    "birthplace": "湖北黄冈",
+    "deathplace": "上海",
+    "locations": [
+      "湖北",
+      "北京",
+      "上海"
+    ]
+  },
+  {
+    "id": "ma_yifu",
+    "name": "马一浮",
+    "pinyin": "Ma Yifu",
+    "dynasty": "近现代",
+    "era": {
+      "start": 1883,
+      "end": 1967,
+      "approximate": false
+    },
+    "eraLabel": "近现代",
+    "gender": "男",
+    "honor": "一代儒宗",
+    "dimension": "philosophy",
+    "dimensionCategory": "儒家",
+    "tags": [
+      "学者",
+      "书法家",
+      "思想家"
+    ],
+    "summary": "现代国学大师，精研儒释道三家之学，有千年国粹、一代儒宗之誉。",
+    "birthplace": "浙江绍兴",
+    "deathplace": "浙江杭州",
+    "locations": [
+      "浙江"
+    ]
+  },
+  {
+    "id": "xu_yun",
+    "name": "虚云",
+    "pinyin": "Xu Yun",
+    "dynasty": "清",
+    "era": {
+      "start": 1840,
+      "end": 1959,
+      "approximate": true
+    },
+    "eraLabel": "清末民初",
+    "gender": "男",
+    "honor": "禅宗泰斗",
+    "dimension": "philosophy",
+    "dimensionCategory": "佛家",
+    "tags": [
+      "高僧",
+      "禅宗",
+      "佛学家"
+    ],
+    "summary": "近代禅宗高僧，历经五帝四朝，重兴六大祖庭，被誉为禅宗泰斗。",
+    "birthplace": "福建泉州",
+    "deathplace": "江西云居山",
+    "locations": [
+      "福建",
+      "江西",
+      "广东"
+    ]
+  },
+  {
+    "id": "yongming_yanshou",
+    "name": "永明延寿",
+    "pinyin": "Yongming Yanshou",
+    "dynasty": "宋",
+    "era": {
+      "start": 904,
+      "end": 975,
+      "approximate": false
+    },
+    "eraLabel": "五代末北宋初",
+    "gender": "男",
+    "honor": "净土宗六祖",
+    "dimension": "philosophy",
+    "dimensionCategory": "佛家",
+    "tags": [
+      "高僧",
+      "禅宗",
+      "净土宗"
+    ],
+    "summary": "五代宋初高僧，禅净双修倡导者，著《宗镜录》百卷，影响深远。",
+    "birthplace": "浙江杭州",
+    "deathplace": "浙江杭州",
+    "locations": [
+      "浙江"
+    ]
+  },
+  {
+    "id": "lianchi_dashi",
+    "name": "莲池大师",
+    "pinyin": "Lianchi Dashi",
+    "dynasty": "明",
+    "era": {
+      "start": 1535,
+      "end": 1615,
+      "approximate": false
+    },
+    "eraLabel": "明中后期",
+    "gender": "男",
+    "honor": "净土宗八祖",
+    "dimension": "philosophy",
+    "dimensionCategory": "佛家",
+    "tags": [
+      "高僧",
+      "净土宗",
+      "佛学家"
+    ],
+    "summary": "明代四大高僧之一，净土宗第八代祖师，倡持戒念佛，影响深远。",
+    "birthplace": "浙江杭州",
+    "deathplace": "浙江杭州",
+    "locations": [
+      "浙江"
+    ]
+  },
+  {
+    "id": "chen_tuan",
+    "name": "陈抟",
+    "pinyin": "Chen Tuan",
+    "dynasty": "宋",
+    "era": {
+      "start": 871,
+      "end": 989,
+      "approximate": true
+    },
+    "eraLabel": "唐末北宋初",
+    "gender": "男",
+    "honor": "睡仙",
+    "dimension": "philosophy",
+    "dimensionCategory": "道家",
+    "tags": [
+      "道家",
+      "养生家",
+      "易学家"
+    ],
+    "summary": "唐末宋初著名道家学者，创《太极图说》，对宋明理学产生重要影响。",
+    "birthplace": "河南鹿邑",
+    "deathplace": "华山",
+    "locations": [
+      "河南",
+      "陕西华山"
+    ]
+  },
+  {
+    "id": "yin_wen",
+    "name": "尹文",
+    "pinyin": "Yin Wen",
+    "dynasty": "战国",
+    "era": {
+      "start": -360,
+      "end": -280,
+      "approximate": true
+    },
+    "eraLabel": "战国中期",
+    "gender": "男",
+    "honor": "名家代表",
+    "dimension": "philosophy",
+    "dimensionCategory": "诸子百家",
+    "tags": [
+      "哲学家",
+      "名家",
+      "逻辑学家"
+    ],
+    "summary": "战国时期名家代表人物，擅长名实之辨，主张名正则治。",
+    "birthplace": "齐国（今山东）",
+    "deathplace": null,
+    "locations": [
+      "山东"
+    ]
+  }
+]
