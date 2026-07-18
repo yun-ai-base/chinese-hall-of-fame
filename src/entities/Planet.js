@@ -1,5 +1,5 @@
 import * as THREE from 'three';
-import { createTextSprite } from '../ui/Label.js';
+import { createPlanetNameSprite } from '../ui/Label.js';
 
 export class Planet {
   constructor({ name, color, radius, orbitRadius, orbitSpeed, initialAngle, dimId }) {
@@ -25,6 +25,8 @@ export class Planet {
       metalness: 0.1,
       emissive: new THREE.Color(this.color),
       emissiveIntensity: 0.08,
+      transparent: true,   // 供淡出（下钻时非选中行星变暗）
+      opacity: 1.0,
     });
 
     this.mesh = new THREE.Mesh(geometry, material);
@@ -34,8 +36,9 @@ export class Planet {
     this.glow = this._createGlow();
     this.glow.position.x = this.orbitRadius;
 
-    this.label = createTextSprite(this.name, { color: this.color });
-    this.label.position.set(this.orbitRadius, this.radius + 0.9, 0);
+    // 行星名写在星球内部（居中、朝向相机、随星球大小自适应），不浮在外侧
+    this.label = createPlanetNameSprite(this.name, this.color, this.radius);
+    this.label.position.set(this.orbitRadius, 0, 0);
 
     this.trail = this._createTrail();
 
@@ -45,6 +48,8 @@ export class Planet {
     this.group.add(this.trail);
     scene.add(this.group);
 
+    this.fade = 1.0;
+    this.fadeTarget = 1.0;
     return this;
   }
 
@@ -121,7 +126,7 @@ export class Planet {
     });
 
     const sprite = new THREE.Sprite(material);
-    sprite.scale.set(this.radius * 4, this.radius * 4, 1);
+    sprite.scale.set(this.radius * 3, this.radius * 3, 1);
     return sprite;
   }
 
@@ -170,9 +175,21 @@ export class Planet {
     return line;
   }
 
-  update(time) {
-    this.angle += this.orbitSpeed * 0.016;
-    this.group.rotation.y = this.angle;
-    if (this.mesh) this.mesh.rotation.y += 0.008;
+  // 淡出控制：下钻到其它维度时，非选中行星平滑变暗、标签隐藏
+  setFade(target) { this.fadeTarget = target; }
+
+  update(time, animateOrbit = true) {
+    // 公转与本轴自转仅在运行态推进
+    if (animateOrbit) {
+      this.angle += this.orbitSpeed * 0.016;
+      this.group.rotation.y = this.angle;
+      if (this.mesh) this.mesh.rotation.y += 0.008;
+    }
+
+    // 平滑淡入淡出（始终更新，即使轨道暂停）
+    this.fade += (this.fadeTarget - this.fade) * 0.12;
+    if (this.glow) this.glow.material.opacity = this.fade;
+    if (this.mesh) this.mesh.material.opacity = Math.max(this.fade, 0.06);
+    if (this.label) this.label.visible = this.fade > 0.6;
   }
 }

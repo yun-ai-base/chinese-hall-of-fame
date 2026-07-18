@@ -31,6 +31,7 @@ class App {
     this.state = new StateMachine();
     this.history = [];          // 导航历史栈（≤20）
     this.activeView = null;     // DimensionView | FigureView
+    this._parentView = null;    // 图视图上层（维度视图）作为淡出背景保留，不逐出缓存
     this.viewCache = new Map(); // LRU 视图缓存（设计 6.4）：signature -> view
     this.CACHE_LIMIT = 3;       // 保留最近 2~3 个场景层
     this.viewLevel = 'universe';
@@ -161,11 +162,14 @@ class App {
 
   _applyUniverse() {
     this._disposeView();
+    this._disposeParent();   // 清空可能的上层（维度）淡出背景
     this.viewLevel = 'universe';
     this.currentDimId = null;
     this.currentFigureId = null;
     this.currentCenter.set(0, 0, 0);
     this.orbitSystem.setRunning(true);
+    this.orbitSystem.setRingsFaded(false);   // 宇宙层轨道恢复
+    this.orbitSystem.setPlanetDimmed(null);  // 行星全部恢复明亮
     this.panel.hide();
     this.cameraCtrl.focusUniverse();
     this.btnBack.classList.add('hidden');
@@ -177,6 +181,39 @@ class App {
   }
 
   _applyDimension(dimId, center) {
+    // 从图视图返回同一维度：复用已淡出的维度视图（上层背景还原），逐出图视图
+    if (this._parentView && this._parentView.dimId === dimId) {
+      const view = this._parentView;
+      this._parentView = null;
+      this._evictActiveToCache();
+      view.setCenter(center);
+      view.setFaded(false);
+      this.scene.scene.add(view.group);
+      this.activeView = view;
+      this.viewLevel = 'dimension';
+      this.currentDimId = dimId;
+      this.currentFigureId = null;
+      this.currentCenter.copy(center);
+      this.orbitSystem.setRunning(false);
+      this.orbitSystem.setRingsFaded(true, dimId); // 宇宙层轨道淡出，保留本维度轨道作锚
+      this.orbitSystem.setPlanetDimmed(dimId);
+      this.panel.hide();
+      this.btnBack.classList.remove('hidden');
+      if (this.titleDisplay) this.titleDisplay.style.display = 'none';
+      const dim = this.dm.getDim(dimId);
+      this._updateTitle(dim.name, '点击名人卫星深入探索');
+      this.cameraCtrl.focusOn(center.clone());
+      this._refreshClickables();
+      this.breadcrumb.render([
+        { label: '中华文明', level: 'universe' },
+        { label: dim.name, level: 'dimension', payload: { dimId } },
+      ]);
+      this._setHash('d', dimId);
+      return;
+    }
+
+    // 否则：清掉旧上层（若有）与旧活动视图，重建该维度
+    this._disposeParent();
     this._evictActiveToCache();
     const sig = `dim:${dimId}`;
     let view = this.viewCache.get(sig);
@@ -195,6 +232,8 @@ class App {
     this.currentFigureId = null;
     this.currentCenter.copy(center);
     this.orbitSystem.setRunning(false);
+    this.orbitSystem.setRingsFaded(true, dimId); // 宇宙层轨道淡出，保留本维度轨道作锚
+    this.orbitSystem.setPlanetDimmed(dimId);
     this.panel.hide();
     this.btnBack.classList.remove('hidden');
     if (this.titleDisplay) this.titleDisplay.style.display = 'none';
@@ -211,7 +250,25 @@ class App {
   }
 
   async _applyFigure(figureId, center) {
-    this._evictActiveToCache();
+    // 先确定目标人物所属维度，便于判断上层（维度）背景是否仍相关
+    const _basic = this.dm.getFigureBasic(figureId);
+    const _figDimId = _basic ? _basic.dimId : null;
+
+    // 跨维度跳转时，旧的上层（维度）背景已不相关，直接释放
+    if (this._parentView && this._parentView.dimId !== _figDimId) {
+      this._disposeParent();
+    }
+
+    // 若当前正是「同一维度」的维度视图，则保留为上层淡出背景（不逐出缓存）；
+    // 进入图视图时，其分类层（L3）轨道与卫星一并变淡，作为背景不干扰图视图。
+    if (this.activeView && this.activeView instanceof DimensionView
+        && this.activeView.dimId === _figDimId) {
+      this._parentView = this.activeView;
+      this.activeView = null;
+      this._parentView.setFaded(true);
+    } else {
+      this._evictActiveToCache();
+    }
     const sig = `fig:${figureId}`;
     let view = this.viewCache.get(sig);
     let isNew = false;
@@ -239,6 +296,11 @@ class App {
     }
     this.orbitSystem.setRunning(false);
     this.btnBack.classList.remove('hidden');
+    // 上层轨道变淡：宇宙层轨道淡出（保留当前维度轨道作锚），非当前维度行星变暗；
+    // 若由维度视图下钻而来，父级（分类层 L3）轨道与卫星一并淡出，作为背景不干扰图视图。
+    this.orbitSystem.setRingsFaded(true, this.currentDimId);
+    this.orbitSystem.setPlanetDimmed(this.currentDimId);
+    if (this._parentView) this._parentView.setFaded(true);
     if (this.titleDisplay) this.titleDisplay.style.display = 'none';
     const basic = this.dm.getFigureBasic(figureId);
     const dim = basic ? this.dm.getDim(basic.dimId) : null;
@@ -287,6 +349,15 @@ class App {
     if (this.activeView) {
       this.activeView.dispose();
       this.activeView = null;
+    }
+  }
+
+  // 释放上层（维度）淡出背景视图
+  _disposeParent() {
+    if (this._parentView) {
+      this.scene.scene.remove(this._parentView.group);
+      this._parentView.dispose();
+      this._parentView = null;
     }
   }
 
@@ -427,6 +498,8 @@ class App {
       this.activeView.update(this.clock);
       this._updateLabels();
     }
+    // 上层（维度）淡出背景视图也需更新，才能平滑执行其轨道/卫星的淡出过渡
+    if (this._parentView) this._parentView.update(this.clock);
     if (this._debug) this._tickFps();
   }
 
@@ -454,18 +527,14 @@ class App {
     if (!this.activeView) return;
     const cam = this.scene.camera;
     const tmp = new THREE.Vector3();
+    // 卫星标签：仅在足够近且自身未淡出时显示（避免远景标签杂乱）
     this.activeView.forEachMoon((m) => {
       if (!m.label) return;
       m.getWorldPosition(tmp);
       const dist = cam.position.distanceTo(tmp);
-      m.setLabelVisible(dist < 34);
+      m.setLabelVisible(dist < 34 && m.fade > 0.6);
     });
-    // 行星标签远景隐藏
-    for (const p of this.orbitSystem.planets) {
-      if (!p.label) continue;
-      const d = cam.position.distanceTo(p.getWorldPosition(tmp));
-      p.label.visible = d < 60;
-    }
+    // 行星名已内嵌星球内部（由 Planet.update 按 fade 控制显隐），此处不再按距离隐藏
   }
 }
 

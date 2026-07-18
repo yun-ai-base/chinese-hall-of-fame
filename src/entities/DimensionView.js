@@ -21,6 +21,11 @@ export class DimensionView {
     this.group.position.copy(this.center);
     this.categoryGroups = [];   // { name, ring, moons:[Moon], hub:Moon, visible }
     this.hubs = [];
+
+    // 分类层（L3）轨道淡出状态：进入名人视图时把上一层轨道变淡
+    this.ringBase = 0.42;
+    this.ringFadeTarget = this.ringBase;
+
     this._build();
   }
 
@@ -60,17 +65,20 @@ export class DimensionView {
         return moon;
       });
 
-      // 分类 hub（位于轨道顶部，可点击展开/收起）
+      // 分类 hub（位于轨道顶部，可点击展开/收起）—— 作为独立的「分类层」节点（L3）
       const hub = new Moon({
         name: `${cat.name}·${cat.count}`,
         color: this.meta.color,
-        radius: 0.6,
+        radius: 0.72,
         kind: 'category',
         isHub: true,
       });
       hub.group.position.set(0, 0, -ringR);
       hub.mesh.userData.categoryIndex = order;
       hub.hit.userData.categoryIndex = order;
+      // 分类节点光环：标出这是一个分类锚点，使分类层与名人卫星（L4）视觉上区分开
+      const halo = new OrbitRing(1.05, colorHex);
+      halo.create(hub.group);
       this.group.add(hub.group);
 
       const visible = !this.isMobile; // 移动端默认折叠
@@ -85,6 +93,15 @@ export class DimensionView {
   setCenter(center) {
     this.center.copy(center);
     this.group.position.copy(center);
+  }
+
+  // 进入名人视图：把本维度（分类层 L3）轨道与卫星平滑变淡，避免与名人视图互相干扰
+  setFaded(faded) {
+    this.ringFadeTarget = faded ? 0.04 : this.ringBase;
+    const hubT = faded ? 0.15 : 1.0;
+    const moonT = faded ? 0.3 : 1.0;
+    for (const h of this.hubs) h.setFade(hubT);
+    for (const cg of this.categoryGroups) for (const m of cg.moons) m.setFade(moonT);
   }
 
   // 移动端：点击分类 hub 切换该分类卫星显隐
@@ -112,6 +129,11 @@ export class DimensionView {
 
   update(time) {
     this.group.rotation.y += 0.0009; // 极缓慢自转
+    const k = 0.1;
+    for (const cg of this.categoryGroups) {
+      const m = cg.ring.mesh.material;
+      m.opacity += (this.ringFadeTarget - m.opacity) * k;
+    }
     this.forEachMoon(m => m.update(time));
   }
 

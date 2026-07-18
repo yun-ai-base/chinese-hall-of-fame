@@ -10,6 +10,14 @@ export class OrbitSystem {
     this.planets = [];
     this.orbits = [];
     this.running = true;
+
+    // 轨道/行星淡出状态（下钻时让上层变淡，避免杂乱）
+    this.ringBase = 0.42;
+    this.ringFadeTarget = this.ringBase;
+    this.ringKeepDimId = null;   // 进入某维度时，保留该维度轨道环作为锚点（稍亮）
+    this.dimActive = false;
+    this.planetFadeExempt = null;
+
     this._createSystem();
   }
 
@@ -31,6 +39,7 @@ export class OrbitSystem {
       const initialAngle = (i / n) * Math.PI * 2;
 
       const orbit = new OrbitRing(orbitRadius, new THREE.Color(dim.color).getHex());
+      orbit.dimId = dim.id;
       orbit.create(this.scene);
       this.orbits.push(orbit);
 
@@ -50,6 +59,14 @@ export class OrbitSystem {
 
   setRunning(v) { this.running = v; }
 
+  // 下钻到某维度：宇宙层轨道整体淡出；非选中行星变暗（仅保留该维度行星明亮）
+  // keepDimId 可选：进入某维度时，该维度的轨道环保持稍亮作为锚点，便于辨认当前所在。
+  setRingsFaded(faded, keepDimId = null) {
+    this.ringFadeTarget = faded ? 0.05 : this.ringBase;
+    this.ringKeepDimId = keepDimId;
+  }
+  setPlanetDimmed(dimId) { this.dimActive = !!dimId; this.planetFadeExempt = dimId || null; }
+
   getPlanet(dimId) { return this.planets.find(p => p.dimId === dimId); }
 
   getPlanetWorldPos(dimId, target = new THREE.Vector3()) {
@@ -62,7 +79,19 @@ export class OrbitSystem {
   getPlanetLabels() { return this.planets.map(p => p.label).filter(Boolean); }
 
   update(time) {
-    if (!this.running) return;
-    for (const planet of this.planets) planet.update(time);
+    // 轨道环透明度平滑过渡（始终更新，即使在非运行态下钻时也需要淡出）
+    const k = 0.1;
+    for (const o of this.orbits) {
+      const m = o.mesh.material;
+      let target = this.ringFadeTarget;
+      if (this.ringKeepDimId && o.dimId === this.ringKeepDimId) target = 0.3;
+      m.opacity += (target - m.opacity) * k;
+    }
+    // 行星淡出始终更新；轨道公转仅在 running 时推进
+    for (const planet of this.planets) {
+      const t = (!this.dimActive || planet.dimId === this.planetFadeExempt) ? 1.0 : 0.12;
+      planet.setFade(t);
+      planet.update(time, this.running);
+    }
   }
 }

@@ -51,6 +51,7 @@ export class Moon {
     this.label = createTextSprite(this.name, {
       color: this.isInList ? this.color : '#cfd3da',
       sub: this.sub,
+      baseHeight: Math.max(0.45, this.radius * 0.9),
     });
     this.label.position.set(0, this.radius + 0.7, 0);
     this.group.add(this.label);
@@ -69,6 +70,9 @@ export class Moon {
     };
     this.mesh.userData = ud;
     this.hit.userData = ud;
+
+    this.fade = 1.0;
+    this.fadeTarget = 1.0;
   }
 
   _makeGlow(color, radius) {
@@ -95,8 +99,15 @@ export class Moon {
   setLabelVisible(v) { if (this.label) this.label.visible = v; }
   setVisible(v) { this.group.visible = v; }
 
+  // 淡出控制（上一层轨道变淡时，卫星一起变暗）
+  setFade(target) { this.fadeTarget = target; }
+
   update(time) {
     this.mesh.rotation.y += 0.012;
+    this.fade += (this.fadeTarget - this.fade) * 0.12;
+    if (this.mesh.material) this.mesh.material.opacity = Math.max(this.fade, 0.05);
+    if (this.glow) this.glow.material.opacity = this.fade;
+    if (this.label) this.label.visible = this.fade > 0.6;
   }
 
   dispose() {
