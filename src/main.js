@@ -315,7 +315,7 @@ class App {
 
     // 若当前正是「同一维度」的维度视图，则保留为上层淡出背景（不逐出缓存）；
     // 进入图视图时，其分类层（L3）轨道与卫星一并变淡，作为背景不干扰图视图。
-    if (this.activeView && this.activeView instanceof DimensionView
+    if (this.activeView && this.activeView instanceof CategoryView
         && this.activeView.dimId === _figDimId) {
       this._parentView = this.activeView;
       this.activeView = null;

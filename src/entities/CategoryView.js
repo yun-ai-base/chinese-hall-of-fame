@@ -1,9 +1,12 @@
 import * as THREE from 'three';
 import { CategoryPlanet } from './CategoryPlanet.js';
+import { OrbitRing } from './OrbitRing.js';
+import { CentralStar } from './CentralStar.js';
 import { disposeObject } from '../utils/dispose.js';
 
 // CategoryView —— L3「分类层」：进入某维度后，将该维度的所有子分类渲染为行星级球体，
-// 绕维度中心（当前维度行星位置）环形排布。点击某颗分类行星下钻到 L4（该分类的名人卫星）。
+// 绕维度中心（中央恒星）公转，各自拥有独立的轨道环轨迹、错位轨道半径与公转速度。
+// 中心有一颗以维度命名的「维度恒星」，持续自转。
 // 进入 L4 时本视图作为上层淡出背景保留（setFaded）。
 export class CategoryView {
   constructor(dataManager, dimId, center) {
@@ -15,7 +18,9 @@ export class CategoryView {
 
     this.group = new THREE.Group();
     this.group.position.copy(this.center);
-    this.planets = [];      // [{ name, planet }]
+    this.planets = [];      // [{ name, planet, angle, speed, orbitRadius }]
+    this.rings = [];
+    this.star = null;
     this.fade = 1.0;
     this.fadeTarget = 1.0;
 
@@ -23,23 +28,50 @@ export class CategoryView {
   }
 
   _build() {
-    const cats = (this.meta.categories || []).filter(c => c.count > 0);
+    const dim = this.meta;
+    const colorHex = new THREE.Color(dim.color).getHex();
+
+    // 中央维度恒星：位于视图中心，持续自转，作为本层级的「恒星」
+    this.star = new CentralStar({
+      name: dim.name, color: dim.color, radius: 2.6,
+      categoryName: dim.name, dimId: this.dimId, kind: 'dimStar',
+    }).create();
+    this.group.add(this.star.group);
+
+    const cats = (dim.categories || []).filter(c => c.count > 0);
     const n = cats.length || 1;
-    const R = 7 + n * 0.9;   // 分类环半径：随分类数适度扩张，避免拥挤
+
+    // 错位轨道：按数量分 1~2 圈，每圈不同半径与相位偏移，避免「排成一个圆圈」
+    const perRing = Math.max(1, Math.ceil(n / 2));
+    const innerR = 6.5;
+    const ringGap = 3.0;
+    const SPEED_K = 3.5; // 公转角速度系数（开普勒式：内圈快、外圈慢）
 
     cats.forEach((cat, i) => {
-      const angle = (i / n) * Math.PI * 2;
+      const ringIndex = Math.floor(i / perRing);
+      const idxInRing = i % perRing;
+      const R = innerR + ringIndex * ringGap;
+      const angle = (idxInRing / perRing) * Math.PI * 2 + ringIndex * 0.6;
+      const speed = SPEED_K / Math.pow(R, 1.5);
       const radius = Math.max(0.9, Math.min(1.7, 0.9 + cat.count * 0.05));
+
       const planet = new CategoryPlanet({
         name: cat.name,
-        color: this.meta.color,
+        color: dim.color,
         radius,
         categoryName: cat.name,
         dimId: this.dimId,
       }).create();
       planet.group.position.set(R * Math.cos(angle), 0, R * Math.sin(angle));
       this.group.add(planet.group);
-      this.planets.push({ name: cat.name, planet, angle, ringR: R });
+      this.planets.push({ name: cat.name, planet, angle, speed, orbitRadius: R });
+
+      // 每圈首颗为该半径补一条轨道环（轨迹）
+      if (idxInRing === 0) {
+        const ring = new OrbitRing(R, colorHex);
+        ring.create(this.group);
+        this.rings.push(ring);
+      }
     });
   }
 
@@ -49,10 +81,15 @@ export class CategoryView {
     return p.planet.getWorldPosition(new THREE.Vector3());
   }
 
+  setCenter(center) {
+    this.center.copy(center);
+    this.group.position.copy(center);
+  }
+
   setFaded(faded) { this.fadeTarget = faded ? 0.12 : 1.0; }
 
   getClickables() {
-    const list = [];
+    const list = [...this.star.getClickables()];
     for (const p of this.planets) list.push(...p.planet.getClickables());
     return list;
   }
@@ -62,14 +99,22 @@ export class CategoryView {
 
   update(time) {
     this.fade += (this.fadeTarget - this.fade) * 0.12;
+    if (this.star) { this.star.setFade(this.fade); this.star.update(time); }
     for (const p of this.planets) {
+      // 各自沿独立轨道公转（错位轨道 + 不同速度）
+      p.angle += p.speed * 0.016;
+      p.planet.group.position.set(
+        p.orbitRadius * Math.cos(p.angle), 0, p.orbitRadius * Math.sin(p.angle)
+      );
       p.planet.setFade(this.fade);
       p.planet.update(time);
     }
   }
 
   dispose() {
+    if (this.star) this.star.dispose();
     for (const p of this.planets) p.planet.dispose();
+    for (const r of this.rings) if (r.mesh) disposeObject(r.mesh);
     disposeObject(this.group);
   }
 }

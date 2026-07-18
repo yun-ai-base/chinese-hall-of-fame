@@ -58,5 +58,8 @@ export class Sun {
     if (this.mesh.material.uniforms) {
       this.mesh.material.uniforms.uTime.value = time;
     }
+    // 太阳本体缓慢自转（纹理流动 + 网格旋转双重表现立体感）
+    this.mesh.rotation.y += 0.0009;
+    if (this.glow) this.glow.rotation.y -= 0.0004;
   }
 }
