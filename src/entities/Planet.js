@@ -52,6 +52,7 @@ export class Planet {
 
     this.fade = 1.0;
     this.fadeTarget = 1.0;
+    this.labelVisible = true;
     return this;
   }
 
@@ -151,6 +152,7 @@ export class Planet {
 
   // 淡出控制：下钻到其它维度时，非选中行星平滑变暗、标签隐藏
   setFade(target) { this.fadeTarget = target; }
+  setLabelVisible(v) { this.labelVisible = v; }
 
   update(time, animateOrbit = true) {
     // 公转与本轴自转仅在运行态推进
@@ -164,6 +166,6 @@ export class Planet {
     this.fade += (this.fadeTarget - this.fade) * 0.12;
     if (this.glow) this.glow.material.opacity = this.fade;
     if (this.mesh) this.mesh.material.opacity = Math.max(this.fade, 0.06);
-    if (this.label) this.label.visible = this.fade > 0.6;
+    if (this.label) this.label.visible = this.labelVisible && this.fade > 0.6;
   }
 }

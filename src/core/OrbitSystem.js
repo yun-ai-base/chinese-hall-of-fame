@@ -68,7 +68,15 @@ export class OrbitSystem {
     this.ringKeepDimId = keepDimId;
     this.ringDeep = deep;
   }
-  setPlanetDimmed(dimId, deep = false) { this.dimActive = !!dimId; this.planetFadeExempt = dimId || null; this.planetDeepDim = deep; }
+  setPlanetDimmed(dimId, deep = false) {
+    this.dimActive = !!dimId;
+    this.planetFadeExempt = dimId || null;
+    this.planetDeepDim = deep;
+    // 进入某维度视图时，该维度行星作为锚点保留亮度，但其内嵌标签会与本层中央恒星标签重叠，故隐藏
+    for (const p of this.planets) {
+      p.setLabelVisible(!dimId || p.dimId !== dimId);
+    }
+  }
 
   getPlanet(dimId) { return this.planets.find(p => p.dimId === dimId); }
 

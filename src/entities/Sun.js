@@ -29,9 +29,9 @@ export class Sun {
     this.scene.add(this.mesh);
   }
 
-  // 太阳中心嵌入「华夏」二字：白字 + 淡金辉光 + 朝相机，depthTest:false 始终绘制于球体之上
+  // 太阳中心嵌入「华夏」二字：尺寸较小、暗金细底、白字细黑边，避免成为唯一焦点
   _createCenterText() {
-    this.centerLabel = createPlanetNameSprite('华夏', '#ffe6b3', 5);
+    this.centerLabel = createPlanetNameSprite('华夏', '#d4b896', 3, { clean: true });
     this.centerLabel.position.set(0, 0, 0);
     this.scene.add(this.centerLabel);
   }
