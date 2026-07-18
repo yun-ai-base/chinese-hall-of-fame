@@ -30,6 +30,17 @@ export class OrbitSystem {
   static SIZE  = [0, 2.0, 2.8, 3.2, 2.6, 5.5, 4.8, 3.8, 3.6];
   static SPEED_K = 17.5;
 
+  // 真实太阳系特征映射（按 planetIndex）：
+  //  2 金星逆向自转 · 3 地球带月亮 · 5 木星微弱环+大红斑 · 6 土星明显环 · 7 天王星近竖直黯淡环 · 8 海王星微弱环带
+  static FEATURES = {
+    2: { retrograde: true },
+    3: { moon: true },
+    5: { ring: 'jupiter', redSpot: true },
+    6: { ring: 'saturn' },
+    7: { ring: 'uranus' },
+    8: { ring: 'neptune' },
+  };
+
   _createSystem() {
     const n = this.dimensions.length;
     this.dimensions.forEach((dim, i) => {
@@ -44,6 +55,7 @@ export class OrbitSystem {
       orbit.create(this.scene);
       this.orbits.push(orbit);
 
+      const feat = OrbitSystem.FEATURES[idx] || {};
       const planet = new Planet({
         name: dim.name,
         color: dim.color,
@@ -52,7 +64,10 @@ export class OrbitSystem {
         orbitSpeed,
         initialAngle,
         dimId: dim.id,
-        ring: idx === 6, // 太阳系第 6 颗行星位（真实土星位）带土星环
+        ring: feat.ring || null,       // 木星/土星/天王星/海王星按类型带环
+        redSpot: feat.redSpot || false, // 木星大红斑
+        moon: feat.moon || false,       // 地球月亮
+        retrograde: feat.retrograde || false, // 金星逆向自转
       });
       planet.create(this.scene);
       this.planets.push(planet);
@@ -74,8 +89,10 @@ export class OrbitSystem {
     this.planetFadeExempt = dimId || null;
     this.planetDeepDim = deep;
     // 进入某维度视图时，该维度行星作为锚点保留亮度，但其内嵌标签会与本层中央恒星标签重叠，故隐藏
+    // 同时隐藏地球月亮（进入 L2 及更深层时，月亮会造成视觉干扰）；返回宇宙层(dimId=null)恢复
     for (const p of this.planets) {
       p.setLabelVisible(!dimId || p.dimId !== dimId);
+      p.setMoonVisible(!dimId);
     }
   }
 
