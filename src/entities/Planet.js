@@ -123,8 +123,8 @@ export class Planet {
   // 弧线作为 group 子节点，随公转一起旋转；顶点色含 alpha，头部亮、尾部透明。
   _createTrail() {
     const R = this.orbitRadius;
-    const N = 40;
-    const arc = 0.55; // 拖尾角度（弧度）
+    const N = 48;
+    const arc = 0.9; // 拖尾角度（弧度）—— 加长到 ~0.9，彗星尾更明显
     const col = new THREE.Color(this.color);
     const positions = new Float32Array((N + 1) * 3);
     const colors = new Float32Array((N + 1) * 4);
@@ -135,7 +135,8 @@ export class Planet {
       positions[i * 3] = x;
       positions[i * 3 + 1] = 0;
       positions[i * 3 + 2] = z;
-      const a = 0.42 * (1 - i / N); // 头亮尾透
+      // 头部透明度提到 0.7，幂次衰减让头部聚拢、长尾渐隐，更像彗星
+      const a = 0.7 * Math.pow(1 - i / N, 1.3);
       colors[i * 4] = col.r;
       colors[i * 4 + 1] = col.g;
       colors[i * 4 + 2] = col.b;
