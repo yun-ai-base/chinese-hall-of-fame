@@ -33,10 +33,10 @@ export class CategoryFigureView {
     const figures = this.dm.getDimFigures(this.dimId)
       .filter(f => f.category === this.categoryName)
       .sort((a, b) => a.sortYear - b.sortYear);
-    const perRing = 12;
-    const innerR = 4.2;   // 让出中央恒星空间
-    const ringGap = 1.8;
-    const SPEED_K = 3.0;
+    const perRing = 2;      // 每个轨道最多 2 颗名人卫星（按年份分轨）
+    const innerR = 4.5;     // 内圈半径，让出中央恒星
+    const ringGap = 1.2;    // 轨道间距（紧凑但可区分）
+    const SPEED_K = 1.5;    // 公转速度系数，整体减慢
 
     // 分类主色：在维度色环上取「本分类」对应的那一档（与 L3 分类星球颜色一致，保证下钻连续性）
     const cats = (this.meta.categories || []).filter(c => c.count > 0);

@@ -49,7 +49,7 @@ export class CentralStar {
     };
 
     this.glow = this._createGlow();
-    this.label = createPlanetNameSprite(this.name, this.color, this.radius);
+    this.label = createPlanetNameSprite(this.name, this.color, this.radius, { clean: true });
     this.label.position.set(0, 0, 0);
 
     this.group.add(this.mesh);

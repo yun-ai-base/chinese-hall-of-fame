@@ -70,7 +70,8 @@ export function createTextSprite(text, options = {}) {
 // 行星名内嵌标签：把维度名写在星球「内部」（居中、朝向相机、不浮在外侧）。
 // 文字尺寸按星球直径自适应缩放，使其落在星球圆盘内（约 82% 直径宽），
 // 高对比：白字 + 深色描边；depthTest:false 避免被星球本体遮挡。
-export function createPlanetNameSprite(text, color, radius) {
+export function createPlanetNameSprite(text, color, radius, opts = {}) {
+  const { clean = false } = opts;
   const dpr = 2;
   const fontPx = 64 * dpr;
   const family = '"Noto Serif SC", "Songti SC", serif';
@@ -95,17 +96,36 @@ export function createPlanetNameSprite(text, color, radius) {
   ctx.textAlign = 'center';
   ctx.textBaseline = 'middle';
 
-  // 深色描边（强对比，星球表面为彩色也能看清）
-  ctx.lineWidth = 9 * dpr;
-  ctx.strokeStyle = 'rgba(0,0,0,0.9)';
-  ctx.lineJoin = 'round';
-  ctx.strokeText(text, w / 2, h / 2);
+  if (clean) {
+    // 中央恒星干净标签：同色系半透明圆角底 + 白字 + 细黑边，无厚重阴影/发光，避免重影
+    const c = new THREE.Color(color);
+    const r = c.r * 255 | 0, g = c.g * 255 | 0, b = c.b * 255 | 0;
+    const corner = h / 2;
+    ctx.fillStyle = `rgba(${r},${g},${b},0.45)`;
+    ctx.beginPath();
+    ctx.roundRect(0, 0, w, h, corner);
+    ctx.fill();
 
-  // 白色主字 + 维度色发光
-  ctx.shadowColor = color;
-  ctx.shadowBlur = 10 * dpr;
-  ctx.fillStyle = '#ffffff';
-  ctx.fillText(text, w / 2, h / 2);
+    ctx.lineWidth = 3 * dpr;
+    ctx.strokeStyle = 'rgba(0,0,0,0.6)';
+    ctx.lineJoin = 'round';
+    ctx.strokeText(text, w / 2, h / 2);
+
+    ctx.fillStyle = '#ffffff';
+    ctx.fillText(text, w / 2, h / 2);
+  } else {
+    // 深色描边（强对比，星球表面为彩色也能看清）
+    ctx.lineWidth = 9 * dpr;
+    ctx.strokeStyle = 'rgba(0,0,0,0.9)';
+    ctx.lineJoin = 'round';
+    ctx.strokeText(text, w / 2, h / 2);
+
+    // 白色主字 + 维度色发光
+    ctx.shadowColor = color;
+    ctx.shadowBlur = 10 * dpr;
+    ctx.fillStyle = '#ffffff';
+    ctx.fillText(text, w / 2, h / 2);
+  }
 
   const texture = new THREE.CanvasTexture(canvas);
   texture.minFilter = THREE.LinearFilter;
