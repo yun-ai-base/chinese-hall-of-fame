@@ -538,4 +538,6 @@ class App {
   }
 }
 
-window.addEventListener('DOMContentLoaded', () => new App());
+window.addEventListener('DOMContentLoaded', () => {
+  window.__app = new App();
+});

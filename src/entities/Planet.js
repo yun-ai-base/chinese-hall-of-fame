@@ -21,10 +21,10 @@ export class Planet {
     const geometry = new THREE.SphereGeometry(this.radius, 32, 32);
     const material = new THREE.MeshStandardMaterial({
       map: texture,
-      roughness: 0.6,
-      metalness: 0.1,
+      roughness: 0.55,
+      metalness: 0.05,
       emissive: new THREE.Color(this.color),
-      emissiveIntensity: 0.08,
+      emissiveIntensity: 0.4,   // 自身发光显示本色，不依赖光照，避免暗面全黑
       transparent: true,   // 供淡出（下钻时非选中行星变暗）
       opacity: 1.0,
     });
@@ -42,7 +42,21 @@ export class Planet {
 
     this.trail = this._createTrail();
 
+    // 轮廓描边：略大的 BackSide 球体，边缘露出一圈亮色，让星球在深空背景下轮廓清晰
+    const outlineColor = new THREE.Color(this.color).lerp(new THREE.Color(0xffffff), 0.5);
+    const outlineGeo = new THREE.SphereGeometry(this.radius * 1.08, 32, 32);
+    const outlineMat = new THREE.MeshBasicMaterial({
+      color: outlineColor,
+      side: THREE.BackSide,
+      transparent: true,
+      opacity: 1.0,
+      depthWrite: false,
+    });
+    this.outline = new THREE.Mesh(outlineGeo, outlineMat);
+    this.outline.position.x = this.orbitRadius;
+
     this.group.add(this.mesh);
+    this.group.add(this.outline);
     this.group.add(this.glow);
     this.group.add(this.label);
     this.group.add(this.trail);
@@ -189,6 +203,7 @@ export class Planet {
     // 平滑淡入淡出（始终更新，即使轨道暂停）
     this.fade += (this.fadeTarget - this.fade) * 0.12;
     if (this.glow) this.glow.material.opacity = this.fade;
+    if (this.outline) this.outline.material.opacity = this.fade;
     if (this.mesh) this.mesh.material.opacity = Math.max(this.fade, 0.06);
     if (this.label) this.label.visible = this.fade > 0.6;
   }
