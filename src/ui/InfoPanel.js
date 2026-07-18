@@ -125,6 +125,9 @@ export class InfoPanel {
       el('div', { class: 'panel-hero' },
         el('h2', { class: 'panel-title', style: `color:${dim.color}` }, d.name),
         el('p', { class: 'panel-sub' }, [d.honor, d.dynasty].filter(Boolean).join(' · ')),
+        // 字号 / 别称（detail.styleName，如"字太白，号青莲居士"）
+        (detail && detail.styleName) ? el('p', { class: 'panel-style' },
+          el('span', { class: 'style-label' }, '字号'), detail.styleName) : null,
         el('div', { class: 'tag-row' },
           ...d.tags.slice(0, 8).map(t => el('span', { class: 'tag' }, t)),
         ),
@@ -187,8 +190,13 @@ export class InfoPanel {
       if (det.gallery && det.gallery.length) {
         this.scroll.append(this._galleryBlock(det.gallery));
       }
+      // 地理坐标（detail.geo 经纬度 + 出生地名，为未来地图联动奠基）
+      if (detail && detail.geo) {
+        this.scroll.append(this._geoBlock(detail.geo, d));
+      }
+      // 代表作品：有全文则展示完整诗文块，否则仅列标题与简介
       if (det.works && det.works.length) {
-        this.scroll.append(this._section('代表作品', det.works.map(w => `${w.title}（${w.type}）${w.summary ? '— ' + w.summary : ''}`)));
+        this.scroll.append(this._worksBlock(det.works));
       }
       if (det.quotes && det.quotes.length) {
         this.scroll.append(this._quoteList(det.quotes));
@@ -285,6 +293,43 @@ export class InfoPanel {
     return el('div', { class: 'block' },
       el('h3', { class: 'block-title' }, title),
       ...items.map(q => el('blockquote', { class: 'quote' }, q)),
+    );
+  }
+
+  // 代表作品区块：有 fullText 时以居中诗文块展示完整诗文，否则仅列标题与简介
+  _worksBlock(works) {
+    if (!works || !works.length) return null;
+    const wrap = el('div', { class: 'block' },
+      el('h3', { class: 'block-title' }, '代表作品'),
+    );
+    for (const w of works) {
+      const item = el('div', { class: 'work-item' });
+      item.append(el('div', { class: 'work-head' },
+        el('span', { class: 'work-title' }, w.title || '（佚名）'),
+        w.type ? el('span', { class: 'work-type' }, w.type) : null,
+      ));
+      if (w.summary) item.append(el('p', { class: 'work-summary' }, w.summary));
+      if (w.fullText && w.fullText.trim()) {
+        item.append(el('div', { class: 'poem' }, w.fullText));
+      }
+      wrap.append(item);
+    }
+    return wrap;
+  }
+
+  // 地理坐标区块：展示出生地名 + 经纬度，附地图链接（为未来地图联动奠基）
+  _geoBlock(geo, basic) {
+    if (!geo || (geo.lat == null && geo.lng == null)) return null;
+    const lat = geo.lat, lng = geo.lng;
+    const place = (basic && basic.birthplace) ? basic.birthplace : '';
+    const mapUrl = `https://www.openstreetmap.org/?mlat=${lat}&mlon=${lng}#map=6/${lat}/${lng}`;
+    return el('div', { class: 'block' },
+      el('h3', { class: 'block-title' }, '地理坐标'),
+      el('div', { class: 'geo-block' },
+        place ? el('div', { class: 'geo-place' }, `出生地：${place}`) : null,
+        el('div', { class: 'geo-coord' }, `纬度 ${lat} · 经度 ${lng}`),
+        el('a', { class: 'geo-link', href: mapUrl, target: '_blank', rel: 'noopener' }, '在地图中查看 ↗'),
+      ),
     );
   }
 

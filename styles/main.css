@@ -276,6 +276,31 @@ html, body {
 .rel-rel { font-size: 12px; color: rgba(255,255,255,0.55); }
 .rel-go { margin-left: auto; color: rgba(255,255,255,0.4); }
 
+/* 字号 / 别称 */
+.panel-style { font-size: 13px; color: rgba(255,255,255,0.72); margin-top: 6px; font-family: 'Noto Serif SC', serif; letter-spacing: .5px; }
+.panel-style .style-label { color: rgba(255,215,0,0.72); margin-right: 5px; }
+
+/* 代表作品 + 诗文全文块 */
+.work-item { padding: 11px 0; border-bottom: 1px dashed rgba(255,255,255,0.06); }
+.work-item:last-child { border-bottom: none; }
+.work-head { display: flex; align-items: baseline; gap: 8px; }
+.work-title { font-family: 'Noto Serif SC', serif; font-size: 15px; font-weight: 700; color: #FFD700; }
+.work-type { font-size: 11px; color: rgba(255,255,255,0.55); border: 1px solid rgba(255,255,255,0.2); border-radius: 9px; padding: 1px 8px; }
+.work-summary { font-size: 13px; line-height: 1.7; color: rgba(255,255,255,0.7); margin: 5px 0 0; }
+.poem {
+  font-family: 'Noto Serif SC', serif; font-size: 14.5px; line-height: 2; color: #efe9d2;
+  white-space: pre-line; text-align: center; margin: 9px 0 4px;
+  padding: 12px 12px; background: rgba(255,215,0,0.05); border-radius: 8px;
+  border-left: 2px solid rgba(255,215,0,0.4); border-right: 2px solid rgba(255,215,0,0.4);
+}
+
+/* 地理坐标（地图联动预留） */
+.geo-block { font-size: 13px; line-height: 1.85; color: rgba(255,255,255,0.78); }
+.geo-place { color: rgba(255,255,255,0.85); }
+.geo-coord { font-family: 'Noto Serif SC', serif; color: rgba(255,215,0,0.82); margin: 2px 0; }
+.geo-link { display: inline-block; margin-top: 4px; color: #6cc0ff; font-size: 12.5px; text-decoration: none; }
+.geo-link:hover { text-decoration: underline; }
+
 /* 关系图（可视化网络） */
 .relmap { margin: 6px 0 14px; display: flex; justify-content: center; }
 .relmap-canvas { max-width: 100%; cursor: pointer; }
