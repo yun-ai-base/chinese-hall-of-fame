@@ -103,7 +103,15 @@ export class CategoryView {
 
   update(time) {
     this.fade += (this.fadeTarget - this.fade) * 0.12;
-    if (this.star) { this.star.setFade(this.fade); this.star.update(time); }
+    // 作为父视图淡出时：中心恒星完全隐藏，避免与当前层中心球/文字重叠；轨道环同步变淡
+    if (this.star) {
+      this.star.group.visible = this.fade > 0.25;
+      this.star.setFade(this.fade);
+      this.star.update(time);
+    }
+    for (const r of this.rings) {
+      if (r.mesh) r.mesh.material.opacity = 0.42 * this.fade;
+    }
     for (const p of this.planets) {
       // 各自沿独立轨道公转（错位轨道 + 不同速度）
       p.angle += p.speed * 0.016;
