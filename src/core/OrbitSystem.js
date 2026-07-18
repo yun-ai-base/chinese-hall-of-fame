@@ -13,11 +13,22 @@ export class OrbitSystem {
     this._createSystem();
   }
 
+  // 太阳系式布局：8 颗「行星」按 planetIndex 1..8 排布
+  //  · 轨道半径非线性拉开（内紧外疏，外圈气态巨星区跳开）
+  //  · 行星大小分级（内小岩质、外大气态巨星）
+  //  · 公转速度按开普勒第三定律 ω ∝ r^-1.5（内快外慢，差距十余倍）
+  static ORBIT = [0, 15, 21, 28, 36, 46, 58, 71, 85];
+  static SIZE  = [0, 2.0, 2.8, 3.2, 2.6, 5.5, 4.8, 3.8, 3.6];
+  static SPEED_K = 17.5;
+
   _createSystem() {
+    const n = this.dimensions.length;
     this.dimensions.forEach((dim, i) => {
-      const orbitRadius = dim.orbitRadius;
-      const radius = dim.planetRadius;
-      const speed = 0.15 + (8 - i) * 0.02;
+      const idx = dim.planetIndex || (i + 1);
+      const orbitRadius = OrbitSystem.ORBIT[idx] ?? (15 + i * 10);
+      const radius = OrbitSystem.SIZE[idx] ?? 3.0;
+      const orbitSpeed = OrbitSystem.SPEED_K / Math.pow(orbitRadius, 1.5);
+      const initialAngle = (i / n) * Math.PI * 2;
 
       const orbit = new OrbitRing(orbitRadius, new THREE.Color(dim.color).getHex());
       orbit.create(this.scene);
@@ -28,8 +39,8 @@ export class OrbitSystem {
         color: dim.color,
         radius,
         orbitRadius,
-        orbitSpeed: speed,
-        initialAngle: (i / 8) * Math.PI * 2,
+        orbitSpeed,
+        initialAngle,
         dimId: dim.id,
       });
       planet.create(this.scene);

@@ -23,8 +23,9 @@ export class SceneManager {
 
   _initCamera() {
     const aspect = window.innerWidth / window.innerHeight;
-    this.camera = new THREE.PerspectiveCamera(45, aspect, 0.1, 1000);
-    this.camera.position.set(0, 18, 35);
+    this.camera = new THREE.PerspectiveCamera(45, aspect, 0.1, 2000);
+    // 太阳系式布局：最外轨道半径 85，相机需拉远才能完整取景（俯视 30° 角）
+    this.camera.position.set(0, 55, 110);
     this.camera.lookAt(0, 0, 0);
   }
 
@@ -43,8 +44,8 @@ export class SceneManager {
     this.controls = new OrbitControls(this.camera, this.renderer.domElement);
     this.controls.enableDamping = true;
     this.controls.dampingFactor = 0.08;
-    this.controls.minDistance = 8;
-    this.controls.maxDistance = 80;
+    this.controls.minDistance = 12;
+    this.controls.maxDistance = 220;
     this.controls.autoRotate = false;
     this.controls.target.set(0, 0, 0);
   }

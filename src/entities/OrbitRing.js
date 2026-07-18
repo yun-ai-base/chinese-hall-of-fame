@@ -24,7 +24,8 @@ export class OrbitRing {
     const material = new THREE.LineBasicMaterial({
       color: this.colorHex,
       transparent: true,
-      opacity: 0.12,
+      opacity: 0.42,
+      depthWrite: false,
     });
 
     this.mesh = new THREE.Line(geometry, material);

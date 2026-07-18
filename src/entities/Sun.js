@@ -10,7 +10,8 @@ export class Sun {
   }
 
   _createSun() {
-    const geometry = new THREE.SphereGeometry(8, 64, 64);
+    // 太阳半径不宜过大，否则在俯视太阳系布局中会遮挡内侧轨道与行星
+    const geometry = new THREE.SphereGeometry(5, 64, 64);
     const material = new THREE.ShaderMaterial({
       uniforms: {
         uTime: { value: 0 },
@@ -49,7 +50,7 @@ export class Sun {
     });
 
     this.glow = new THREE.Sprite(spriteMaterial);
-    this.glow.scale.set(30, 30, 1);
+    this.glow.scale.set(18, 18, 1);
     this.scene.add(this.glow);
   }
 
