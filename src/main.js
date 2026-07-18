@@ -666,4 +666,8 @@ class App {
 
 window.addEventListener('DOMContentLoaded', () => {
   window.__app = new App();
+  // 注册 Service Worker（PWA 离线缓存）
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('./sw.js').catch((e) => console.warn('[SW] 注册失败', e));
+  }
 });
