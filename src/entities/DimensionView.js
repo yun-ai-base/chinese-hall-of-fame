@@ -134,10 +134,10 @@ export class DimensionView {
     this.group.rotation.y += 0.0009; // 极缓慢自转
     const k = 0.1;
     for (const cg of this.categoryGroups) {
-      const m = cg.ring.mesh.material;
+      const u = cg.ring.mesh.material.uniforms.uOpacity;
       let target = this.ringFadeTarget;
       if (cg.ring.highlight) target = Math.max(target, 0.9); // hover 高亮抬升
-      m.opacity += (target - m.opacity) * k;
+      u.value += (target - u.value) * k;
     }
     this.forEachMoon(m => m.update(time));
   }

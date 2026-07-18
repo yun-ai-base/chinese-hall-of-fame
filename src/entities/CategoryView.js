@@ -132,7 +132,7 @@ export class CategoryView {
     for (const r of this.rings) {
       if (r.mesh) {
         const base = 0.42 * this.fade;
-        r.mesh.material.opacity = r.highlight ? Math.max(base, 0.9) : base;
+        r.mesh.material.uniforms.uOpacity.value = r.highlight ? Math.max(base, 0.9) : base;
       }
     }
     for (const p of this.planets) {

@@ -110,9 +110,9 @@ export class CategoryFigureView {
     this.fadeTarget = faded ? 0.04 : 1.0;
     const target = faded ? 0.04 : 0.42;
     for (const r of this.rings) {
-      const m = r.mesh.material;
+      const u = r.mesh.material.uniforms.uOpacity;
       const t = r.highlight ? Math.max(target, 0.9) : target; // hover 高亮抬升
-      m.opacity += (t - m.opacity) * 0.1;
+      u.value += (t - u.value) * 0.1;
     }
   }
 

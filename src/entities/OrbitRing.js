@@ -1,22 +1,41 @@
 import * as THREE from 'three';
-import { Line2 } from 'three/addons/lines/Line2.js';
-import { LineMaterial } from 'three/addons/lines/LineMaterial.js';
-import { LineGeometry } from 'three/addons/lines/LineGeometry.js';
 
-// 轨道环：用 Line2（fat lines）绘制，支持真实像素线宽、虚实（虚线）、低饱和主题色，
-// 以及 hover 高亮（提亮暖白 + 加粗 + 抬升透明度）。
-// 所有实例共享同一份 resolution（由 SceneManager 在创建前与 resize 时更新），避免逐环维护。
-export class OrbitRing {
-  static _resolution = new THREE.Vector2(1, 1);
-  static _instances = [];
-  // LineMaterial 的 resolution 为拷贝语义，故维护实例表，创建前/resize 时统一刷新
-  static setResolution(w, h) {
-    this._resolution.set(w, h);
-    for (const inst of this._instances) {
-      if (inst.material) inst.material.resolution.set(w, h);
-    }
+// 轨道环：用「环形几何 + 着色器」渲染柔边发光带。
+//   · 按半径方向做平滑 alpha 渐变（内外边缘自然渐隐为 0），彻底消除 Line2 细线在深色背景下的「珠点/斑点」感
+//   · 加性混合（AdditiveBlending）→ 自然发光，像一条发光的轨迹，而非硬线
+//   · 低饱和主题色；内层带窄、外层带宽（层级区分）；hover 高亮提亮向暖白 + 抬升亮度
+// 接口与旧版（Line2）保持兼容：new / create / .mesh / .material / .highlight / .setHighlight / .dimId / disposeObject(.mesh)
+const VERT = /* glsl */`
+  varying vec3 vPos;
+  void main() {
+    vPos = position;                 // 几何已 rotateX(-90°) 躺平至 XZ 平面，y≈0
+    gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
   }
+`;
 
+const FRAG = /* glsl */`
+  precision highp float;
+  varying vec3 vPos;
+  uniform vec3  uColor;
+  uniform float uInner;
+  uniform float uOuter;
+  uniform float uOpacity;
+  uniform float uHighlight;         // 0..1 hover 高亮强度
+
+  void main() {
+    float r = length(vPos.xz);       // 距轨道中心的半径
+    float t = clamp((r - uInner) / max(uOuter - uInner, 0.0001), 0.0, 1.0);
+    // 软质带形剖面：两端为 0，中段峰值（smoothstep 给出自然过渡）
+    float a1 = smoothstep(0.0, 0.5, t);
+    float a2 = smoothstep(1.0, 0.5, t);
+    float prof = pow(a1 * a2, 1.2);
+    float a = prof * uOpacity;
+    vec3 col = mix(uColor, vec3(1.0, 0.96, 0.88), uHighlight * 0.6);
+    gl_FragColor = vec4(col, a);
+  }
+`;
+
+export class OrbitRing {
   // 降饱和工具：把任意维度色压成低饱和、略提亮的「主题灰彩」，避免深色背景下高饱和原色糊成一片
   static desat(hex, s = 0.32, l = 0.62) {
     const c = new THREE.Color(hex);
@@ -28,59 +47,51 @@ export class OrbitRing {
   constructor(radius, colorHex = 0x444466, opts = {}) {
     this.radius = radius;
     this.baseColor = new THREE.Color(colorHex);
-    this.linewidth = opts.linewidth ?? 2.2;   // 像素线宽（内层细、外层粗由此控制）
-    this.dashed = opts.dashed ?? false;        // 虚实差异：L1 实线，L2+ 虚线
+    // 带宽（径向厚度）：内层窄、外层宽，承载「层级区分」；同时不超过半径的 0.6 以免小环糊成一团
+    const lw = opts.linewidth ?? 1.8;
+    this.bandWidth = Math.min(opts.bandWidth ?? lw * 0.85, radius * 0.6);
     this.baseOpacity = opts.opacity ?? 0.42;
     this.highlight = false;
     this.mesh = null;
     this.material = null;
   }
 
-  create(scene) {
-    const seg = 180;
-    const pts = [];
-    for (let i = 0; i <= seg; i++) {
-      const t = (i / seg) * Math.PI * 2;
-      pts.push(this.radius * Math.cos(t), 0, this.radius * Math.sin(t));
-    }
+  create(parent) {
+    const inner = Math.max(0.01, this.radius - this.bandWidth * 0.5);
+    const outer = this.radius + this.bandWidth * 0.5;
+    const geo = new THREE.RingGeometry(inner, outer, 220, 1);
+    geo.rotateX(-Math.PI / 2);       // 躺平到 XZ 平面（与行星公转平面一致）
 
-    const geo = new LineGeometry();
-    geo.setPositions(pts);
-
-    const mat = new LineMaterial({
-      color: this.baseColor.getHex(),
-      linewidth: this.linewidth,           // 单位：像素（worldUnits 默认 false）
+    const mat = new THREE.ShaderMaterial({
+      uniforms: {
+        uColor: { value: this.baseColor.clone() },
+        uInner: { value: inner },
+        uOuter: { value: outer },
+        uOpacity: { value: this.baseOpacity },
+        uHighlight: { value: 0 },
+      },
+      vertexShader: VERT,
+      fragmentShader: FRAG,
       transparent: true,
-      opacity: this.baseOpacity,
       depthWrite: false,
-      dashed: this.dashed,
-      dashSize: this.dashed ? 2.4 : 0,
-      gapSize: this.dashed ? 2.4 : 0,
-      resolution: OrbitRing._resolution,    // 共享实例，resize 时自动同步
+      blending: THREE.AdditiveBlending,
+      side: THREE.DoubleSide,
     });
 
-    const line = new Line2(geo, mat);
-    line.computeLineDistances();            // 虚线需要线距离
-    line.frustumCulled = false;
-    this.mesh = line;
+    const ring = new THREE.Mesh(geo, mat);
+    ring.renderOrder = 2;
+    ring.frustumCulled = false;
+    this.mesh = ring;
     this.material = mat;
-    OrbitRing._instances.push(this);
-    scene.add(this.mesh);
+    parent.add(this.mesh);
     return this;
   }
 
-  // hover 高亮：提亮向暖白 + 加粗；取消时复原。透明度由各自淡出循环统一管控。
+  // hover 高亮：提亮向暖白（由着色器 mix 实现）；亮度（uOpacity）由各自淡出循环接管
   setHighlight(b) {
     if (this.highlight === b) return;
     this.highlight = b;
-    const m = this.material;
-    if (!m) return;
-    if (b) {
-      m.color.copy(this.baseColor).lerp(new THREE.Color('#fff4d6'), 0.6);
-      m.linewidth = this.linewidth * 2.4;
-    } else {
-      m.color.copy(this.baseColor);
-      m.linewidth = this.linewidth;
-    }
+    if (!this.material) return;
+    this.material.uniforms.uHighlight.value = b ? 1 : 0;
   }
 }

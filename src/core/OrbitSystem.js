@@ -121,11 +121,11 @@ export class OrbitSystem {
     // 轨道环透明度平滑过渡（始终更新，即使在非运行态下钻时也需要淡出）
     const k = 0.1;
     for (const o of this.orbits) {
-      const m = o.mesh.material;
+      const u = o.mesh.material.uniforms.uOpacity;
       let target = this.ringFadeTarget;
       if (this.ringKeepDimId && o.dimId === this.ringKeepDimId) target = this.ringDeep ? 0.12 : 0.3;
-      if (o.highlight) target = Math.max(target, 0.9); // hover 高亮时抬升透明度
-      m.opacity += (target - m.opacity) * k;
+      if (o.highlight) target = Math.max(target, 0.9); // hover 高亮时抬升亮度
+      u.value += (target - u.value) * k;
     }
     // 行星淡出始终更新；轨道公转仅在 running 时推进
     for (const planet of this.planets) {
