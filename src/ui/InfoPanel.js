@@ -181,7 +181,7 @@ export class InfoPanel {
     }
 
     // 作品 / 语录 / 成就 / 评价 / 影响 / 争议 / 纪念地 / 影视 / 冷知识 / 资料
-    const det = detail ? detail.details : null;
+    // 注：det 已在上方（史料整理中判断处）声明，此处直接复用，勿重复声明
     if (det) {
       // 图库（公共领域影像；数据驱动，空则占位）
       if (det.gallery && det.gallery.length) {
