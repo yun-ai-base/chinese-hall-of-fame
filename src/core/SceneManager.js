@@ -19,6 +19,7 @@ export class SceneManager {
 
   _initScene() {
     this.scene = new THREE.Scene();
+    this.clock = new THREE.Clock();
   }
 
   _initCamera() {
@@ -68,6 +69,8 @@ export class SceneManager {
   _animate() {
     requestAnimationFrame(() => this._animate());
     this.controls.update();
+    // 星空闪烁：以累计时间推进逐星相位（独立于业务动画的 running 状态，始终呼吸）
+    if (this.starField) this.starField.update(this.clock.getElapsedTime());
     this.renderer.render(this.scene, this.camera);
   }
 

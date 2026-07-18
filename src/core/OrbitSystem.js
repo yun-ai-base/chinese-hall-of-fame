@@ -52,6 +52,7 @@ export class OrbitSystem {
         orbitSpeed,
         initialAngle,
         dimId: dim.id,
+        ring: idx === 6, // 太阳系第 6 颗行星位（真实土星位）带土星环
       });
       planet.create(this.scene);
       this.planets.push(planet);

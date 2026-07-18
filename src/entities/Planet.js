@@ -3,7 +3,7 @@ import { createPlanetNameSprite } from '../ui/Label.js';
 import { makePlanetTexture } from '../utils/planetTexture.js';
 
 export class Planet {
-  constructor({ name, color, radius, orbitRadius, orbitSpeed, initialAngle, dimId }) {
+  constructor({ name, color, radius, orbitRadius, orbitSpeed, initialAngle, dimId, ring = false }) {
     this.name = name;
     this.color = color;
     this.radius = radius;
@@ -11,9 +11,11 @@ export class Planet {
     this.orbitSpeed = orbitSpeed;
     this.angle = initialAngle;
     this.dimId = dimId;
+    this.hasRing = ring;
     this.mesh = null;
     this.glow = null;
     this.label = null;
+    this.ring = null;
     this.group = new THREE.Group();
   }
 
@@ -48,6 +50,14 @@ export class Planet {
     this.group.add(this.glow);
     this.group.add(this.label);
     this.group.add(this.trail);
+
+    // 土星环（可选）：仅指定行星启用，倾斜环带 + 卡西尼缝，随行星公转、随 fade 淡出
+    if (this.hasRing) {
+      this.ring = this._createRing();
+      this.ring.position.set(this.orbitRadius, 0, 0);
+      this.group.add(this.ring);
+    }
+
     scene.add(this.group);
 
     this.fade = 1.0;
@@ -150,6 +160,48 @@ export class Planet {
     return line;
   }
 
+  // 土星环：RingGeometry + 程序化 ShaderMaterial。
+  // fragment 按归一化半径 t 生成细密条带 + 卡西尼缝（中段暗带）+ 内外边缘渐隐，
+  // 环整体倾斜放置，随行星公转（作为 group 子节点），透明度随 fade 联动。
+  _createRing() {
+    const inner = this.radius * 1.5;
+    const outer = this.radius * 2.5;
+    const geo = new THREE.RingGeometry(inner, outer, 128, 1);
+    const col = new THREE.Color(this.color).lerp(new THREE.Color('#e8dcc0'), 0.5); // 偏土星米金
+    const mat = new THREE.ShaderMaterial({
+      transparent: true,
+      depthWrite: false,
+      side: THREE.DoubleSide,
+      blending: THREE.AdditiveBlending,
+      uniforms: {
+        uInner: { value: inner },
+        uOuter: { value: outer },
+        uColor: { value: col },
+        uOpacity: { value: 1.0 },
+      },
+      vertexShader:
+        'varying float vR;' +
+        'void main(){ vR = length(position.xy);' +
+        'gl_Position = projectionMatrix * modelViewMatrix * vec4(position,1.0); }',
+      fragmentShader:
+        'uniform float uInner; uniform float uOuter; uniform vec3 uColor; uniform float uOpacity;' +
+        'varying float vR;' +
+        'void main(){' +
+        '  float t = (vR - uInner) / (uOuter - uInner);' +      // 0 内 → 1 外
+        '  float band = 0.65 + 0.35 * sin(t * 46.0);' +          // 细密环纹
+        '  float cassini = 1.0 - (smoothstep(0.44,0.47,t) - smoothstep(0.53,0.56,t));' + // 卡西尼缝
+        '  float edge = smoothstep(0.0,0.05,t) * (1.0 - smoothstep(0.92,1.0,t));' +      // 内外渐隐
+        '  float a = band * cassini * edge;' +
+        '  if (a < 0.01) discard;' +
+        '  gl_FragColor = vec4(uColor, a * 0.55 * uOpacity);' +
+        '}',
+    });
+    const mesh = new THREE.Mesh(geo, mat);
+    mesh.rotation.x = -Math.PI / 2 + 0.42; // 躺平后再倾斜约 24°，露出环面立体感
+    mesh.frustumCulled = false;
+    return mesh;
+  }
+
   // 淡出控制：下钻到其它维度时，非选中行星平滑变暗、标签隐藏
   setFade(target) { this.fadeTarget = target; }
   setLabelVisible(v) { this.labelVisible = v; }
@@ -166,6 +218,7 @@ export class Planet {
     this.fade += (this.fadeTarget - this.fade) * 0.12;
     if (this.glow) this.glow.material.opacity = this.fade;
     if (this.mesh) this.mesh.material.opacity = Math.max(this.fade, 0.06);
+    if (this.ring) this.ring.material.uniforms.uOpacity.value = this.fade;
     if (this.label) this.label.visible = this.labelVisible && this.fade > 0.6;
   }
 }
