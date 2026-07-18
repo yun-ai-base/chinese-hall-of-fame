@@ -55,12 +55,12 @@ export class SceneManager {
   }
 
   _initLights() {
-    // 中性环境光：避免把行星染成暗蓝，保证各面都有基础可见度
-    const ambient = new THREE.AmbientLight(0xffffff, 0.45);
+    // 环境光压低：仅在背光面保留基础可见度，不抹平明暗（立体感来源）
+    const ambient = new THREE.AmbientLight(0xffffff, 0.18);
     this.scene.add(ambient);
 
-    // 太阳点光源：decay=0 让光照均匀覆盖到最外层轨道（否则外圈行星全黑）
-    const sunLight = new THREE.PointLight(0xffe8c8, 1.6, 0, 0);
+    // 太阳点光源：decay=0 让光照均匀覆盖到最外层轨道；强度适中以保留明暗渐变
+    const sunLight = new THREE.PointLight(0xffe8c8, 1.5, 0, 0);
     sunLight.position.set(0, 0, 0);
     this.scene.add(sunLight);
   }

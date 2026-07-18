@@ -21,10 +21,10 @@ export class Planet {
     const geometry = new THREE.SphereGeometry(this.radius, 32, 32);
     const material = new THREE.MeshStandardMaterial({
       map: texture,
-      roughness: 0.45,
-      metalness: 0.0,
+      roughness: 0.5,
+      metalness: 0.15,
       emissive: new THREE.Color(this.color),
-      emissiveIntensity: 0.75,  // 自身发光显示本色且颜色浓艳，不依赖光照
+      emissiveIntensity: 0.32,  // 仅作本色基底；明暗渐变交给太阳点光源，保留球体立体感
       transparent: true,   // 供淡出（下钻时非选中行星变暗）
       opacity: 1.0,
     });
@@ -68,17 +68,17 @@ export class Planet {
     ctx.fillStyle = `rgb(${r},${g},${b})`;
     ctx.fillRect(0, 0, 128, 64);
 
-    // 同色系明暗斑块：仅做表面质感，不改变整体色相与浓度
+    // 同色系细微明暗斑块：仅做表面质感，弱化处理避免干扰球面的统一明暗体积感
     for (let i = 0; i < 40; i++) {
       const x = Math.random() * 128;
       const y = Math.random() * 64;
       const rad = 5 + Math.random() * 20;
-      const m = (Math.random() > 0.5 ? 35 : -28);
+      const m = (Math.random() > 0.5 ? 22 : -18);
       const rr = Math.max(0, Math.min(255, r + m));
       const gg = Math.max(0, Math.min(255, g + m));
       const bb = Math.max(0, Math.min(255, b + m));
       const grad = ctx.createRadialGradient(x, y, 0, x, y, rad);
-      grad.addColorStop(0, `rgba(${rr},${gg},${bb},0.55)`);
+      grad.addColorStop(0, `rgba(${rr},${gg},${bb},0.35)`);
       grad.addColorStop(1, `rgba(${rr},${gg},${bb},0)`);
       ctx.fillStyle = grad;
       ctx.fillRect(x - rad, y - rad, rad * 2, rad * 2);
