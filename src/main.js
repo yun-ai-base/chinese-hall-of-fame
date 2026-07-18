@@ -192,7 +192,7 @@ class App {
     this.cameraCtrl.focusUniverse();
     this.btnBack.classList.add('hidden');
     if (this.titleDisplay) this.titleDisplay.style.display = '';
-    this._updateTitle('中华名人堂', '点击星球探索上下五千年');
+    this._updateTitle('中華名人堂', '点击星球探索上下五千年');
     this._refreshClickables();
     this.breadcrumb.render([]);
     this._setHash('u');
@@ -223,7 +223,7 @@ class App {
       this.cameraCtrl.focusOn(center.clone());
       this._refreshClickables();
       this.breadcrumb.render([
-        { label: '中华名人堂', level: 'universe' },
+        { label: '中華名人堂', level: 'universe' },
         { label: dim.name, level: 'dimension', payload: { dimId } },
       ]);
       this._setHash('d', dimId);
@@ -260,7 +260,7 @@ class App {
     this.cameraCtrl.focusOn(center.clone());
     this._refreshClickables();
     this.breadcrumb.render([
-      { label: '中华名人堂', level: 'universe' },
+      { label: '中華名人堂', level: 'universe' },
       { label: dim.name, level: 'dimension', payload: { dimId } },
     ]);
     this._setHash('d', dimId);
@@ -305,7 +305,7 @@ class App {
     this.cameraCtrl.focusOn(center.clone());
     this._refreshClickables();
     this.breadcrumb.render([
-      { label: '中华名人堂', level: 'universe' },
+      { label: '中華名人堂', level: 'universe' },
       { label: dim.name, level: 'dimension', payload: { dimId } },
       { label: categoryName, level: 'category', payload: { dimId, categoryName } },
     ]);
@@ -372,7 +372,7 @@ class App {
     this.cameraCtrl.focusOn(center.clone());
     this._refreshClickables();
     this.breadcrumb.render([
-      { label: '中华名人堂', level: 'universe' },
+      { label: '中華名人堂', level: 'universe' },
       { label: dim ? dim.name : '', level: 'dimension', payload: { dimId: this.currentDimId } },
       { label: basic ? basic.basic.name : figureId, level: 'figure' },
     ]);
@@ -511,7 +511,7 @@ class App {
         `${dim ? dim.name : ''} · ${this.currentCategory || ''}`);
     }
     this.breadcrumb.render([
-      { label: '中华名人堂', level: 'universe' },
+      { label: '中華名人堂', level: 'universe' },
       { label: dim ? dim.name : '', level: 'dimension', payload: { dimId: this.currentDimId } },
       { label: this.currentCategory || '', level: 'category', payload: { dimId: this.currentDimId, categoryName: this.currentCategory } },
       { label: basic ? basic.basic.name : figureId, level: 'figure' },

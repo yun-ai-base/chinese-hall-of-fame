@@ -1,6 +1,7 @@
 import * as THREE from 'three';
 import { OrbitRing } from './OrbitRing.js';
 import { Moon } from './Moon.js';
+import { categoryPalette } from '../utils/colorScale.js';
 import { disposeObject } from '../utils/dispose.js';
 
 // DimensionView —— 围绕某颗行星（中心）构建该维度的名人星系。
@@ -23,7 +24,7 @@ export class DimensionView {
     this.hubs = [];
 
     // 分类层（L3）轨道淡出状态：进入名人视图时把上一层轨道变淡
-    this.ringBase = 0.42;
+    this.ringBase = 0.30;
     this.ringFadeTarget = this.ringBase;
 
     this._build();
@@ -36,11 +37,13 @@ export class DimensionView {
 
     const figures = this.dm.getDimFigures(this.dimId);
     const cats = this.meta.categories || [];
+    const catPal = categoryPalette(this.meta.color, cats.length);
 
     cats.forEach((cat, order) => {
       const ringR = baseR + order * layerGap;
-      // L2 分类层轨道：虚线 + 低饱和维度色（与 L1 实线区分层级）
-      const ring = new OrbitRing(ringR, OrbitRing.desat(colorHex, 0.3, 0.6), { linewidth: 1.6, dashed: true, opacity: 0.42 });
+      // L2 分类层轨道：颜色跟随该分类自己的调色，避免整维度同色；更细更淡，不抢焦点
+      const catColorHex = new THREE.Color(catPal[order].hex).getHex();
+      const ring = new OrbitRing(ringR, OrbitRing.desat(catColorHex, 0.52, 0.64), { linewidth: 0.75, dashed: true, opacity: 0.3 });
       ring.create(this.group);
 
       const catFigures = figures
@@ -54,7 +57,7 @@ export class DimensionView {
         const z = ringR * Math.sin(angle);
         const moon = new Moon({
           name: fe.basic.name,
-          color: this.meta.color,
+          color: catPal[order].hex,
           radius: 0.42,
           kind: 'figure',
           figureId: fe.id,
@@ -70,7 +73,7 @@ export class DimensionView {
       // 分类 hub（位于轨道顶部，可点击展开/收起）—— 作为独立的「分类层」节点（L3）
       const hub = new Moon({
         name: `${cat.name}·${cat.count}`,
-        color: this.meta.color,
+        color: catPal[order].hex,
         radius: 0.72,
         kind: 'category',
         isHub: true,
@@ -78,8 +81,8 @@ export class DimensionView {
       hub.group.position.set(0, 0, -ringR);
       hub.mesh.userData.categoryIndex = order;
       hub.hit.userData.categoryIndex = order;
-      // 分类节点光环：标出这是一个分类锚点，使分类层与名人卫星（L4）视觉上区分开
-      const halo = new OrbitRing(1.05, OrbitRing.desat(colorHex, 0.3, 0.6));
+      // 分类节点光环：颜色跟随该分类，使分类层彼此区分
+      const halo = new OrbitRing(1.05, OrbitRing.desat(catColorHex, 0.52, 0.64));
       halo.create(hub.group);
       hub.hit.userData.orbitRing = halo; // 悬停分类 hub 高亮其光环
       this.group.add(hub.group);

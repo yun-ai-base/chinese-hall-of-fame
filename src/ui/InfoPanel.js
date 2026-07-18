@@ -5,18 +5,37 @@
 import { el } from './dom.js';
 import { createRelationMap } from './RelationMap.js';
 
+// 人物详情页低干扰意象粒子：按人物主题（特定人物 / 维度 / 分类）取色与运动，
+// 仅以极淡的辉光呼应特色，绝不干扰正文阅读。
+//   ember 上升余烬（神魔/兵戈）· data 冷蓝流光（科技数学）· herb 青绿微光（医学）
+//   moon/ink 柔白光尘（诗词书画哲学）· dust 默认微尘
+const AMBIENT_MOTIFS = {
+  wu_chengen:  { kind: 'ember', c1: '#ff8a3c', c2: '#ffd27a', n: 48, label: '神魔灵光' },
+  sun_wu_kong: { kind: 'ember', c1: '#ff5e3a', c2: '#ffcf6b', n: 48 },
+  li_bai:      { kind: 'moon',  c1: '#bcd4ff', c2: '#ffffff', n: 40, label: '诗酒月华' },
+  su_shi:      { kind: 'ink',   c1: '#cdd9ec', c2: '#eef3fb', n: 36 },
+  wang_xizhi:  { kind: 'ink',   c1: '#e8d6b0', c2: '#fff4dd', n: 34 },
+  zu_chongzhi: { kind: 'data',  c1: '#8fb8ff', c2: '#d6e6ff', n: 42, label: '算筹流光' },
+  shen_kuo:    { kind: 'data',  c1: '#9fe0ff', c2: '#ffffff', n: 42 },
+  li_shizhen:  { kind: 'herb',  c1: '#9fe0b0', c2: '#dcf7e3', n: 40, label: '本草微光' },
+};
+
 export class InfoPanel {
   constructor(dataManager, handlers = {}) {
     this.dm = dataManager;
     this.handlers = handlers; // { onFigureJump, onDimensionJump, onRandomExplore, onAssociateJump, onClose }
+    this.isMobile = window.innerWidth < 768 || 'ontouchstart' in window;
 
     this.root = el('div', { class: 'panel', id: 'info-panel' });
     this.handle = el('div', { class: 'panel-handle' });
     this.closeBtn = el('button', { class: 'panel-close', 'aria-label': '关闭', onclick: () => this.hide() }, '×');
     this.scroll = el('div', { class: 'panel-scroll' });
-    this.root.append(this.handle, this.closeBtn, this.scroll);
+    // 低干扰意象粒子层：置于最底层，pointer-events:none，仅作极淡背景辉光
+    this.ambient = el('canvas', { class: 'panel-ambient' });
+    this.root.append(this.ambient, this.handle, this.closeBtn, this.scroll);
     document.body.append(this.root);
     this._bindMobileDrag();
+    window.addEventListener('resize', () => { if (this._amb) this._startAmbient(this._amb.motif); });
   }
 
   _bindMobileDrag() {
@@ -32,11 +51,12 @@ export class InfoPanel {
 
   show() { this.root.classList.add('open'); }
   hide() {
+    this._stopAmbient();
     this.root.classList.remove('open', 'panel-expanded');
     if (this.handlers.onClose) this.handlers.onClose();
   }
 
-  clear() { this.scroll.innerHTML = ''; }
+  clear() { this._stopAmbient(); this.scroll.innerHTML = ''; }
 
   // ---------- 太阳文明总览 ----------
   async showSunOverview() {
@@ -44,7 +64,7 @@ export class InfoPanel {
     const idx = this.dm.index;
     this.scroll.append(
       el('div', { class: 'panel-hero' },
-        el('h2', { class: 'panel-title' }, '中华名人堂'),
+        el('h2', { class: 'panel-title' }, '中華名人堂'),
         el('p', { class: 'panel-sub' }, 'Celestial Mandate · 天命星系'),
         el('p', { class: 'panel-lead' }, `以太阳系为隐喻，将上下五千年 ${idx.totalFigures} 位杰出人物，归入八大文化维度，编织成一座可探索的交互星系。`),
       )
@@ -151,7 +171,7 @@ export class InfoPanel {
           }, '以此人为中心重构星系 ↻'),
         )
       );
-      if (!detail) { this.show(); return; } // 无详情则只展示头部 + 占位
+      if (!detail) { this._startAmbient(this._resolveMotif(figureId, basic.dimId, d.dimensionCategory || basic.category)); this.show(); return; } // 无详情则只展示头部 + 占位
     }
 
     // 核心理念（哲学类）
@@ -227,10 +247,9 @@ export class InfoPanel {
       }
     }
 
+    this._startAmbient(this._resolveMotif(figureId, basic.dimId, d.dimensionCategory || basic.category));
     this.show();
   }
-
-  // 图库区块：渲染公共领域影像；为空时展示整理中占位
   _galleryBlock(items) {
     const wrap = el('div', { class: 'block' },
       el('h3', { class: 'block-title' }, '图库 · 公共领域'),
@@ -379,5 +398,119 @@ export class InfoPanel {
     }
     wrap.append(list);
     return wrap;
+  }
+
+  // ---------- 低干扰意象粒子（人物详情页主题光效）----------
+  // 按人物 id / 维度 / 分类解析主题，回退到默认微尘；保证每种人物都有低调呼应。
+  _resolveMotif(figureId, dimId, category) {
+    if (AMBIENT_MOTIFS[figureId]) return AMBIENT_MOTIFS[figureId];
+    const cat = category || '';
+    if (cat.includes('神魔') || dimId === 'mythology') return { kind: 'ember', c1: '#ff9a4d', c2: '#ffd98a', n: 46 };
+    if (cat.includes('数学') || cat.includes('天文') || dimId === 'technology') return { kind: 'data', c1: '#9fd0ff', c2: '#eaf4ff', n: 40 };
+    if (cat.includes('医学')) return { kind: 'herb', c1: '#9fe0b0', c2: '#dcf7e3', n: 38 };
+    if (dimId === 'literature') return { kind: 'moon', c1: '#cfe0ff', c2: '#ffffff', n: 38 };
+    if (dimId === 'art') return { kind: 'ink', c1: '#ecd9b5', c2: '#fff3da', n: 34 };
+    if (dimId === 'philosophy') return { kind: 'ink', c1: '#c9b6ff', c2: '#efe8ff', n: 34 };
+    if (dimId === 'military') return { kind: 'ember', c1: '#ff6b5e', c2: '#ffc7bd', n: 40 };
+    if (dimId === 'politics') return { kind: 'ink', c1: '#ffe1a8', c2: '#fff4d8', n: 34 };
+    if (dimId === 'exploration') return { kind: 'data', c1: '#8ff0e0', c2: '#dffaf4', n: 38 };
+    return { kind: 'dust', c1: '#cfd8e8', c2: '#ffffff', n: 30 };
+  }
+
+  _startAmbient(motif) {
+    this._stopAmbient();
+    const cv = this.ambient;
+    const rect = this.root.getBoundingClientRect();
+    const w = Math.max(2, Math.round(rect.width)), h = Math.max(2, Math.round(rect.height));
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    cv.width = Math.round(w * dpr); cv.height = Math.round(h * dpr);
+    cv.style.width = w + 'px'; cv.style.height = h + 'px';
+    const ctx = cv.getContext('2d');
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    const n = this.isMobile ? Math.round(motif.n * 0.6) : motif.n;
+    const A = { ctx, w, h, motif, raf: 0, last: 0, parts: [] };
+    for (let i = 0; i < n; i++) A.parts.push(this._spawnAmb(A, motif, true));
+    // 尊重系统「减少动态效果」偏好：仅绘制一帧静态微光，不循环动画
+    A.reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    this._amb = A;
+    if (A.reduce) this._drawAmb(A, 0.016);
+    else A.raf = requestAnimationFrame((t) => this._ambLoop(t));
+  }
+
+  _stopAmbient() {
+    if (this._amb) {
+      if (this._amb.raf) cancelAnimationFrame(this._amb.raf);
+      this._amb = null;
+    }
+    const cv = this.ambient;
+    if (cv) { const c = cv.getContext('2d'); if (c) c.clearRect(0, 0, cv.width, cv.height); }
+  }
+
+  _spawnAmb(A, motif, init) {
+    const { w, h } = A;
+    const kind = motif.kind;
+    const c = Math.random() < 0.5 ? motif.c1 : motif.c2;
+    const p = { x: Math.random() * w, y: Math.random() * h, c, phase: Math.random() * 6.283, tw: 0.4 + Math.random() * 1.8, size: 0, vx: 0, vy: 0, age: 0, max: 1 };
+    if (kind === 'ember' || kind === 'herb') {
+      p.size = 0.9 + Math.random() * 2.4;
+      p.vy = -(0.12 + Math.random() * 0.5);          // 上升余烬
+      p.vx = (Math.random() - 0.5) * 0.22;
+      p.max = 2.6 + Math.random() * 3.2;
+    } else if (kind === 'data') {
+      p.size = 0.6 + Math.random() * 1.7;
+      p.vx = (Math.random() - 0.5) * 0.16;
+      p.vy = (Math.random() - 0.5) * 0.11;
+      p.max = 3 + Math.random() * 4;
+    } else {
+      p.size = 0.7 + Math.random() * 1.9;
+      p.vx = (Math.random() - 0.5) * 0.1;
+      p.vy = (Math.random() - 0.5) * 0.08;
+      p.max = 4 + Math.random() * 5;
+    }
+    p.age = init ? Math.random() * p.max : 0;
+    return p;
+  }
+
+  _ambLoop(t) {
+    if (!this._amb) return;
+    if (!this._amb.last) this._amb.last = t;
+    let dt = (t - this._amb.last) / 1000;
+    if (dt > 0.05) dt = 0.05;
+    this._amb.last = t;
+    this._drawAmb(this._amb, dt);
+    this._amb.raf = requestAnimationFrame((tt) => this._ambLoop(tt));
+  }
+
+  _drawAmb(A, dt) {
+    const { ctx, w, h, motif } = A;
+    ctx.clearRect(0, 0, w, h);
+    ctx.globalCompositeOperation = 'lighter';
+    for (const p of A.parts) {
+      p.age += dt;
+      if (p.age > p.max) { Object.assign(p, this._spawnAmb(A, motif, false)); continue; }
+      p.x += p.vx; p.y += p.vy;
+      if (p.x < -6) p.x = w + 6; else if (p.x > w + 6) p.x = -6;
+      if (p.y < -6) p.y = h + 6; else if (p.y > h + 6) p.y = -6;
+      const lifeT = p.age / p.max;
+      let a = Math.sin(Math.PI * lifeT);                 // 0→1→0 生命周期包络
+      a *= 0.55 + 0.45 * Math.sin(p.phase + p.age * p.tw); // 轻微闪烁
+      a = Math.max(0, a) * 0.15;                        // 整体极淡，不干扰正文
+      const r = Math.max(1, p.size * (0.85 + 0.3 * Math.sin(p.phase + p.age * 1.3)));
+      const rad = r * 3;
+      const rgb = this._hexRgb(p.c);
+      const g = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, rad);
+      g.addColorStop(0, `rgba(${rgb},${a})`);
+      g.addColorStop(1, `rgba(${rgb},0)`);
+      ctx.fillStyle = g;
+      ctx.beginPath(); ctx.arc(p.x, p.y, rad, 0, 6.2832); ctx.fill();
+    }
+    ctx.globalCompositeOperation = 'source-over';
+  }
+
+  _hexRgb(hex) {
+    const h = hex.replace('#', '');
+    const full = h.length === 3 ? h.split('').map((c) => c + c).join('') : h;
+    const n = parseInt(full, 16);
+    return `${(n >> 16) & 255},${(n >> 8) & 255},${n & 255}`;
   }
 }

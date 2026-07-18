@@ -235,6 +235,12 @@ html, body {
   display: flex; flex-direction: column;
 }
 .panel.open { transform: translateX(0); }
+.panel-ambient {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  pointer-events: none; z-index: 0; opacity: 0;
+  transition: opacity .7s ease;
+}
+.panel.open .panel-ambient { opacity: 1; }
 .panel-handle { display: none; }
 .panel-close {
   position: absolute; top: 14px; right: 14px;
@@ -244,7 +250,7 @@ html, body {
   font-size: 20px; line-height: 1; cursor: pointer; z-index: 2;
 }
 .panel-close:hover { background: rgba(255,255,255,0.12); }
-.panel-scroll { flex: 1; overflow-y: auto; padding: 28px 26px 60px; }
+.panel-scroll { flex: 1; overflow-y: auto; padding: 28px 26px 60px; position: relative; z-index: 1; }
 .panel-scroll::-webkit-scrollbar { width: 6px; }
 .panel-scroll::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.15); border-radius: 3px; }
 

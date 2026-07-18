@@ -25,7 +25,7 @@ export class Sun {
     });
 
     this.mesh = new THREE.Mesh(geometry, material);
-    this.mesh.userData = { isSun: true, name: '中华名人堂' };
+    this.mesh.userData = { isSun: true, name: '中華名人堂' };
     this.scene.add(this.mesh);
   }
 

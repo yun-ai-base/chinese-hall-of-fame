@@ -81,7 +81,9 @@ export class CategoryFigureView {
       this.moons.push(moon);
 
       if (idxInRing === 0) {
-        const ring = new OrbitRing(R, OrbitRing.desat(colorHex, 0.3, 0.6), { linewidth: 1.3, dashed: true, opacity: 0.42 });
+        // 每条轨道取本环第一颗名人卫星的配色，使同分类下多层轨道彼此区分
+        const ringColorHex = new THREE.Color(figureColor(catHue, i, figures.length)).getHex();
+        const ring = new OrbitRing(R, OrbitRing.desat(ringColorHex, 0.52, 0.64), { linewidth: 0.6, dashed: true, opacity: 0.3 });
         ring.create(this.group);
         this.rings.push(ring);
         curRing = ring;
@@ -108,7 +110,7 @@ export class CategoryFigureView {
 
   setFaded(faded) {
     this.fadeTarget = faded ? 0.04 : 1.0;
-    const target = faded ? 0.04 : 0.42;
+    const target = faded ? 0.04 : 0.30;
     for (const r of this.rings) {
       const u = r.mesh.material.uniforms.uOpacity;
       const t = r.highlight ? Math.max(target, 0.9) : target; // hover 高亮抬升

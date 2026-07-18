@@ -12,7 +12,7 @@ export class OrbitSystem {
     this.running = true;
 
     // 轨道/行星淡出状态（下钻时让上层变淡，避免杂乱）
-    this.ringBase = 0.42;
+    this.ringBase = 0.30;
     this.ringFadeTarget = this.ringBase;
     this.ringKeepDimId = null;   // 进入某维度时，保留该维度轨道环作为锚点（稍亮）
     this.dimActive = false;
@@ -53,11 +53,11 @@ export class OrbitSystem {
       // L1 宇宙层轨道：实线 + 按轨道半径做「内层细、外层粗」+ 低饱和维度色
       const minR = OrbitSystem.ORBIT[1], maxR = OrbitSystem.ORBIT[8];
       const tNorm = Math.min(1, Math.max(0, (orbitRadius - minR) / (maxR - minR)));
-      const orbitLW = 1.5 + tNorm * 1.8; // 1.5px（内）→ 3.3px（外）
+      const orbitLW = 0.6 + tNorm * 0.75; // 0.6（内）→ 1.35（外），更细避免干扰焦点
       const orbit = new OrbitRing(
         orbitRadius,
-        OrbitRing.desat(dim.color, 0.32, 0.6),
-        { linewidth: orbitLW, dashed: false, opacity: 0.42 }
+        OrbitRing.desat(dim.color, 0.48, 0.64),
+        { linewidth: orbitLW, dashed: false, opacity: 0.32 }
       );
       orbit.dimId = dim.id;
       orbit.create(this.scene);

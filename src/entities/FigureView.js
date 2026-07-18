@@ -57,9 +57,10 @@ export class FigureView {
       const R = innerR + ringIndex * ringGap;
       const angle = (idxInRing / perRing) * Math.PI * 2 + ringIndex * 0.35;
 
+      const moonColor = r.kind === 'figure' ? r.color : (r.kind === 'associate' ? '#9aa0a6' : '#6b7280');
       const moon = new Moon({
         name: r.name,
-        color: r.kind === 'figure' ? r.color : (r.kind === 'associate' ? '#9aa0a6' : '#6b7280'),
+        color: moonColor,
         radius: r.kind === 'figure' ? 0.5 : 0.4,
         kind: 'relation',
         targetId: r.id,
@@ -71,9 +72,10 @@ export class FigureView {
       this.group.add(moon.group);
       this.relationMoons.push(moon);
 
-      // 每环首颗时补一条轨道环
+      // 每环首颗时补一条轨道环，颜色跟随本环第一颗关联卫星，避免同层同色
       if (idxInRing === 0) {
-        const ring = new OrbitRing(R, OrbitRing.desat(this.color, 0.3, 0.6), { linewidth: 1.3, dashed: true, opacity: 0.42 });
+        const ringColor = r.kind === 'figure' ? moonColor : new THREE.Color().setHSL((ringIndex * 0.17) % 1, 0.35, 0.65).getHex();
+        const ring = new OrbitRing(R, OrbitRing.desat(ringColor, 0.52, 0.64), { linewidth: 0.6, dashed: true, opacity: 0.3 });
         ring.create(this.group);
         this.rings.push(ring);
       }

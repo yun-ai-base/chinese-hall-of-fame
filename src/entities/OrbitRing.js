@@ -47,9 +47,9 @@ export class OrbitRing {
   constructor(radius, colorHex = 0x444466, opts = {}) {
     this.radius = radius;
     this.baseColor = new THREE.Color(colorHex);
-    // 带宽（径向厚度）：内层窄、外层宽，承载「层级区分」；同时不超过半径的 0.6 以免小环糊成一团
-    const lw = opts.linewidth ?? 1.8;
-    this.bandWidth = Math.min(opts.bandWidth ?? lw * 0.85, radius * 0.6);
+    // 带宽（径向厚度）：内层窄、外层宽，承载「层级区分」；同时不超过半径的 0.3 以免小环糊成一团
+    const lw = opts.linewidth ?? 1.0;
+    this.bandWidth = Math.min(opts.bandWidth ?? lw * 0.45, radius * 0.3);
     this.baseOpacity = opts.opacity ?? 0.42;
     this.highlight = false;
     this.mesh = null;
