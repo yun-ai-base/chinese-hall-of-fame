@@ -21,10 +21,10 @@ export class Planet {
     const geometry = new THREE.SphereGeometry(this.radius, 32, 32);
     const material = new THREE.MeshStandardMaterial({
       map: texture,
-      roughness: 0.55,
-      metalness: 0.05,
+      roughness: 0.45,
+      metalness: 0.0,
       emissive: new THREE.Color(this.color),
-      emissiveIntensity: 0.4,   // 自身发光显示本色，不依赖光照，避免暗面全黑
+      emissiveIntensity: 0.75,  // 自身发光显示本色且颜色浓艳，不依赖光照
       transparent: true,   // 供淡出（下钻时非选中行星变暗）
       opacity: 1.0,
     });
@@ -42,21 +42,7 @@ export class Planet {
 
     this.trail = this._createTrail();
 
-    // 轮廓描边：略大的 BackSide 球体，边缘露出一圈亮色，让星球在深空背景下轮廓清晰
-    const outlineColor = new THREE.Color(this.color).lerp(new THREE.Color(0xffffff), 0.5);
-    const outlineGeo = new THREE.SphereGeometry(this.radius * 1.08, 32, 32);
-    const outlineMat = new THREE.MeshBasicMaterial({
-      color: outlineColor,
-      side: THREE.BackSide,
-      transparent: true,
-      opacity: 1.0,
-      depthWrite: false,
-    });
-    this.outline = new THREE.Mesh(outlineGeo, outlineMat);
-    this.outline.position.x = this.orbitRadius;
-
     this.group.add(this.mesh);
-    this.group.add(this.outline);
     this.group.add(this.glow);
     this.group.add(this.label);
     this.group.add(this.trail);
@@ -78,31 +64,24 @@ export class Planet {
     const g = Math.floor(color.g * 255);
     const b = Math.floor(color.b * 255);
 
+    // 不透明纯色底：保证颜色浓度，避免半透明斑点透出深空背景而发灰
+    ctx.fillStyle = `rgb(${r},${g},${b})`;
+    ctx.fillRect(0, 0, 128, 64);
+
+    // 同色系明暗斑块：仅做表面质感，不改变整体色相与浓度
     for (let i = 0; i < 40; i++) {
       const x = Math.random() * 128;
       const y = Math.random() * 64;
       const rad = 5 + Math.random() * 20;
+      const m = (Math.random() > 0.5 ? 35 : -28);
+      const rr = Math.max(0, Math.min(255, r + m));
+      const gg = Math.max(0, Math.min(255, g + m));
+      const bb = Math.max(0, Math.min(255, b + m));
       const grad = ctx.createRadialGradient(x, y, 0, x, y, rad);
-      grad.addColorStop(0, `rgba(${r},${g},${b},${0.1 + Math.random() * 0.3})`);
-      grad.addColorStop(1, `rgba(${r},${g},${b},0)`);
+      grad.addColorStop(0, `rgba(${rr},${gg},${bb},0.55)`);
+      grad.addColorStop(1, `rgba(${rr},${gg},${bb},0)`);
       ctx.fillStyle = grad;
       ctx.fillRect(x - rad, y - rad, rad * 2, rad * 2);
-    }
-
-    for (let i = 0; i < 15; i++) {
-      const x = Math.random() * 128;
-      const y = Math.random() * 64;
-      ctx.strokeStyle = `rgba(${r},${g},${b},${0.1 + Math.random() * 0.2})`;
-      ctx.lineWidth = 1 + Math.random() * 3;
-      ctx.beginPath();
-      ctx.moveTo(x, y);
-      ctx.quadraticCurveTo(
-        x + (Math.random() - 0.5) * 30,
-        y + (Math.random() - 0.5) * 15,
-        x + (Math.random() - 0.5) * 40,
-        y + (Math.random() - 0.5) * 20
-      );
-      ctx.stroke();
     }
 
     const texture = new THREE.CanvasTexture(canvas);
@@ -203,7 +182,6 @@ export class Planet {
     // 平滑淡入淡出（始终更新，即使轨道暂停）
     this.fade += (this.fadeTarget - this.fade) * 0.12;
     if (this.glow) this.glow.material.opacity = this.fade;
-    if (this.outline) this.outline.material.opacity = this.fade;
     if (this.mesh) this.mesh.material.opacity = Math.max(this.fade, 0.06);
     if (this.label) this.label.visible = this.fade > 0.6;
   }
