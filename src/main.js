@@ -130,8 +130,12 @@ class App {
     return { level: 'dimension', dimId, center: c.clone() };
   }
   _categoryState(dimId, categoryName, center) {
-    const c = center || this.orbitSystem.getPlanetWorldPos(dimId);
-    return { level: 'category', dimId, categoryName, center: c.clone() };
+    if (!center) {
+      const dimCenter = this.orbitSystem.getPlanetWorldPos(dimId);
+      const dim = this.dm.getDim(dimId);
+      center = CategoryView.computeCategoryWorldPos(dim, categoryName, dimCenter);
+    }
+    return { level: 'category', dimId, categoryName, center: center.clone() };
   }
 
   _figureState(figureId, center, dimId) {
@@ -289,8 +293,8 @@ class App {
     this.currentFigureId = null;
     this.currentCenter.copy(center);
     this.orbitSystem.setRunning(false);
-    this.orbitSystem.setRingsFaded(true, dimId);
-    this.orbitSystem.setPlanetDimmed(dimId);
+    this.orbitSystem.setRingsFaded(true, dimId, true); // 宇宙层轨道淡出，L3 下当前维度锚点也调暗
+    this.orbitSystem.setPlanetDimmed(dimId, true);
     if (this._parentView) this._parentView.setFaded(true);
     this.panel.hide();
     this.btnBack.classList.remove('hidden');
@@ -357,8 +361,8 @@ class App {
     this.btnBack.classList.remove('hidden');
     // 上层轨道变淡：宇宙层轨道淡出（保留当前维度轨道作锚），非当前维度行星变暗；
     // 若由维度视图下钻而来，父级（分类层 L3）轨道与卫星一并淡出，作为背景不干扰图视图。
-    this.orbitSystem.setRingsFaded(true, this.currentDimId);
-    this.orbitSystem.setPlanetDimmed(this.currentDimId);
+    this.orbitSystem.setRingsFaded(true, this.currentDimId, true);
+    this.orbitSystem.setPlanetDimmed(this.currentDimId, true);
     if (this._parentView) this._parentView.setFaded(true);
     if (this.titleDisplay) this.titleDisplay.style.display = 'none';
     const basic = this.dm.getFigureBasic(figureId);

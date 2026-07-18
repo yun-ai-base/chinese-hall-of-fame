@@ -17,6 +17,7 @@ export class OrbitSystem {
     this.ringKeepDimId = null;   // 进入某维度时，保留该维度轨道环作为锚点（稍亮）
     this.dimActive = false;
     this.planetFadeExempt = null;
+    this.planetDeepDim = false; // L3/L4 深度视图下当前维度行星也调暗
 
     this._createSystem();
   }
@@ -61,11 +62,13 @@ export class OrbitSystem {
 
   // 下钻到某维度：宇宙层轨道整体淡出；非选中行星变暗（仅保留该维度行星明亮）
   // keepDimId 可选：进入某维度时，该维度的轨道环保持稍亮作为锚点，便于辨认当前所在。
-  setRingsFaded(faded, keepDimId = null) {
+  // deep=false（L2 维度视图）保留当前维度行星/轨道环明亮；deep=true（L3/L4 深度视图）进一步调暗锚点，避免与当前层中心球重叠。
+  setRingsFaded(faded, keepDimId = null, deep = false) {
     this.ringFadeTarget = faded ? 0.05 : this.ringBase;
     this.ringKeepDimId = keepDimId;
+    this.ringDeep = deep;
   }
-  setPlanetDimmed(dimId) { this.dimActive = !!dimId; this.planetFadeExempt = dimId || null; }
+  setPlanetDimmed(dimId, deep = false) { this.dimActive = !!dimId; this.planetFadeExempt = dimId || null; this.planetDeepDim = deep; }
 
   getPlanet(dimId) { return this.planets.find(p => p.dimId === dimId); }
 
@@ -84,12 +87,19 @@ export class OrbitSystem {
     for (const o of this.orbits) {
       const m = o.mesh.material;
       let target = this.ringFadeTarget;
-      if (this.ringKeepDimId && o.dimId === this.ringKeepDimId) target = 0.3;
+      if (this.ringKeepDimId && o.dimId === this.ringKeepDimId) target = this.ringDeep ? 0.15 : 0.3;
       m.opacity += (target - m.opacity) * k;
     }
     // 行星淡出始终更新；轨道公转仅在 running 时推进
     for (const planet of this.planets) {
-      const t = (!this.dimActive || planet.dimId === this.planetFadeExempt) ? 1.0 : 0.12;
+      let t;
+      if (!this.dimActive) {
+        t = 1.0;
+      } else if (planet.dimId === this.planetFadeExempt) {
+        t = this.planetDeepDim ? 0.35 : 1.0;
+      } else {
+        t = 0.12;
+      }
       planet.setFade(t);
       planet.update(time, this.running);
     }

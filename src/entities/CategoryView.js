@@ -28,6 +28,26 @@ export class CategoryView {
     this._build();
   }
 
+  // 静态方法：给定维度中心，计算某分类星球在 L2 分类层中的世界位置（与 _build 布局一致）
+  static computeCategoryWorldPos(dim, categoryName, dimCenter) {
+    const cats = (dim.categories || []).filter(c => c.count > 0);
+    const idx = cats.findIndex(c => c.name === categoryName);
+    if (idx < 0) return dimCenter.clone();
+    const n = cats.length || 1;
+    const perRing = Math.max(1, Math.ceil(n / 2));
+    const innerR = 6.5;
+    const ringGap = 3.0;
+    const ringIndex = Math.floor(idx / perRing);
+    const idxInRing = idx % perRing;
+    const R = innerR + ringIndex * ringGap;
+    const angle = (idxInRing / perRing) * Math.PI * 2 + ringIndex * 0.6;
+    return new THREE.Vector3(
+      dimCenter.x + R * Math.cos(angle),
+      dimCenter.y,
+      dimCenter.z + R * Math.sin(angle)
+    );
+  }
+
   _build() {
     const dim = this.meta;
     const colorHex = new THREE.Color(dim.color).getHex();
