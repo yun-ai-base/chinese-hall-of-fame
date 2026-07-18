@@ -1,0 +1,15 @@
+{
+  "name": "太阳系中华名人堂 · Celestial Mandate",
+  "short_name": "名人堂",
+  "description": "五千年中华文明 361 位杰出人物的三维交互星系",
+  "lang": "zh-CN",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#05060a",
+  "theme_color": "#0a0e1a",
+  "icons": [
+    { "src": "./favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
+  ]
+}
