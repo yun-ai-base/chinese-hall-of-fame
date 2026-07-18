@@ -1,0 +1,466 @@
+{
+  "version": "1.0",
+  "name": "中华文明",
+  "nameEn": "Celestial Mandate",
+  "totalFigures": 356,
+  "dimensions": [
+    {
+      "id": "mythology",
+      "name": "神话传说",
+      "nameEn": "Mythology",
+      "planetIndex": 1,
+      "color": "#2ECC71",
+      "planetRadius": 3.2,
+      "orbitRadius": 14,
+      "description": "创世始祖、上古神祇与神魔小说人物，构成华夏文明的原初想象。",
+      "categories": [
+        {
+          "name": "上古创世·始祖",
+          "count": 8,
+          "order": 0,
+          "start": null,
+          "end": null
+        },
+        {
+          "name": "山海经·上古神话",
+          "count": 10,
+          "order": 1,
+          "start": null,
+          "end": null
+        },
+        {
+          "name": "神魔小说",
+          "count": 7,
+          "order": 2,
+          "start": null,
+          "end": null
+        },
+        {
+          "name": "民间传说",
+          "count": 4,
+          "order": 3,
+          "start": null,
+          "end": null
+        }
+      ]
+    },
+    {
+      "id": "philosophy",
+      "name": "哲学思想·儒释道",
+      "nameEn": "Philosophy",
+      "planetIndex": 2,
+      "color": "#9B59B6",
+      "planetRadius": 3.5,
+      "orbitRadius": 17,
+      "description": "儒释道与诸子百家，奠定中国精神世界的底层逻辑。",
+      "categories": [
+        {
+          "name": "儒家",
+          "count": 23,
+          "order": 0,
+          "start": null,
+          "end": null
+        },
+        {
+          "name": "道家",
+          "count": 9,
+          "order": 1,
+          "start": null,
+          "end": null
+        },
+        {
+          "name": "佛家",
+          "count": 14,
+          "order": 2,
+          "start": null,
+          "end": null
+        },
+        {
+          "name": "诸子百家",
+          "count": 11,
+          "order": 3,
+          "start": null,
+          "end": null
+        }
+      ]
+    },
+    {
+      "id": "literature",
+      "name": "诗词文学",
+      "nameEn": "Literature",
+      "planetIndex": 3,
+      "color": "#3498DB",
+      "planetRadius": 3.5,
+      "orbitRadius": 20,
+      "description": "从楚辞汉赋到唐诗宋词明清小说，五千年文脉的华彩。",
+      "categories": [
+        {
+          "name": "先秦两汉",
+          "count": 12,
+          "order": 0,
+          "start": null,
+          "end": null
+        },
+        {
+          "name": "唐宋",
+          "count": 30,
+          "order": 1,
+          "start": null,
+          "end": null
+        },
+        {
+          "name": "元曲",
+          "count": 5,
+          "order": 2,
+          "start": null,
+          "end": null
+        },
+        {
+          "name": "明清",
+          "count": 12,
+          "order": 3,
+          "start": null,
+          "end": null
+        },
+        {
+          "name": "宋金",
+          "count": 3,
+          "order": 4,
+          "start": null,
+          "end": null
+        }
+      ]
+    },
+    {
+      "id": "military",
+      "name": "兵法武备",
+      "nameEn": "Military",
+      "planetIndex": 4,
+      "color": "#E74C3C",
+      "planetRadius": 3.0,
+      "orbitRadius": 23,
+      "description": "兵家圣贤与历代名将，金戈铁马里写就的攻守之道。",
+      "categories": [
+        {
+          "name": "兵家圣贤",
+          "count": 5,
+          "order": 0,
+          "start": null,
+          "end": null
+        },
+        {
+          "name": "先秦名将",
+          "count": 4,
+          "order": 1,
+          "start": null,
+          "end": null
+        },
+        {
+          "name": "秦汉名将",
+          "count": 9,
+          "order": 2,
+          "start": null,
+          "end": null
+        },
+        {
+          "name": "三国名将",
+          "count": 6,
+          "order": 3,
+          "start": null,
+          "end": null
+        },
+        {
+          "name": "魏晋南北朝",
+          "count": 2,
+          "order": 4,
+          "start": null,
+          "end": null
+        },
+        {
+          "name": "隋唐名将",
+          "count": 4,
+          "order": 5,
+          "start": null,
+          "end": null
+        },
+        {
+          "name": "两宋名将",
+          "count": 5,
+          "order": 6,
+          "start": null,
+          "end": null
+        },
+        {
+          "name": "明代名将",
+          "count": 5,
+          "order": 7,
+          "start": null,
+          "end": null
+        }
+      ]
+    },
+    {
+      "id": "technology",
+      "name": "科技工程",
+      "nameEn": "Technology",
+      "planetIndex": 5,
+      "color": "#BDC3C7",
+      "planetRadius": 3.2,
+      "orbitRadius": 26,
+      "description": "四大发明与天文历算、医学农学，文明存续的硬核支撑。",
+      "categories": [
+        {
+          "name": "四大发明",
+          "count": 4,
+          "order": 0,
+          "start": null,
+          "end": null
+        },
+        {
+          "name": "天文历算",
+          "count": 6,
+          "order": 1,
+          "start": null,
+          "end": null
+        },
+        {
+          "name": "数学",
+          "count": 1,
+          "order": 2,
+          "start": null,
+          "end": null
+        },
+        {
+          "name": "医学",
+          "count": 8,
+          "order": 3,
+          "start": null,
+          "end": null
+        },
+        {
+          "name": "农学百科",
+          "count": 5,
+          "order": 4,
+          "start": null,
+          "end": null
+        },
+        {
+          "name": "地理水利",
+          "count": 3,
+          "order": 5,
+          "start": null,
+          "end": null
+        },
+        {
+          "name": "建筑",
+          "count": 5,
+          "order": 6,
+          "start": null,
+          "end": null
+        },
+        {
+          "name": "工艺机械",
+          "count": 4,
+          "order": 7,
+          "start": null,
+          "end": null
+        },
+        {
+          "name": "交叉名家",
+          "count": 2,
+          "order": 8,
+          "start": null,
+          "end": null
+        }
+      ]
+    },
+    {
+      "id": "art",
+      "name": "书画艺术",
+      "nameEn": "Art",
+      "planetIndex": 6,
+      "color": "#E67E22",
+      "planetRadius": 3.3,
+      "orbitRadius": 29,
+      "description": "笔墨丹青与篆刻雕塑，以线条与色彩承载东方审美。",
+      "categories": [
+        {
+          "name": "书法",
+          "count": 11,
+          "order": 0,
+          "start": null,
+          "end": null
+        },
+        {
+          "name": "人物花鸟",
+          "count": 11,
+          "order": 1,
+          "start": null,
+          "end": null
+        },
+        {
+          "name": "山水画",
+          "count": 15,
+          "order": 2,
+          "start": null,
+          "end": null
+        },
+        {
+          "name": "明清文人",
+          "count": 7,
+          "order": 3,
+          "start": null,
+          "end": null
+        },
+        {
+          "name": "近现代",
+          "count": 8,
+          "order": 4,
+          "start": null,
+          "end": null
+        },
+        {
+          "name": "篆刻",
+          "count": 8,
+          "order": 5,
+          "start": null,
+          "end": null
+        }
+      ]
+    },
+    {
+      "id": "politics",
+      "name": "政治治世",
+      "nameEn": "Politics",
+      "planetIndex": 7,
+      "color": "#F1C40F",
+      "planetRadius": 3.3,
+      "orbitRadius": 32,
+      "description": "帝王将相与治世名臣，王朝兴衰中的制度与人事。",
+      "categories": [
+        {
+          "name": "开国帝王",
+          "count": 8,
+          "order": 0,
+          "start": null,
+          "end": null
+        },
+        {
+          "name": "盛世明君",
+          "count": 8,
+          "order": 1,
+          "start": null,
+          "end": null
+        },
+        {
+          "name": "争议与转折",
+          "count": 6,
+          "order": 2,
+          "start": null,
+          "end": null
+        },
+        {
+          "name": "治世名臣",
+          "count": 16,
+          "order": 3,
+          "start": null,
+          "end": null
+        },
+        {
+          "name": "变法与改革",
+          "count": 5,
+          "order": 4,
+          "start": null,
+          "end": null
+        },
+        {
+          "name": "外交谋略",
+          "count": 7,
+          "order": 5,
+          "start": null,
+          "end": null
+        }
+      ]
+    },
+    {
+      "id": "exploration",
+      "name": "探索交流",
+      "nameEn": "Exploration",
+      "planetIndex": 8,
+      "color": "#1ABC9C",
+      "planetRadius": 2.8,
+      "orbitRadius": 35,
+      "description": "凿空西域、远洋航海与入华先客，文明向外张望的目光。",
+      "categories": [
+        {
+          "name": "西域拓路",
+          "count": 3,
+          "order": 0,
+          "start": null,
+          "end": null
+        },
+        {
+          "name": "远洋航海",
+          "count": 3,
+          "order": 1,
+          "start": null,
+          "end": null
+        },
+        {
+          "name": "入华先客",
+          "count": 7,
+          "order": 2,
+          "start": null,
+          "end": null
+        },
+        {
+          "name": "出洋先驱",
+          "count": 3,
+          "order": 3,
+          "start": null,
+          "end": null
+        },
+        {
+          "name": "地理述异",
+          "count": 4,
+          "order": 4,
+          "start": null,
+          "end": null
+        }
+      ]
+    }
+  ],
+  "crossDimensions": {
+    "cao_cao": [
+      "politics"
+    ],
+    "su_shi": [
+      "art",
+      "politics"
+    ],
+    "zhuge_liang": [
+      "politics"
+    ],
+    "han_yu": [
+      "philosophy"
+    ],
+    "xu_guangqi": [
+      "philosophy"
+    ],
+    "liang_qichao": [
+      "philosophy"
+    ],
+    "tao_hongjing": [
+      "philosophy"
+    ],
+    "zhu_zaiyu": [
+      "art"
+    ],
+    "li_madou": [
+      "technology"
+    ],
+    "tang_ruowang": [
+      "technology"
+    ]
+  }
+}
