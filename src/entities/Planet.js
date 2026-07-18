@@ -1,5 +1,6 @@
 import * as THREE from 'three';
 import { createPlanetNameSprite } from '../ui/Label.js';
+import { makePlanetTexture } from '../utils/planetTexture.js';
 
 export class Planet {
   constructor({ name, color, radius, orbitRadius, orbitSpeed, initialAngle, dimId }) {
@@ -17,14 +18,15 @@ export class Planet {
   }
 
   create(scene) {
-    const texture = this._createTexture();
+    const tex = this._createTexture();
     const geometry = new THREE.SphereGeometry(this.radius, 32, 32);
     const material = new THREE.MeshStandardMaterial({
-      map: texture,
-      roughness: 0.5,
-      metalness: 0.15,
+      map: tex.map,
+      emissiveMap: tex.emissiveMap,
       emissive: new THREE.Color(this.color),
-      emissiveIntensity: 0.32,  // 仅作本色基底；明暗渐变交给太阳点光源，保留球体立体感
+      emissiveIntensity: 0.28,  // 本色基底（配暗化 emissiveMap，背光面保留地形暗纹而不发亮）
+      roughness: 0.55,
+      metalness: 0.08,
       transparent: true,   // 供淡出（下钻时非选中行星变暗）
       opacity: 1.0,
     });
@@ -54,41 +56,20 @@ export class Planet {
   }
 
   _createTexture() {
-    const canvas = document.createElement('canvas');
-    canvas.width = 128;
-    canvas.height = 64;
-    const ctx = canvas.getContext('2d');
+    const { map, emissiveMap, repeat } = makePlanetTexture(this.color, { seed: this._texSeed() });
+    const m = new THREE.CanvasTexture(map);
+    m.wrapS = m.wrapT = THREE.RepeatWrapping;
+    m.repeat.set(repeat[0], repeat[1]);
+    const e = new THREE.CanvasTexture(emissiveMap);
+    e.wrapS = e.wrapT = THREE.RepeatWrapping;
+    e.repeat.set(repeat[0], repeat[1]);
+    return { map: m, emissiveMap: e };
+  }
 
-    const color = new THREE.Color(this.color);
-    const r = Math.floor(color.r * 255);
-    const g = Math.floor(color.g * 255);
-    const b = Math.floor(color.b * 255);
-
-    // 不透明纯色底：保证颜色浓度，避免半透明斑点透出深空背景而发灰
-    ctx.fillStyle = `rgb(${r},${g},${b})`;
-    ctx.fillRect(0, 0, 128, 64);
-
-    // 同色系细微明暗斑块：仅做表面质感，弱化处理避免干扰球面的统一明暗体积感
-    for (let i = 0; i < 40; i++) {
-      const x = Math.random() * 128;
-      const y = Math.random() * 64;
-      const rad = 5 + Math.random() * 20;
-      const m = (Math.random() > 0.5 ? 22 : -18);
-      const rr = Math.max(0, Math.min(255, r + m));
-      const gg = Math.max(0, Math.min(255, g + m));
-      const bb = Math.max(0, Math.min(255, b + m));
-      const grad = ctx.createRadialGradient(x, y, 0, x, y, rad);
-      grad.addColorStop(0, `rgba(${rr},${gg},${bb},0.35)`);
-      grad.addColorStop(1, `rgba(${rr},${gg},${bb},0)`);
-      ctx.fillStyle = grad;
-      ctx.fillRect(x - rad, y - rad, rad * 2, rad * 2);
-    }
-
-    const texture = new THREE.CanvasTexture(canvas);
-    texture.wrapS = THREE.RepeatWrapping;
-    texture.wrapT = THREE.RepeatWrapping;
-    texture.repeat.set(2, 1);
-    return texture;
+  _texSeed() {
+    let s = 0;
+    for (let i = 0; i < this.name.length; i++) s = (s * 31 + this.name.charCodeAt(i)) | 0;
+    return (s >>> 0) || 1;
   }
 
   _createGlow() {

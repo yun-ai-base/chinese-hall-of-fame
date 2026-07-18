@@ -6,7 +6,8 @@ import { CameraController } from './core/CameraController.js';
 import { Raycaster } from './core/Raycaster.js';
 import { StateMachine } from './data/StateMachine.js';
 import { DataManager } from './data/DataManager.js';
-import { DimensionView } from './entities/DimensionView.js';
+import { CategoryView } from './entities/CategoryView.js';
+import { CategoryFigureView } from './entities/CategoryFigureView.js';
 import { FigureView } from './entities/FigureView.js';
 import { InfoPanel } from './ui/InfoPanel.js';
 import { Search } from './ui/Search.js';
@@ -79,6 +80,7 @@ class App {
       onJump: (level, payload) => {
         if (level === 'universe') this.navigateTo(this._universeState());
         else if (level === 'dimension') this.navigateTo(this._dimensionState(payload.dimId));
+        else if (level === 'category') this.navigateTo(this._categoryState(payload.dimId, payload.categoryName));
       },
     });
     this.btnBack = document.getElementById('btn-back');
@@ -125,6 +127,11 @@ class App {
     const c = center || this.orbitSystem.getPlanetWorldPos(dimId);
     return { level: 'dimension', dimId, center: c.clone() };
   }
+  _categoryState(dimId, categoryName, center) {
+    const c = center || this.orbitSystem.getPlanetWorldPos(dimId);
+    return { level: 'category', dimId, categoryName, center: c.clone() };
+  }
+
   _figureState(figureId, center, dimId) {
     const basic = this.dm.getFigureBasic(figureId);
     const dId = dimId || (basic ? basic.dimId : null);
@@ -157,6 +164,7 @@ class App {
   _apply(state) {
     if (state.level === 'universe') this._applyUniverse();
     else if (state.level === 'dimension') this._applyDimension(state.dimId, state.center);
+    else if (state.level === 'category') this._applyCategory(state.dimId, state.categoryName, state.center);
     else if (state.level === 'figure') this._applyFigure(state.figureId, state.center);
   }
 
@@ -201,7 +209,7 @@ class App {
       this.btnBack.classList.remove('hidden');
       if (this.titleDisplay) this.titleDisplay.style.display = 'none';
       const dim = this.dm.getDim(dimId);
-      this._updateTitle(dim.name, '点击名人卫星深入探索');
+      this._updateTitle(dim.name, '点击分类星球下钻探索');
       this.cameraCtrl.focusOn(center.clone());
       this._refreshClickables();
       this.breadcrumb.render([
@@ -215,11 +223,11 @@ class App {
     // 否则：清掉旧上层（若有）与旧活动视图，重建该维度
     this._disposeParent();
     this._evictActiveToCache();
-    const sig = `dim:${dimId}`;
+    const sig = `cat:${dimId}`;
     let view = this.viewCache.get(sig);
     let isNew = false;
     if (!view) {
-      view = new DimensionView(this.dm, dimId, center);
+      view = new CategoryView(this.dm, dimId, center);
       isNew = true;
     } else {
       this.viewCache.delete(sig);
@@ -238,7 +246,7 @@ class App {
     this.btnBack.classList.remove('hidden');
     if (this.titleDisplay) this.titleDisplay.style.display = 'none';
     const dim = this.dm.getDim(dimId);
-    this._updateTitle(dim.name, '点击名人卫星深入探索');
+    this._updateTitle(dim.name, '点击分类星球下钻探索');
     this.cameraCtrl.focusOn(center.clone());
     this._refreshClickables();
     this.breadcrumb.render([
@@ -246,6 +254,52 @@ class App {
       { label: dim.name, level: 'dimension', payload: { dimId } },
     ]);
     this._setHash('d', dimId);
+    if (!isNew) this._cacheTouch(sig);
+  }
+
+  _applyCategory(dimId, categoryName, center) {
+    // 进入分类名人层（L4）：当前 L3 分类视图作为上层淡出背景保留
+    if (this.activeView && this.activeView instanceof CategoryView && this.activeView.dimId === dimId) {
+      this._parentView = this.activeView;
+      this.activeView = null;
+      this._parentView.setFaded(true);
+    } else {
+      this._evictActiveToCache();
+    }
+    const sig = `catfig:${dimId}:${categoryName}`;
+    let view = this.viewCache.get(sig);
+    let isNew = false;
+    if (!view) {
+      view = new CategoryFigureView(this.dm, dimId, categoryName, center);
+      isNew = true;
+    } else {
+      this.viewCache.delete(sig);
+      view.setCenter(center);
+    }
+    this.scene.scene.add(view.group);
+    this.activeView = view;
+    this.viewLevel = 'category';
+    this.currentDimId = dimId;
+    this.currentCategory = categoryName;
+    this.currentFigureId = null;
+    this.currentCenter.copy(center);
+    this.orbitSystem.setRunning(false);
+    this.orbitSystem.setRingsFaded(true, dimId);
+    this.orbitSystem.setPlanetDimmed(dimId);
+    if (this._parentView) this._parentView.setFaded(true);
+    this.panel.hide();
+    this.btnBack.classList.remove('hidden');
+    if (this.titleDisplay) this.titleDisplay.style.display = 'none';
+    const dim = this.dm.getDim(dimId);
+    this._updateTitle(categoryName, '点击名人探索生平');
+    this.cameraCtrl.focusOn(center.clone());
+    this._refreshClickables();
+    this.breadcrumb.render([
+      { label: '中华文明', level: 'universe' },
+      { label: dim.name, level: 'dimension', payload: { dimId } },
+      { label: categoryName, level: 'category', payload: { dimId, categoryName } },
+    ]);
+    this._setHash('c', `${dimId}/${encodeURIComponent(categoryName)}`);
     if (!isNew) this._cacheTouch(sig);
   }
 
@@ -372,14 +426,19 @@ class App {
       this.navigateTo(this._dimensionState(ud.dimId));
       return;
     }
-    if (ud.kind === 'category') {
-      if (this.activeView && this.activeView.toggleCategory) {
-        this.activeView.toggleCategory(ud.categoryIndex);
-        this._refreshClickables();
-      }
+    if (ud.kind === 'categoryPlanet') {
+      const c = ud.planet.getWorldPosition(new THREE.Vector3());
+      this.navigateTo(this._categoryState(ud.dimId, ud.categoryName, c));
       return;
     }
     if (ud.kind === 'figure') {
+      // L4 分类名人层：点击名人弹详情面板 + 聚焦（严格四层，不进关系网 3D）
+      if (this.viewLevel === 'category') {
+        const c = ud.moon.getWorldPosition(new THREE.Vector3());
+        this.cameraCtrl.focusOn(c.clone());
+        this.panel.showFigure(ud.figureId);
+        return;
+      }
       const c = ud.moon.getWorldPosition(new THREE.Vector3());
       this.navigateTo(this._figureState(ud.figureId, c));
       return;
@@ -459,7 +518,10 @@ class App {
   }
 
   _setHash(level, id) {
-    const h = level === 'u' ? '#/u' : level === 'd' ? `#/d/${id}` : `#/f/${id}`;
+    const h = level === 'u' ? '#/u'
+      : level === 'd' ? `#/d/${id}`
+      : level === 'c' ? `#/c/${id}`
+      : `#/f/${id}`;
     this._suppressHash = true;
     if (location.hash !== h) location.hash = h;
     else this._suppressHash = false;
@@ -471,6 +533,10 @@ class App {
     if (!parts.length) return this._universeState();
     if (parts[0] === 'u') return this._universeState();
     if (parts[0] === 'd' && parts[1]) return this._dimensionState(parts[1]);
+    if (parts[0] === 'c' && parts[1]) {
+      const cat = decodeURIComponent(parts[2] || '');
+      return this._categoryState(parts[1], cat);
+    }
     if (parts[0] === 'f' && parts[1]) {
       const b = this.dm.getFigureBasic(parts[1]);
       if (b) return this._figureState(parts[1], null, b.dimId);
