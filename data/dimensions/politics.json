@@ -4,849 +4,1379 @@
     "name": "秦始皇",
     "pinyin": "Qin Shi Huang",
     "dynasty": "秦",
-    "era": { "start": -259, "end": -210, "approximate": false },
+    "era": {
+      "start": -259,
+      "end": -210,
+      "approximate": false
+    },
     "eraLabel": "战国末期-秦",
     "gender": "男",
     "honor": "千古一帝",
     "dimension": "politics",
     "dimensionCategory": "开国帝王",
-    "tags": ["皇帝", "统一", "改革家"],
+    "tags": [
+      "皇帝",
+      "统一",
+      "改革家"
+    ],
     "summary": "中国历史上第一位皇帝，统一六国，建立中央集权制度，推行书同文、车同轨。",
     "birthplace": "邯郸（今河北邯郸）",
     "deathplace": "沙丘（今河北邢台）",
-    "locations": ["陕西咸阳", "河北"]
+    "locations": [
+      "陕西咸阳",
+      "河北"
+    ]
   },
   {
     "id": "liu_bang",
     "name": "汉高祖",
     "pinyin": "Liu Bang",
     "dynasty": "汉",
-    "era": { "start": -256, "end": -195, "approximate": true },
+    "era": {
+      "start": -256,
+      "end": -195,
+      "approximate": true
+    },
     "eraLabel": "秦末-汉",
     "gender": "男",
     "honor": "布衣天子",
     "dimension": "politics",
     "dimensionCategory": "开国帝王",
-    "tags": ["开国皇帝", "布衣", "汉朝"],
+    "tags": [
+      "开国皇帝",
+      "布衣",
+      "汉朝"
+    ],
     "summary": "西汉开国皇帝，以布衣之身提三尺剑取天下，建立汉朝，奠定汉族文化基础。",
     "birthplace": "沛县（今江苏徐州）",
     "deathplace": "长安（今陕西西安）",
-    "locations": ["陕西西安", "江苏徐州"]
+    "locations": [
+      "陕西西安",
+      "江苏徐州"
+    ]
   },
   {
     "id": "liu_xiu",
     "name": "光武帝",
     "pinyin": "Liu Xiu",
     "dynasty": "汉",
-    "era": { "start": -5, "end": 57, "approximate": false },
+    "era": {
+      "start": -5,
+      "end": 57,
+      "approximate": false
+    },
     "eraLabel": "西汉末-东汉",
     "gender": "男",
     "honor": "光武中兴",
     "dimension": "politics",
     "dimensionCategory": "开国帝王",
-    "tags": ["开国皇帝", "中兴", "东汉"],
+    "tags": [
+      "开国皇帝",
+      "中兴",
+      "东汉"
+    ],
     "summary": "东汉开国皇帝，推翻王莽新朝，恢复汉室，开创光武中兴。",
     "birthplace": "蔡阳（今湖北枣阳）",
     "deathplace": "洛阳（今河南洛阳）",
-    "locations": ["河南洛阳", "湖北"]
+    "locations": [
+      "河南洛阳",
+      "湖北"
+    ]
   },
   {
     "id": "yang_jian",
     "name": "隋文帝",
     "pinyin": "Yang Jian",
     "dynasty": "隋",
-    "era": { "start": 541, "end": 604, "approximate": false },
+    "era": {
+      "start": 541,
+      "end": 604,
+      "approximate": false
+    },
     "eraLabel": "南北朝-隋",
     "gender": "男",
     "honor": "开皇之治",
     "dimension": "politics",
     "dimensionCategory": "开国帝王",
-    "tags": ["开国皇帝", "统一", "制度改革"],
+    "tags": [
+      "开国皇帝",
+      "统一",
+      "制度改革"
+    ],
     "summary": "隋朝开国皇帝，统一南北朝，开创三省六部制和科举制雏形。",
     "birthplace": "冯翊（今陕西大荔）",
     "deathplace": "大兴（今陕西西安）",
-    "locations": ["陕西西安"]
+    "locations": [
+      "陕西西安"
+    ]
   },
   {
     "id": "li_shi_min",
     "name": "唐太宗",
     "pinyin": "Li Shimin",
     "dynasty": "唐",
-    "era": { "start": 598, "end": 649, "approximate": false },
+    "era": {
+      "start": 598,
+      "end": 649,
+      "approximate": false
+    },
     "eraLabel": "隋末-唐",
     "gender": "男",
     "honor": "贞观之治",
     "dimension": "politics",
     "dimensionCategory": "开国帝王",
-    "tags": ["开国皇帝", "贞观之治", "明君"],
+    "tags": [
+      "开国皇帝",
+      "贞观之治",
+      "明君"
+    ],
     "summary": "唐朝第二位皇帝，发动玄武门之变即位，开创贞观之治，奠定大唐盛世。",
     "birthplace": "武功（今陕西武功）",
     "deathplace": "终南山翠微宫（今陕西西安）",
-    "locations": ["陕西西安"]
+    "locations": [
+      "陕西西安"
+    ]
   },
   {
     "id": "zhao_kuangyin",
     "name": "宋太祖",
     "pinyin": "Zhao Kuangyin",
     "dynasty": "宋",
-    "era": { "start": 927, "end": 976, "approximate": false },
+    "era": {
+      "start": 927,
+      "end": 976,
+      "approximate": false
+    },
     "eraLabel": "五代末-宋",
     "gender": "男",
     "honor": "建隆之治",
     "dimension": "politics",
     "dimensionCategory": "开国帝王",
-    "tags": ["开国皇帝", "杯酒释兵权", "重文轻武"],
+    "tags": [
+      "开国皇帝",
+      "杯酒释兵权",
+      "重文轻武"
+    ],
     "summary": "宋朝开国皇帝，陈桥兵变黄袍加身，杯酒释兵权，推行重文轻武国策。",
     "birthplace": "洛阳（今河南洛阳）",
     "deathplace": "开封（今河南开封）",
-    "locations": ["河南开封", "河南洛阳"]
+    "locations": [
+      "河南开封",
+      "河南洛阳"
+    ]
   },
   {
     "id": "zhu_yuanzhang",
     "name": "明太祖",
     "pinyin": "Zhu Yuanzhang",
     "dynasty": "明",
-    "era": { "start": 1328, "end": 1398, "approximate": false },
+    "era": {
+      "start": 1328,
+      "end": 1398,
+      "approximate": false
+    },
     "eraLabel": "元末-明",
     "gender": "男",
     "honor": "洪武之治",
     "dimension": "politics",
     "dimensionCategory": "开国帝王",
-    "tags": ["开国皇帝", "布衣", "洪武"],
+    "tags": [
+      "开国皇帝",
+      "布衣",
+      "洪武"
+    ],
     "summary": "明朝开国皇帝，出身贫农，驱逐蒙元，恢复华夏正统，整顿吏治。",
     "birthplace": "濠州（今安徽凤阳）",
     "deathplace": "南京（今江苏南京）",
-    "locations": ["江苏南京", "安徽"]
+    "locations": [
+      "江苏南京",
+      "安徽"
+    ]
   },
   {
     "id": "kang_xi",
     "name": "康熙帝",
     "pinyin": "Kangxi",
     "dynasty": "清",
-    "era": { "start": 1654, "end": 1722, "approximate": false },
+    "era": {
+      "start": 1654,
+      "end": 1722,
+      "approximate": false
+    },
     "eraLabel": "清",
     "gender": "男",
     "honor": "康熙盛世",
     "dimension": "politics",
     "dimensionCategory": "开国帝王",
-    "tags": ["皇帝", "盛世", "统一"],
+    "tags": [
+      "皇帝",
+      "盛世",
+      "统一"
+    ],
     "summary": "清朝第四位皇帝，擒鳌拜、平三藩、收台湾、征噶尔丹，开创康乾盛世。",
     "birthplace": "北京（今北京）",
     "deathplace": "畅春园（今北京）",
-    "locations": ["北京"]
+    "locations": [
+      "北京"
+    ]
   },
   {
     "id": "han_wudi",
     "name": "汉武帝",
     "pinyin": "Han Wudi",
     "dynasty": "汉",
-    "era": { "start": -156, "end": -87, "approximate": false },
+    "era": {
+      "start": -156,
+      "end": -87,
+      "approximate": false
+    },
     "eraLabel": "西汉",
     "gender": "男",
     "honor": "汉武盛世",
     "dimension": "politics",
     "dimensionCategory": "盛世明君",
-    "tags": ["皇帝", "扩张", "独尊儒术"],
+    "tags": [
+      "皇帝",
+      "扩张",
+      "独尊儒术"
+    ],
     "summary": "西汉第七位皇帝，北击匈奴、凿空西域、独尊儒术，奠定汉朝鼎盛局面。",
     "birthplace": "长安（今陕西西安）",
     "deathplace": "长安（今陕西西安）",
-    "locations": ["陕西西安"]
+    "locations": [
+      "陕西西安"
+    ]
   },
   {
     "id": "li_longji",
     "name": "唐玄宗",
     "pinyin": "Li Longji",
     "dynasty": "唐",
-    "era": { "start": 685, "end": 762, "approximate": false },
+    "era": {
+      "start": 685,
+      "end": 762,
+      "approximate": false
+    },
     "eraLabel": "唐",
     "gender": "男",
     "honor": "开元盛世",
     "dimension": "politics",
     "dimensionCategory": "盛世明君",
-    "tags": ["皇帝", "开元盛世", "安史之乱"],
+    "tags": [
+      "皇帝",
+      "开元盛世",
+      "安史之乱"
+    ],
     "summary": "唐朝第九位皇帝，前期开创开元盛世，后期因安史之乱导致唐朝由盛转衰。",
     "birthplace": "洛阳（今河南洛阳）",
     "deathplace": "长安（今陕西西安）",
-    "locations": ["陕西西安", "河南洛阳"]
+    "locations": [
+      "陕西西安",
+      "河南洛阳"
+    ]
   },
   {
     "id": "zhu_di",
     "name": "明成祖",
     "pinyin": "Zhu Di",
     "dynasty": "明",
-    "era": { "start": 1360, "end": 1424, "approximate": false },
+    "era": {
+      "start": 1360,
+      "end": 1424,
+      "approximate": false
+    },
     "eraLabel": "明",
     "gender": "男",
     "honor": "永乐盛世",
     "dimension": "politics",
     "dimensionCategory": "盛世明君",
-    "tags": ["皇帝", "迁都", "永乐大典"],
+    "tags": [
+      "皇帝",
+      "迁都",
+      "永乐大典"
+    ],
     "summary": "明朝第三位皇帝，发动靖难之役夺位，迁都北京，派郑和下西洋，修永乐大典。",
     "birthplace": "应天（今江苏南京）",
     "deathplace": "榆木川（今内蒙古）",
-    "locations": ["北京", "江苏南京"]
+    "locations": [
+      "北京",
+      "江苏南京"
+    ]
   },
   {
     "id": "qian_long",
     "name": "乾隆帝",
     "pinyin": "Qianlong",
     "dynasty": "清",
-    "era": { "start": 1711, "end": 1799, "approximate": false },
+    "era": {
+      "start": 1711,
+      "end": 1799,
+      "approximate": false
+    },
     "eraLabel": "清",
     "gender": "男",
     "honor": "乾隆盛世",
     "dimension": "politics",
     "dimensionCategory": "盛世明君",
-    "tags": ["皇帝", "盛世", "十全武功"],
+    "tags": [
+      "皇帝",
+      "盛世",
+      "十全武功"
+    ],
     "summary": "清朝第六位皇帝，在位六十年，将康乾盛世推向顶峰，自称十全老人。",
     "birthplace": "北京（今北京）",
     "deathplace": "北京（今北京）",
-    "locations": ["北京"]
+    "locations": [
+      "北京"
+    ]
   },
   {
     "id": "han_wendi",
     "name": "汉文帝",
     "pinyin": "Han Wendi",
     "dynasty": "汉",
-    "era": { "start": -202, "end": -157, "approximate": false },
+    "era": {
+      "start": -202,
+      "end": -157,
+      "approximate": false
+    },
     "eraLabel": "西汉",
     "gender": "男",
     "honor": "文景之治",
     "dimension": "politics",
     "dimensionCategory": "盛世明君",
-    "tags": ["皇帝", "仁政", "文景之治"],
+    "tags": [
+      "皇帝",
+      "仁政",
+      "文景之治"
+    ],
     "summary": "西汉第五位皇帝，轻徭薄赋、与民休息，开创文景之治，以仁德著称。",
     "birthplace": "长安（今陕西西安）",
     "deathplace": "长安（今陕西西安）",
-    "locations": ["陕西西安"]
+    "locations": [
+      "陕西西安"
+    ]
   },
   {
     "id": "han_xuandi",
     "name": "汉宣帝",
     "pinyin": "Han Xuandi",
     "dynasty": "汉",
-    "era": { "start": -91, "end": -48, "approximate": false },
+    "era": {
+      "start": -91,
+      "end": -48,
+      "approximate": false
+    },
     "eraLabel": "西汉",
     "gender": "男",
     "honor": "孝宣中兴",
     "dimension": "politics",
     "dimensionCategory": "盛世明君",
-    "tags": ["皇帝", "中兴", "西汉"],
+    "tags": [
+      "皇帝",
+      "中兴",
+      "西汉"
+    ],
     "summary": "西汉第十位皇帝，出身民间，整顿吏治，设立西域都护，实现孝宣中兴。",
     "birthplace": "长安（今陕西西安）",
     "deathplace": "长安（今陕西西安）",
-    "locations": ["陕西西安"]
+    "locations": [
+      "陕西西安"
+    ]
   },
   {
     "id": "han_jingdi",
     "name": "汉景帝",
     "pinyin": "Han Jingdi",
     "dynasty": "汉",
-    "era": { "start": -188, "end": -141, "approximate": false },
+    "era": {
+      "start": -188,
+      "end": -141,
+      "approximate": false
+    },
     "eraLabel": "西汉",
     "gender": "男",
     "honor": "文景之治",
     "dimension": "politics",
     "dimensionCategory": "盛世明君",
-    "tags": ["皇帝", "文景之治", "削藩"],
+    "tags": [
+      "皇帝",
+      "文景之治",
+      "削藩"
+    ],
     "summary": "西汉第六位皇帝，继承文帝政策，平定七国之乱，与文帝共创文景之治。",
     "birthplace": "长安（今陕西西安）",
     "deathplace": "长安（今陕西西安）",
-    "locations": ["陕西西安"]
+    "locations": [
+      "陕西西安"
+    ]
   },
   {
     "id": "song_renzong",
     "name": "宋仁宗",
     "pinyin": "Song Renzong",
     "dynasty": "宋",
-    "era": { "start": 1010, "end": 1063, "approximate": false },
+    "era": {
+      "start": 1010,
+      "end": 1063,
+      "approximate": false
+    },
     "eraLabel": "北宋",
     "gender": "男",
     "honor": "仁宗盛治",
     "dimension": "politics",
     "dimensionCategory": "盛世明君",
-    "tags": ["皇帝", "仁政", "北宋"],
+    "tags": [
+      "皇帝",
+      "仁政",
+      "北宋"
+    ],
     "summary": "北宋第四位皇帝，以仁厚著称，在位期间名臣辈出，经济文化高度繁荣。",
     "birthplace": "开封（今河南开封）",
     "deathplace": "开封（今河南开封）",
-    "locations": ["河南开封"]
+    "locations": [
+      "河南开封"
+    ]
   },
   {
     "id": "sui_yangdi",
     "name": "隋炀帝",
     "pinyin": "Sui Yangdi",
     "dynasty": "隋",
-    "era": { "start": 569, "end": 618, "approximate": false },
+    "era": {
+      "start": 569,
+      "end": 618,
+      "approximate": false
+    },
     "eraLabel": "隋",
     "gender": "男",
     "honor": "大运河开创者",
     "dimension": "politics",
     "dimensionCategory": "争议与转折",
-    "tags": ["皇帝", "大运河", "暴君", "改革"],
+    "tags": [
+      "皇帝",
+      "大运河",
+      "暴君",
+      "改革"
+    ],
     "summary": "隋朝第二位皇帝，开凿大运河、创科举制，但因劳民伤财导致隋朝灭亡。",
     "birthplace": "大兴（今陕西西安）",
     "deathplace": "江都（今江苏扬州）",
-    "locations": ["陕西西安", "江苏扬州"]
+    "locations": [
+      "陕西西安",
+      "江苏扬州"
+    ]
   },
   {
     "id": "chong_zhen",
     "name": "崇祯帝",
     "pinyin": "Chong Zhen",
     "dynasty": "明",
-    "era": { "start": 1611, "end": 1644, "approximate": false },
+    "era": {
+      "start": 1611,
+      "end": 1644,
+      "approximate": false
+    },
     "eraLabel": "明末",
     "gender": "男",
     "honor": "勤政末路",
     "dimension": "politics",
     "dimensionCategory": "争议与转折",
-    "tags": ["皇帝", "亡国", "勤政"],
+    "tags": [
+      "皇帝",
+      "亡国",
+      "勤政"
+    ],
     "summary": "明朝末代皇帝，勤政节俭却无力回天，李自成破北京后自缢煤山。",
     "birthplace": "北京（今北京）",
     "deathplace": "北京（今北京）",
-    "locations": ["北京"]
+    "locations": [
+      "北京"
+    ]
   },
   {
     "id": "wu_zetian",
     "name": "武则天",
     "pinyin": "Wu Zetian",
     "dynasty": "唐",
-    "era": { "start": 624, "end": 705, "approximate": false },
+    "era": {
+      "start": 624,
+      "end": 705,
+      "approximate": false
+    },
     "eraLabel": "唐",
     "gender": "女",
     "honor": "一代女皇",
     "dimension": "politics",
     "dimensionCategory": "争议与转折",
-    "tags": ["女皇帝", "武周", "改革"],
+    "tags": [
+      "女皇帝",
+      "武周",
+      "改革"
+    ],
     "summary": "中国历史上唯一正统女皇帝，改唐为周，大力发展科举，整顿吏治。",
     "birthplace": "利州（今四川广元）",
     "deathplace": "洛阳（今河南洛阳）",
-    "locations": ["河南洛阳", "陕西西安"]
+    "locations": [
+      "河南洛阳",
+      "陕西西安"
+    ]
   },
   {
     "id": "guang_xu",
     "name": "光绪帝",
     "pinyin": "Guang Xu",
     "dynasty": "清",
-    "era": { "start": 1871, "end": 1908, "approximate": false },
+    "era": {
+      "start": 1871,
+      "end": 1908,
+      "approximate": false
+    },
     "eraLabel": "清末",
     "gender": "男",
     "honor": "维新皇帝",
     "dimension": "politics",
     "dimensionCategory": "争议与转折",
-    "tags": ["皇帝", "维新", "戊戌变法"],
+    "tags": [
+      "皇帝",
+      "维新",
+      "戊戌变法"
+    ],
     "summary": "清朝第十一位皇帝，支持戊戌变法推行君主立宪，遭慈禧太后软禁至死。",
     "birthplace": "北京（今北京）",
     "deathplace": "北京（今北京）",
-    "locations": ["北京"]
+    "locations": [
+      "北京"
+    ]
   },
   {
     "id": "ci_xi",
     "name": "慈禧太后",
     "pinyin": "Ci Xi",
     "dynasty": "清",
-    "era": { "start": 1835, "end": 1908, "approximate": false },
+    "era": {
+      "start": 1835,
+      "end": 1908,
+      "approximate": false
+    },
     "eraLabel": "清末",
     "gender": "女",
     "honor": "垂帘听政",
     "dimension": "politics",
     "dimensionCategory": "争议与转折",
-    "tags": ["太后", "垂帘听政", "清末"],
+    "tags": [
+      "太后",
+      "垂帘听政",
+      "清末"
+    ],
     "summary": "清朝晚期实际掌权者，同治、光绪两朝垂帘听政，统治中国近半个世纪。",
     "birthplace": "北京（今北京）",
     "deathplace": "北京（今北京）",
-    "locations": ["北京"]
+    "locations": [
+      "北京"
+    ]
   },
   {
     "id": "huo_guang",
     "name": "霍光",
     "pinyin": "Huo Guang",
     "dynasty": "汉",
-    "era": { "start": null, "end": -68, "approximate": true },
+    "era": {
+      "start": null,
+      "end": -68,
+      "approximate": true
+    },
     "eraLabel": "西汉",
     "gender": "男",
     "honor": "麒麟阁首功",
     "dimension": "politics",
     "dimensionCategory": "争议与转折",
-    "tags": ["权臣", "辅政", "西汉"],
+    "tags": [
+      "权臣",
+      "辅政",
+      "西汉"
+    ],
     "summary": "西汉权臣，历经武帝、昭帝、宣帝三朝，执政二十年开创中兴局面。",
     "birthplace": "平阳（今山西临汾）",
     "deathplace": "长安（今陕西西安）",
-    "locations": ["陕西西安", "山西"]
+    "locations": [
+      "陕西西安",
+      "山西"
+    ]
   },
   {
     "id": "guan_zhong",
     "name": "管仲",
     "pinyin": "Guan Zhong",
     "dynasty": "春秋",
-    "era": { "start": null, "end": -645, "approximate": true },
+    "era": {
+      "start": null,
+      "end": -645,
+      "approximate": true
+    },
     "eraLabel": "春秋",
     "gender": "男",
     "honor": "华夏第一相",
     "dimension": "politics",
     "dimensionCategory": "治世名臣",
-    "tags": ["宰相", "改革家", "经济"],
+    "tags": [
+      "宰相",
+      "改革家",
+      "经济"
+    ],
     "summary": "春秋时期齐国政治家，辅佐齐桓公成为春秋首霸，提出尊王攘夷口号。",
     "birthplace": "颍上（今安徽颍上）",
     "deathplace": null,
-    "locations": ["山东"]
+    "locations": [
+      "山东"
+    ]
   },
   {
     "id": "shang_yang",
     "name": "商鞅",
     "pinyin": "Shang Yang",
     "dynasty": "战国",
-    "era": { "start": -390, "end": -338, "approximate": false },
+    "era": {
+      "start": -390,
+      "end": -338,
+      "approximate": false
+    },
     "eraLabel": "战国",
     "gender": "男",
     "honor": "变法先驱",
     "dimension": "politics",
-    "dimensionCategory": "治世名臣",
-    "tags": ["改革家", "法家", "变法"],
+    "dimensionCategory": "变法与改革",
+    "tags": [
+      "改革家",
+      "法家",
+      "变法"
+    ],
     "summary": "战国时期法家代表人物，在秦国推行变法，为秦统一六国奠定基础。",
     "birthplace": "卫（今河南安阳）",
     "deathplace": "咸阳（今陕西西安）",
-    "locations": ["陕西", "河南"]
+    "locations": [
+      "陕西",
+      "河南"
+    ]
   },
   {
     "id": "wei_zheng",
     "name": "魏征",
     "pinyin": "Wei Zheng",
     "dynasty": "唐",
-    "era": { "start": 580, "end": 643, "approximate": false },
+    "era": {
+      "start": 580,
+      "end": 643,
+      "approximate": false
+    },
     "eraLabel": "隋-唐",
     "gender": "男",
     "honor": "一代谏臣",
     "dimension": "politics",
     "dimensionCategory": "治世名臣",
-    "tags": ["谏臣", "宰相", "贞观之治"],
+    "tags": [
+      "谏臣",
+      "宰相",
+      "贞观之治"
+    ],
     "summary": "唐太宗时期著名谏臣，以直言敢谏闻名，协助太宗开创贞观之治。",
     "birthplace": "钜鹿（今河北邢台）",
     "deathplace": "长安（今陕西西安）",
-    "locations": ["陕西西安", "河北"]
+    "locations": [
+      "陕西西安",
+      "河北"
+    ]
   },
   {
     "id": "wang_anshi",
     "name": "王安石",
     "pinyin": "Wang Anshi",
     "dynasty": "宋",
-    "era": { "start": 1021, "end": 1086, "approximate": false },
+    "era": {
+      "start": 1021,
+      "end": 1086,
+      "approximate": false
+    },
     "eraLabel": "北宋",
     "gender": "男",
     "honor": "熙宁变法",
     "dimension": "politics",
-    "dimensionCategory": "治世名臣",
-    "tags": ["改革家", "变法", "文学家"],
+    "dimensionCategory": "变法与改革",
+    "tags": [
+      "改革家",
+      "变法",
+      "文学家"
+    ],
     "summary": "北宋著名改革家、文学家，主持熙宁变法，以富国强兵为宗旨。",
     "birthplace": "临川（今江西抚州）",
     "deathplace": "江宁（今江苏南京）",
-    "locations": ["江西", "江苏南京"]
+    "locations": [
+      "江西",
+      "江苏南京"
+    ]
   },
   {
     "id": "zhang_juzheng",
     "name": "张居正",
     "pinyin": "Zhang Juzheng",
     "dynasty": "明",
-    "era": { "start": 1525, "end": 1582, "approximate": false },
+    "era": {
+      "start": 1525,
+      "end": 1582,
+      "approximate": false
+    },
     "eraLabel": "明",
     "gender": "男",
     "honor": "万历新政",
     "dimension": "politics",
-    "dimensionCategory": "治世名臣",
-    "tags": ["改革家", "宰相", "一条鞭法"],
+    "dimensionCategory": "变法与改革",
+    "tags": [
+      "改革家",
+      "宰相",
+      "一条鞭法"
+    ],
     "summary": "明朝中后期著名改革家，推行一条鞭法，辅佐万历皇帝开创万历新政。",
     "birthplace": "江陵（今湖北荆州）",
     "deathplace": "北京（今北京）",
-    "locations": ["北京", "湖北"]
+    "locations": [
+      "北京",
+      "湖北"
+    ]
   },
   {
     "id": "fan_zhongyan",
     "name": "范仲淹",
     "pinyin": "Fan Zhongyan",
     "dynasty": "宋",
-    "era": { "start": 989, "end": 1052, "approximate": false },
+    "era": {
+      "start": 989,
+      "end": 1052,
+      "approximate": false
+    },
     "eraLabel": "北宋",
     "gender": "男",
     "honor": "庆历新政",
     "dimension": "politics",
-    "dimensionCategory": "治世名臣",
-    "tags": ["改革家", "文学家", "庆历新政"],
+    "dimensionCategory": "变法与改革",
+    "tags": [
+      "改革家",
+      "文学家",
+      "庆历新政"
+    ],
     "summary": "北宋名臣，主持庆历新政，写下先天下之忧而忧的名句。",
     "birthplace": "苏州（今江苏苏州）",
     "deathplace": "徐州（今江苏徐州）",
-    "locations": ["江苏"]
+    "locations": [
+      "江苏"
+    ]
   },
   {
     "id": "li_si",
     "name": "李斯",
     "pinyin": "Li Si",
     "dynasty": "秦",
-    "era": { "start": null, "end": -208, "approximate": true },
+    "era": {
+      "start": null,
+      "end": -208,
+      "approximate": true
+    },
     "eraLabel": "战国-秦",
     "gender": "男",
     "honor": "秦制奠基人",
     "dimension": "politics",
     "dimensionCategory": "治世名臣",
-    "tags": ["宰相", "法家", "统一"],
+    "tags": [
+      "宰相",
+      "法家",
+      "统一"
+    ],
     "summary": "秦朝丞相，辅佐秦始皇统一天下，推行郡县制、书同文、车同轨。",
     "birthplace": "上蔡（今河南上蔡）",
     "deathplace": "咸阳（今陕西西安）",
-    "locations": ["陕西西安", "河南"]
+    "locations": [
+      "陕西西安",
+      "河南"
+    ]
   },
   {
     "id": "xiao_he",
     "name": "萧何",
     "pinyin": "Xiao He",
     "dynasty": "汉",
-    "era": { "start": null, "end": -193, "approximate": true },
+    "era": {
+      "start": null,
+      "end": -193,
+      "approximate": true
+    },
     "eraLabel": "秦末-西汉",
     "gender": "男",
     "honor": "汉朝第一相",
     "dimension": "politics",
     "dimensionCategory": "治世名臣",
-    "tags": ["宰相", "汉初", "治国"],
+    "tags": [
+      "宰相",
+      "汉初",
+      "治国"
+    ],
     "summary": "西汉开国丞相，辅佐刘邦建立汉朝，制定律令制度，被誉萧规曹随。",
     "birthplace": "沛县（今江苏徐州）",
     "deathplace": "长安（今陕西西安）",
-    "locations": ["陕西西安", "江苏"]
+    "locations": [
+      "陕西西安",
+      "江苏"
+    ]
   },
   {
     "id": "fang_xuanling",
     "name": "房玄龄",
     "pinyin": "Fang Xuanling",
     "dynasty": "唐",
-    "era": { "start": 579, "end": 648, "approximate": false },
+    "era": {
+      "start": 579,
+      "end": 648,
+      "approximate": false
+    },
     "eraLabel": "隋-唐",
     "gender": "男",
     "honor": "贞观名相",
     "dimension": "politics",
     "dimensionCategory": "治世名臣",
-    "tags": ["宰相", "贞观之治", "房谋杜断"],
+    "tags": [
+      "宰相",
+      "贞观之治",
+      "房谋杜断"
+    ],
     "summary": "唐太宗时期名相，善谋略，与杜如晦合称房谋杜断，共辅贞观之治。",
     "birthplace": "齐州（今山东济南）",
     "deathplace": "长安（今陕西西安）",
-    "locations": ["陕西西安", "山东"]
+    "locations": [
+      "陕西西安",
+      "山东"
+    ]
   },
   {
     "id": "du_ruhui",
     "name": "杜如晦",
     "pinyin": "Du Ruhui",
     "dynasty": "唐",
-    "era": { "start": 585, "end": 630, "approximate": false },
+    "era": {
+      "start": 585,
+      "end": 630,
+      "approximate": false
+    },
     "eraLabel": "隋-唐",
     "gender": "男",
     "honor": "贞观名相",
     "dimension": "politics",
     "dimensionCategory": "治世名臣",
-    "tags": ["宰相", "贞观之治", "房谋杜断"],
+    "tags": [
+      "宰相",
+      "贞观之治",
+      "房谋杜断"
+    ],
     "summary": "唐太宗时期名相，善于决断，与房玄龄合称房谋杜断。",
     "birthplace": "京兆（今陕西西安）",
     "deathplace": "长安（今陕西西安）",
-    "locations": ["陕西西安"]
+    "locations": [
+      "陕西西安"
+    ]
   },
   {
     "id": "yao_chong",
     "name": "姚崇",
     "pinyin": "Yao Chong",
     "dynasty": "唐",
-    "era": { "start": 650, "end": 721, "approximate": false },
+    "era": {
+      "start": 650,
+      "end": 721,
+      "approximate": false
+    },
     "eraLabel": "唐",
     "gender": "男",
     "honor": "开元名相",
     "dimension": "politics",
     "dimensionCategory": "治世名臣",
-    "tags": ["宰相", "开元盛世", "改革"],
+    "tags": [
+      "宰相",
+      "开元盛世",
+      "改革"
+    ],
     "summary": "唐玄宗时期名相，辅佐玄宗开创开元盛世，与宋璟并称姚宋。",
     "birthplace": "陕州（今河南三门峡）",
     "deathplace": "洛阳（今河南洛阳）",
-    "locations": ["陕西", "河南"]
+    "locations": [
+      "陕西",
+      "河南"
+    ]
   },
   {
     "id": "kou_zhun",
     "name": "寇准",
     "pinyin": "Kou Zhun",
     "dynasty": "宋",
-    "era": { "start": 961, "end": 1023, "approximate": false },
+    "era": {
+      "start": 961,
+      "end": 1023,
+      "approximate": false
+    },
     "eraLabel": "北宋",
     "gender": "男",
     "honor": "澶渊定策",
     "dimension": "politics",
     "dimensionCategory": "治世名臣",
-    "tags": ["宰相", "澶渊之盟", "抗辽"],
+    "tags": [
+      "宰相",
+      "澶渊之盟",
+      "抗辽"
+    ],
     "summary": "北宋名相，促成澶渊之盟，以智勇双全著称，为北宋带来百年和平。",
     "birthplace": "下邽（今陕西渭南）",
     "deathplace": "雷州（今广东雷州）",
-    "locations": ["陕西", "广东"]
+    "locations": [
+      "陕西",
+      "广东"
+    ]
   },
   {
     "id": "yu_qian",
     "name": "于谦",
     "pinyin": "Yu Qian",
     "dynasty": "明",
-    "era": { "start": 1398, "end": 1457, "approximate": false },
+    "era": {
+      "start": 1398,
+      "end": 1457,
+      "approximate": false
+    },
     "eraLabel": "明",
     "gender": "男",
     "honor": "北京保卫战",
     "dimension": "politics",
     "dimensionCategory": "治世名臣",
-    "tags": ["名臣", "民族英雄", "北京保卫战"],
+    "tags": [
+      "名臣",
+      "民族英雄",
+      "北京保卫战"
+    ],
     "summary": "明朝名臣，在土木堡之变后力排众议，成功保卫北京免受瓦剌入侵。",
     "birthplace": "钱塘（今浙江杭州）",
     "deathplace": "北京（今北京）",
-    "locations": ["北京", "浙江"]
+    "locations": [
+      "北京",
+      "浙江"
+    ]
   },
   {
     "id": "hai_rui",
     "name": "海瑞",
     "pinyin": "Hai Rui",
     "dynasty": "明",
-    "era": { "start": 1514, "end": 1587, "approximate": false },
+    "era": {
+      "start": 1514,
+      "end": 1587,
+      "approximate": false
+    },
     "eraLabel": "明",
     "gender": "男",
     "honor": "海青天",
     "dimension": "politics",
     "dimensionCategory": "治世名臣",
-    "tags": ["清官", "直臣", "刚正不阿"],
+    "tags": [
+      "清官",
+      "直臣",
+      "刚正不阿"
+    ],
     "summary": "明朝著名清官，以刚正不阿、直言敢谏著称，被百姓誉为海青天。",
     "birthplace": "琼山（今海南海口）",
     "deathplace": "南京（今江苏南京）",
-    "locations": ["海南", "江苏南京"]
+    "locations": [
+      "海南",
+      "江苏南京"
+    ]
   },
   {
     "id": "si_ma_guang",
     "name": "司马光",
     "pinyin": "Sima Guang",
     "dynasty": "宋",
-    "era": { "start": 1019, "end": 1086, "approximate": false },
+    "era": {
+      "start": 1019,
+      "end": 1086,
+      "approximate": false
+    },
     "eraLabel": "北宋",
     "gender": "男",
     "honor": "资治通鉴",
     "dimension": "politics",
     "dimensionCategory": "治世名臣",
-    "tags": ["史学家", "宰相", "资治通鉴"],
+    "tags": [
+      "史学家",
+      "宰相",
+      "资治通鉴"
+    ],
     "summary": "北宋名相、史学家，主编《资治通鉴》，反对王安石变法。",
     "birthplace": "光州（今河南信阳）",
     "deathplace": "开封（今河南开封）",
-    "locations": ["河南开封", "山西"]
+    "locations": [
+      "河南开封",
+      "山西"
+    ]
   },
   {
     "id": "zhao_pu",
     "name": "赵普",
     "pinyin": "Zhao Pu",
     "dynasty": "宋",
-    "era": { "start": 922, "end": 992, "approximate": false },
+    "era": {
+      "start": 922,
+      "end": 992,
+      "approximate": false
+    },
     "eraLabel": "五代-北宋",
     "gender": "男",
     "honor": "宋初名相",
     "dimension": "politics",
     "dimensionCategory": "治世名臣",
-    "tags": ["宰相", "开国功臣", "半部论语"],
+    "tags": [
+      "宰相",
+      "开国功臣",
+      "半部论语"
+    ],
     "summary": "北宋开国功臣、三朝宰相，提出杯酒释兵权计策，以半部论语治天下著称。",
     "birthplace": "蓟州（今天津蓟州）",
     "deathplace": "洛阳（今河南洛阳）",
-    "locations": ["河南", "天津"]
+    "locations": [
+      "河南",
+      "天津"
+    ]
   },
   {
     "id": "yang_yan",
     "name": "杨炎",
     "pinyin": "Yang Yan",
     "dynasty": "唐",
-    "era": { "start": 727, "end": 781, "approximate": false },
+    "era": {
+      "start": 727,
+      "end": 781,
+      "approximate": false
+    },
     "eraLabel": "唐",
     "gender": "男",
     "honor": "两税法创立者",
     "dimension": "politics",
     "dimensionCategory": "变法与改革",
-    "tags": ["改革家", "两税法", "宰相"],
+    "tags": [
+      "改革家",
+      "两税法",
+      "宰相"
+    ],
     "summary": "唐朝宰相，废除租庸调制，创立两税法，是中国赋税制度的重大改革。",
     "birthplace": "凤翔（今陕西凤翔）",
     "deathplace": "长安（今陕西西安）",
-    "locations": ["陕西西安"]
+    "locations": [
+      "陕西西安"
+    ]
   },
   {
     "id": "zhang_jian",
     "name": "张謇",
     "pinyin": "Zhang Jian",
     "dynasty": "近现代",
-    "era": { "start": 1853, "end": 1926, "approximate": false },
+    "era": {
+      "start": 1853,
+      "end": 1926,
+      "approximate": false
+    },
     "eraLabel": "清末-民国",
     "gender": "男",
     "honor": "实业救国先驱",
     "dimension": "politics",
     "dimensionCategory": "变法与改革",
-    "tags": ["实业家", "改革家", "教育"],
+    "tags": [
+      "实业家",
+      "改革家",
+      "教育"
+    ],
     "summary": "清末状元、实业家，倡导实业救国，创办大生纱厂等近代民族工业。",
     "birthplace": "海门（今江苏南通）",
     "deathplace": "南通（今江苏南通）",
-    "locations": ["江苏南通"]
+    "locations": [
+      "江苏南通"
+    ]
   },
   {
     "id": "liu_ji",
     "name": "刘基",
     "pinyin": "Liu Ji",
     "dynasty": "明",
-    "era": { "start": 1311, "end": 1375, "approximate": false },
+    "era": {
+      "start": 1311,
+      "end": 1375,
+      "approximate": false
+    },
     "eraLabel": "元末-明",
     "gender": "男",
     "honor": "大明军师",
     "dimension": "politics",
-    "dimensionCategory": "变法与改革",
-    "tags": ["谋士", "开国功臣", "刘伯温"],
+    "dimensionCategory": "治世名臣",
+    "tags": [
+      "谋士",
+      "开国功臣",
+      "刘伯温"
+    ],
     "summary": "明朝开国功臣，辅佐朱元璋建立明朝，精通天文兵法，民间称刘伯温。",
     "birthplace": "青田（今浙江文成）",
     "deathplace": "青田（今浙江文成）",
-    "locations": ["浙江", "江苏南京"]
+    "locations": [
+      "浙江",
+      "江苏南京"
+    ]
   },
   {
     "id": "lin_zexu",
     "name": "林则徐",
     "pinyin": "Lin Zexu",
     "dynasty": "清",
-    "era": { "start": 1785, "end": 1850, "approximate": false },
+    "era": {
+      "start": 1785,
+      "end": 1850,
+      "approximate": false
+    },
     "eraLabel": "清",
     "gender": "男",
     "honor": "虎门销烟",
     "dimension": "politics",
     "dimensionCategory": "变法与改革",
-    "tags": ["民族英雄", "禁烟", "开眼看世界"],
+    "tags": [
+      "民族英雄",
+      "禁烟",
+      "开眼看世界"
+    ],
     "summary": "清朝名臣，虎门销烟震动中外，被誉为中国开眼看世界第一人。",
     "birthplace": "侯官（今福建福州）",
     "deathplace": "潮州（今广东潮州）",
-    "locations": ["福建", "广东"]
+    "locations": [
+      "福建",
+      "广东"
+    ]
   },
   {
     "id": "liang_qichao",
     "name": "梁启超",
     "pinyin": "Liang Qichao",
     "dynasty": "近现代",
-    "era": { "start": 1873, "end": 1929, "approximate": false },
+    "era": {
+      "start": 1873,
+      "end": 1929,
+      "approximate": false
+    },
     "eraLabel": "清末-民国",
     "gender": "男",
     "honor": "维新先驱",
     "dimension": "politics",
     "dimensionCategory": "变法与改革",
-    "tags": ["改革家", "思想家", "维新"],
+    "tags": [
+      "改革家",
+      "思想家",
+      "维新"
+    ],
     "summary": "清末民初著名思想家、政治家，戊戌变法领袖之一，影响近代中国思想启蒙。",
     "birthplace": "新会（今广东江门）",
     "deathplace": "北京（今北京）",
-    "locations": ["北京", "广东"]
+    "locations": [
+      "北京",
+      "广东"
+    ]
   },
   {
     "id": "zhang_yi",
     "name": "张仪",
     "pinyin": "Zhang Yi",
     "dynasty": "战国",
-    "era": { "start": null, "end": -309, "approximate": true },
+    "era": {
+      "start": null,
+      "end": -309,
+      "approximate": true
+    },
     "eraLabel": "战国",
     "gender": "男",
     "honor": "连横大师",
     "dimension": "politics",
     "dimensionCategory": "外交谋略",
-    "tags": ["纵横家", "连横", "秦国"],
+    "tags": [
+      "纵横家",
+      "连横",
+      "秦国"
+    ],
     "summary": "战国时期纵横家，以连横之策破合纵，为秦国各个击破六国立下汗马功劳。",
     "birthplace": "魏国安邑（今山西夏县）",
     "deathplace": "魏国",
-    "locations": ["陕西", "山西"]
+    "locations": [
+      "陕西",
+      "山西"
+    ]
   },
   {
     "id": "su_qin",
     "name": "苏秦",
     "pinyin": "Su Qin",
     "dynasty": "战国",
-    "era": { "start": null, "end": -284, "approximate": true },
+    "era": {
+      "start": null,
+      "end": -284,
+      "approximate": true
+    },
     "eraLabel": "战国",
     "gender": "男",
     "honor": "合纵创始人",
     "dimension": "politics",
     "dimensionCategory": "外交谋略",
-    "tags": ["纵横家", "合纵", "六国"],
+    "tags": [
+      "纵横家",
+      "合纵",
+      "六国"
+    ],
     "summary": "战国时期纵横家，提出合纵策略，联合六国对抗秦国，佩六国相印。",
     "birthplace": "雒阳（今河南洛阳）",
     "deathplace": "齐国",
-    "locations": ["河南洛阳"]
+    "locations": [
+      "河南洛阳"
+    ]
   },
   {
     "id": "lin_xiangru",
     "name": "蔺相如",
     "pinyin": "Lin Xiangru",
     "dynasty": "战国",
-    "era": { "start": null, "end": null, "approximate": true },
+    "era": {
+      "start": null,
+      "end": null,
+      "approximate": true
+    },
     "eraLabel": "战国",
     "gender": "男",
     "honor": "完璧归赵",
     "dimension": "politics",
     "dimensionCategory": "外交谋略",
-    "tags": ["外交家", "赵国", "将相和"],
+    "tags": [
+      "外交家",
+      "赵国",
+      "将相和"
+    ],
     "summary": "战国时期赵国名臣，完璧归赵、渑池之会展现卓越外交才能，以将相和传为佳话。",
     "birthplace": null,
     "deathplace": null,
-    "locations": ["河北"]
+    "locations": [
+      "河北"
+    ]
   },
   {
     "id": "wang_zhaojun",
     "name": "王昭君",
     "pinyin": "Wang Zhaojun",
     "dynasty": "汉",
-    "era": { "start": -52, "end": null, "approximate": true },
+    "era": {
+      "start": -52,
+      "end": null,
+      "approximate": true
+    },
     "eraLabel": "西汉",
     "gender": "女",
     "honor": "和亲使者",
     "dimension": "politics",
     "dimensionCategory": "外交谋略",
-    "tags": ["和亲", "外交", "四大美人"],
+    "tags": [
+      "和亲",
+      "外交",
+      "四大美人"
+    ],
     "summary": "西汉宫女，自愿出塞和亲匈奴呼韩邪单于，为汉匈和平做出重要贡献。",
     "birthplace": "秭归（今湖北宜昌）",
     "deathplace": null,
-    "locations": ["内蒙古", "湖北"]
+    "locations": [
+      "内蒙古",
+      "湖北"
+    ]
   },
   {
     "id": "wencheng_gongzhu",
     "name": "文成公主",
     "pinyin": "Wencheng Gongzhu",
     "dynasty": "唐",
-    "era": { "start": 623, "end": 680, "approximate": true },
+    "era": {
+      "start": 623,
+      "end": 680,
+      "approximate": true
+    },
     "eraLabel": "唐",
     "gender": "女",
     "honor": "唐蕃和亲使者",
     "dimension": "politics",
     "dimensionCategory": "外交谋略",
-    "tags": ["和亲", "吐蕃", "文化交流"],
+    "tags": [
+      "和亲",
+      "吐蕃",
+      "文化交流"
+    ],
     "summary": "唐朝宗室女，嫁给吐蕃赞普松赞干布，促进唐蕃友好与汉藏文化交流。",
     "birthplace": "长安（今陕西西安）",
     "deathplace": "吐蕃（今西藏）",
-    "locations": ["西藏", "陕西西安"]
+    "locations": [
+      "西藏",
+      "陕西西安"
+    ]
   },
   {
     "id": "yan_zi",
     "name": "晏子",
     "pinyin": "Yan Zi",
     "dynasty": "春秋",
-    "era": { "start": -578, "end": -500, "approximate": false },
+    "era": {
+      "start": -578,
+      "end": -500,
+      "approximate": false
+    },
     "eraLabel": "春秋",
     "gender": "男",
     "honor": "春秋名相",
     "dimension": "politics",
     "dimensionCategory": "外交谋略",
-    "tags": ["外交家", "宰相", "晏子使楚"],
+    "tags": [
+      "外交家",
+      "宰相",
+      "晏子使楚"
+    ],
     "summary": "春秋时期齐国名相，以善辩闻名，晏子使楚展现卓越外交智慧。",
     "birthplace": "夷维（今山东高密）",
     "deathplace": null,
-    "locations": ["山东"]
+    "locations": [
+      "山东"
+    ]
   },
   {
     "id": "zhao_wulingwang",
     "name": "赵武灵王",
     "pinyin": "Zhao Wulingwang",
     "dynasty": "战国",
-    "era": { "start": -340, "end": -295, "approximate": false },
+    "era": {
+      "start": -340,
+      "end": -295,
+      "approximate": false
+    },
     "eraLabel": "战国",
     "gender": "男",
     "honor": "胡服骑射",
     "dimension": "politics",
     "dimensionCategory": "外交谋略",
-    "tags": ["改革", "军事", "胡服骑射"],
+    "tags": [
+      "改革",
+      "军事",
+      "胡服骑射"
+    ],
     "summary": "战国时期赵国君主，推行胡服骑射军事改革，使赵国成为强国。",
     "birthplace": null,
     "deathplace": "沙丘（今河北邢台）",
-    "locations": ["河北"]
+    "locations": [
+      "河北"
+    ]
   }
 ]
