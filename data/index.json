@@ -2,7 +2,7 @@
   "version": "1.0",
   "name": "中华文明",
   "nameEn": "Celestial Mandate",
-  "totalFigures": 356,
+  "totalFigures": 361,
   "dimensions": [
     {
       "id": "mythology",
@@ -225,7 +225,7 @@
         },
         {
           "name": "数学",
-          "count": 1,
+          "count": 6,
           "order": 2,
           "start": null,
           "end": null
