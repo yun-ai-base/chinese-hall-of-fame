@@ -29,9 +29,9 @@ export class Sun {
     this.scene.add(this.mesh);
   }
 
-  // 太阳中心嵌入「中华」二字：白字 + 深色描边 + 朝相机，depthTest:false 始终绘制于球体之上
+  // 太阳中心嵌入「华夏」二字：白字 + 淡金辉光 + 朝相机，depthTest:false 始终绘制于球体之上
   _createCenterText() {
-    this.centerLabel = createPlanetNameSprite('中华', '#ffd27a', 5);
+    this.centerLabel = createPlanetNameSprite('华夏', '#ffe6b3', 5);
     this.centerLabel.position.set(0, 0, 0);
     this.scene.add(this.centerLabel);
   }
@@ -67,9 +67,9 @@ export class Sun {
     if (this.mesh.material.uniforms) {
       this.mesh.material.uniforms.uTime.value = time;
     }
-    // 太阳本体缓慢自转（纹理流动 + 网格旋转双重表现立体感）
-    this.mesh.rotation.y += 0.0009;
-    if (this.glow) this.glow.rotation.y -= 0.0004;
+    // 太阳本体自转（纹理流动 + 网格旋转双重表现立体感）；提速至肉眼可辨
+    this.mesh.rotation.y += 0.004;
+    if (this.glow) this.glow.rotation.y -= 0.0008;
   }
 
   setCenterTextVisible(v) { if (this.centerLabel) this.centerLabel.visible = v; }
