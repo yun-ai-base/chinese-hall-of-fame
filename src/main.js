@@ -151,6 +151,7 @@ class App {
     if (this.viewLevel !== 'universe' || this.currentDimId || this.currentFigureId) {
       this.history.push({
         level: this.viewLevel, dimId: this.currentDimId,
+        categoryName: this.viewLevel === 'category' ? this.currentCategory : null,
         figureId: this.currentFigureId, center: this.currentCenter.clone(),
       });
       if (this.history.length > 20) this.history.shift();
