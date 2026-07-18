@@ -1,0 +1,94 @@
+{
+  "details": {
+    "bio": "汪大渊（1311年—约1350年），字焕章，南昌人。元代著名航海家、旅行家。1330年和1337年两次从泉州出发远航，游历了东南亚、南亚、西亚、东非等数十个国家和地区。足迹远至埃及、摩洛哥，最远到达今坦桑尼亚。回国后据亲身经历著《岛夷志略》，记载了所到之处的山川、物产、风俗、贸易等。该书是研究元代中外关系和亚非诸国历史地理的重要文献。",
+    "ideology": "亲历亲证，记录海外风物",
+    "group": "元代航海家",
+    "timeline": [
+      {
+        "year": "1311年",
+        "event": "生于南昌",
+        "type": "birth"
+      },
+      {
+        "year": "1330年",
+        "event": "第一次从泉州出航",
+        "type": "milestone"
+      },
+      {
+        "year": "1334年",
+        "event": "第一次航行归来",
+        "type": "milestone"
+      },
+      {
+        "year": "1337年",
+        "event": "第二次远航",
+        "type": "milestone"
+      },
+      {
+        "year": "1339年",
+        "event": "第二次航行归来",
+        "type": "milestone"
+      },
+      {
+        "year": "约1349年",
+        "event": "著《岛夷志略》",
+        "type": "work"
+      },
+      {
+        "year": "约1350年",
+        "event": "去世",
+        "type": "death"
+      }
+    ],
+    "works": [
+      {
+        "title": "《岛夷志略》",
+        "type": "地理志",
+        "summary": "记载亚非数十国风土物产的游记体地理著作"
+      }
+    ],
+    "achievements": [
+      "两次远航亚非数十国",
+      "著《岛夷志略》保存元朝海外交流珍贵记录"
+    ],
+    "quotes": [
+      "所至之地，皆身亲而目击之。",
+      "备其山川之险夷，风土之异同。"
+    ],
+    "appraisals": [
+      "汪大渊是元代最伟大的航海家——苏继庼"
+    ],
+    "influence": "《岛夷志略》是研究元代海外交通和亚非诸国历史地理的珍贵史料，其亲历亲证的方法为后世游记文学树立了典范。",
+    "controversies": [],
+    "mediaPortrayals": [],
+    "memorials": [
+      "江西南昌：汪大渊故居遗址"
+    ],
+    "gallery": [],
+    "trivia": [
+      "汪大渊的航海远至坦桑尼亚，比郑和下西洋早约70年",
+      "他被誉为东方的马可波罗"
+    ],
+    "references": [
+      "汪大渊《岛夷志略》"
+    ],
+    "baiduBaike": "https://baike.baidu.com/item/%E6%B1%AA%E5%A4%A7%E6%B8%8A"
+  },
+  "relations": [
+    {
+      "targetId": "zheng_he",
+      "relation": "航海传统",
+      "description": "汪大渊与郑和同为元代至明初的伟大航海家"
+    },
+    {
+      "targetId": "du_huan",
+      "relation": "海外旅行",
+      "description": "汪大渊与杜环同为亲历海外并著书记录的旅行家"
+    },
+    {
+      "targetId": "marco_polo",
+      "relation": "东西方旅行家",
+      "description": "汪大渊与马可·波罗同为元代游历世界的旅行家"
+    }
+  ]
+}
