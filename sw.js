@@ -3,7 +3,7 @@
 //       对数据 JSON（index.json / 维度数组 / 人物详情）network-first，永远展示最新数据，离线再回退缓存；
 //       导航请求 network-first 回退缓存；跨域资源（Google Fonts）不缓存。
 // 缓存版本号变更（chof-vN）即视为一次破坏性更新：activate 会清掉旧缓存，强制拉取新 app shell。
-const CACHE = 'chof-v2';
+const CACHE = 'chof-v3';
 const SHELL = [
   './',
   './index.html',
