@@ -368,12 +368,17 @@ class App {
     if (this.titleDisplay) this.titleDisplay.style.display = 'none';
     const basic = this.dm.getFigureBasic(figureId);
     const dim = basic ? this.dm.getDim(basic.dimId) : null;
-    this._updateTitle(basic ? basic.basic.name : figureId, dim ? dim.name : '');
+    // 从 figure 数据补全分类层（随机/面板/URL 直接进入 L4 时 currentCategory 可能缺失）
+    const categoryName = this.currentCategory || (basic ? basic.category : '') || '';
+    this.currentCategory = categoryName;
+    this._updateTitle(basic ? basic.basic.name : figureId,
+      `${dim ? dim.name : ''} · ${categoryName}`);
     this.cameraCtrl.focusOn(center.clone());
     this._refreshClickables();
     this.breadcrumb.render([
       { label: '中華名人堂', level: 'universe' },
       { label: dim ? dim.name : '', level: 'dimension', payload: { dimId: this.currentDimId } },
+      { label: categoryName, level: 'category', payload: { dimId: this.currentDimId, categoryName } },
       { label: basic ? basic.basic.name : figureId, level: 'figure' },
     ]);
     this.panel.showFigure(figureId);
