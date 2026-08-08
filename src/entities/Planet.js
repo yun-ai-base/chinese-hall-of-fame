@@ -4,7 +4,7 @@ import { makePlanetTexture } from '../utils/planetTexture.js';
 
 export class Planet {
   constructor({ name, color, radius, orbitRadius, orbitSpeed, initialAngle, dimId,
-                ring = null, redSpot = false, moon = false, retrograde = false }) {
+                ring = null, redSpot = false, moon = false, retrograde = false, texType = 'generic' }) {
     this.name = name;
     this.color = color;
     this.radius = radius;
@@ -12,6 +12,7 @@ export class Planet {
     this.orbitSpeed = orbitSpeed;
     this.angle = initialAngle;
     this.dimId = dimId;
+    this.texType = texType;   // 写实表面：mercury/venus/earth/mars/jupiter/saturn/uranus/neptune/generic
     // ring 可为布尔（true→土星环）或类型字符串：'saturn'|'jupiter'|'uranus'|'neptune'
     this.ringType = ring === true ? 'saturn' : (ring || null);
     this.hasRing = !!this.ringType;
@@ -32,11 +33,14 @@ export class Planet {
   create(scene) {
     const tex = this._createTexture();
     const geometry = new THREE.SphereGeometry(this.radius, 32, 32);
+    // 写实行星（texType != generic）：自发光用暗灰，保留背光暗纹但无色偏（避免背光面泛维度色）；
+    // 分类星球/中央恒星（generic）沿用维度色自发光。
+    const realistic = this.texType !== 'generic';
     const material = new THREE.MeshStandardMaterial({
       map: tex.map,
       emissiveMap: tex.emissiveMap,
-      emissive: new THREE.Color(this.color),
-      emissiveIntensity: 0.28,  // 本色基底（配暗化 emissiveMap，背光面保留地形暗纹而不发亮）
+      emissive: realistic ? new THREE.Color(0x22242c) : new THREE.Color(this.color),
+      emissiveIntensity: realistic ? 0.22 : 0.28,  // 本色基底（配暗化 emissiveMap，背光面保留地形暗纹而不发亮）
       roughness: 0.55,
       metalness: 0.08,
       transparent: true,   // 供淡出（下钻时非选中行星变暗）
@@ -90,7 +94,7 @@ export class Planet {
   }
 
   _createTexture() {
-    const { map, emissiveMap, repeat } = makePlanetTexture(this.color, { seed: this._texSeed() });
+    const { map, emissiveMap, repeat } = makePlanetTexture(this.color, { seed: this._texSeed(), type: this.texType });
     const m = new THREE.CanvasTexture(map);
     m.wrapS = m.wrapT = THREE.RepeatWrapping;
     m.repeat.set(repeat[0], repeat[1]);

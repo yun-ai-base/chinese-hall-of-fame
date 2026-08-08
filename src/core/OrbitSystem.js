@@ -48,6 +48,14 @@ export class OrbitSystem {
     8: { ring: 'neptune' },
   };
 
+  // 写实表面纹理映射（按 planetIndex，与真实太阳系一一对应）：
+  // 1 水星岩质陨石坑 · 2 金星奶黄浓云 · 3 地球海洋大陆云层 · 4 火星红褐极冠
+  // 5 木星橙白条纹+红斑 · 6 土星淡金柔和条纹 · 7 天王星平滑淡青蓝 · 8 海王星深蓝暗斑
+  static TEX_TYPE = {
+    1: 'mercury', 2: 'venus', 3: 'earth', 4: 'mars',
+    5: 'jupiter', 6: 'saturn', 7: 'uranus', 8: 'neptune',
+  };
+
   _createSystem() {
     const n = this.dimensions.length;
     this.dimensions.forEach((dim, i) => {
@@ -83,6 +91,7 @@ export class OrbitSystem {
         redSpot: feat.redSpot || false, // 木星大红斑
         moon: feat.moon || false,       // 地球月亮
         retrograde: feat.retrograde || false, // 金星逆向自转
+        texType: OrbitSystem.TEX_TYPE[idx] || 'generic', // 写实表面
       });
       planet.create(this.scene);
       this.planets.push(planet);
