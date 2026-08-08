@@ -113,6 +113,33 @@ export class DataManager {
   getFigureBasic(id) { return this.figures.get(id); }
   getCrossDims(id) { return this.cross.get(id) || []; }
 
+  // 相关人物推荐：基于 basic 级字段做加权（同维度 +2 / 同朝代 +2 / 标签交集每个 +1），
+  // 排除自身，同分按年代（sortYear）升序取 Top N，返回渲染友好对象。
+  // 纯本地遍历（361 条 <1ms），无网络、无详情级加载；group 归属因需逐条 fetch 详情故不参与。
+  getRelatedFigures(figureId, limit = 6) {
+    const self = this.figures.get(figureId);
+    if (!self) return [];
+    const sb = self.basic;
+    const selfTags = new Set(sb.tags || []);
+    const scored = [];
+    for (const [id, entry] of this.figures) {
+      if (id === figureId) continue;
+      const b = entry.basic;
+      let score = 0;
+      if (b.dimId === sb.dimId) score += 2;
+      if (b.dynasty && b.dynasty === sb.dynasty) score += 2;
+      for (const t of (b.tags || [])) { if (selfTags.has(t)) score += 1; }
+      if (score > 0) {
+        scored.push({
+          id, name: b.name, dynasty: b.dynasty || '',
+          color: entry.color, sortYear: entry.sortYear || 0, score,
+        });
+      }
+    }
+    scored.sort((a, b) => (b.score - a.score) || (a.sortYear - b.sortYear));
+    return scored.slice(0, limit).map(({ score, sortYear, ...rest }) => rest);
+  }
+
   async getFigureDetail(id) {
     if (this._detailCache.has(id)) return this._detailCache.get(id);
     const resp = await fetch(`./data/figures/${id}.json`);

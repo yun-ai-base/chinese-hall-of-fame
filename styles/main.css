@@ -262,8 +262,23 @@ html, body {
 .tag { font-size: 11px; padding: 2px 9px; border-radius: 10px; background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.7); }
 .tag.tag-honor { color: #FFD700; background: rgba(255,215,0,0.1); border: 1px solid rgba(255,215,0,0.28); }
 .panel-lead { font-size: 14px; line-height: 1.7; color: rgba(255,255,255,0.82); margin-top: 10px; }
+/* 完整传记：比摘要更舒展的排版（独立段落、舒适行高、低饱和正文色） */
+.bio-text { font-size: 13px; line-height: 2.0; color: rgba(255,255,255,0.84); margin: 6px 0 0; text-align: justify; }
 
 .block { margin-bottom: 22px; }
+/* 相关人物：横向标签流（点击跳转重构星系） */
+.related-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+.related-chip {
+  display: inline-flex; align-items: baseline; gap: 6px;
+  padding: 6px 12px; border-radius: 16px;
+  background: rgba(255,255,255,0.07);
+  border: 1px solid color-mix(in srgb, var(--dim-color, #888) 38%, transparent);
+  color: rgba(255,255,255,0.88);
+  font-size: 12px; cursor: pointer; transition: background 0.15s ease, transform 0.15s ease;
+}
+.related-chip:hover { background: rgba(255,255,255,0.14); transform: translateY(-1px); }
+.related-name { font-weight: 600; }
+.related-dyn { font-size: 11px; color: rgba(255,255,255,0.5); }
 .block-title {
   font-family: 'Noto Serif SC', 'Songti SC', 'STSong', 'SimSun', serif; font-size: 16px; font-weight: 700;
   color: #fff; margin-bottom: 10px; padding-left: 11px;
@@ -272,9 +287,23 @@ html, body {
 .block-list { list-style: none; }
 .block-list li { font-size: 13.5px; line-height: 1.7; color: rgba(255,255,255,0.78); padding: 4px 0; border-bottom: 1px dashed rgba(255,255,255,0.06); }
 .quote {
-  font-family: 'Noto Serif SC', 'Songti SC', 'STSong', 'SimSun', serif; font-size: 14px; line-height: 1.8;
-  color: #e8e2c8; border-left: 2px solid rgba(255,215,0,0.5);
-  padding: 8px 14px; margin: 8px 0; background: rgba(255,215,0,0.04); border-radius: 0 8px 8px 0;
+  font-family: 'Noto Serif SC', 'Songti SC', 'STSong', 'SimSun', serif; font-size: 15px; line-height: 1.9;
+  color: #f2e8c8; border-left: 3px solid rgba(255,215,0,0.55);
+  padding: 10px 16px 10px 20px; margin: 10px 0;
+  background: linear-gradient(90deg, rgba(255,215,0,0.08), rgba(255,215,0,0.02) 70%);
+  border-radius: 0 10px 10px 0; position: relative;
+}
+/* 经典语录：金色引号装饰，让金句成为视觉主角（传播力最强的内容） */
+.quote::before {
+  content: '❝'; position: absolute; left: 4px; top: 2px;
+  font-size: 26px; color: rgba(255,215,0,0.45); line-height: 1;
+}
+/* 后世评价：冷色史评块（与语录语义区分——来自他人之口） */
+.appraisal {
+  font-family: 'Noto Serif SC', 'Songti SC', 'STSong', 'SimSun', serif; font-size: 13px; line-height: 1.8;
+  color: #cfe0ea; border-left: 3px solid rgba(120,170,220,0.55);
+  padding: 10px 14px; margin: 8px 0;
+  background: rgba(120,170,220,0.06); border-radius: 0 10px 10px 0;
 }
 
 .timeline { border-left: 2px solid rgba(255,255,255,0.12); padding-left: 14px; }

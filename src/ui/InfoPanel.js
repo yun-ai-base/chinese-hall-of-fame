@@ -223,6 +223,17 @@ export class InfoPanel {
       if (!detail) { this._startAmbient(this._resolveMotif(figureId, basic.dimId, d.dimensionCategory || basic.category)); this.show(); return; } // 无详情则只展示头部 + 占位
     }
 
+    // 人物传记：数据层保存的完整生平全文（detail.details.bio，约 200~500 字）。
+    // 位于头部摘要之后、核心理念之前，作为开篇正文；空值/非字符串防御降级（不渲染该块）。
+    if (detail && det && typeof det.bio === 'string' && det.bio.trim().length > 20) {
+      this.scroll.append(
+        el('div', { class: 'block' },
+          el('h3', { class: 'block-title' }, '人物传记'),
+          el('p', { class: 'bio-text' }, det.bio),
+        )
+      );
+    }
+
     // 核心理念（哲学类）
     if (detail && detail.details && detail.details.ideology) {
       this.scroll.append(this._section('核心理念', [detail.details.ideology]));
@@ -274,7 +285,7 @@ export class InfoPanel {
         this.scroll.append(this._section('核心成就', det.achievements));
       }
       if (det.appraisals && det.appraisals.length) {
-        this.scroll.append(this._quoteList(det.appraisals, '后世评价'));
+        this.scroll.append(this._quoteList(det.appraisals, '后世评价', 'appraisal'));
       }
       if (det.influence) {
         this.scroll.append(this._section('历史影响', [det.influence]));
@@ -294,6 +305,27 @@ export class InfoPanel {
       if (det.references && det.references.length) {
         this.scroll.append(this._section('参考资料', det.references));
       }
+    }
+
+    // 相关人物（探索连续性）：看完此人，自然想知道"还有谁与他相近"。
+    // 纯本地加权推荐（DataManager.getRelatedFigures），点击即跳转重构星系。
+    const related = this.dm.getRelatedFigures(figureId, 6);
+    if (related.length) {
+      const relRow = el('div', { class: 'related-row' });
+      for (const r of related) {
+        relRow.append(el('button', {
+          class: 'related-chip',
+          style: `--dim-color:${r.color}`,
+          onclick: () => this.handlers.onFigureJump && this.handlers.onFigureJump(r.id),
+        },
+          el('span', { class: 'related-name' }, r.name),
+          el('span', { class: 'related-dyn' }, r.dynasty || ''),
+        ));
+      }
+      this.scroll.append(el('div', { class: 'block' },
+        el('h3', { class: 'block-title' }, '相关人物'),
+        relRow,
+      ));
     }
 
     this._startAmbient(this._resolveMotif(figureId, basic.dimId, d.dimensionCategory || basic.category));
@@ -368,11 +400,13 @@ export class InfoPanel {
     );
   }
 
-  _quoteList(items, title = '经典语录') {
+  // 引用块：经典语录（金色大引号卡片）与后世评价（冷色史评块）共用本方法，
+  // 通过 cls 区分视觉语义（.quote / .appraisal）。
+  _quoteList(items, title = '经典语录', cls = 'quote') {
     if (!items || !items.length) return null;
     return el('div', { class: 'block' },
       el('h3', { class: 'block-title' }, title),
-      ...items.map(q => el('blockquote', { class: 'quote' }, q)),
+      ...items.map(q => el('blockquote', { class: cls }, q)),
     );
   }
 
