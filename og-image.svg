@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="45%" r="75%">
+      <stop offset="0%" stop-color="#10162a"/>
+      <stop offset="100%" stop-color="#05060a"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <circle cx="600" cy="300" r="170" fill="none" stroke="#FFD700" stroke-width="2.5" opacity="0.65"/>
+  <circle cx="600" cy="300" r="120" fill="none" stroke="#8B7E6A" stroke-width="1" opacity="0.5"/>
+  <text x="600" y="320" font-size="86" text-anchor="middle" fill="#FFD700" font-family="'Noto Serif SC',serif">中華名人堂</text>
+  <text x="600" y="392" font-size="32" text-anchor="middle" fill="#cfd3dc" font-family="'Noto Sans SC',sans-serif" letter-spacing="2">Celestial Mandate · 五千年中华文明 361 位杰出人物</text>
+</svg>
