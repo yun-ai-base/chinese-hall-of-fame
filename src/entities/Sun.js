@@ -1,5 +1,4 @@
 import * as THREE from 'three';
-import { sunVertexShader, sunFragmentShader } from '../utils/shaders.js';
 import { createPlanetNameSprite } from '../ui/Label.js';
 
 // 太阳日珥 / 火焰喷射粒子（GPU 端循环寿命，无需 CPU 每帧更新）
@@ -61,19 +60,53 @@ export class Sun {
   _createSun() {
     // 太阳半径不宜过大，否则在俯视太阳系布局中会遮挡内侧轨道与行星
     const geometry = new THREE.SphereGeometry(5, 64, 64);
-    const material = new THREE.ShaderMaterial({
-      uniforms: {
-        uTime: { value: 0 },
-        uComplexity: { value: this.isMobile ? 0.3 : 1.0 },
-      },
-      vertexShader: sunVertexShader,
-      fragmentShader: sunFragmentShader,
-      side: THREE.FrontSide,
+    // MeshBasicMaterial：太阳是自发光体，不受光照 → 贴真实照片纹理即恒星本色
+    // （程序化占位纹理立即可见，真实照片加载后无缝替换，见 _loadRealTexture）
+    const material = new THREE.MeshBasicMaterial({
+      map: this._makePlaceholderTexture(),
+      color: 0xffffff,
     });
 
     this.mesh = new THREE.Mesh(geometry, material);
     this.mesh.userData = { isSun: true, name: '中華名人堂' };
     this.scene.add(this.mesh);
+    this._loadRealTexture();
+  }
+
+  // 程序化占位：中心白黄 → 边缘橙的径向渐变（真实纹理加载前的兜底）
+  _makePlaceholderTexture() {
+    const S = 512;
+    const canvas = document.createElement('canvas');
+    canvas.width = canvas.height = S;
+    const ctx = canvas.getContext('2d');
+    const g = ctx.createRadialGradient(S / 2, S / 2, 0, S / 2, S / 2, S / 2);
+    g.addColorStop(0, '#fff7e8');
+    g.addColorStop(0.45, '#ffe9b0');
+    g.addColorStop(0.78, '#ffb65e');
+    g.addColorStop(1, '#ff7a2e');
+    ctx.fillStyle = g;
+    ctx.fillRect(0, 0, S, S);
+    const tex = new THREE.CanvasTexture(canvas);
+    tex.colorSpace = THREE.SRGBColorSpace;
+    return tex;
+  }
+
+  // 真实太阳照片（assets/textures/sun.jpg，Solar System Scope / NASA SDO 合成 2:1 等距圆柱）
+  _loadRealTexture() {
+    const img = new Image();
+    img.onload = () => {
+      if (!this.mesh || !this.mesh.material || !img.width) return;
+      const tex = new THREE.CanvasTexture(img);
+      tex.colorSpace = THREE.SRGBColorSpace;
+      tex.minFilter = THREE.LinearFilter;
+      tex.magFilter = THREE.LinearFilter;
+      const old = this.mesh.material.map;
+      this.mesh.material.map = tex;
+      this.mesh.material.needsUpdate = true;
+      if (old) old.dispose();
+    };
+    // onerror 静默：保留程序化占位
+    img.src = './assets/textures/sun.jpg';
   }
 
   // 太阳中心嵌入「华夏」二字：尺寸较小、暗金细底、白字细黑边，避免成为唯一焦点

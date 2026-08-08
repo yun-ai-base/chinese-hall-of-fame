@@ -1,13 +1,6 @@
 import * as THREE from 'three';
 import { Planet } from '../entities/Planet.js';
 import { OrbitRing } from '../entities/OrbitRing.js';
-import { createGlyphSprite } from '../ui/Label.js';
-
-// 维度字符徽标（单字），用于总览与下钻时一眼区分八大维度
-const DIM_GLYPH = {
-  mythology: '神', philosophy: '哲', literature: '文', military: '兵',
-  technology: '科', art: '艺', politics: '政', exploration: '探',
-};
 
 // 太阳系八大行星轨道系统。维度元数据来自 DataManager（index.json）。
 export class OrbitSystem {
@@ -97,13 +90,6 @@ export class OrbitSystem {
       this.planets.push(planet);
       // hover 回链：悬停该行星时，其所属轨道同步高亮
       if (planet.mesh) planet.mesh.userData.orbitRing = orbit;
-
-      // 维度字符徽标：悬浮于行星上方，随公转一起运动；作为 group 子节点
-      const glyph = createGlyphSprite(DIM_GLYPH[dim.id] || dim.name[0], dim.color, radius);
-      glyph.position.set(orbitRadius, radius + 1.6, 0);
-      this.scene.add(glyph);
-      this.glyphs = this.glyphs || [];
-      this.glyphs.push(glyph);
     });
   }
 
@@ -123,11 +109,9 @@ export class OrbitSystem {
     this.planetDeepDim = deep;
     // 进入某维度视图时，该维度行星作为锚点保留亮度，但其内嵌标签会与本层中央恒星标签重叠，故隐藏
     // 同时隐藏地球月亮（进入 L2 及更深层时，月亮会造成视觉干扰）；返回宇宙层(dimId=null)恢复
-    this.planets.forEach((p, i) => {
+    this.planets.forEach((p) => {
       p.setLabelVisible(!dimId || p.dimId !== dimId);
       p.setMoonVisible(!dimId);
-      const glyph = this.glyphs && this.glyphs[i];
-      if (glyph) glyph.material.opacity = (dimId && p.dimId !== dimId) ? 0.12 : 1.0;
     });
   }
 
