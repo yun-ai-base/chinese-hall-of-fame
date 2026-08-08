@@ -9,7 +9,7 @@
   "orientation": "any",
   "background_color": "#05060a",
   "theme_color": "#0a0e1a",
-  "version": "20260803.1",
+  "version": "20260809.1",
   "icons": [
     { "src": "./favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
   ]

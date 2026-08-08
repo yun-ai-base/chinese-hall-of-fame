@@ -1,11 +1,10 @@
 // 太阳系中华名人堂 · Service Worker
-// 策略：安装时预缓存 app shell（+ 全部 src 模块，确保离线启动可用）；
-//       运行时对同源静态资源 stale-while-revalidate；
-//       对数据 JSON（index.json / 维度数组 / 人物详情）network-first，永远展示最新数据，离线再回退缓存；
-//       导航请求 network-first 回退缓存；跨域资源不缓存（防御性）。
+// 策略（2026-08-09 重构）：**全量 network-first** —— 导航/数据/静态资源一律「有网即最新」，
+//   缓存仅作离线兜底。历史教训：旧版静态资源 stale-while-revalidate（缓存优先）导致
+//   每次访问先返回旧版、必须强刷才见新内容；现改为网络优先后，普通刷新/重开即最新。
 // 缓存版本：优先读取 manifest.webmanifest 的 version 字段（部署时只需 bump 一处），
 // 读取失败回退硬编码 CACHE_FALLBACK。浏览器每次部署后因源码变化触发 reinstall →
-// activate 自动清掉旧版本缓存，强制拉取新 app shell。
+// activate 自动清掉旧版本缓存并刷新已打开的页面（用户无感升级）。
 const CACHE_FALLBACK = 'chof-v5';
 let CURRENT_CACHE = CACHE_FALLBACK;
 
@@ -88,6 +87,11 @@ self.addEventListener('activate', (e) => {
     caches.keys()
       .then((keys) => Promise.all(keys.filter((k) => k !== CURRENT_CACHE).map((k) => caches.delete(k))))
       .then(() => self.clients.claim())
+      // 升级完成即刷新所有已打开的页面：用户无需手动强刷即可看到新版本
+      // （配合上方 network-first，此后普通刷新/重开永远是最新）
+      .then(() => self.clients.matchAll({ type: 'window' }).then((cs) =>
+        cs.forEach((c) => { try { c.navigate(c.url); } catch (err) { /* 忽略不可控页 */ } })
+      ))
   );
 });
 
@@ -100,40 +104,19 @@ self.addEventListener('fetch', (e) => {
   const url = new URL(req.url);
   if (url.origin !== self.location.origin) return; // 跨域不缓存
 
-  if (req.mode === 'navigate') {
-    e.respondWith(
-      fetch(req).catch(async () => (await caches.match('./index.html')) || FALLBACK_204())
-    );
-    return;
-  }
-
-  // 数据 JSON：network-first，永远展示最新数据；离线/失败再回退缓存
-  if (url.pathname.endsWith('.json')) {
-    e.respondWith(
-      fetch(req)
-        .then((res) => {
-          if (res && res.status === 200 && res.type === 'basic') {
-            caches.open(CURRENT_CACHE).then((c) => c.put(req, res.clone()));
-          }
-          return res;
-        })
-        .catch(async () => (await caches.match(req)) || FALLBACK_204())
-    );
-    return;
-  }
-
-  // 其余同源静态资源 stale-while-revalidate（缓存优先，否则等网络）
+  // 统一 network-first：导航/数据/静态资源全部「有网即最新」，缓存仅作离线兜底。
+  // 历史教训：旧版静态资源用 stale-while-revalidate（缓存优先）→ 每次访问先返回旧版，
+  // 用户必须强刷（绕过 SW）才看到新内容。改为网络优先后，普通刷新/重开即最新。
   e.respondWith(
-    caches.match(req).then((cached) => {
-      const net = fetch(req)
-        .then((res) => {
-          if (res && res.status === 200 && res.type === 'basic') {
-            caches.open(CURRENT_CACHE).then((c) => c.put(req, res.clone()));
-          }
-          return res;
-        })
-        .catch(() => null);
-      return cached || net || FALLBACK_204();
-    })
+    fetch(req)
+      .then((res) => {
+        // 成功响应（basic 同源）写回缓存供离线使用
+        if (res && res.status === 200 && res.type === 'basic') {
+          const clone = res.clone();
+          caches.open(CURRENT_CACHE).then((c) => c.put(req, clone));
+        }
+        return res;
+      })
+      .catch(async () => (await caches.match(req)) || FALLBACK_204())
   );
 });
