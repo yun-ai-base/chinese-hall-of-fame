@@ -476,7 +476,8 @@
     "summary": "孙悟空是《西游记》核心人物，从石猴成长为斗战胜佛，神通广大、桀骜不驯。",
     "birthplace": null,
     "deathplace": null,
-    "locations": null
+    "locations": null,
+    "group": "取经四人组"
   },
   {
     "id": "ne_zha",
@@ -502,7 +503,8 @@
     "summary": "哪吒是《西游记》《封神演义》中的神童，三头六臂，脚踩风火轮，武艺高强。",
     "birthplace": null,
     "deathplace": null,
-    "locations": null
+    "locations": null,
+    "group": "封神阵营"
   },
   {
     "id": "jiang_zi_ya",
@@ -528,7 +530,8 @@
     "summary": "姜子牙是《封神演义》核心人物，辅佐周武王伐纣，执掌封神榜分封诸神。",
     "birthplace": null,
     "deathplace": null,
-    "locations": null
+    "locations": null,
+    "group": "封神阵营"
   },
   {
     "id": "zhu_ba_jie",
@@ -553,7 +556,8 @@
     "summary": "猪八戒是《西游记》人物，原为天蓬元帅，因调戏嫦娥被贬，后随唐僧西天取经。",
     "birthplace": null,
     "deathplace": null,
-    "locations": null
+    "locations": null,
+    "group": "取经四人组"
   },
   {
     "id": "yu_huang_da_di",

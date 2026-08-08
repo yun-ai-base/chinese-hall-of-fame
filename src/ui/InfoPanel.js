@@ -234,6 +234,31 @@ export class InfoPanel {
       );
     }
 
+    // 所属群体（basic.group，静态化回填自 details.group）：点击标签展开/收起群体成员。
+    // 成员为同群体其他名人（纯内存索引，点击跳转重构星系）；无成员或非字符串防御。
+    const grp = (d && typeof d.group === 'string') ? d.group : '';
+    if (grp && this.dm.hasGroup(grp)) {
+      const members = this.dm.getGroupMembers(grp, figureId);
+      if (members.length) {
+        const membersBox = el('div', { class: 'group-members hidden' });
+        for (const m of members) {
+          membersBox.append(el('button', {
+            class: 'related-chip',
+            style: `--dim-color:${m.color}`,
+            onclick: () => this.handlers.onFigureJump && this.handlers.onFigureJump(m.id),
+          },
+            el('span', { class: 'related-name' }, m.name),
+            el('span', { class: 'related-dyn' }, m.dynasty || ''),
+          ));
+        }
+        const toggleBtn = el('button', { class: 'group-chip', onclick: () => {
+          const hidden = membersBox.classList.toggle('hidden');
+          toggleBtn.textContent = `所属群体：${grp} ${hidden ? '▸' : '▾'}`;
+        } }, `所属群体：${grp} ▸`);
+        this.scroll.append(el('div', { class: 'block' }, toggleBtn, membersBox));
+      }
+    }
+
     // 核心理念（哲学类）
     if (detail && detail.details && detail.details.ideology) {
       this.scroll.append(this._section('核心理念', [detail.details.ideology]));
@@ -241,7 +266,7 @@ export class InfoPanel {
 
     // 生平年表
     if (detail && detail.details && detail.details.timeline && detail.details.timeline.length) {
-      this.scroll.append(this._timeline(detail.details.timeline));
+      this.scroll.append(this._timeline(detail.details.timeline, figureId));
     }
 
     // 跨维度归属
@@ -325,6 +350,26 @@ export class InfoPanel {
       this.scroll.append(el('div', { class: 'block' },
         el('h3', { class: 'block-title' }, '相关人物'),
         relRow,
+      ));
+    }
+
+    // 同维度上一个/下一个（循环导航）：移动端无键盘方向键，按钮式兜底。
+    // 数据来自 getDimFigures（同维度列表，索引 O(n)），边界：单成员维度不渲染。
+    const dimList = this.dm.getDimFigures(basic.dimId) || [];
+    const selfIdx = dimList.findIndex(e => e.id === figureId);
+    if (dimList.length > 1 && selfIdx >= 0) {
+      const prev = dimList[(selfIdx - 1 + dimList.length) % dimList.length];
+      const next = dimList[(selfIdx + 1) % dimList.length];
+      this.scroll.append(el('div', { class: 'panel-nav' },
+        el('button', {
+          class: 'panel-nav-btn',
+          onclick: () => this.handlers.onFigureJump && this.handlers.onFigureJump(prev.id),
+        }, `‹ ${prev.basic.name}`),
+        el('span', { class: 'panel-nav-pos' }, `${selfIdx + 1} / ${dimList.length}`),
+        el('button', {
+          class: 'panel-nav-btn',
+          onclick: () => this.handlers.onFigureJump && this.handlers.onFigureJump(next.id),
+        }, `${next.basic.name} ›`),
       ));
     }
 
@@ -447,14 +492,39 @@ export class InfoPanel {
     );
   }
 
-  _timeline(events) {
+  // 提取年表字符串中的数字年份（"约303年" → 303；无数字返回 null）
+  _extractYear(str) {
+    if (typeof str !== 'string') return null;
+    const m = str.match(/-?\d+/);
+    return m ? Number(m[0]) : null;
+  }
+
+  _timeline(events, selfFigureId = null) {
     const wrap = el('div', { class: 'block' }, el('h3', { class: 'block-title' }, '生平年表'));
     const tl = el('div', { class: 'timeline' });
     for (const ev of events) {
-      tl.append(el('div', { class: `tl-item tl-${ev.type || 'milestone'}` },
+      const item = el('div', { class: `tl-item tl-${ev.type || 'milestone'}` },
         el('span', { class: 'tl-year' }, ev.year || '—'),
         el('span', { class: 'tl-event' }, ev.event),
-      ));
+      );
+      // 同时代横轴：提取事件年份 → 查询 ±20 年内活动的其他名人（点击跳转）。
+      // 数据现成（sortYear 索引）、纯内存 O(n) 遍历、无网络；年表每条 1~3 人增强历史纵深感。
+      const y = this._extractYear(ev.year);
+      if (y !== null) {
+        const contempor = this.dm.getContemporaries(y, selfFigureId, 20, 3);
+        if (contempor.length) {
+          const row = el('div', { class: 'tl-same' }, el('span', { class: 'tl-same-label' }, '同时代：'));
+          for (const c of contempor) {
+            row.append(el('button', {
+              class: 'tl-same-chip',
+              style: `--dim-color:${c.color}`,
+              onclick: () => this.handlers.onFigureJump && this.handlers.onFigureJump(c.id),
+            }, c.name));
+          }
+          item.append(row);
+        }
+      }
+      tl.append(item);
     }
     wrap.append(tl);
     return wrap;

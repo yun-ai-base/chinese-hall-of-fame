@@ -7,6 +7,7 @@
 // activate 自动清掉旧版本缓存并刷新已打开的页面（用户无感升级）。
 const CACHE_FALLBACK = 'chof-v5';
 let CURRENT_CACHE = CACHE_FALLBACK;
+let IS_UPGRADE = false;   // install 时检测：存在旧缓存 → 升级（激活后刷新页面）
 
 async function resolveCacheName() {
   try {
@@ -72,12 +73,17 @@ self.addEventListener('install', (e) => {
   e.waitUntil(
     resolveCacheName().then((name) => {
       CURRENT_CACHE = name;
-      return caches.open(CURRENT_CACHE)
-        .then((c) => Promise.all(SHELL.map((u) => c.add(u).catch((err) => {
-          // 单条缺失不应阻断整个 install（开发期模块变动频繁）
-          console.warn('[SW] skip precache:', u, err && err.message);
-        }))))
-        .then(() => self.skipWaiting());
+      // 升级检测：若已有非当前版本的旧缓存 → 本次是「升级」（需激活后刷新页面）；
+      // 首次安装（无旧缓存）不刷新，避免用户首访无谓多刷一次。
+      return caches.keys().then((keys) => {
+        IS_UPGRADE = keys.some((k) => k !== CURRENT_CACHE);
+        return caches.open(CURRENT_CACHE)
+          .then((c) => Promise.all(SHELL.map((u) => c.add(u).catch((err) => {
+            // 单条缺失不应阻断整个 install（开发期模块变动频繁）
+            console.warn('[SW] skip precache:', u, err && err.message);
+          }))))
+          .then(() => self.skipWaiting());
+      });
     })
   );
 });
@@ -87,11 +93,14 @@ self.addEventListener('activate', (e) => {
     caches.keys()
       .then((keys) => Promise.all(keys.filter((k) => k !== CURRENT_CACHE).map((k) => caches.delete(k))))
       .then(() => self.clients.claim())
-      // 升级完成即刷新所有已打开的页面：用户无需手动强刷即可看到新版本
-      // （配合上方 network-first，此后普通刷新/重开永远是最新）
-      .then(() => self.clients.matchAll({ type: 'window' }).then((cs) =>
-        cs.forEach((c) => { try { c.navigate(c.url); } catch (err) { /* 忽略不可控页 */ } })
-      ))
+      // 仅「升级」时刷新所有已打开页面：用户无需手动强刷即可看到新版本
+      // （配合 network-first，此后普通刷新/重开永远是最新）。首次安装不刷新。
+      .then(() => {
+        if (!IS_UPGRADE) return;
+        return self.clients.matchAll({ type: 'window' }).then((cs) =>
+          cs.forEach((c) => { try { c.navigate(c.url); } catch (err) { /* 忽略不可控页 */ } })
+        );
+      })
   );
 });
 

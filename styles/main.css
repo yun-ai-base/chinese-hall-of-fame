@@ -268,6 +268,18 @@ html, body {
 .block { margin-bottom: 22px; }
 /* 相关人物：横向标签流（点击跳转重构星系） */
 .related-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+/* 所属群体：徽章式标签，点击展开/收起成员 */
+.group-chip {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 7px 14px; border-radius: 18px;
+  background: rgba(255,215,0,0.08);
+  border: 1px solid rgba(255,215,0,0.35);
+  color: #ffe9a8; font-size: 13px; cursor: pointer;
+  transition: background 0.15s ease;
+}
+.group-chip:hover { background: rgba(255,215,0,0.16); }
+.group-members { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+.group-members.hidden { display: none; }
 .related-chip {
   display: inline-flex; align-items: baseline; gap: 6px;
   padding: 6px 12px; border-radius: 16px;
@@ -313,6 +325,32 @@ html, body {
   width: 9px; height: 9px; border-radius: 50%; background: #888; box-shadow: 0 0 6px #888;
 }
 .tl-birth::before { background: #2ECC71; box-shadow: 0 0 8px #2ECC71; }
+/* 年表「同时代」横轴：事件行下方的横向参照（点击跳转） */
+.tl-same { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin-top: 4px; }
+.tl-same-label { font-size: 11px; color: rgba(255,255,255,0.42); }
+.tl-same-chip {
+  padding: 2px 9px; border-radius: 10px; font-size: 11px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid color-mix(in srgb, var(--dim-color, #888) 32%, transparent);
+  color: rgba(255,255,255,0.78); cursor: pointer; transition: background 0.15s ease;
+}
+.tl-same-chip:hover { background: rgba(255,255,255,0.14); }
+/* 面板底部前后导航（移动端无键盘方向键的按钮兜底） */
+.panel-nav {
+  display: flex; align-items: center; gap: 10px;
+  margin-top: 26px; padding-top: 14px;
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+.panel-nav-btn {
+  flex: 1; padding: 10px 8px; border-radius: 10px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.12);
+  color: rgba(255,255,255,0.85); font-size: 13px; cursor: pointer;
+  transition: background 0.15s ease;
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+.panel-nav-btn:hover { background: rgba(255,255,255,0.12); }
+.panel-nav-pos { flex-shrink: 0; font-size: 12px; color: rgba(255,255,255,0.45); }
 .tl-death::before { background: #E74C3C; box-shadow: 0 0 8px #E74C3C; }
 .tl-work::before { background: #1ABC9C; box-shadow: 0 0 8px #1ABC9C; }
 .tl-year { display: inline-block; min-width: 64px; font-size: 12px; color: #FFD700; font-family: 'Noto Serif SC', 'Songti SC', 'STSong', 'SimSun', serif; }

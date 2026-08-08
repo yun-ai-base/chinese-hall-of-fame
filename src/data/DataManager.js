@@ -36,6 +36,7 @@ export class DataManager {
     this.figures = new Map();       // figId -> { basic, dimId, category, color, sortYear }
     this.dimFigureLists = new Map();// dimId -> [{ id, basic, category, color, sortYear }]
     this.cross = new Map();         // figId -> [dimId]
+    this.groupIndex = new Map();    // group -> [{id,name,color,dynasty}]（basic.group 静态化回填）
     this.associateIds = new Set();
     this.searchIndex = [];
     this.isMobile = window.innerWidth < 768 || 'ontouchstart' in window;
@@ -80,6 +81,12 @@ export class DataManager {
         const entry = { id: basic.id, basic, dimId, category: basic.dimensionCategory, color: meta.color, sortYear };
         this.figures.set(basic.id, entry);
         list.push(entry);
+        // 群体索引（basic.group 由 tools/backfill_group.py 静态化回填）：group -> 成员
+        const grp = basic.group;
+        if (grp) {
+          if (!this.groupIndex.has(grp)) this.groupIndex.set(grp, []);
+          this.groupIndex.get(grp).push({ id: basic.id, name: basic.name, color: meta.color, dynasty: basic.dynasty || '' });
+        }
         const py = (basic.pinyin || '').toLowerCase().trim();
         const initials = py.split(/\s+/).map((s) => s[0] || '').join(''); // 拼音首字母，如 zu chong zhi -> zcz
         this.searchIndex.push({
@@ -112,6 +119,32 @@ export class DataManager {
   getDimFigures(dimId) { return this.dimFigureLists.get(dimId) || []; }
   getFigureBasic(id) { return this.figures.get(id); }
   getCrossDims(id) { return this.cross.get(id) || []; }
+
+  // 群体成员查询（纯内存索引，basic.group 由 backfill_group.py 静态化；excludeId 排除自身）
+  getGroupMembers(group, excludeId = null) {
+    const arr = this.groupIndex.get(group) || [];
+    return excludeId ? arr.filter(m => m.id !== excludeId) : arr;
+  }
+
+  // 是否有该群体（渲染层防御）
+  hasGroup(group) { return this.groupIndex.has(group); }
+
+  // 同时代名人：以某年份为中心（±span 年），排除自身，按年代接近度取 Top N。
+  // 供年表"同时代"横轴使用——让历史事件有横向参照（谁在同一时代活动）。
+  getContemporaries(year, excludeId = null, span = 20, limit = 3) {
+    if (typeof year !== 'number' || !Number.isFinite(year)) return [];
+    const scored = [];
+    for (const [id, entry] of this.figures) {
+      if (id === excludeId) continue;
+      const y = entry.sortYear || 0;
+      const d = Math.abs(y - year);
+      if (d <= span && y > 0) {
+        scored.push({ id, name: entry.basic.name, dynasty: entry.basic.dynasty || '', color: entry.color, d });
+      }
+    }
+    scored.sort((a, b) => a.d - b.d || (a.name.localeCompare(b.name, 'zh')));
+    return scored.slice(0, limit).map(({ d, ...rest }) => rest);
+  }
 
   // 相关人物推荐：基于 basic 级字段做加权（同维度 +2 / 同朝代 +2 / 标签交集每个 +1），
   // 排除自身，同分按年代（sortYear）升序取 Top N，返回渲染友好对象。

@@ -25,7 +25,8 @@
     "locations": [
       "山东临沂",
       "浙江绍兴"
-    ]
+    ],
+    "group": "兰亭雅集"
   },
   {
     "id": "wang_xianzhi",
@@ -53,7 +54,8 @@
     "locations": [
       "山东临沂",
       "浙江绍兴"
-    ]
+    ],
+    "group": "二王"
   },
   {
     "id": "yan_zhenqing",
@@ -191,7 +193,8 @@
     "deathplace": null,
     "locations": [
       "江苏苏州"
-    ]
+    ],
+    "group": "饮中八仙"
   },
   {
     "id": "huai_su",
@@ -246,7 +249,8 @@
     "locations": [
       "山西太原",
       "江苏镇江"
-    ]
+    ],
+    "group": "宋四家"
   },
   {
     "id": "yu_shinan",
@@ -274,7 +278,8 @@
     "locations": [
       "浙江余姚",
       "西安"
-    ]
+    ],
+    "group": "初唐四大家"
   },
   {
     "id": "chu_suiliang",
@@ -302,7 +307,8 @@
     "locations": [
       "浙江杭州",
       "西安"
-    ]
+    ],
+    "group": "初唐四大家"
   },
   {
     "id": "gu_kaizhi",
@@ -439,7 +445,8 @@
     "deathplace": null,
     "locations": [
       "江苏南京"
-    ]
+    ],
+    "group": "南唐画院"
   },
   {
     "id": "xu_wei",
@@ -493,7 +500,8 @@
     "deathplace": null,
     "locations": [
       "江西南昌"
-    ]
+    ],
+    "group": "清初四僧"
   },
   {
     "id": "zheng_banqiao",
@@ -520,7 +528,8 @@
     "deathplace": null,
     "locations": [
       "江苏兴化"
-    ]
+    ],
+    "group": "扬州八怪"
   },
   {
     "id": "bian_luan",
@@ -574,7 +583,8 @@
     "deathplace": null,
     "locations": [
       "四川成都"
-    ]
+    ],
+    "group": "黄家富贵"
   },
   {
     "id": "zhao_ji",
@@ -602,7 +612,8 @@
     "locations": [
       "河南开封",
       "黑龙江依兰"
-    ]
+    ],
+    "group": "北宋画院"
   },
   {
     "id": "huang_gongwang",
@@ -630,7 +641,8 @@
     "locations": [
       "江苏常熟",
       "浙江富阳"
-    ]
+    ],
+    "group": "元四家"
   },
   {
     "id": "zhang_zeduan",
@@ -658,7 +670,8 @@
     "locations": [
       "山东诸城",
       "开封"
-    ]
+    ],
+    "group": "北宋画院"
   },
   {
     "id": "fan_kuan",
@@ -685,7 +698,8 @@
     "deathplace": null,
     "locations": [
       "陕西铜川"
-    ]
+    ],
+    "group": "三家山水"
   },
   {
     "id": "guo_xi",
@@ -741,7 +755,8 @@
     "locations": [
       "河南孟州",
       "杭州"
-    ]
+    ],
+    "group": "南宋四家"
   },
   {
     "id": "liu_songnian",
@@ -768,7 +783,8 @@
     "deathplace": null,
     "locations": [
       "浙江杭州"
-    ]
+    ],
+    "group": "南宋四家"
   },
   {
     "id": "ma_yuan",
@@ -796,7 +812,8 @@
     "locations": [
       "山西永济",
       "杭州"
-    ]
+    ],
+    "group": "南宋四家"
   },
   {
     "id": "xia_gui",
@@ -823,7 +840,8 @@
     "deathplace": null,
     "locations": [
       "浙江杭州"
-    ]
+    ],
+    "group": "南宋四家"
   },
   {
     "id": "ni_zan",
@@ -850,7 +868,8 @@
     "deathplace": null,
     "locations": [
       "江苏无锡"
-    ]
+    ],
+    "group": "元四家"
   },
   {
     "id": "wang_meng",
@@ -877,7 +896,8 @@
     "deathplace": null,
     "locations": [
       "浙江湖州"
-    ]
+    ],
+    "group": "元四家"
   },
   {
     "id": "shi_tao",
@@ -905,7 +925,8 @@
     "locations": [
       "广西桂林",
       "扬州"
-    ]
+    ],
+    "group": "清初四僧"
   },
   {
     "id": "qiu_ying",
@@ -933,7 +954,8 @@
     "locations": [
       "江苏太仓",
       "苏州"
-    ]
+    ],
+    "group": "明四家"
   },
   {
     "id": "jing_hao",
@@ -960,7 +982,8 @@
     "deathplace": null,
     "locations": [
       "山西晋城"
-    ]
+    ],
+    "group": "北方山水画派"
   },
   {
     "id": "guan_tong",
@@ -987,7 +1010,8 @@
     "deathplace": null,
     "locations": [
       "陕西西安"
-    ]
+    ],
+    "group": "北方山水画派"
   },
   {
     "id": "dong_yuan",
@@ -1015,7 +1039,8 @@
     "locations": [
       "江西南昌",
       "南京"
-    ]
+    ],
+    "group": "江南山水画派"
   },
   {
     "id": "tang_yin",
@@ -1042,7 +1067,8 @@
     "deathplace": null,
     "locations": [
       "江苏苏州"
-    ]
+    ],
+    "group": "明四家"
   },
   {
     "id": "wen_zhengming",
@@ -1069,7 +1095,8 @@
     "deathplace": null,
     "locations": [
       "江苏苏州"
-    ]
+    ],
+    "group": "明四家、吴门画派"
   },
   {
     "id": "shen_zhou",
@@ -1096,7 +1123,8 @@
     "deathplace": null,
     "locations": [
       "江苏苏州"
-    ]
+    ],
+    "group": "明四家、吴门画派"
   },
   {
     "id": "dong_qichang",
@@ -1123,7 +1151,8 @@
     "deathplace": null,
     "locations": [
       "上海"
-    ]
+    ],
+    "group": "华亭画派"
   },
   {
     "id": "lang_shining",
@@ -1151,7 +1180,8 @@
     "locations": [
       "意大利米兰",
       "北京"
-    ]
+    ],
+    "group": "宫廷画院"
   },
   {
     "id": "chen_hongshou",
@@ -1206,7 +1236,8 @@
     "deathplace": null,
     "locations": [
       "江苏太仓"
-    ]
+    ],
+    "group": "清初四王"
   },
   {
     "id": "qi_baishi",
@@ -1376,7 +1407,8 @@
     "locations": [
       "江西新余",
       "南京"
-    ]
+    ],
+    "group": "新金陵画派"
   },
   {
     "id": "pan_tianshou",
@@ -1459,7 +1491,8 @@
     "deathplace": null,
     "locations": [
       "江苏苏州"
-    ]
+    ],
+    "group": "吴门派"
   },
   {
     "id": "he_zhen",
@@ -1487,7 +1520,8 @@
     "locations": [
       "江西婺源",
       "南京"
-    ]
+    ],
+    "group": "徽派"
   },
   {
     "id": "deng_shiru",
@@ -1514,7 +1548,8 @@
     "deathplace": null,
     "locations": [
       "安徽怀宁"
-    ]
+    ],
+    "group": "皖派（邓派）"
   },
   {
     "id": "wu_changshuo",
@@ -1542,7 +1577,8 @@
     "locations": [
       "浙江安吉",
       "上海"
-    ]
+    ],
+    "group": "西泠印社"
   },
   {
     "id": "ding_jing",
@@ -1569,7 +1605,8 @@
     "deathplace": null,
     "locations": [
       "浙江杭州"
-    ]
+    ],
+    "group": "浙派、西泠八家"
   },
   {
     "id": "zhao_zhiqian",
@@ -1623,7 +1660,8 @@
     "deathplace": null,
     "locations": [
       "浙江杭州"
-    ]
+    ],
+    "group": "浙派、西泠八家"
   },
   {
     "id": "chen_shizeng",

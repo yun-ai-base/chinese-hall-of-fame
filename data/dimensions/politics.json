@@ -25,7 +25,8 @@
     "locations": [
       "陕西咸阳",
       "河北"
-    ]
+    ],
+    "group": "秦廷法家集团"
   },
   {
     "id": "liu_bang",
@@ -53,7 +54,8 @@
     "locations": [
       "陕西西安",
       "江苏徐州"
-    ]
+    ],
+    "group": "沛县元从集团"
   },
   {
     "id": "liu_xiu",
@@ -81,7 +83,8 @@
     "locations": [
       "河南洛阳",
       "湖北"
-    ]
+    ],
+    "group": "南阳豪强集团"
   },
   {
     "id": "yang_jian",
@@ -108,7 +111,8 @@
     "deathplace": "大兴（今陕西西安）",
     "locations": [
       "陕西西安"
-    ]
+    ],
+    "group": "封神阵营"
   },
   {
     "id": "li_shi_min",
@@ -135,7 +139,8 @@
     "deathplace": "终南山翠微宫（今陕西西安）",
     "locations": [
       "陕西西安"
-    ]
+    ],
+    "group": "秦王府十八学士集团"
   },
   {
     "id": "zhao_kuangyin",
@@ -163,7 +168,8 @@
     "locations": [
       "河南开封",
       "河南洛阳"
-    ]
+    ],
+    "group": "义社十兄弟集团"
   },
   {
     "id": "zhu_yuanzhang",
@@ -191,7 +197,8 @@
     "locations": [
       "江苏南京",
       "安徽"
-    ]
+    ],
+    "group": "淮西勋贵集团"
   },
   {
     "id": "kang_xi",
@@ -218,7 +225,8 @@
     "deathplace": "畅春园（今北京）",
     "locations": [
       "北京"
-    ]
+    ],
+    "group": "满洲贵族集团"
   },
   {
     "id": "han_wudi",
@@ -245,7 +253,8 @@
     "deathplace": "长安（今陕西西安）",
     "locations": [
       "陕西西安"
-    ]
+    ],
+    "group": "外戚与儒生集团"
   },
   {
     "id": "li_longji",
@@ -273,7 +282,8 @@
     "locations": [
       "陕西西安",
       "河南洛阳"
-    ]
+    ],
+    "group": "开元贤相集团"
   },
   {
     "id": "zhu_di",
@@ -301,7 +311,8 @@
     "locations": [
       "北京",
       "江苏南京"
-    ]
+    ],
+    "group": "靖难功臣集团"
   },
   {
     "id": "qian_long",
@@ -328,7 +339,8 @@
     "deathplace": "北京（今北京）",
     "locations": [
       "北京"
-    ]
+    ],
+    "group": "满洲贵族集团"
   },
   {
     "id": "han_wendi",
@@ -355,7 +367,8 @@
     "deathplace": "长安（今陕西西安）",
     "locations": [
       "陕西西安"
-    ]
+    ],
+    "group": "代国旧臣集团"
   },
   {
     "id": "han_xuandi",
@@ -382,7 +395,8 @@
     "deathplace": "长安（今陕西西安）",
     "locations": [
       "陕西西安"
-    ]
+    ],
+    "group": "霍氏与新兴外戚"
   },
   {
     "id": "han_jingdi",
@@ -409,7 +423,8 @@
     "deathplace": "长安（今陕西西安）",
     "locations": [
       "陕西西安"
-    ]
+    ],
+    "group": "文帝旧臣与法家"
   },
   {
     "id": "song_renzong",
@@ -436,7 +451,8 @@
     "deathplace": "开封（今河南开封）",
     "locations": [
       "河南开封"
-    ]
+    ],
+    "group": "庆历名臣集团"
   },
   {
     "id": "sui_yangdi",
@@ -465,7 +481,8 @@
     "locations": [
       "陕西西安",
       "江苏扬州"
-    ]
+    ],
+    "group": "隋廷关陇集团"
   },
   {
     "id": "chong_zhen",
@@ -492,7 +509,8 @@
     "deathplace": "北京（今北京）",
     "locations": [
       "北京"
-    ]
+    ],
+    "group": "东林党/文官集团"
   },
   {
     "id": "wu_zetian",
@@ -520,7 +538,8 @@
     "locations": [
       "河南洛阳",
       "陕西西安"
-    ]
+    ],
+    "group": "武周政治集团"
   },
   {
     "id": "guang_xu",
@@ -547,7 +566,8 @@
     "deathplace": "北京（今北京）",
     "locations": [
       "北京"
-    ]
+    ],
+    "group": "维新派集团"
   },
   {
     "id": "ci_xi",
@@ -574,7 +594,8 @@
     "deathplace": "北京（今北京）",
     "locations": [
       "北京"
-    ]
+    ],
+    "group": "满洲贵族/后党集团"
   },
   {
     "id": "huo_guang",
@@ -602,7 +623,8 @@
     "locations": [
       "陕西西安",
       "山西"
-    ]
+    ],
+    "group": "霍氏外戚集团"
   },
   {
     "id": "guan_zhong",
@@ -629,7 +651,8 @@
     "deathplace": null,
     "locations": [
       "山东"
-    ]
+    ],
+    "group": "齐桓公改革集团"
   },
   {
     "id": "shang_yang",
@@ -657,7 +680,8 @@
     "locations": [
       "陕西",
       "河南"
-    ]
+    ],
+    "group": "秦孝公改革集团"
   },
   {
     "id": "wei_zheng",
@@ -685,7 +709,8 @@
     "locations": [
       "陕西西安",
       "河北"
-    ]
+    ],
+    "group": "贞观名臣集团"
   },
   {
     "id": "wang_anshi",
@@ -713,7 +738,8 @@
     "locations": [
       "江西",
       "江苏南京"
-    ]
+    ],
+    "group": "新党（变法派）"
   },
   {
     "id": "zhang_juzheng",
@@ -741,7 +767,8 @@
     "locations": [
       "北京",
       "湖北"
-    ]
+    ],
+    "group": "万历首辅集团"
   },
   {
     "id": "fan_zhongyan",
@@ -768,7 +795,8 @@
     "deathplace": "徐州（今江苏徐州）",
     "locations": [
       "江苏"
-    ]
+    ],
+    "group": "庆历新政集团"
   },
   {
     "id": "li_si",
@@ -796,7 +824,8 @@
     "locations": [
       "陕西西安",
       "河南"
-    ]
+    ],
+    "group": "秦廷法家集团"
   },
   {
     "id": "xiao_he",
@@ -824,7 +853,8 @@
     "locations": [
       "陕西西安",
       "江苏"
-    ]
+    ],
+    "group": "沛县元从集团"
   },
   {
     "id": "fang_xuanling",
@@ -852,7 +882,8 @@
     "locations": [
       "陕西西安",
       "山东"
-    ]
+    ],
+    "group": "秦王府旧属/贞观名相"
   },
   {
     "id": "du_ruhui",
@@ -879,7 +910,8 @@
     "deathplace": "长安（今陕西西安）",
     "locations": [
       "陕西西安"
-    ]
+    ],
+    "group": "秦王府旧属/贞观名相"
   },
   {
     "id": "yao_chong",
@@ -907,7 +939,8 @@
     "locations": [
       "陕西",
       "河南"
-    ]
+    ],
+    "group": "开元名相集团"
   },
   {
     "id": "kou_zhun",
@@ -935,7 +968,8 @@
     "locations": [
       "陕西",
       "广东"
-    ]
+    ],
+    "group": "北宋主战派"
   },
   {
     "id": "yu_qian",
@@ -963,7 +997,8 @@
     "locations": [
       "北京",
       "浙江"
-    ]
+    ],
+    "group": "景泰朝忠臣集团"
   },
   {
     "id": "hai_rui",
@@ -991,7 +1026,8 @@
     "locations": [
       "海南",
       "江苏南京"
-    ]
+    ],
+    "group": "明代清官集团"
   },
   {
     "id": "si_ma_guang",
@@ -1019,7 +1055,8 @@
     "locations": [
       "河南开封",
       "山西"
-    ]
+    ],
+    "group": "旧党（保守派）"
   },
   {
     "id": "zhao_pu",
@@ -1047,7 +1084,8 @@
     "locations": [
       "河南",
       "天津"
-    ]
+    ],
+    "group": "宋初开国功臣集团"
   },
   {
     "id": "yang_yan",
@@ -1074,7 +1112,8 @@
     "deathplace": "长安（今陕西西安）",
     "locations": [
       "陕西西安"
-    ]
+    ],
+    "group": "唐德宗改革集团"
   },
   {
     "id": "zhang_jian",
@@ -1101,7 +1140,8 @@
     "deathplace": "南通（今江苏南通）",
     "locations": [
       "江苏南通"
-    ]
+    ],
+    "group": "清末民初实业家集团"
   },
   {
     "id": "liu_ji",
@@ -1129,7 +1169,8 @@
     "locations": [
       "浙江",
       "江苏南京"
-    ]
+    ],
+    "group": "浙东文士集团"
   },
   {
     "id": "lin_zexu",
@@ -1157,7 +1198,8 @@
     "locations": [
       "福建",
       "广东"
-    ]
+    ],
+    "group": "清末禁烟派/改革派"
   },
   {
     "id": "liang_qichao",
@@ -1185,7 +1227,8 @@
     "locations": [
       "北京",
       "广东"
-    ]
+    ],
+    "group": "维新派"
   },
   {
     "id": "zhang_yi",
@@ -1213,7 +1256,8 @@
     "locations": [
       "陕西",
       "山西"
-    ]
+    ],
+    "group": "战国纵横家"
   },
   {
     "id": "su_qin",
@@ -1240,7 +1284,8 @@
     "deathplace": "齐国",
     "locations": [
       "河南洛阳"
-    ]
+    ],
+    "group": "战国纵横家"
   },
   {
     "id": "lin_xiangru",
@@ -1267,7 +1312,8 @@
     "deathplace": null,
     "locations": [
       "河北"
-    ]
+    ],
+    "group": "赵国士大夫"
   },
   {
     "id": "wang_zhaojun",
@@ -1295,7 +1341,8 @@
     "locations": [
       "内蒙古",
       "湖北"
-    ]
+    ],
+    "group": "西汉和亲使团"
   },
   {
     "id": "wencheng_gongzhu",
@@ -1323,7 +1370,8 @@
     "locations": [
       "西藏",
       "陕西西安"
-    ]
+    ],
+    "group": "唐蕃和亲使团"
   },
   {
     "id": "yan_zi",
@@ -1350,7 +1398,8 @@
     "deathplace": null,
     "locations": [
       "山东"
-    ]
+    ],
+    "group": "齐国卿大夫"
   },
   {
     "id": "zhao_wulingwang",
@@ -1377,6 +1426,7 @@
     "deathplace": "沙丘（今河北邢台）",
     "locations": [
       "河北"
-    ]
+    ],
+    "group": "赵国改革集团"
   }
 ]

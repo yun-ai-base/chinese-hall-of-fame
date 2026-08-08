@@ -82,7 +82,8 @@
     "locations": [
       "山西",
       "湖北"
-    ]
+    ],
+    "group": "稷下学宫"
   },
   {
     "id": "zhu_xi",
@@ -110,7 +111,8 @@
     "deathplace": "建阳（今福建南平）",
     "locations": [
       "福建"
-    ]
+    ],
+    "group": "考亭学派"
   },
   {
     "id": "wang_yang_ming",
@@ -139,7 +141,8 @@
     "locations": [
       "浙江",
       "江西"
-    ]
+    ],
+    "group": "姚江学派"
   },
   {
     "id": "cheng_yi",
@@ -167,7 +170,8 @@
     "deathplace": "洛阳（今河南洛阳）",
     "locations": [
       "河南洛阳"
-    ]
+    ],
+    "group": "二程洛学"
   },
   {
     "id": "cheng_hao",
@@ -195,7 +199,8 @@
     "deathplace": "洛阳（今河南洛阳）",
     "locations": [
       "河南洛阳"
-    ]
+    ],
+    "group": "二程洛学"
   },
   {
     "id": "zhou_dun_yi",
@@ -224,7 +229,8 @@
     "locations": [
       "湖南",
       "江西"
-    ]
+    ],
+    "group": "濂学"
   },
   {
     "id": "zhang_zai",
@@ -253,7 +259,8 @@
     "locations": [
       "陕西",
       "河南"
-    ]
+    ],
+    "group": "关学"
   },
   {
     "id": "lu_jiu_yuan",
@@ -282,7 +289,8 @@
     "locations": [
       "江西",
       "湖北"
-    ]
+    ],
+    "group": "象山学派"
   },
   {
     "id": "dong_zhong_shu",
@@ -339,7 +347,8 @@
     "deathplace": null,
     "locations": [
       "山东"
-    ]
+    ],
+    "group": "孔门弟子"
   },
   {
     "id": "zi_si",
@@ -367,7 +376,8 @@
     "deathplace": null,
     "locations": [
       "山东"
-    ]
+    ],
+    "group": "孔门后学"
   },
   {
     "id": "yan_hui",
@@ -395,7 +405,8 @@
     "deathplace": null,
     "locations": [
       "山东"
-    ]
+    ],
+    "group": "孔门弟子"
   },
   {
     "id": "shao_yong",
@@ -424,7 +435,8 @@
     "locations": [
       "河北",
       "河南洛阳"
-    ]
+    ],
+    "group": "北宋五子"
   },
   {
     "id": "zheng_xuan",
@@ -452,7 +464,8 @@
     "deathplace": null,
     "locations": [
       "山东"
-    ]
+    ],
+    "group": "东汉经学"
   },
   {
     "id": "gu_yan_wu",
@@ -481,7 +494,8 @@
     "locations": [
       "江苏",
       "山西"
-    ]
+    ],
+    "group": "明末清初三大儒"
   },
   {
     "id": "huang_zong_xi",
@@ -509,7 +523,8 @@
     "deathplace": "余姚（今浙江宁波）",
     "locations": [
       "浙江"
-    ]
+    ],
+    "group": "明末清初三大儒"
   },
   {
     "id": "wang_fu_zhi",
@@ -537,7 +552,8 @@
     "deathplace": "衡州（今湖南衡阳）",
     "locations": [
       "湖南"
-    ]
+    ],
+    "group": "明末清初三大儒"
   },
   {
     "id": "lao_zi",
@@ -650,7 +666,8 @@
     "locations": [
       "江苏",
       "四川"
-    ]
+    ],
+    "group": "天师道"
   },
   {
     "id": "ge_hong",
@@ -679,7 +696,8 @@
     "locations": [
       "江苏",
       "广东"
-    ]
+    ],
+    "group": "道教金丹派"
   },
   {
     "id": "wei_bo_yang",
@@ -735,7 +753,8 @@
     "deathplace": "洛阳（今河南洛阳）",
     "locations": [
       "河南"
-    ]
+    ],
+    "group": "正始玄学"
   },
   {
     "id": "guo_xiang",
@@ -763,7 +782,8 @@
     "deathplace": null,
     "locations": [
       "河南"
-    ]
+    ],
+    "group": "元康玄学"
   },
   {
     "id": "hui_neng",
@@ -792,7 +812,8 @@
     "locations": [
       "河北",
       "广东"
-    ]
+    ],
+    "group": "禅宗南宗"
   },
   {
     "id": "xuan_zang",
@@ -821,7 +842,8 @@
     "locations": [
       "河南",
       "陕西西安"
-    ]
+    ],
+    "group": "法相宗"
   },
   {
     "id": "da_mo",
@@ -849,7 +871,8 @@
     "deathplace": "洛滨（今河南洛阳）",
     "locations": [
       "河南"
-    ]
+    ],
+    "group": "禅宗"
   },
   {
     "id": "jiu_mo_luo_shi",
@@ -878,7 +901,8 @@
     "locations": [
       "新疆",
       "陕西西安"
-    ]
+    ],
+    "group": "长安译场"
   },
   {
     "id": "jian_zhen",
@@ -965,7 +989,8 @@
     "locations": [
       "河北",
       "陕西西安"
-    ]
+    ],
+    "group": "道安僧团"
   },
   {
     "id": "seng_zhao",
@@ -993,7 +1018,8 @@
     "deathplace": "长安（今陕西西安）",
     "locations": [
       "陕西西安"
-    ]
+    ],
+    "group": "鸠摩罗什门下四圣"
   },
   {
     "id": "hui_yuan",
@@ -1022,7 +1048,8 @@
     "locations": [
       "山西",
       "江西"
-    ]
+    ],
+    "group": "庐山僧团"
   },
   {
     "id": "bai_zhang_huai_hai",
@@ -1051,7 +1078,8 @@
     "locations": [
       "福建",
       "江西"
-    ]
+    ],
+    "group": "洪州宗"
   },
   {
     "id": "hong_yi_fa_shi",
@@ -1108,7 +1136,8 @@
     "deathplace": null,
     "locations": [
       "山东"
-    ]
+    ],
+    "group": "墨家"
   },
   {
     "id": "han_fei_zi",
@@ -1137,7 +1166,8 @@
     "locations": [
       "河南",
       "陕西"
-    ]
+    ],
+    "group": "法家"
   },
   {
     "id": "gong_sun_long",
@@ -1165,7 +1195,8 @@
     "deathplace": null,
     "locations": [
       "河北"
-    ]
+    ],
+    "group": "名家"
   },
   {
     "id": "hui_shi",
@@ -1193,7 +1224,8 @@
     "deathplace": null,
     "locations": [
       "河南"
-    ]
+    ],
+    "group": "名家"
   },
   {
     "id": "zou_yan",
@@ -1221,7 +1253,8 @@
     "deathplace": null,
     "locations": [
       "山东"
-    ]
+    ],
+    "group": "阴阳家"
   },
   {
     "id": "gui_gu_zi",
@@ -1247,7 +1280,8 @@
     "summary": "鬼谷子是战国隐士，纵横家始祖，精通谋略兵法，相传为苏秦、张仪之师。",
     "birthplace": null,
     "deathplace": null,
-    "locations": null
+    "locations": null,
+    "group": "纵横家"
   },
   {
     "id": "yang_zhu",
@@ -1275,7 +1309,8 @@
     "deathplace": null,
     "locations": [
       "河南"
-    ]
+    ],
+    "group": "杨朱学派"
   },
   {
     "id": "xu_xing",
@@ -1303,7 +1338,8 @@
     "deathplace": null,
     "locations": [
       "湖北"
-    ]
+    ],
+    "group": "农家"
   },
   {
     "id": "shen_dao",
@@ -1331,7 +1367,8 @@
     "deathplace": null,
     "locations": [
       "河北"
-    ]
+    ],
+    "group": "稷下学宫"
   },
   {
     "id": "shen_bu_hai",
@@ -1359,7 +1396,8 @@
     "deathplace": null,
     "locations": [
       "河南"
-    ]
+    ],
+    "group": "法家"
   },
   {
     "id": "wang_guowei",
@@ -1387,7 +1425,8 @@
     "locations": [
       "浙江",
       "北京"
-    ]
+    ],
+    "group": "清华四大导师"
   },
   {
     "id": "qian_mu",
@@ -1445,7 +1484,8 @@
       "湖北",
       "北京",
       "上海"
-    ]
+    ],
+    "group": "新儒家"
   },
   {
     "id": "ma_yifu",
@@ -1528,7 +1568,8 @@
     "deathplace": "浙江杭州",
     "locations": [
       "浙江"
-    ]
+    ],
+    "group": "法眼宗"
   },
   {
     "id": "lianchi_dashi",
@@ -1555,7 +1596,8 @@
     "deathplace": "浙江杭州",
     "locations": [
       "浙江"
-    ]
+    ],
+    "group": "明代四大高僧"
   },
   {
     "id": "chen_tuan",
@@ -1583,7 +1625,8 @@
     "locations": [
       "河南",
       "陕西华山"
-    ]
+    ],
+    "group": "华山道教"
   },
   {
     "id": "yin_wen",
@@ -1610,6 +1653,7 @@
     "deathplace": null,
     "locations": [
       "山东"
-    ]
+    ],
+    "group": "名家"
   }
 ]
