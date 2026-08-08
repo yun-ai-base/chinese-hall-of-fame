@@ -1,6 +1,9 @@
 import * as THREE from 'three';
 import { createPlanetNameSprite } from '../ui/Label.js';
 
+// 太阳半径：显著大于最大行星（木星 5.5），符合恒星体量；内圈轨道 15，边缘 8.5 不遮挡
+const SUN_RADIUS = 8.5;
+
 // 太阳日珥 / 火焰喷射粒子（GPU 端循环寿命，无需 CPU 每帧更新）
 const flaresVertexShader = `
   uniform float uTime;
@@ -58,8 +61,9 @@ export class Sun {
   }
 
   _createSun() {
-    // 太阳半径不宜过大，否则在俯视太阳系布局中会遮挡内侧轨道与行星
-    const geometry = new THREE.SphereGeometry(5, 64, 64);
+    // 太阳半径 8.5：须显著大于最大行星（木星 5.5），才符合「恒星」体量。
+    // 内圈轨道 15（水星），太阳边缘 8.5 不遮挡内侧轨道。
+    const geometry = new THREE.SphereGeometry(SUN_RADIUS, 64, 64);
     // MeshBasicMaterial：太阳是自发光体，不受光照 → 贴真实照片纹理即恒星本色
     // （程序化占位纹理立即可见，真实照片加载后无缝替换，见 _loadRealTexture）
     const material = new THREE.MeshBasicMaterial({
@@ -109,9 +113,9 @@ export class Sun {
     img.src = './assets/textures/sun.jpg';
   }
 
-  // 太阳中心嵌入「华夏」二字：尺寸较小、暗金细底、白字细黑边，避免成为唯一焦点
+  // 太阳中心嵌入「华夏」二字：随太阳放大适度加大，但保持「暗金细底、不抢焦点」的设计
   _createCenterText() {
-    this.centerLabel = createPlanetNameSprite('华夏', '#d4b896', 3, { clean: true });
+    this.centerLabel = createPlanetNameSprite('华夏', '#d4b896', SUN_RADIUS * 0.6, { clean: true });
     this.centerLabel.position.set(0, 0, 0);
     this.scene.add(this.centerLabel);
   }
@@ -139,7 +143,7 @@ export class Sun {
     });
 
     this.glow = new THREE.Sprite(spriteMaterial);
-    this.glow.scale.set(18, 18, 1);
+    this.glow.scale.set(SUN_RADIUS * 3.5, SUN_RADIUS * 3.5, 1);  // 光晕随太阳放大（约 3.5 倍半径）
     this.scene.add(this.glow);
   }
 
@@ -160,7 +164,7 @@ export class Sun {
     const start = new Float32Array(count);
     const life = new Float32Array(count);
     const seed = new Float32Array(count);
-    const sunR = 5;
+    const sunR = SUN_RADIUS;
     for (let i = 0; i < count; i++) {
       // 球面均匀采样出生点
       const u = Math.random(), v = Math.random();
@@ -186,7 +190,7 @@ export class Sun {
     const mat = new THREE.ShaderMaterial({
       uniforms: {
         uTime: { value: 0 },
-        uReach: { value: this.isMobile ? 1.8 : 2.2 },
+        uReach: { value: this.isMobile ? 2.6 : 3.4 },   // 日珥喷射距离随太阳半径放大
         uSize: { value: this.isMobile ? 3.5 : 4.5 },
       },
       vertexShader: flaresVertexShader,
