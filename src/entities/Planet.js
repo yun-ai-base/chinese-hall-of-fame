@@ -90,6 +90,8 @@ export class Planet {
     this.fade = 1.0;
     this.fadeTarget = 1.0;
     this.labelVisible = true;
+    // 真实照片纹理异步增强：程序化纹理立即可见，照片加载后无缝替换
+    if (this.texType !== 'generic') this._loadRealTexture();
     return this;
   }
 
@@ -101,7 +103,42 @@ export class Planet {
     const e = new THREE.CanvasTexture(emissiveMap);
     e.wrapS = e.wrapT = THREE.RepeatWrapping;
     e.repeat.set(repeat[0], repeat[1]);
+    this._proceduralMap = m;          // 记录程序化纹理，真实纹理加载后释放
+    this._proceduralEmissive = e;
     return { map: m, emissiveMap: e };
+  }
+
+  // 加载本地真实照片纹理（assets/textures/{type}.jpg，Solar System Scope / NASA 公共领域 2:1 等距圆柱投影）。
+  // 程序化纹理立即可见 → 照片加载成功后无缝替换 map + 暗化 emissiveMap（保留背光暗纹）；
+  // 任何失败静默回退程序化纹理，不影响渲染。
+  _loadRealTexture() {
+    const url = `./assets/textures/${this.texType}.jpg`;
+    const img = new Image();
+    img.onload = () => {
+      if (!this.mesh || !this.mesh.material || !img.width) return;
+      const map = new THREE.CanvasTexture(img);
+      map.colorSpace = THREE.SRGBColorSpace;
+      map.minFilter = THREE.LinearFilter;
+      map.magFilter = THREE.LinearFilter;
+      // 暗化版 emissiveMap（与程序化一致：背光面保留地形暗纹不发亮）
+      const cv = document.createElement('canvas');
+      cv.width = img.width; cv.height = img.height;
+      const ctx = cv.getContext('2d');
+      ctx.drawImage(img, 0, 0);
+      ctx.fillStyle = 'rgba(0,0,0,0.62)';
+      ctx.fillRect(0, 0, cv.width, cv.height);
+      const emissive = new THREE.CanvasTexture(cv);
+      emissive.colorSpace = THREE.SRGBColorSpace;
+      const mat = this.mesh.material;
+      mat.map = map;
+      mat.emissiveMap = emissive;
+      mat.needsUpdate = true;
+      // 释放程序化纹理（省内存）
+      if (this._proceduralMap) { this._proceduralMap.dispose(); this._proceduralMap = null; }
+      if (this._proceduralEmissive) { this._proceduralEmissive.dispose(); this._proceduralEmissive = null; }
+    };
+    // onerror 静默：本地文件缺失/网络失败时保持程序化纹理
+    img.src = url;
   }
 
   _texSeed() {
