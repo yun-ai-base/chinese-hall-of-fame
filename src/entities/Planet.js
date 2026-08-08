@@ -33,14 +33,14 @@ export class Planet {
   create(scene) {
     const tex = this._createTexture();
     const geometry = new THREE.SphereGeometry(this.radius, 32, 32);
-    // 写实行星（texType != generic）：自发光用暗灰，保留背光暗纹但无色偏（避免背光面泛维度色）；
+    // 写实行星（texType != generic）：自发光用中性亮灰（提升背光面可见度，保留暗纹无色偏）；
     // 分类星球/中央恒星（generic）沿用维度色自发光。
     const realistic = this.texType !== 'generic';
     const material = new THREE.MeshStandardMaterial({
       map: tex.map,
       emissiveMap: tex.emissiveMap,
-      emissive: realistic ? new THREE.Color(0x22242c) : new THREE.Color(this.color),
-      emissiveIntensity: realistic ? 0.22 : 0.28,  // 本色基底（配暗化 emissiveMap，背光面保留地形暗纹而不发亮）
+      emissive: realistic ? new THREE.Color(0x3a3f4d) : new THREE.Color(this.color),
+      emissiveIntensity: realistic ? 0.5 : 0.28,  // 背光面保留地形暗纹但整体可见（0.22→0.5，修复真实纹理行星过暗）
       roughness: 0.55,
       metalness: 0.08,
       transparent: true,   // 供淡出（下钻时非选中行星变暗）
@@ -111,29 +111,59 @@ export class Planet {
   // 加载本地真实照片纹理（assets/textures/{type}.jpg，Solar System Scope / NASA 公共领域 2:1 等距圆柱投影）。
   // 程序化纹理立即可见 → 照片加载成功后无缝替换 map + 暗化 emissiveMap（保留背光暗纹）；
   // 任何失败静默回退程序化纹理，不影响渲染。
+  // 地球专属：海洋像素蓝强化（深蓝 → 水蓝），让"蓝色弹珠"在屏幕上更鲜明；
+  // 其他行星：统一轻度提亮 + 饱和度提升（弥补真实照片在暗光下偏暗）。
   _loadRealTexture() {
     const url = `./assets/textures/${this.texType}.jpg`;
     const img = new Image();
     img.onload = () => {
       if (!this.mesh || !this.mesh.material || !img.width) return;
-      const map = new THREE.CanvasTexture(img);
-      map.colorSpace = THREE.SRGBColorSpace;
-      map.minFilter = THREE.LinearFilter;
-      map.magFilter = THREE.LinearFilter;
-      // 暗化版 emissiveMap（与程序化一致：背光面保留地形暗纹不发亮）
       const cv = document.createElement('canvas');
       cv.width = img.width; cv.height = img.height;
       const ctx = cv.getContext('2d');
       ctx.drawImage(img, 0, 0);
-      ctx.fillStyle = 'rgba(0,0,0,0.62)';
-      ctx.fillRect(0, 0, cv.width, cv.height);
-      const emissive = new THREE.CanvasTexture(cv);
+      const id = ctx.getImageData(0, 0, cv.width, cv.height);
+      const d = id.data;
+      for (let i = 0; i < d.length; i += 4) {
+        let r = d[i], g = d[i + 1], b = d[i + 2];
+        if (this.texType === 'earth') {
+          // 海洋像素（蓝主导）：提亮 + 微降红绿让蓝更纯
+          if (b > r && b > g) {
+            b = Math.min(255, b * 1.35 + 18);
+            r = Math.max(0, r * 0.86);
+            g = Math.max(0, g * 0.92);
+          } else {
+            // 陆地/云：轻度提亮
+            r = Math.min(255, r * 1.08); g = Math.min(255, g * 1.08); b = Math.min(255, b * 1.08);
+          }
+        } else {
+          // 其他行星：统一轻度提亮 + 饱和
+          r = Math.min(255, r * 1.10); g = Math.min(255, g * 1.10); b = Math.min(255, b * 1.10);
+          const avg = (r + g + b) / 3;
+          r = Math.min(255, avg + (r - avg) * 1.18);
+          g = Math.min(255, avg + (g - avg) * 1.18);
+          b = Math.min(255, avg + (b - avg) * 1.18);
+        }
+        d[i] = r; d[i + 1] = g; d[i + 2] = b;
+      }
+      ctx.putImageData(id, 0, 0);
+      const map = new THREE.CanvasTexture(cv);
+      map.colorSpace = THREE.SRGBColorSpace;
+      map.minFilter = THREE.LinearFilter;
+      map.magFilter = THREE.LinearFilter;
+      // 暗化版 emissiveMap：保留背光面地形暗纹但不发亮（与程序化一致）
+      const eCv = document.createElement('canvas');
+      eCv.width = cv.width; eCv.height = cv.height;
+      const eCtx = eCv.getContext('2d');
+      eCtx.drawImage(cv, 0, 0);
+      eCtx.fillStyle = 'rgba(0,0,0,0.62)';
+      eCtx.fillRect(0, 0, eCv.width, eCv.height);
+      const emissive = new THREE.CanvasTexture(eCv);
       emissive.colorSpace = THREE.SRGBColorSpace;
       const mat = this.mesh.material;
       mat.map = map;
       mat.emissiveMap = emissive;
       mat.needsUpdate = true;
-      // 释放程序化纹理（省内存）
       if (this._proceduralMap) { this._proceduralMap.dispose(); this._proceduralMap = null; }
       if (this._proceduralEmissive) { this._proceduralEmissive.dispose(); this._proceduralEmissive = null; }
     };

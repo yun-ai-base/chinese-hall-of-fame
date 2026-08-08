@@ -69,6 +69,11 @@ export class SceneManager {
     const ambient = new THREE.AmbientLight(0xffffff, 0.18);
     this.scene.add(ambient);
 
+    // 半球光（方向性环境光）：天空淡蓝白 / 地面深蓝，为背光面提供冷色补光。
+    // 提升真实纹理行星（尤其深蓝海洋的地球）在公转到背阳面时的可见度，且保留明暗立体感。
+    const hemi = new THREE.HemisphereLight(0xbdd4ff, 0x1a2340, 0.32);
+    this.scene.add(hemi);
+
     // 太阳点光源：decay=0 让光照均匀覆盖到最外层轨道；强度适中以保留明暗渐变
     const sunLight = new THREE.PointLight(0xffe8c8, 1.5, 0, 0);
     sunLight.position.set(0, 0, 0);
