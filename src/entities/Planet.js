@@ -54,6 +54,10 @@ export class Planet {
     this.glow = this._createGlow();
     this.glow.position.x = this.orbitRadius;
 
+    // 曲面光罩：紧贴球面的极淡加性光壳（随公转 + 随 fade）
+    this.surfaceGlow = this._createSurfaceGlow();
+    this.surfaceGlow.position.x = this.orbitRadius;
+
     // 行星名写在星球内部（居中、朝向相机、随星球大小自适应），不浮在外侧
     this.label = createPlanetNameSprite(this.name, this.color, this.radius);
     this.label.position.set(this.orbitRadius, 0, 0);
@@ -62,6 +66,7 @@ export class Planet {
 
     this.group.add(this.mesh);
     this.group.add(this.glow);
+    this.group.add(this.surfaceGlow);
     this.group.add(this.label);
     this.group.add(this.trail);
 
@@ -188,9 +193,11 @@ export class Planet {
     const g = Math.floor(color.g * 255);
     const b = Math.floor(color.b * 255);
 
+    // 光晕刻意做小（1.7 倍半径）：紧贴球体边缘的「辉光」而非覆盖球面的「平面光斑」
+    // （用户反馈：3 倍半径的 Sprite 在木星等大行星上看起来像一块平面光，无曲面感）
     const grad = ctx.createRadialGradient(32, 32, 2, 32, 32, 32);
-    grad.addColorStop(0, `rgba(${r},${g},${b},0.3)`);
-    grad.addColorStop(0.5, `rgba(${r},${g},${b},0.1)`);
+    grad.addColorStop(0, `rgba(${r},${g},${b},0.22)`);
+    grad.addColorStop(0.55, `rgba(${r},${g},${b},0.07)`);
     grad.addColorStop(1, `rgba(${r},${g},${b},0)`);
 
     ctx.fillStyle = grad;
@@ -205,8 +212,23 @@ export class Planet {
     });
 
     const sprite = new THREE.Sprite(material);
-    sprite.scale.set(this.radius * 3, this.radius * 3, 1);
+    sprite.scale.set(this.radius * 1.7, this.radius * 1.7, 1);
     return sprite;
+  }
+
+  // 曲面光罩：比行星略大的半透明球壳（加性混合、极淡），让「光」包裹球体边缘呈曲面感，
+  // 替代大平面 Sprite 的「平面光斑」观感（用户反馈：木星光斑像二保焊平面光，未紧贴球面）。
+  _createSurfaceGlow() {
+    const geo = new THREE.SphereGeometry(this.radius * 1.08, 32, 32);
+    const mat = new THREE.MeshBasicMaterial({
+      color: this.color,
+      transparent: true,
+      opacity: 0.12,
+      blending: THREE.AdditiveBlending,
+      depthWrite: false,
+      side: THREE.FrontSide,
+    });
+    return new THREE.Mesh(geo, mat);
   }
 
   getWorldPosition(target) {
@@ -389,6 +411,7 @@ export class Planet {
     // 平滑淡入淡出（始终更新，即使轨道暂停）—— 用时间无关常数保持淡出节奏稳定
     this.fade += (this.fadeTarget - this.fade) * 0.12;
     if (this.glow) this.glow.material.opacity = this.fade;
+    if (this.surfaceGlow) this.surfaceGlow.material.opacity = 0.12 * this.fade;
     if (this.mesh) this.mesh.material.opacity = Math.max(this.fade, 0.06);
     if (this.ring) this.ring.material.uniforms.uOpacity.value = this.fade;
     if (this.redSpotMesh) this.redSpotMesh.material.opacity = this.fade * 0.95;
