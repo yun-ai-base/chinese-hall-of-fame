@@ -24,7 +24,17 @@ export class ChineseStarMap {
     };
     const addStar = (x, y, z, opt = {}) => {
       const c = new THREE.Color(opt.color || '#ffffff');
-      stars.push({ x, y, z, phase: Math.random() * 6.283, tw: 0.5 + Math.random() * 2.4, size: opt.size || 0.4, color: [c.r, c.g, c.b] });
+      // 闪烁策略：约 18% 普通星缓慢闪烁；极亮星仅 8%（避免亮星刺眼）
+      // aFlicker=1 闪烁 / =0 静态（静态星恒定亮度，不再全场闪缩）
+      const flicker = Math.random() < (opt.bright ? 0.08 : 0.18);
+      stars.push({
+        x, y, z,
+        phase: Math.random() * 6.283,
+        tw: flicker ? 0.5 + Math.random() * 2.0 : 0,
+        flicker: flicker ? 1 : 0,
+        size: opt.size || 0.4,
+        color: [c.r, c.g, c.b],
+      });
     };
     const addSeg = (a, b) => segs.push(a[0], a[1], a[2], b[0], b[1], b[2]);
 
@@ -67,7 +77,7 @@ export class ChineseStarMap {
           { color: pickColor(), size: 0.2 + Math.random() * 0.6 }
         );
       }
-      // 少量极亮星（更大尺寸 + 偏蓝白），作为真实星空中的亮星
+      // 少量极亮星（更大尺寸 + 偏蓝白），作为真实星空中的亮星；亮星极少闪烁防刺眼
       if (Math.random() < 0.05) {
         const t = Math.random() * Math.PI * 2;
         const p = Math.acos(2 * Math.random() - 1);
@@ -76,7 +86,7 @@ export class ChineseStarMap {
           rr * Math.sin(p) * Math.cos(t),
           rr * Math.cos(p),
           rr * Math.sin(p) * Math.sin(t),
-          { color: Math.random() < 0.7 ? '#dfe8ff' : '#fff4e0', size: 1.5 + Math.random() * 1.6 }
+          { color: Math.random() < 0.7 ? '#dfe8ff' : '#fff4e0', size: 1.5 + Math.random() * 1.6, bright: true }
         );
       }
     }
@@ -119,16 +129,18 @@ export class ChineseStarMap {
       }
     });
 
-    // —— 星点 Points + 逐星微闪 shader ——
+    // —— 星点 Points + 双模式 shader（静态星恒定亮度 / 少量闪烁星低幅呼吸）——
     const n = stars.length;
     const positions = new Float32Array(n * 3);
     const sizes = new Float32Array(n);
     const phases = new Float32Array(n);
     const twSpeeds = new Float32Array(n);
+    const flickers = new Float32Array(n);
     const colors = new Float32Array(n * 3);
     stars.forEach((s, i) => {
       positions[i * 3] = s.x; positions[i * 3 + 1] = s.y; positions[i * 3 + 2] = s.z;
       sizes[i] = s.size; phases[i] = s.phase; twSpeeds[i] = s.tw;
+      flickers[i] = s.flicker;
       colors[i * 3] = s.color[0]; colors[i * 3 + 1] = s.color[1]; colors[i * 3 + 2] = s.color[2];
     });
     const pGeo = new THREE.BufferGeometry();
@@ -136,6 +148,7 @@ export class ChineseStarMap {
     pGeo.setAttribute('aSize', new THREE.BufferAttribute(sizes, 1));
     pGeo.setAttribute('aPhase', new THREE.BufferAttribute(phases, 1));
     pGeo.setAttribute('aTwSpeed', new THREE.BufferAttribute(twSpeeds, 1));
+    pGeo.setAttribute('aFlicker', new THREE.BufferAttribute(flickers, 1));
     pGeo.setAttribute('aColor', new THREE.BufferAttribute(colors, 3));
 
     this._tex = this._createTexture();
@@ -149,17 +162,19 @@ export class ChineseStarMap {
       depthWrite: false,
       blending: THREE.AdditiveBlending,
       vertexShader:
-        'attribute float aSize; attribute float aPhase; attribute float aTwSpeed; attribute vec3 aColor;' +
+        'attribute float aSize; attribute float aPhase; attribute float aTwSpeed; attribute float aFlicker; attribute vec3 aColor;' +
         'uniform float uTime; uniform float uPixelRatio;' +
         'varying float vAlpha; varying vec3 vColor;' +
         'void main(){' +
         '  vColor = aColor;' +
-        '  float tw = 0.5 + 0.5 * sin(uTime * aTwSpeed + aPhase);' +
-        '  vAlpha = 0.35 + 0.65 * tw;' +
+        // 双模式：静态星（aFlicker=0）亮度恒定不闪；闪烁星（aFlicker=1）缓慢呼吸
+        '  float tw = mix(0.5, 0.5 + 0.5 * sin(uTime * aTwSpeed + aPhase), aFlicker);' +
+        // 静态星 alpha 0.55；闪烁星 0.45~0.80（峰值压制，避免亮瞎眼）
+        '  vAlpha = mix(0.55, 0.45 + 0.35 * tw, aFlicker);' +
         '  vec4 mv = modelViewMatrix * vec4(position, 1.0);' +
         // 恒定屏幕像素大小（修复原 shader 因距离 ~850 算出亚像素星点、肉眼不可见的问题）。
         // 尺寸由 aSize 线性映射：普通尘星 ~2px、星官星 ~4px、亮星钳制 ~6px；不随相机距离衰减
-        '  float sz = (0.8 + aSize * 2.6) * (0.7 + 0.5 * tw) * uPixelRatio;' +
+        '  float sz = (0.8 + aSize * 2.6) * mix(0.95, 0.72 + 0.5 * tw, aFlicker) * uPixelRatio;' +
         '  gl_PointSize = min(sz, 6.5);' +
         '  gl_Position = projectionMatrix * mv;' +
         '}',
