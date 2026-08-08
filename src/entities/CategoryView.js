@@ -121,13 +121,13 @@ export class CategoryView {
   // 分类行星标签内嵌于球体（由 CategoryPlanet.update 按 fade 控制显隐），无需按距离 gating
   forEachMoon() {}
 
-  update(time) {
+  update(time, dt = 0.016, slow = 1.0) {
     this.fade += (this.fadeTarget - this.fade) * 0.12;
     // 作为父视图淡出时：中心恒星完全隐藏，避免与当前层中心球/文字重叠；轨道环同步变淡
     if (this.star) {
       this.star.group.visible = this.fade > 0.25;
       this.star.setFade(this.fade);
-      this.star.update(time);
+      this.star.update(time, dt, slow);
     }
     for (const r of this.rings) {
       if (r.mesh) {
@@ -136,13 +136,13 @@ export class CategoryView {
       }
     }
     for (const p of this.planets) {
-      // 各自沿独立轨道公转（错位轨道 + 不同速度）
-      p.angle += p.speed * 0.016;
+      // 各自沿独立轨道公转（错位轨道 + 不同速度）—— 真实 dt
+      p.angle += p.speed * dt * slow;
       p.planet.group.position.set(
         p.orbitRadius * Math.cos(p.angle), 0, p.orbitRadius * Math.sin(p.angle)
       );
       p.planet.setFade(this.fade);
-      p.planet.update(time);
+      p.planet.update(time, dt, slow);
     }
   }
 

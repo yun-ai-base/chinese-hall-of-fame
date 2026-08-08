@@ -4,7 +4,7 @@ html, body {
   width: 100%; height: 100%;
   overflow: hidden;
   background: #050815;
-  font-family: 'Noto Sans SC', sans-serif;
+  font-family: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', 'Hiragino Sans GB', sans-serif;
   color: #e0e0e0;
 }
 
@@ -60,7 +60,7 @@ html, body {
   transition: opacity 0.5s ease;
 }
 .main-title {
-  font-family: 'Noto Serif SC', serif;
+  font-family: 'Noto Serif SC', 'Songti SC', 'STSong', 'SimSun', serif;
   font-size: 28px;
   font-weight: 700;
   color: #FFD700;
@@ -93,7 +93,7 @@ html, body {
   border-radius: 7px;
   box-shadow: 0 2px 10px rgba(178, 47, 40, 0.45), inset 0 0 0 2px rgba(255, 255, 255, 0.14);
   transform: rotate(-4deg);
-  font-family: 'Noto Serif SC', serif;
+  font-family: 'Noto Serif SC', 'Songti SC', 'STSong', 'SimSun', serif;
   color: #fbeede;
   font-weight: 700;
   font-size: 17px;
@@ -153,7 +153,7 @@ html, body {
   display: flex;
   align-items: center;
   gap: 6px;
-  font-family: 'Noto Serif SC', serif;
+  font-family: 'Noto Serif SC', 'Songti SC', 'STSong', 'SimSun', serif;
   font-size: 15px;
   pointer-events: none;
   opacity: 0;
@@ -191,7 +191,7 @@ html, body {
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255,255,255,0.15);
   border-radius: 22px;
-  color: #e0e0e0; font-family: 'Noto Sans SC', sans-serif; font-size: 14px;
+  color: #e0e0e0; font-family: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', 'Hiragino Sans GB', sans-serif; font-size: 14px;
   height: 42px; padding: 0 18px;
   transition: width 0.3s ease, opacity 0.3s ease;
   outline: none;
@@ -213,11 +213,12 @@ html, body {
   display: flex; align-items: center; gap: 10px; width: 100%;
   background: none; border: none; cursor: pointer;
   padding: 9px 10px; border-radius: 8px; text-align: left;
-  color: #e0e0e0; font-family: 'Noto Sans SC', sans-serif; font-size: 14px;
+  color: #e0e0e0; font-family: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', 'Hiragino Sans GB', sans-serif; font-size: 14px;
 }
 .search-item:hover { background: rgba(255,255,255,0.08); }
 .search-dot { width: 9px; height: 9px; border-radius: 50%; background: var(--dim-color); flex: 0 0 auto; box-shadow: 0 0 8px var(--dim-color); }
 .search-name { font-weight: 500; }
+.search-name .search-highlight { color: #FFD700; font-weight: 700; background: rgba(255,215,0,0.12); border-radius: 2px; padding: 0 1px; }
 .search-meta { margin-left: auto; font-size: 11px; color: rgba(255,255,255,0.45); }
 
 /* ===== 信息面板 ===== */
@@ -255,22 +256,23 @@ html, body {
 .panel-scroll::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.15); border-radius: 3px; }
 
 .panel-hero { border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 18px; margin-bottom: 18px; }
-.panel-title { font-family: 'Noto Serif SC', serif; font-size: 30px; font-weight: 700; color: #FFD700; text-shadow: 0 0 20px rgba(255,215,0,0.25); }
+.panel-title { font-family: 'Noto Serif SC', 'Songti SC', 'STSong', 'SimSun', serif; font-size: 30px; font-weight: 700; color: #FFD700; text-shadow: 0 0 20px rgba(255,215,0,0.25); }
 .panel-sub { font-size: 13px; color: rgba(255,255,255,0.6); margin-top: 4px; }
 .tag-row { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
 .tag { font-size: 11px; padding: 2px 9px; border-radius: 10px; background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.7); }
+.tag.tag-honor { color: #FFD700; background: rgba(255,215,0,0.1); border: 1px solid rgba(255,215,0,0.28); }
 .panel-lead { font-size: 14px; line-height: 1.7; color: rgba(255,255,255,0.82); margin-top: 10px; }
 
 .block { margin-bottom: 22px; }
 .block-title {
-  font-family: 'Noto Serif SC', serif; font-size: 16px; font-weight: 700;
+  font-family: 'Noto Serif SC', 'Songti SC', 'STSong', 'SimSun', serif; font-size: 16px; font-weight: 700;
   color: #fff; margin-bottom: 10px; padding-left: 11px;
   border-left: 3px solid #FFD700;
 }
 .block-list { list-style: none; }
 .block-list li { font-size: 13.5px; line-height: 1.7; color: rgba(255,255,255,0.78); padding: 4px 0; border-bottom: 1px dashed rgba(255,255,255,0.06); }
 .quote {
-  font-family: 'Noto Serif SC', serif; font-size: 14px; line-height: 1.8;
+  font-family: 'Noto Serif SC', 'Songti SC', 'STSong', 'SimSun', serif; font-size: 14px; line-height: 1.8;
   color: #e8e2c8; border-left: 2px solid rgba(255,215,0,0.5);
   padding: 8px 14px; margin: 8px 0; background: rgba(255,215,0,0.04); border-radius: 0 8px 8px 0;
 }
@@ -284,7 +286,7 @@ html, body {
 .tl-birth::before { background: #2ECC71; box-shadow: 0 0 8px #2ECC71; }
 .tl-death::before { background: #E74C3C; box-shadow: 0 0 8px #E74C3C; }
 .tl-work::before { background: #1ABC9C; box-shadow: 0 0 8px #1ABC9C; }
-.tl-year { display: inline-block; min-width: 64px; font-size: 12px; color: #FFD700; font-family: 'Noto Serif SC', serif; }
+.tl-year { display: inline-block; min-width: 64px; font-size: 12px; color: #FFD700; font-family: 'Noto Serif SC', 'Songti SC', 'STSong', 'SimSun', serif; }
 .tl-event { font-size: 13.5px; color: rgba(255,255,255,0.82); }
 
 .chip-row { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
@@ -298,32 +300,34 @@ html, body {
 
 .rel-list { display: flex; flex-direction: column; gap: 6px; }
 .rel-item {
-  display: flex; align-items: center; gap: 10px; width: 100%;
+  display: flex; align-items: flex-start; gap: 10px; width: 100%;
   background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
   border-radius: 10px; padding: 10px 12px; cursor: pointer; text-align: left;
-  color: #e0e0e0; font-family: 'Noto Sans SC', sans-serif; font-size: 14px;
+  color: #e0e0e0; font-family: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', 'Hiragino Sans GB', sans-serif; font-size: 14px;
 }
 .rel-in { border-left: 3px solid var(--dim-color, #FFD700); }
 .rel-in:hover { background: rgba(255,255,255,0.1); }
 .rel-out { border-left: 3px solid #6b7280; }
 .rel-out:hover { background: rgba(255,255,255,0.08); }
+.rel-main { display: flex; flex-direction: column; gap: 2px; flex: 1; min-width: 0; }
 .rel-name { font-weight: 500; }
 .rel-rel { font-size: 12px; color: rgba(255,255,255,0.55); }
-.rel-go { margin-left: auto; color: rgba(255,255,255,0.4); }
+.rel-desc { font-size: 11.5px; line-height: 1.55; color: rgba(255,255,255,0.45); margin-top: 1px; }
+.rel-go { margin-left: auto; align-self: center; color: rgba(255,255,255,0.4); font-size: 16px; flex: 0 0 auto; }
 
 /* 字号 / 别称 */
-.panel-style { font-size: 13px; color: rgba(255,255,255,0.72); margin-top: 6px; font-family: 'Noto Serif SC', serif; letter-spacing: .5px; }
+.panel-style { font-size: 13px; color: rgba(255,255,255,0.72); margin-top: 6px; font-family: 'Noto Serif SC', 'Songti SC', 'STSong', 'SimSun', serif; letter-spacing: .5px; }
 .panel-style .style-label { color: rgba(255,215,0,0.72); margin-right: 5px; }
 
 /* 代表作品 + 诗文全文块 */
 .work-item { padding: 11px 0; border-bottom: 1px dashed rgba(255,255,255,0.06); }
 .work-item:last-child { border-bottom: none; }
 .work-head { display: flex; align-items: baseline; gap: 8px; }
-.work-title { font-family: 'Noto Serif SC', serif; font-size: 15px; font-weight: 700; color: #FFD700; }
+.work-title { font-family: 'Noto Serif SC', 'Songti SC', 'STSong', 'SimSun', serif; font-size: 15px; font-weight: 700; color: #FFD700; }
 .work-type { font-size: 11px; color: rgba(255,255,255,0.55); border: 1px solid rgba(255,255,255,0.2); border-radius: 9px; padding: 1px 8px; }
 .work-summary { font-size: 13px; line-height: 1.7; color: rgba(255,255,255,0.7); margin: 5px 0 0; }
 .poem {
-  font-family: 'Noto Serif SC', serif; font-size: 14.5px; line-height: 2; color: #efe9d2;
+  font-family: 'Noto Serif SC', 'Songti SC', 'STSong', 'SimSun', serif; font-size: 14.5px; line-height: 2; color: #efe9d2;
   white-space: pre-line; text-align: center; margin: 9px 0 4px;
   padding: 12px 12px; background: rgba(255,215,0,0.05); border-radius: 8px;
   border-left: 2px solid rgba(255,215,0,0.4); border-right: 2px solid rgba(255,215,0,0.4);
@@ -332,7 +336,7 @@ html, body {
 /* 地理坐标（地图联动预留） */
 .geo-block { font-size: 13px; line-height: 1.85; color: rgba(255,255,255,0.78); }
 .geo-place { color: rgba(255,255,255,0.85); }
-.geo-coord { font-family: 'Noto Serif SC', serif; color: rgba(255,215,0,0.82); margin: 2px 0; }
+.geo-coord { font-family: 'Noto Serif SC', 'Songti SC', 'STSong', 'SimSun', serif; color: rgba(255,215,0,0.82); margin: 2px 0; }
 .geo-link { display: inline-block; margin-top: 4px; color: #6cc0ff; font-size: 12.5px; text-decoration: none; }
 .geo-link:hover { text-decoration: underline; }
 
@@ -345,8 +349,10 @@ html, body {
 .gallery-item { margin: 0; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 10px; overflow: hidden; }
 .gallery-item img { width: 100%; height: 120px; object-fit: cover; display: block; background: rgba(255,255,255,0.06); }
 .gallery-item figcaption { padding: 8px 10px; }
-.gallery-item .g-title { display: block; font-size: 13px; color: #fff; font-family: 'Noto Serif SC', serif; }
+.gallery-item .g-title { display: block; font-size: 13px; color: #fff; font-family: 'Noto Serif SC', 'Songti SC', 'STSong', 'SimSun', serif; }
 .gallery-item .g-source, .gallery-item .g-license { display: block; font-size: 11px; color: rgba(255,255,255,0.45); margin-top: 2px; }
+.gallery-item .g-license-link { color: #6cc0ff; text-decoration: none; }
+.gallery-item .g-license-link:hover { text-decoration: underline; }
 .gallery-fallback { height: 120px; display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.4); font-size: 13px; }
 .gallery-empty { display: flex; flex-direction: column; align-items: center; gap: 8px; padding: 22px; background: rgba(255,255,255,0.03); border: 1px dashed rgba(255,255,255,0.12); border-radius: 12px; text-align: center; }
 .gallery-empty-icon { font-size: 26px; opacity: 0.7; }
@@ -364,18 +370,18 @@ html, body {
   display: flex; flex-direction: column; gap: 4px; align-items: flex-start;
   background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1);
   border-radius: 12px; padding: 14px; cursor: pointer; text-align: left;
-  color: #e0e0e0; font-family: 'Noto Serif SC', serif;
+  color: #e0e0e0; font-family: 'Noto Serif SC', 'Songti SC', 'STSong', 'SimSun', serif;
 }
 .dim-card:hover { background: color-mix(in srgb, var(--dim-color) 16%, transparent); border-color: var(--dim-color); }
 .dim-dot { width: 12px; height: 12px; border-radius: 50%; background: var(--dim-color); box-shadow: 0 0 10px var(--dim-color); }
 .dim-name { font-size: 16px; font-weight: 700; }
-.dim-count { font-family: 'Noto Sans SC', sans-serif; font-size: 12px; color: rgba(255,255,255,0.5); }
+.dim-count { font-family: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', 'Hiragino Sans GB', sans-serif; font-size: 12px; color: rgba(255,255,255,0.5); }
 
 .panel-actions { margin-top: 16px; }
 .btn-primary {
   display: inline-block; width: 100%; text-align: center;
   background: linear-gradient(135deg, #FFD700, #FF8C42);
-  color: #1a1205; font-weight: 700; font-family: 'Noto Sans SC', sans-serif; font-size: 14px;
+  color: #1a1205; font-weight: 700; font-family: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', 'Hiragino Sans GB', sans-serif; font-size: 14px;
   border: none; border-radius: 12px; padding: 12px; cursor: pointer; text-decoration: none;
 }
 .btn-primary:hover { filter: brightness(1.08); }
@@ -417,8 +423,57 @@ html, body {
   .panel-handle {
     display: block; width: 44px; height: 5px; border-radius: 3px;
     background: rgba(255,255,255,0.3); margin: 8px auto 0;
+    cursor: grab;
   }
-  .panel-scroll { padding: 14px 18px 40px; }
+  .panel-handle:active { cursor: grabbing; }
+  .panel-scroll { padding: 14px 18px 40px; -webkit-overflow-scrolling: touch; }
   .panel-title { font-size: 24px; }
   .dim-grid { grid-template-columns: 1fr; }
+}
+
+/* ===== 移动端增强：动态视口高度（避开手机地址栏） ===== */
+#canvas-container, #ui-overlay { height: 100vh; height: 100dvh; }
+
+/* ===== 层级切换「跃迁」闪屏 ===== */
+#nav-flash {
+  position: fixed; inset: 0; z-index: 150; pointer-events: none;
+  background: radial-gradient(circle at 50% 45%, rgba(255,215,0,0.18), rgba(5,8,21,0.0) 60%);
+  opacity: 0; transition: opacity 0.18s ease;
+}
+#nav-flash.flash { opacity: 1; }
+
+/* ===== 搜索：维度滤镜 chips ===== */
+.search-box { flex-wrap: wrap; row-gap: 6px; }
+.search-filters { display: none; flex-basis: 100%; flex-wrap: wrap; gap: 5px; justify-content: flex-end; }
+.search-box.expanded .search-filters { display: flex; }
+.search-filter {
+  font-size: 11px; padding: 3px 9px; border-radius: 11px; cursor: pointer;
+  border: 1px solid rgba(255,255,255,0.18); background: rgba(5,8,21,0.6);
+  color: rgba(255,255,255,0.6); font-family: 'Noto Sans SC', sans-serif; white-space: nowrap;
+}
+.search-filter.active { color: #1a1205; background: #FFD700; border-color: #FFD700; font-weight: 700; }
+.search-filter:nth-child(1) { color: #fff; }  /* 全部 */
+
+/* ===== 小屏（≤375px） ===== */
+@media (max-width: 375px) {
+  .main-title { font-size: 22px; }
+  .breadcrumb { font-size: 11px; max-width: 82vw; }
+  .search-results { width: 88vw; }
+  .panel-scroll { padding: 12px 14px 32px; }
+  .dim-grid { gap: 8px; }
+  .dim-card { padding: 11px; }
+}
+
+/* ===== 横屏：避免面板/标题遮挡画面 ===== */
+@media (max-width: 767px) and (orientation: landscape) {
+  .panel { height: 82vh; height: 82dvh; }
+  .panel-expanded { height: 96vh; height: 96dvh; }
+  .title-display, .breadcrumb { top: 8px; }
+  .panel-title { font-size: 20px; }
+  .search-box { top: 8px; }
+}
+
+/* ===== 尊重「减少动态效果」偏好 ===== */
+@media (prefers-reduced-motion: reduce) {
+  .panel, #nav-flash, .breadcrumb, .search-box { transition: none !important; }
 }

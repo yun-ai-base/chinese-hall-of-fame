@@ -305,17 +305,17 @@ export class Planet {
   // 月亮显隐：进入 L2 及更深层时隐藏，避免视觉干扰；返回宇宙层恢复
   setMoonVisible(v) { this.moonVisible = v; }
 
-  update(time, animateOrbit = true) {
-    // 公转与本轴自转仅在运行态推进
+  update(time, animateOrbit = true, dt = 0.016, slow = 1.0) {
+    // 公转与本轴自转仅在运行态推进；dt 真实时间（秒），0.016 ≈ 60fps 一帧
     if (animateOrbit) {
-      this.angle += this.orbitSpeed * 0.016;
+      this.angle += this.orbitSpeed * dt * slow;
       this.group.rotation.y = this.angle;
       // 金星逆向自转：spin 取反
-      if (this.mesh) this.mesh.rotation.y += this.retrograde ? -0.008 : 0.008;
-      if (this.moonGroup) this.moonGroup.rotation.y += 0.02; // 月亮绕地公转
+      if (this.mesh) this.mesh.rotation.y += (this.retrograde ? -0.008 : 0.008) * dt * 60 * slow;
+      if (this.moonGroup) this.moonGroup.rotation.y += 0.02 * dt * 60 * slow; // 月亮绕地公转
     }
 
-    // 平滑淡入淡出（始终更新，即使轨道暂停）
+    // 平滑淡入淡出（始终更新，即使轨道暂停）—— 用时间无关常数保持淡出节奏稳定
     this.fade += (this.fadeTarget - this.fade) * 0.12;
     if (this.glow) this.glow.material.opacity = this.fade;
     if (this.mesh) this.mesh.material.opacity = Math.max(this.fade, 0.06);

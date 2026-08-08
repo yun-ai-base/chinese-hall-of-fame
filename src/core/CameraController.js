@@ -48,6 +48,25 @@ export class CameraController {
     return this.focusOn(new THREE.Vector3(0, 0, 0), duration, new THREE.Vector3(0, 55, 110));
   }
 
+  // 「跃迁」脉冲：进入新层级时视野短暂收窄再回弹，营造空间跃迁感。
+  // 尊重系统「减少动态效果」偏好：直接跳过。
+  fovPulse(amount = 7, duration = 460) {
+    const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduce) return;
+    const cam = this.camera;
+    const base = cam.fov;
+    const start = performance.now();
+    const step = (now) => {
+      const t = Math.min((now - start) / duration, 1);
+      const k = Math.sin(t * Math.PI); // 0→1→0
+      cam.fov = base - amount * k;     // 收窄=推近
+      cam.updateProjectionMatrix();
+      if (t < 1) requestAnimationFrame(step);
+      else cam.fov = base;
+    };
+    requestAnimationFrame(step);
+  }
+
   dispose() {
     if (this._animation) {
       cancelAnimationFrame(this._animation);

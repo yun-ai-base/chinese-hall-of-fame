@@ -110,13 +110,13 @@ export class Sun {
     this.scene.add(this.glow);
   }
 
-  update(time) {
+  update(time, dt = 0.016, slow = 1.0) {
     if (this.mesh.material.uniforms) {
       this.mesh.material.uniforms.uTime.value = time;
     }
     // 太阳本体自转（纹理流动 + 网格旋转双重表现立体感）；提速至肉眼可辨
-    this.mesh.rotation.y += 0.004;
-    if (this.glow) this.glow.rotation.y -= 0.0008;
+    this.mesh.rotation.y += 0.004 * dt * 60 * slow;
+    if (this.glow) this.glow.rotation.y -= 0.0008 * dt * 60 * slow;
     if (this.flares) this.flares.material.uniforms.uTime.value = time;
   }
 

@@ -19,6 +19,7 @@ export class Moon {
     this.targetId = targetId;
     this.isInList = isInList;
     this.dimId = dimId;
+    this.sub = sub;              // tooltip 副标题（朝代/关系），原缺失导致悬停提示永不带副标题
     this.isHub = isHub;
     this.radius = radius;
 
@@ -107,8 +108,8 @@ export class Moon {
     this.group.scale.setScalar(sel ? 1.5 : 1.0);
   }
 
-  update(time) {
-    this.mesh.rotation.y += 0.012;
+  update(time, dt = 0.016, slow = 1.0) {
+    this.mesh.rotation.y += 0.012 * dt * 60 * slow;
     this.fade += (this.fadeTarget - this.fade) * 0.12;
     if (this.mesh.material) this.mesh.material.opacity = Math.max(this.fade, 0.05);
     if (this.glow) this.glow.material.opacity = this.fade;

@@ -160,9 +160,9 @@ export class FigureView {
     for (const m of this.relationMoons) cb(m);
   }
 
-  update(time) {
-    this.group.rotation.y += 0.0006;
-    this.forEachMoon(m => m.update(time));
+  update(time, dt = 0.016, slow = 1.0) {
+    this.group.rotation.y += 0.0006 * dt * 60 * slow;
+    this.forEachMoon(m => m.update(time, dt, slow));
   }
 
   dispose() {

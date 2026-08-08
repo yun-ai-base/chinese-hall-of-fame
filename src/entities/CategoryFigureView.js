@@ -126,17 +126,17 @@ export class CategoryFigureView {
 
   forEachMoon(cb) { for (const m of this.moons) cb(m); }
 
-  update(time) {
+  update(time, dt = 0.016, slow = 1.0) {
     this.fade += (this.fadeTarget - this.fade) * 0.12;
-    if (this.star) { this.star.setFade(this.fade); this.star.update(time); }
+    if (this.star) { this.star.setFade(this.fade); this.star.update(time, dt, slow); }
     for (const m of this.moons) {
-      // 各自沿独立轨道公转（错位轨道 + 不同速度）
-      m._angle += m._speed * 0.016;
+      // 各自沿独立轨道公转（错位轨道 + 不同速度）—— 真实 dt
+      m._angle += m._speed * dt * slow;
       m.group.position.set(
         m._orbitR * Math.cos(m._angle), 0, m._orbitR * Math.sin(m._angle)
       );
       m.setFade(this.fade);
-      m.update(time);
+      m.update(time, dt, slow);
     }
   }
 

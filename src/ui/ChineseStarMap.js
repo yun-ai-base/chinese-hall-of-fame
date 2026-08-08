@@ -157,8 +157,10 @@ export class ChineseStarMap {
         '  float tw = 0.5 + 0.5 * sin(uTime * aTwSpeed + aPhase);' +
         '  vAlpha = 0.35 + 0.65 * tw;' +
         '  vec4 mv = modelViewMatrix * vec4(position, 1.0);' +
-        '  float sz = aSize * (0.75 + 0.55 * tw) * 90.0 * uPixelRatio;' +
-        '  gl_PointSize = sz / -mv.z;' +
+        // 恒定屏幕像素大小（修复原 shader 因距离 ~850 算出亚像素星点、肉眼不可见的问题）。
+        // 尺寸由 aSize 线性映射：普通尘星 ~2px、星官星 ~4px、亮星钳制 ~6px；不随相机距离衰减
+        '  float sz = (0.8 + aSize * 2.6) * (0.7 + 0.5 * tw) * uPixelRatio;' +
+        '  gl_PointSize = min(sz, 6.5);' +
         '  gl_Position = projectionMatrix * mv;' +
         '}',
       fragmentShader:
@@ -179,7 +181,7 @@ export class ChineseStarMap {
     this.lMat = new THREE.LineBasicMaterial({
       color: 0xd9c089,
       transparent: true,
-      opacity: 0.10,
+      opacity: 0.14,
       blending: THREE.AdditiveBlending,
       depthWrite: false,
     });
@@ -244,7 +246,7 @@ export class ChineseStarMap {
 
   update(time) {
     if (this.pMat) this.pMat.uniforms.uTime.value = time;
-    if (this.lMat) this.lMat.opacity = 0.07 + 0.05 * Math.sin(time * 0.6);
+    if (this.lMat) this.lMat.opacity = 0.10 + 0.06 * Math.sin(time * 0.6);
     if (this.group) {
       this.group.rotation.y = time * 0.004;                 // 极缓慢自转
       this.group.rotation.x = Math.sin(time * 0.03) * 0.04; // 轻微俯仰摆动

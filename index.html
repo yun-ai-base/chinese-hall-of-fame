@@ -2,11 +2,10 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>太阳系中華名人堂 — Celestial Mandate</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&family=Noto+Sans+SC:wght@300;400;500&display=swap" rel="stylesheet">
+<!-- 字体：优先 Noto Serif/Sans SC（用户本机若已安装），否则回退系统 CJK 字体栈（见 styles/main.css）。
+     已移除 Google Fonts 外链，避免国内网络超时导致首屏白屏。 -->
   <link rel="stylesheet" href="styles/main.css">
   <!-- SEO -->
   <meta name="description" content="太阳系中华名人堂 · Celestial Mandate：以三维交互星系呈现五千年中华文明 361 位杰出人物，按神话、哲学、文学、兵法、科技、艺术、政治、探索八大维度漫游。">
@@ -33,11 +32,13 @@
   </script>
   <!-- PWA -->
   <link rel="icon" href="./favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="./favicon.svg">
   <link rel="manifest" href="./manifest.webmanifest">
   <meta name="theme-color" content="#0a0e1a">
 </head>
 <body>
 <div id="canvas-container"></div>
+<div id="nav-flash"></div>
 <div id="ui-overlay">
   <button id="btn-back" class="back-btn hidden" aria-label="返回上级">
     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -58,7 +59,6 @@
 {
   "imports": {
     "three": "./vendor/three/three.module.js",
-    "three/addons/": "https://unpkg.com/three@0.170.0/examples/jsm/",
     "three/addons/OrbitControls.js": "./vendor/three/OrbitControls.js"
   }
 }

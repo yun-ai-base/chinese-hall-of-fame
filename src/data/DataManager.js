@@ -44,9 +44,16 @@ export class DataManager {
   }
 
   async init() {
+    // 防御：每个 fetch 都校验 resp.ok；任意失败抛明确错误并由 main.js 的 unhandledrejection → showFatal 兜底
+    const safeFetch = async (url, label) => {
+      const resp = await fetch(url);
+      if (!resp.ok) throw new Error(`${label} 加载失败 ${resp.status}: ${url}`);
+      return resp.json();
+    };
+
     const [index, assocManifest] = await Promise.all([
-      fetch('./data/index.json').then(r => r.json()),
-      fetch('./data/associates/manifest.json').then(r => r.json()).catch(() => []),
+      safeFetch('./data/index.json', '星系索引'),
+      safeFetch('./data/associates/manifest.json', '关联人物清单').catch(() => []),
     ]);
     this.index = index;
     (assocManifest || []).forEach(id => this.associateIds.add(id));
@@ -58,10 +65,10 @@ export class DataManager {
       this.cross.set(fid, dims);
     }
 
-    // 并行加载 8 个维度数组
+    // 并行加载 8 个维度数组（任一失败整体抛错由 main.js 兜底）
     const dimIds = index.dimensions.map(d => d.id);
     const arrays = await Promise.all(
-      dimIds.map(id => fetch(`./data/dimensions/${id}.json`).then(r => r.json()))
+      dimIds.map(id => safeFetch(`./data/dimensions/${id}.json`, `维度·${id}`))
     );
 
     arrays.forEach((arr, i) => {
@@ -73,10 +80,13 @@ export class DataManager {
         const entry = { id: basic.id, basic, dimId, category: basic.dimensionCategory, color: meta.color, sortYear };
         this.figures.set(basic.id, entry);
         list.push(entry);
+        const py = (basic.pinyin || '').toLowerCase().trim();
+        const initials = py.split(/\s+/).map((s) => s[0] || '').join(''); // 拼音首字母，如 zu chong zhi -> zcz
         this.searchIndex.push({
           id: basic.id,
           name: basic.name,
-          pinyin: (basic.pinyin || '').toLowerCase(),
+          pinyin: py,
+          pinyinInitials: initials,
           dynasty: basic.dynasty || '',
           tags: basic.tags || [],
           dimId,
@@ -106,7 +116,7 @@ export class DataManager {
   async getFigureDetail(id) {
     if (this._detailCache.has(id)) return this._detailCache.get(id);
     const resp = await fetch(`./data/figures/${id}.json`);
-    if (!resp.ok) throw new Error(`名人详情缺失: ${id}`);
+    if (!resp.ok) throw new Error(`名人详情缺失 (${resp.status}): ${id}`);
     const data = await resp.json();
     this._detailCache.set(id, data);
     return data;
@@ -115,7 +125,7 @@ export class DataManager {
   async getAssociate(id) {
     if (this._assocCache.has(id)) return this._assocCache.get(id);
     const resp = await fetch(`./data/associates/${id}.json`);
-    if (!resp.ok) throw new Error(`关联人物缺失: ${id}`);
+    if (!resp.ok) throw new Error(`关联人物缺失 (${resp.status}): ${id}`);
     const data = await resp.json();
     this._assocCache.set(id, data);
     return data;
@@ -154,14 +164,16 @@ export class DataManager {
     return out;
   }
 
-  // 搜索：人名 / 拼音 / 朝代 / 标签
-  search(query) {
+  // 搜索：人名 / 拼音 / 拼音首字母 / 朝代 / 标签；可叠加维度筛选
+  search(query, dimId = null) {
     const q = (query || '').trim().toLowerCase();
     if (!q) return [];
     const results = [];
     for (const s of this.searchIndex) {
+      if (dimId && s.dimId !== dimId) continue;
       let score = 0;
       if (s.name.includes(query.trim())) score = 100;
+      else if (s.pinyinInitials && s.pinyinInitials.startsWith(q)) score = 90; // 拼音首字母，如 zcz -> 祖冲之
       else if (s.pinyin.includes(q)) score = 80;
       else if (s.dynasty.toLowerCase().includes(q)) score = 60;
       else if (s.tags.some(t => t.toLowerCase().includes(q))) score = 50;

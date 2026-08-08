@@ -145,3 +145,49 @@ export function createPlanetNameSprite(text, color, radius, opts = {}) {
   return sprite;
 }
 
+// 维度字符徽标：单字（神/哲/文/兵/科/艺/政/探）+ 维度色圆底，悬浮于行星上方，
+// 让八大维度在总览与下钻时一眼可辨（超越单靠颜色区分）。
+export function createGlyphSprite(char, color, radius = 3) {
+  const dpr = 2;
+  const S = 128 * dpr;
+  const canvas = document.createElement('canvas');
+  canvas.width = canvas.height = S;
+  const ctx = canvas.getContext('2d');
+  const c = new THREE.Color(color);
+  const r = (c.r * 255) | 0, g = (c.g * 255) | 0, b = (c.b * 255) | 0;
+
+  // 圆底：维度色径向渐变（中心亮、边缘透明）
+  const grad = ctx.createRadialGradient(S / 2, S / 2, S * 0.12, S / 2, S / 2, S * 0.5);
+  grad.addColorStop(0, `rgba(${r},${g},${b},0.9)`);
+  grad.addColorStop(0.7, `rgba(${r},${g},${b},0.55)`);
+  grad.addColorStop(1, `rgba(${r},${g},${b},0)`);
+  ctx.fillStyle = grad;
+  ctx.beginPath();
+  ctx.arc(S / 2, S / 2, S * 0.5, 0, Math.PI * 2);
+  ctx.fill();
+
+  // 白字 + 细描边
+  ctx.font = `700 ${64 * dpr}px "Noto Serif SC", "Songti SC", serif`;
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'middle';
+  ctx.lineWidth = 6 * dpr;
+  ctx.strokeStyle = 'rgba(0,0,0,0.85)';
+  ctx.lineJoin = 'round';
+  ctx.strokeText(char, S / 2, S / 2 + 2 * dpr);
+  ctx.fillStyle = '#ffffff';
+  ctx.fillText(char, S / 2, S / 2 + 2 * dpr);
+
+  const texture = new THREE.CanvasTexture(canvas);
+  texture.minFilter = THREE.LinearFilter;
+  texture.magFilter = THREE.LinearFilter;
+  const material = new THREE.SpriteMaterial({
+    map: texture, transparent: true, depthWrite: false, depthTest: false,
+  });
+  const sprite = new THREE.Sprite(material);
+  const s = Math.max(radius * 0.9, 1.6);
+  sprite.scale.set(s, s, 1);
+  sprite.renderOrder = 998;
+  sprite.userData.isLabel = true;
+  return sprite;
+}
+

@@ -5,6 +5,17 @@
 import { el } from './dom.js';
 import { createRelationMap } from './RelationMap.js';
 
+// URL 安全白名单：只允许 http(s) 协议，过滤 javascript:/data:/vbscript: 等可执行协议。
+// 关联人物/图库/地图链接均来自本地静态 JSON，但纵深防御：避免被篡改数据注入脚本。
+function safeUrl(url) {
+  if (!url) return null;
+  try {
+    const u = new URL(url, location.href);
+    if (u.protocol === 'http:' || u.protocol === 'https:') return u.toString();
+  } catch {}
+  return null;
+}
+
 // 人物详情页低干扰意象粒子：按人物主题（特定人物 / 维度 / 分类）取色与运动，
 // 仅以极淡的辉光呼应特色，绝不干扰正文阅读。
 //   ember 上升余烬（神魔/兵戈）· data 冷蓝流光（科技数学）· herb 青绿微光（医学）
@@ -23,7 +34,7 @@ const AMBIENT_MOTIFS = {
 export class InfoPanel {
   constructor(dataManager, handlers = {}) {
     this.dm = dataManager;
-    this.handlers = handlers; // { onFigureJump, onDimensionJump, onRandomExplore, onAssociateJump, onClose }
+    this.handlers = handlers; // { onFigureJump, onDimensionJump, onRandomExplore, onRandomDimension, onHotFigures, onAssociateJump, onClose }
     this.isMobile = window.innerWidth < 768 || 'ontouchstart' in window;
 
     this.root = el('div', { class: 'panel', id: 'info-panel' });
@@ -88,8 +99,36 @@ export class InfoPanel {
 
     const actions = el('div', { class: 'panel-actions' },
       el('button', { class: 'btn-primary', onclick: () => this.handlers.onRandomExplore && this.handlers.onRandomExplore() }, '🎲 随机探索一位名人'),
+      el('div', { style: 'height:10px' }),
+      el('button', { class: 'btn-primary', style: 'background:linear-gradient(135deg,#1ABC9C,#3498DB);', onclick: () => this.handlers.onRandomDimension && this.handlers.onRandomDimension() }, '🪐 随机进入一个维度'),
+      el('div', { style: 'height:10px' }),
+      el('button', { class: 'btn-primary', style: 'background:linear-gradient(135deg,#9B59B6,#F1C40F);', onclick: () => this.handlers.onHotFigures && this.handlers.onHotFigures() }, '⭐ 浏览热门人物'),
     );
     this.scroll.append(actions);
+    this.show();
+  }
+
+  // 人物列表页（热门人物 / 代表性人物）：点击 -> onFigureJump
+  showFigureList(title, items) {
+    this.clear();
+    this.scroll.append(
+      el('div', { class: 'panel-hero' },
+        el('h2', { class: 'panel-title' }, title),
+        el('p', { class: 'panel-sub' }, `共 ${items.length} 位`),
+      )
+    );
+    const list = el('div', { class: 'rel-list' });
+    for (const it of items) {
+      list.append(el('button', {
+        class: 'rel-item rel-in', style: `--dim-color:${it.color}`,
+        onclick: () => this.handlers.onFigureJump && this.handlers.onFigureJump(it.id),
+      },
+        el('span', { class: 'rel-name' }, it.name),
+        el('span', { class: 'rel-rel' }, it.meta || ''),
+        el('span', { class: 'rel-go' }, '↗'),
+      ));
+    }
+    this.scroll.append(list);
     this.show();
   }
 
@@ -123,9 +162,10 @@ export class InfoPanel {
       ),
       data.summary ? el('p', { class: 'panel-lead' }, data.summary) : null,
     );
-    if (data.baiduBaike) {
+    const safe = safeUrl(data.baiduBaike);
+    if (safe) {
       this.scroll.append(el('div', { class: 'panel-actions' },
-        el('a', { class: 'btn-primary', href: data.baiduBaike, target: '_blank', rel: 'noopener' }, '查看百度百科 ↗'),
+        el('a', { class: 'btn-primary', href: safe, target: '_blank', rel: 'noopener noreferrer' }, '查看百度百科 ↗'),
       ));
     }
     this.show();
@@ -141,15 +181,24 @@ export class InfoPanel {
     const dim = this.dm.getDim(basic.dimId);
 
     // 头部
+    // 生卒年（来自 dimensions/*.json 的 era.start/end），若缺失则回退 eraLabel 或朝代
+    const era = d.era || {};
+    const eraText = (typeof era.start === 'number')
+      ? (era.end ? `${era.start}—${era.end}` : `${era.start}—`)
+        + (era.approximate ? '（约）' : '')
+      : (d.eraLabel || '');
+    const metaParts = [d.honor, d.dynasty, eraText].filter(Boolean);
     this.scroll.append(
       el('div', { class: 'panel-hero' },
         el('h2', { class: 'panel-title', style: `color:${dim.color}` }, d.name),
-        el('p', { class: 'panel-sub' }, [d.honor, d.dynasty].filter(Boolean).join(' · ')),
+        el('p', { class: 'panel-sub' }, metaParts.join(' · ')),
         // 字号 / 别称（detail.styleName，如"字太白，号青莲居士"）
         (detail && detail.styleName) ? el('p', { class: 'panel-style' },
           el('span', { class: 'style-label' }, '字号'), detail.styleName) : null,
+        // 标签：honor 用金色徽标强调（最高荣誉/尊称），其余普通 tag
         el('div', { class: 'tag-row' },
-          ...d.tags.slice(0, 8).map(t => el('span', { class: 'tag' }, t)),
+          ...(d.honor ? [el('span', { class: 'tag tag-honor', title: '最高荣誉/尊称' }, d.honor)] : []),
+          ...(d.tags || []).filter(t => t !== d.honor).slice(0, 7).map(t => el('span', { class: 'tag' }, t)),
         ),
         el('p', { class: 'panel-lead' }, d.summary),
       )
@@ -206,8 +255,8 @@ export class InfoPanel {
     // 作品 / 语录 / 成就 / 评价 / 影响 / 争议 / 纪念地 / 影视 / 冷知识 / 资料
     // 注：det 已在上方（史料整理中判断处）声明，此处直接复用，勿重复声明
     if (det) {
-      // 图库（公共领域影像；数据驱动，空则占位）
-      if (det.gallery && det.gallery.length) {
+      // 图库（公共领域影像；数据驱动）：gallery 字段存在即渲染（空数组 → 优雅空态占位），字段缺失则不显示区块
+      if (det.gallery) {
         this.scroll.append(this._galleryBlock(det.gallery));
       }
       // 地理坐标（detail.geo 经纬度 + 出生地名，为未来地图联动奠基）
@@ -264,21 +313,33 @@ export class InfoPanel {
     const grid = el('div', { class: 'gallery-grid' });
     for (const it of items) {
       const card = el('figure', { class: 'gallery-item' });
-      const img = document.createElement('img');
-      img.loading = 'lazy';
-      img.alt = it.title || '';
-      img.src = it.src;
-      img.onerror = () => {
-        img.style.display = 'none';
-        if (!card.querySelector('.gallery-fallback')) {
-          card.append(el('div', { class: 'gallery-fallback' }, '📷 图像加载失败'));
-        }
-      };
-      card.append(img);
+      const src = safeUrl(it.src);
+      if (!src) {
+        card.append(el('div', { class: 'gallery-fallback' }, '📷 图源不可用'));
+      } else {
+        const img = document.createElement('img');
+        img.loading = 'lazy';
+        img.referrerPolicy = 'no-referrer';
+        img.alt = it.title || '';
+        img.src = src;
+        img.onerror = () => {
+          img.style.display = 'none';
+          if (!card.querySelector('.gallery-fallback')) {
+            card.append(el('div', { class: 'gallery-fallback' }, '📷 图像加载失败'));
+          }
+        };
+        card.append(img);
+      }
       card.append(el('figcaption', {},
         el('span', { class: 'g-title' }, it.title || ''),
         it.source ? el('span', { class: 'g-source' }, `来源：${it.source}`) : null,
-        it.license ? el('span', { class: 'g-license' }, it.license) : null,
+        // license 可点击跳转授权页（licenseUrl 来自数据，经 safeUrl 白名单校验）
+        it.license ? (() => {
+          const lUrl = safeUrl(it.licenseUrl);
+          return lUrl
+            ? el('a', { class: 'g-license g-license-link', href: lUrl, target: '_blank', rel: 'noopener noreferrer' }, it.license + ' ↗')
+            : el('span', { class: 'g-license' }, it.license);
+        })() : null,
       ));
       grid.append(card);
     }
@@ -341,13 +402,13 @@ export class InfoPanel {
     if (!geo || (geo.lat == null && geo.lng == null)) return null;
     const lat = geo.lat, lng = geo.lng;
     const place = (basic && basic.birthplace) ? basic.birthplace : '';
-    const mapUrl = `https://www.openstreetmap.org/?mlat=${lat}&mlon=${lng}#map=6/${lat}/${lng}`;
+    const mapUrl = safeUrl(`https://www.openstreetmap.org/?mlat=${lat}&mlon=${lng}#map=6/${lat}/${lng}`);
     return el('div', { class: 'block' },
       el('h3', { class: 'block-title' }, '地理坐标'),
       el('div', { class: 'geo-block' },
         place ? el('div', { class: 'geo-place' }, `出生地：${place}`) : null,
         el('div', { class: 'geo-coord' }, `纬度 ${lat} · 经度 ${lng}`),
-        el('a', { class: 'geo-link', href: mapUrl, target: '_blank', rel: 'noopener' }, '在地图中查看 ↗'),
+        mapUrl ? el('a', { class: 'geo-link', href: mapUrl, target: '_blank', rel: 'noopener noreferrer' }, '在地图中查看 ↗') : null,
       ),
     );
   }
@@ -390,8 +451,11 @@ export class InfoPanel {
           else this.handlers.onAssociateJump && this.handlers.onAssociateJump(r);
         },
       },
-        el('span', { class: 'rel-name' }, r.name),
-        el('span', { class: 'rel-rel' }, r.relation || ''),
+        el('span', { class: 'rel-main' },
+          el('span', { class: 'rel-name' }, r.name),
+          el('span', { class: 'rel-rel' }, r.relation || ''),
+          r.desc ? el('span', { class: 'rel-desc' }, r.desc) : null,
+        ),
         isFig ? el('span', { class: 'rel-go' }, '↗') : el('span', { class: 'rel-go' }, 'ⓘ'),
       );
       list.append(item);

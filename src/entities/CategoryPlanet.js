@@ -94,8 +94,8 @@ export class CategoryPlanet {
 
   setFade(target) { this.fadeTarget = target; }
 
-  update(time) {
-    if (this.mesh) this.mesh.rotation.y += 0.006; // 缓慢自转，强化球体立体感
+  update(time, dt = 0.016, slow = 1.0) {
+    if (this.mesh) this.mesh.rotation.y += 0.006 * dt * 60 * slow; // 缓慢自转，强化球体立体感
     this.fade += (this.fadeTarget - this.fade) * 0.12;
     if (this.glow) this.glow.material.opacity = this.fade;
     if (this.mesh) this.mesh.material.opacity = Math.max(this.fade, 0.06);
