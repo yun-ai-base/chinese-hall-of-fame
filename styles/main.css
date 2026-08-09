@@ -353,6 +353,38 @@ html, body {
 .panel-nav-pos { flex-shrink: 0; font-size: 12px; color: rgba(255,255,255,0.45); }
 .tl-death::before { background: #E74C3C; box-shadow: 0 0 8px #E74C3C; }
 .tl-work::before { background: #1ABC9C; box-shadow: 0 0 8px #1ABC9C; }
+
+/* ---------- 全局时间线视图（#8） ---------- */
+/* 覆盖在 3D 星系之上（z 80：高于 canvas 0、低于返回键 100/标题 90）；独立接收指针事件 */
+.timeline-view {
+  position: fixed; inset: 0; z-index: 80;
+  background: rgba(4, 6, 15, 0.55);   /* 半透明：深空背景仍隐约可见 */
+  backdrop-filter: blur(2px);
+  display: flex; flex-direction: column;
+}
+.timeline-view.hidden { display: none; }
+.tl-head {
+  padding: 14px 20px 4px; display: flex; align-items: baseline; gap: 12px;
+}
+.tl-title { font-size: 18px; font-weight: 700; color: rgba(255,255,255,0.92); letter-spacing: 2px; }
+.tl-sub { font-size: 12px; color: rgba(255,255,255,0.5); }
+.tl-canvas { flex: 1; width: 100%; cursor: crosshair; }
+.tl-tip {
+  position: fixed; z-index: 90; pointer-events: none;
+  padding: 6px 12px; border-radius: 8px;
+  background: rgba(10, 14, 26, 0.92); border: 1px solid rgba(255,255,255,0.2);
+  color: rgba(255,255,255,0.9); font-size: 12px; white-space: nowrap;
+}
+.tl-tip.hidden { display: none; }
+/* 时间线切换按钮（右上角） */
+.tl-btn {
+  position: absolute; top: 14px; right: 16px; z-index: 100;
+  padding: 8px 14px; border-radius: 18px;
+  background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.18);
+  color: rgba(255,255,255,0.85); font-size: 13px; cursor: pointer;
+  transition: background 0.15s ease;
+}
+.tl-btn:hover { background: rgba(255,255,255,0.16); }
 .tl-year { display: inline-block; min-width: 64px; font-size: 12px; color: #FFD700; font-family: 'Noto Serif SC', 'Songti SC', 'STSong', 'SimSun', serif; }
 .tl-event { font-size: 13.5px; color: rgba(255,255,255,0.82); }
 

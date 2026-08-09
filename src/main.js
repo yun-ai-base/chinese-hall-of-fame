@@ -9,6 +9,7 @@ import { CategoryView } from './entities/CategoryView.js';
 import { CategoryFigureView } from './entities/CategoryFigureView.js';
 import { FigureView } from './entities/FigureView.js';
 import { InfoPanel } from './ui/InfoPanel.js';
+import { TimelineView } from './ui/TimelineView.js';
 import { Search } from './ui/Search.js';
 import { Breadcrumb } from './ui/Breadcrumb.js';
 
@@ -92,6 +93,12 @@ class App {
       },
     });
     this.btnBack = document.getElementById('btn-back');
+    this.btnTimeline = document.getElementById('btn-timeline');
+    this.btnTimeline.addEventListener('click', () => {
+      // 时间线为独立根视图：从任意层级进入都切到时间线（不推 history）
+      if (this.viewLevel !== 'timeline') this._apply(this._timelineState());
+      else this._apply(this._universeState());
+    });
     this.titleDisplay = document.getElementById('title-display');
     this.mainTitle = this.titleDisplay?.querySelector('.main-title');
     this.tooltip = document.getElementById('tooltip');
@@ -204,6 +211,11 @@ class App {
     return { level: 'figure', figureId, dimId: dId, center: c.clone() };
   }
 
+  // 全局时间线视图（独立根视图，不参与 history 栈：back 直接回宇宙）
+  _timelineState() {
+    return { level: 'timeline' };
+  }
+
   // ---------- 导航 ----------
   navigateTo(state) {
     // 记录当前态进历史栈
@@ -219,6 +231,7 @@ class App {
   }
 
   back() {
+    if (this.viewLevel === 'timeline') { this._apply(this._universeState()); return; }
     if (!this.history.length) {
       if (this.viewLevel !== 'universe') this._apply(this._universeState());
       return;
@@ -232,9 +245,36 @@ class App {
     this.sun.setCenterTextVisible(state.level === 'universe');
     this._clearFigureSelection();
     if (state.level === 'universe') this._applyUniverse();
+    else if (state.level === 'timeline') this._applyTimeline();
     else if (state.level === 'dimension') this._applyDimension(state.dimId, state.center);
     else if (state.level === 'category') this._applyCategory(state.dimId, state.categoryName, state.center);
     else if (state.level === 'figure') this._applyFigure(state.figureId, state.center);
+  }
+
+  _applyTimeline() {
+    this._disposeView();
+    this._disposeParent();
+    this.viewLevel = 'timeline';
+    this.currentDimId = null;
+    this.currentFigureId = null;
+    this.currentCenter.set(0, 0, 0);
+    this.orbitSystem.setRunning(false);   // 背景星系定格（省电 + 画面稳定）
+    this.orbitSystem.setRingsFaded(false);
+    this.orbitSystem.setPlanetDimmed(null);
+    this.panel.hide();
+    if (this.titleDisplay) this.titleDisplay.style.display = 'none';  // 时间线有独立标题
+    this.breadcrumb.render([]);
+    this.btnBack.classList.remove('hidden');   // 时间线内显示返回键（回宇宙）
+    this._setHash('t');
+    this._refreshClickables();
+    // 懒创建时间线视图（复用实例，避免重复构造）
+    if (!this.timeline) {
+      this.timeline = new TimelineView({
+        dm: this.dm,
+        onFigureJump: (id) => this.navigateTo(this._figureState(id, null, this.dm.getFigureBasic(id)?.dimId)),
+      });
+    }
+    this.timeline.show();
   }
 
   _applyUniverse() {
@@ -247,6 +287,7 @@ class App {
     this.orbitSystem.setRunning(true);
     this.orbitSystem.setRingsFaded(false);   // 宇宙层轨道恢复
     this.orbitSystem.setPlanetDimmed(null);  // 行星全部恢复明亮
+    if (this.timeline) this.timeline.hide(); // 退出时间线视图
     this.panel.hide();
     this.cameraCtrl.focusUniverse();
     this.btnBack.classList.add('hidden');
@@ -763,6 +804,7 @@ class App {
 
   _setHash(level, id) {
     const h = level === 'u' ? '#/u'
+      : level === 't' ? '#/t'            // 全局时间线视图
       : level === 'd' ? `#/d/${id}`
       : level === 'c' ? `#/c/${id}`
       : `#/f/${id}`;
@@ -776,6 +818,7 @@ class App {
     const parts = raw.split('/').filter(Boolean);
     if (!parts.length) return this._universeState();
     if (parts[0] === 'u') return this._universeState();
+    if (parts[0] === 't') return this._timelineState();   // 全局时间线视图
     if (parts[0] === 'd' && parts[1]) {
       return this.dm.getDim(parts[1]) ? this._dimensionState(parts[1]) : this._universeState();
     }

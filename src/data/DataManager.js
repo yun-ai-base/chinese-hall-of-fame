@@ -120,6 +120,22 @@ export class DataManager {
   getFigureBasic(id) { return this.figures.get(id); }
   getCrossDims(id) { return this.cross.get(id) || []; }
 
+  // 全量扁平列表（时间线等全局视图用）：{id,name,dynasty,color,sortYear}，按 sortYear 升序
+  getAllFigures() {
+    const out = [];
+    for (const [id, e] of this.figures) {
+      out.push({
+        id,
+        name: e.basic.name,
+        dynasty: e.basic.dynasty || '',
+        color: e.color,
+        sortYear: e.sortYear || 0,
+      });
+    }
+    out.sort((a, b) => a.sortYear - b.sortYear);
+    return out;
+  }
+
   // 群体成员查询（纯内存索引，basic.group 由 backfill_group.py 静态化；excludeId 排除自身）
   getGroupMembers(group, excludeId = null) {
     const arr = this.groupIndex.get(group) || [];
