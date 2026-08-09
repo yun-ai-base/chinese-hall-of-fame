@@ -376,9 +376,9 @@ html, body {
   color: rgba(255,255,255,0.9); font-size: 12px; white-space: nowrap;
 }
 .tl-tip.hidden { display: none; }
-/* 时间线切换按钮（右上角） */
+/* 时间线切换按钮（左上角 btn-back 旁，left 76px 避开返回键；右上角为搜索框专属，互不遮挡） */
 .tl-btn {
-  position: absolute; top: 14px; right: 16px; z-index: 100;
+  position: absolute; top: 22px; left: 76px; z-index: 100;
   padding: 8px 14px; border-radius: 18px;
   background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.18);
   color: rgba(255,255,255,0.85); font-size: 13px; cursor: pointer;

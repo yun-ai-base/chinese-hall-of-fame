@@ -241,6 +241,8 @@ class App {
   }
 
   _apply(state) {
+    // 时间线模式隐藏搜索框（右上角被时间线标题/切换按钮占用，避免遮挡与按钮重叠）
+    if (this.search) this.search.root.style.display = state.level === 'timeline' ? 'none' : '';
     // 进入任何非宇宙层级时，收起太阳中心的「中华」字样与可能残留的名人选中态
     this.sun.setCenterTextVisible(state.level === 'universe');
     this._clearFigureSelection();
