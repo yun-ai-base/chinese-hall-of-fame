@@ -285,10 +285,11 @@ export class Planet {
   // fragment 按归一化半径 t 生成条带、边缘渐隐；uCassini/uArcs 控制卡西尼缝与角向弧段；
   // 透明度随 fade 联动（uOpacity）。
   static RING_CFG = {
-    saturn:  { inner: 1.5, outer: 2.5, rot: [-Math.PI / 2 + 0.42, 0, 0], bands: 46, cassini: 1, arcs: 0, alpha: 0.55, lerp: 0.5,  target: '#e8dcc0' },
-    jupiter: { inner: 1.55, outer: 1.95, rot: [-Math.PI / 2 + 0.28, 0, 0], bands: 16, cassini: 0, arcs: 0, alpha: 0.16, lerp: 0.4,  target: '#d8c6a4' },
-    uranus:  { inner: 1.7, outer: 2.05, rot: [-0.22, 0.5, 0.12], bands: 30, cassini: 0, arcs: 0, alpha: 0.24, lerp: 0.55, target: '#bfe9ef' },
-    neptune: { inner: 1.6, outer: 2.2, rot: [-Math.PI / 2 + 0.55, 0, 0], bands: 20, cassini: 0, arcs: 1, alpha: 0.20, lerp: 0.5,  target: '#8fd0e0' },
+    // profile=1 → 真实多带剖面（C/B/卡西尼缝/A/F + 细纹 + 反射光 NormalBlending）；0 → 细密纹发光
+    saturn:  { inner: 1.5, outer: 2.5, rot: [-Math.PI / 2 + 0.42, 0, 0], bands: 46, cassini: 1, arcs: 0, alpha: 0.85, lerp: 0.78, target: '#e8dcc0', profile: 1 },
+    jupiter: { inner: 1.55, outer: 1.95, rot: [-Math.PI / 2 + 0.28, 0, 0], bands: 16, cassini: 0, arcs: 0, alpha: 0.13, lerp: 0.35, target: '#b08a6a', profile: 0 }, // 真实木星环：极淡红棕尘埃
+    uranus:  { inner: 1.7, outer: 2.05, rot: [-0.22, 0.5, 0.12], bands: 30, cassini: 0, arcs: 0, alpha: 0.24, lerp: 0.55, target: '#bfe9ef', profile: 0 },
+    neptune: { inner: 1.6, outer: 2.2, rot: [-Math.PI / 2 + 0.55, 0, 0], bands: 20, cassini: 0, arcs: 1, alpha: 0.20, lerp: 0.5,  target: '#8fd0e0', profile: 0 },
   };
 
   _createRing(type = 'saturn') {
@@ -297,11 +298,12 @@ export class Planet {
     const outer = this.radius * cfg.outer;
     const geo = new THREE.RingGeometry(inner, outer, 160, 1);
     const col = new THREE.Color(this.color).lerp(new THREE.Color(cfg.target), cfg.lerp);
+    const realistic = cfg.profile === 1;   // 土星：真实多带剖面 + 反射光（Normal 而非发光）
     const mat = new THREE.ShaderMaterial({
       transparent: true,
       depthWrite: false,
       side: THREE.DoubleSide,
-      blending: THREE.AdditiveBlending,
+      blending: realistic ? THREE.NormalBlending : THREE.AdditiveBlending,
       uniforms: {
         uInner: { value: inner },
         uOuter: { value: outer },
@@ -311,6 +313,7 @@ export class Planet {
         uCassini: { value: cfg.cassini },
         uArcs: { value: cfg.arcs },
         uAlpha: { value: cfg.alpha },
+        uProfile: { value: realistic ? 1 : 0 },
       },
       vertexShader:
         'varying float vR; varying float vA;' +
@@ -318,19 +321,34 @@ export class Planet {
         'gl_Position = projectionMatrix * modelViewMatrix * vec4(position,1.0); }',
       fragmentShader:
         'uniform float uInner; uniform float uOuter; uniform vec3 uColor; uniform float uOpacity;' +
-        'uniform float uBands; uniform float uCassini; uniform float uArcs; uniform float uAlpha;' +
+        'uniform float uBands; uniform float uCassini; uniform float uArcs; uniform float uAlpha; uniform float uProfile;' +
         'varying float vR; varying float vA;' +
         'void main(){' +
         '  float t = (vR - uInner) / (uOuter - uInner);' +      // 0 内 → 1 外
-        '  float band = 0.65 + 0.35 * sin(t * uBands);' +        // 细密环纹
-        '  float cassini = 1.0;' +
-        '  if (uCassini > 0.5) cassini = 1.0 - (smoothstep(0.44,0.47,t) - smoothstep(0.53,0.56,t));' + // 卡西尼缝
-        '  float edge = smoothstep(0.0,0.05,t) * (1.0 - smoothstep(0.92,1.0,t));' +      // 内外渐隐
+        '  float profile;' +
+        '  if (uProfile > 0.5) {' +
+        // 真实土星环多带剖面：C(暗)→B(最亮宽)→卡西尼缝(暗)→A(亮)→F(细亮)
+        '    float cR = smoothstep(0.02,0.10,t) * (1.0-smoothstep(0.26,0.30,t)) * 0.30;' +
+        '    float bR = smoothstep(0.34,0.42,t) * (1.0-smoothstep(0.56,0.60,t));' +
+        '    float aR = smoothstep(0.68,0.74,t) * (1.0-smoothstep(0.90,0.94,t)) * 0.85;' +
+        '    float fR = smoothstep(0.955,0.975,t) * (1.0-smoothstep(0.99,1.0,t)) * 0.55;' +
+        '    float gap = smoothstep(0.60,0.62,t) * (1.0-smoothstep(0.66,0.68,t));' +   // 卡西尼缝区
+        '    profile = max(max(cR, bR), max(aR, fR));' +
+        '    profile *= (1.0 - gap * 0.94);' +                   // 缝压暗
+        '    profile *= 0.92 + 0.08 * sin(t * 200.0 + 7.0);' +   // 细密环纹（弱）
+        '    profile *= smoothstep(0.0,0.02,t) * (1.0 - smoothstep(0.955,1.0,t));' +  // 边缘渐隐
+        '  } else {' +
+        '    float band = 0.65 + 0.35 * sin(t * uBands);' +      // 细密环纹
+        '    float cassini = 1.0;' +
+        '    if (uCassini > 0.5) cassini = 1.0 - (smoothstep(0.44,0.47,t) - smoothstep(0.53,0.56,t));' +
+        '    float edge = smoothstep(0.0,0.05,t) * (1.0 - smoothstep(0.92,1.0,t));' +
+        '    profile = band * cassini * edge;' +
+        '  }' +
         '  float arc = 1.0;' +
         '  if (uArcs > 0.5) {' +                                  // 海王星弧段：几处角向亮团
         '    arc = 0.35 + exp(-pow(vA-1.2,2.0)*7.0) + exp(-pow(vA+2.0,2.0)*9.0) + exp(-pow(vA-2.7,2.0)*11.0);' +
         '  }' +
-        '  float a = band * cassini * edge * arc;' +
+        '  float a = profile * arc;' +
         '  if (a < 0.01) discard;' +
         '  gl_FragColor = vec4(uColor, a * uAlpha * uOpacity);' +
         '}',
