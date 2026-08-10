@@ -280,6 +280,7 @@ class App {
       this.timeline = new TimelineView({
         dm: this.dm,
         onFigureJump: (id) => this.navigateTo(this._figureState(id, null, this.dm.getFigureBasic(id)?.dimId)),
+        onExit: () => this.back(),   // 时间线自带「← 返回」→ 回星系
       });
     }
     this.timeline.show();

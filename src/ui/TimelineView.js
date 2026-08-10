@@ -30,7 +30,7 @@ const PAD_L = 64, PAD_R = 28, PAD_T = 56, PAD_B = 34;  // 画布留白（含标�
 const HIT_R = 9;        // 点击/hover 命中半径（移动端友好）
 
 export class TimelineView {
-  constructor({ dm, onFigureJump }) {
+  constructor({ dm, onFigureJump, onExit }) {
     this.dm = dm;
     this.onFigureJump = onFigureJump;
     this.figures = dm.getAllFigures().filter((f) => f.sortYear >= YEAR_MIN && f.sortYear <= YEAR_MAX);
@@ -39,6 +39,8 @@ export class TimelineView {
 
     this.root = el('div', { class: 'timeline-view hidden' },
       el('div', { class: 'tl-head' },
+        // 自带返回按钮：时间线 overlay(z80) 盖住全局 ui-overlay(z10) 内的返回键，需独立出口
+        el('button', { class: 'tl-exit', onclick: () => onExit && onExit() }, '← 返回'),
         el('span', { class: 'tl-title' }, '中华群星 · 历史时间线'),
         el('span', { class: 'tl-sub' }, `${this.figures.length} 位人物 · 点击人物进入详情`),
       ),
