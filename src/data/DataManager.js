@@ -95,6 +95,7 @@ export class DataManager {
           pinyin: py,
           pinyinInitials: initials,
           dynasty: basic.dynasty || '',
+          group: grp || '',             // 群体归属（支持"竹林七贤"等群体名搜索）
           tags: basic.tags || [],
           dimId,
           dimName: meta.name,
@@ -252,6 +253,7 @@ export class DataManager {
       else if (s.pinyinInitials && s.pinyinInitials.startsWith(q)) score = 90; // 拼音首字母，如 zcz -> 祖冲之
       else if (s.pinyin.includes(q)) score = 80;
       else if (s.dynasty.toLowerCase().includes(q)) score = 60;
+      else if (s.group && s.group.includes(query.trim())) score = 55; // 群体名（竹林七贤/元曲四大家…）→ 命中全部成员
       else if (s.tags.some(t => t.toLowerCase().includes(q))) score = 50;
       if (score > 0) results.push({ ...s, score });
     }
