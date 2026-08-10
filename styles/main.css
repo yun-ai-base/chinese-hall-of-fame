@@ -505,6 +505,8 @@ html, body {
 
 /* ===== 移动端适配 ===== */
 @media (max-width: 767px) {
+  /* 时间线在窄屏可读性差（341 点拥挤），移动端隐藏入口按钮（路由侧另有防御） */
+  .tl-btn { display: none; }
   .breadcrumb { font-size: 12px; top: 14px; max-width: 70vw; flex-wrap: wrap; justify-content: center; }
   .search-box { top: 12px; right: 12px; }
   .search-toggle { display: block; }

@@ -254,6 +254,12 @@ class App {
   }
 
   _applyTimeline() {
+    // 移动端路由防御：窄屏/触屏下时间线可读性差（341 个点拥挤），直接回宇宙层。
+    // 与 CSS 隐藏入口按钮（.tl-btn @media ≤767px）双保险，覆盖「分享 #/t 链接直达」等场景。
+    if (window.innerWidth < 768 || 'ontouchstart' in window) {
+      this._apply(this._universeState());
+      return;
+    }
     this._disposeView();
     this._disposeParent();
     this.viewLevel = 'timeline';
