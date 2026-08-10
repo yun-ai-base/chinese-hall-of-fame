@@ -269,14 +269,16 @@ export class InfoPanel {
       this.scroll.append(this._timeline(detail.details.timeline, figureId));
     }
 
-    // 跨维度归属
+    // 跨维度归属：chip 带策展说明（hover 显示"为何跨维度"，title 原生提示）
     const cross = this.dm.getCrossDims(figureId);
     if (cross.length) {
       const chips = el('div', { class: 'chip-row' }, el('span', { class: 'chip-label' }, '跨维度：'));
       for (const cd of cross) {
         const cdDim = this.dm.getDim(cd);
+        const why = this.dm.getCrossWhy(figureId, cd) || `点击浏览 ${cdDim.name} 维度`;
         chips.append(el('button', {
           class: 'chip', style: `--dim-color:${cdDim.color}`,
+          title: why,
           onclick: () => this.handlers.onDimensionJump && this.handlers.onDimensionJump(cd),
         }, cdDim.name));
       }

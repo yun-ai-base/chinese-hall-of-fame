@@ -36,6 +36,7 @@ export class DataManager {
     this.figures = new Map();       // figId -> { basic, dimId, category, color, sortYear }
     this.dimFigureLists = new Map();// dimId -> [{ id, basic, category, color, sortYear }]
     this.cross = new Map();         // figId -> [dimId]
+    this.crossWhy = new Map();      // figId -> {dimId: 策展说明}（index.json crossDimensions 升级结构）
     this.groupIndex = new Map();    // group -> [{id,name,color,dynasty}]（basic.group 静态化回填）
     this.associateIds = new Set();
     this.searchIndex = [];
@@ -62,8 +63,10 @@ export class DataManager {
     for (const d of index.dimensions) {
       this.dims.set(d.id, d);
     }
-    for (const [fid, dims] of Object.entries(index.crossDimensions || {})) {
-      this.cross.set(fid, dims);
+    // 跨维度：index.json 结构为 {fid: {dimId: why}}；兼容旧调用方（getCrossDims 返回 dimId 数组）
+    for (const [fid, dimMap] of Object.entries(index.crossDimensions || {})) {
+      this.cross.set(fid, Object.keys(dimMap));
+      this.crossWhy.set(fid, dimMap);
     }
 
     // 并行加载 8 个维度数组（任一失败整体抛错由 main.js 兜底）
@@ -120,6 +123,11 @@ export class DataManager {
   getDimFigures(dimId) { return this.dimFigureLists.get(dimId) || []; }
   getFigureBasic(id) { return this.figures.get(id); }
   getCrossDims(id) { return this.cross.get(id) || []; }
+  // 跨维度说明（策展注记）：getCrossDims 的配套解释文案，无则空串（渲染层可回退通用文案）
+  getCrossWhy(figureId, dimId) {
+    const m = this.crossWhy.get(figureId);
+    return (m && m[dimId]) || '';
+  }
 
   // 全量扁平列表（时间线等全局视图用）：{id,name,dynasty,color,sortYear}，按 sortYear 升序
   getAllFigures() {

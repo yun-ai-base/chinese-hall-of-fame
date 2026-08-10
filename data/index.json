@@ -431,36 +431,36 @@
     }
   ],
   "crossDimensions": {
-    "cao_cao": [
-      "politics"
-    ],
-    "su_shi": [
-      "art",
-      "politics"
-    ],
-    "zhuge_liang": [
-      "politics"
-    ],
-    "han_yu": [
-      "philosophy"
-    ],
-    "xu_guangqi": [
-      "philosophy"
-    ],
-    "liang_qichao": [
-      "philosophy"
-    ],
-    "tao_hongjing": [
-      "philosophy"
-    ],
-    "zhu_zaiyu": [
-      "art"
-    ],
-    "li_madou": [
-      "technology"
-    ],
-    "tang_ruowang": [
-      "technology"
-    ]
+    "cao_cao": {
+      "politics": "治世能臣，军事之外兼长权谋治政"
+    },
+    "su_shi": {
+      "art": "诗文书画四绝，文人画宗师",
+      "politics": "宦海沉浮，政见与文名并重"
+    },
+    "zhuge_liang": {
+      "politics": "出将入相，隆中对定三分之局"
+    },
+    "han_yu": {
+      "philosophy": "文以载道，古文运动的思想领袖"
+    },
+    "xu_guangqi": {
+      "philosophy": "中西会通，开科学思想之先河"
+    },
+    "liang_qichao": {
+      "philosophy": "维新启蒙，思想巨擘"
+    },
+    "tao_hongjing": {
+      "philosophy": "山中宰相，道教思想家"
+    },
+    "zhu_zaiyu": {
+      "art": "十二平均律，乐律学之巅峰"
+    },
+    "li_madou": {
+      "technology": "西学东渐，科学知识的桥梁"
+    },
+    "tang_ruowang": {
+      "technology": "钦天监掌印，西洋历法改革者"
+    }
   }
 }
