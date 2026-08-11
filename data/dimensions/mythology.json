@@ -734,5 +734,59 @@
     "birthplace": null,
     "deathplace": null,
     "locations": null
+  },
+  {
+    "id": "wu_gang",
+    "name": "吴刚",
+    "pinyin": "Wu Gang",
+    "dynasty": "远古",
+    "era": {
+      "start": null,
+      "end": null,
+      "approximate": true
+    },
+    "eraLabel": "神话",
+    "gender": "男",
+    "honor": "月宫伐桂人",
+    "dimension": "mythology",
+    "dimensionCategory": "民间传说",
+    "tags": [
+      "神话人物",
+      "月宫",
+      "民间传说"
+    ],
+    "summary": "月宫传说人物，因学仙有过被罚砍伐月中桂树，桂树随砍随合，永无休止。",
+    "birthplace": "",
+    "deathplace": "",
+    "locations": [],
+    "group": ""
+  },
+  {
+    "id": "ma_zu",
+    "name": "妈祖",
+    "pinyin": "Ma Zu",
+    "dynasty": "宋",
+    "era": {
+      "start": 960,
+      "end": 987,
+      "approximate": true
+    },
+    "eraLabel": "宋",
+    "gender": "女",
+    "honor": "海上女神",
+    "dimension": "mythology",
+    "dimensionCategory": "民间传说",
+    "tags": [
+      "海神",
+      "民间信仰",
+      "女神"
+    ],
+    "summary": "海上保护女神，原型为北宋莆田湄洲林默娘，历代敕封「天后」，为世界华人海洋信仰的核心。",
+    "birthplace": "湄洲（今福建莆田湄洲岛）",
+    "deathplace": "湄洲（今福建莆田湄洲岛）",
+    "locations": [
+      "福建"
+    ],
+    "group": ""
   }
 ]

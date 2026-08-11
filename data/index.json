@@ -2,7 +2,7 @@
   "version": "1.0",
   "name": "中华文明",
   "nameEn": "Celestial Mandate",
-  "totalFigures": 361,
+  "totalFigures": 378,
   "dimensions": [
     {
       "id": "mythology",
@@ -37,7 +37,7 @@
         },
         {
           "name": "民间传说",
-          "count": 4,
+          "count": 6,
           "order": 3,
           "start": null,
           "end": null
@@ -56,7 +56,7 @@
       "categories": [
         {
           "name": "儒家",
-          "count": 23,
+          "count": 25,
           "order": 0,
           "start": null,
           "end": null
@@ -96,14 +96,14 @@
       "categories": [
         {
           "name": "先秦两汉",
-          "count": 12,
+          "count": 13,
           "order": 0,
           "start": null,
           "end": null
         },
         {
           "name": "唐宋",
-          "count": 30,
+          "count": 33,
           "order": 1,
           "start": null,
           "end": null
@@ -253,7 +253,7 @@
         },
         {
           "name": "建筑",
-          "count": 5,
+          "count": 7,
           "order": 6,
           "start": null,
           "end": null
@@ -286,7 +286,7 @@
       "categories": [
         {
           "name": "书法",
-          "count": 11,
+          "count": 12,
           "order": 0,
           "start": null,
           "end": null
@@ -300,7 +300,7 @@
         },
         {
           "name": "山水画",
-          "count": 15,
+          "count": 17,
           "order": 2,
           "start": null,
           "end": null
@@ -361,14 +361,14 @@
         },
         {
           "name": "治世名臣",
-          "count": 13,
+          "count": 14,
           "order": 3,
           "start": null,
           "end": null
         },
         {
           "name": "变法与改革",
-          "count": 8,
+          "count": 9,
           "order": 4,
           "start": null,
           "end": null
@@ -415,14 +415,14 @@
         },
         {
           "name": "出洋先驱",
-          "count": 3,
+          "count": 4,
           "order": 3,
           "start": null,
           "end": null
         },
         {
           "name": "地理述异",
-          "count": 4,
+          "count": 5,
           "order": 4,
           "start": null,
           "end": null

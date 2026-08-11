@@ -468,6 +468,36 @@
     "group": "东汉经学"
   },
   {
+    "id": "li_zhi",
+    "name": "李贽",
+    "pinyin": "Li Zhi",
+    "dynasty": "明",
+    "era": {
+      "start": 1527,
+      "end": 1602,
+      "approximate": false
+    },
+    "eraLabel": "明",
+    "gender": "男",
+    "honor": "异端思想家",
+    "dimension": "philosophy",
+    "dimensionCategory": "儒家",
+    "tags": [
+      "思想家",
+      "哲学家",
+      "王学后学"
+    ],
+    "summary": "明代思想家，王阳明心学后学，提出「童心说」，批判理学束缚，被时人目为异端。",
+    "birthplace": "泉州（今福建泉州）",
+    "deathplace": "北京（今北京）",
+    "locations": [
+      "福建",
+      "湖北",
+      "北京"
+    ],
+    "group": ""
+  },
+  {
     "id": "gu_yan_wu",
     "name": "顾炎武",
     "pinyin": "Gu Yan Wu",
@@ -1655,5 +1685,34 @@
       "山东"
     ],
     "group": "名家"
+  },
+  {
+    "id": "feng_youlan",
+    "name": "冯友兰",
+    "pinyin": "Feng Youlan",
+    "dynasty": "近现代",
+    "era": {
+      "start": 1895,
+      "end": 1990,
+      "approximate": false
+    },
+    "eraLabel": "近现代",
+    "gender": "男",
+    "honor": "中国哲学史家",
+    "dimension": "philosophy",
+    "dimensionCategory": "儒家",
+    "tags": [
+      "哲学家",
+      "哲学史家",
+      "新儒家"
+    ],
+    "summary": "中国现代哲学大家，《中国哲学史》《中国哲学简史》作者，新儒家代表，「阐旧邦以辅新命」。",
+    "birthplace": "唐河（今河南唐河）",
+    "deathplace": "北京（今北京）",
+    "locations": [
+      "河南",
+      "北京"
+    ],
+    "group": ""
   }
 ]

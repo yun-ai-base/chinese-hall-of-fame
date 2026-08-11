@@ -339,6 +339,34 @@
     "group": "竹林七贤"
   },
   {
+    "id": "tao_yuanming",
+    "name": "陶渊明",
+    "pinyin": "Tao Yuanming",
+    "dynasty": "晋",
+    "era": {
+      "start": 365,
+      "end": 427,
+      "approximate": true
+    },
+    "eraLabel": "东晋",
+    "gender": "男",
+    "honor": "隐逸诗宗",
+    "dimension": "literature",
+    "dimensionCategory": "先秦两汉",
+    "tags": [
+      "诗人",
+      "隐士",
+      "田园诗"
+    ],
+    "summary": "东晋大诗人，田园诗派开山祖，辞官归隐，代表作《归园田居》《饮酒》《桃花源记》。",
+    "birthplace": "浔阳柴桑（今江西九江）",
+    "deathplace": "浔阳柴桑（今江西九江）",
+    "locations": [
+      "江西"
+    ],
+    "group": "隐逸诗人"
+  },
+  {
     "id": "li_bai",
     "name": "李白",
     "pinyin": "Li Bai",
@@ -396,6 +424,95 @@
       "四川",
       "湖南"
     ]
+  },
+  {
+    "id": "liu_zongyuan",
+    "name": "柳宗元",
+    "pinyin": "Liu Zongyuan",
+    "dynasty": "唐",
+    "era": {
+      "start": 773,
+      "end": 819,
+      "approximate": false
+    },
+    "eraLabel": "中唐",
+    "gender": "男",
+    "honor": "古文巨擘",
+    "dimension": "literature",
+    "dimensionCategory": "唐宋",
+    "tags": [
+      "文学家",
+      "诗人",
+      "散文家",
+      "唐宋八大家"
+    ],
+    "summary": "唐代文学家，唐宋八大家之一，与韩愈并称「韩柳」，山水游记之祖，代表作《永州八记》《江雪》。",
+    "birthplace": "河东（今山西永济）",
+    "deathplace": "柳州（今广西柳州）",
+    "locations": [
+      "山西",
+      "广西",
+      "湖南"
+    ],
+    "group": "唐宋八大家"
+  },
+  {
+    "id": "li_he",
+    "name": "李贺",
+    "pinyin": "Li He",
+    "dynasty": "唐",
+    "era": {
+      "start": 790,
+      "end": 816,
+      "approximate": true
+    },
+    "eraLabel": "中唐",
+    "gender": "男",
+    "honor": "诗鬼",
+    "dimension": "literature",
+    "dimensionCategory": "唐宋",
+    "tags": [
+      "诗人",
+      "浪漫主义"
+    ],
+    "summary": "中唐诗人，诗风奇诡瑰丽，与李白（诗仙）、杜甫（诗圣）、王维（诗佛）并称，代表作《雁门太守行》《李凭箜篌引》。",
+    "birthplace": "福昌（今河南宜阳）",
+    "deathplace": "福昌（今河南宜阳）",
+    "locations": [
+      "河南"
+    ],
+    "group": ""
+  },
+  {
+    "id": "ouyang_xiu",
+    "name": "欧阳修",
+    "pinyin": "Ouyang Xiu",
+    "dynasty": "宋",
+    "era": {
+      "start": 1007,
+      "end": 1072,
+      "approximate": false
+    },
+    "eraLabel": "北宋",
+    "gender": "男",
+    "honor": "文坛盟主",
+    "dimension": "literature",
+    "dimensionCategory": "唐宋",
+    "tags": [
+      "文学家",
+      "史学家",
+      "政治家",
+      "唐宋八大家"
+    ],
+    "summary": "北宋文坛领袖，唐宋八大家之一，古文运动集大成者，提携三苏、王安石、曾巩，代表作《醉翁亭记》。",
+    "birthplace": "庐陵（今江西吉安）",
+    "deathplace": "颍州（今安徽阜阳）",
+    "locations": [
+      "江西",
+      "安徽",
+      "河南"
+    ],
+    "group": "唐宋八大家"
   },
   {
     "id": "su_shi",

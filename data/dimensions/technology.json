@@ -28,6 +28,33 @@
     ]
   },
   {
+    "id": "li_chun",
+    "name": "李春",
+    "pinyin": "Li Chun",
+    "dynasty": "隋",
+    "era": {
+      "start": 600,
+      "end": 650,
+      "approximate": true
+    },
+    "eraLabel": "隋",
+    "gender": "男",
+    "honor": "桥梁圣手",
+    "dimension": "technology",
+    "dimensionCategory": "建筑",
+    "tags": [
+      "工程师",
+      "桥梁专家"
+    ],
+    "summary": "隋代工匠，赵州桥（安济桥）设计者——中国现存最古老、世界首创敞肩式石拱桥。",
+    "birthplace": "",
+    "deathplace": "",
+    "locations": [
+      "河北"
+    ],
+    "group": ""
+  },
+  {
     "id": "bi_sheng",
     "name": "毕昇",
     "pinyin": "Bi Sheng",
@@ -1174,5 +1201,34 @@
     "locations": [
       "北京"
     ]
+  },
+  {
+    "id": "zhan_tianyou",
+    "name": "詹天佑",
+    "pinyin": "Zhan Tianyou",
+    "dynasty": "近现代",
+    "era": {
+      "start": 1861,
+      "end": 1919,
+      "approximate": false
+    },
+    "eraLabel": "晚清民国",
+    "gender": "男",
+    "honor": "中国铁路之父",
+    "dimension": "technology",
+    "dimensionCategory": "建筑",
+    "tags": [
+      "工程师",
+      "铁路专家"
+    ],
+    "summary": "中国首位铁路总工程师，主持修建京张铁路，以「人字形」线路攻克八达岭天险，被誉为「中国铁路之父」。",
+    "birthplace": "南海（今广东广州）",
+    "deathplace": "汉口（今湖北武汉）",
+    "locations": [
+      "广东",
+      "湖北",
+      "河北"
+    ],
+    "group": ""
   }
 ]

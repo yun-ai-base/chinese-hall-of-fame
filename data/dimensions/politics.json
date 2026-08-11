@@ -1,5 +1,33 @@
 [
   {
+    "id": "zhou_gong_dan",
+    "name": "周公旦",
+    "pinyin": "Zhou Gong Dan",
+    "dynasty": "西周",
+    "era": {
+      "start": -1043,
+      "end": -1035,
+      "approximate": true
+    },
+    "eraLabel": "西周",
+    "gender": "男",
+    "honor": "制礼作乐元圣",
+    "dimension": "politics",
+    "dimensionCategory": "治世名臣",
+    "tags": [
+      "政治家",
+      "思想家",
+      "礼乐制度"
+    ],
+    "summary": "周文王之子、武王之弟，摄政辅成王，制礼作乐奠定周朝八百年基业，被儒家尊为「元圣」。",
+    "birthplace": "岐周（今陕西岐山）",
+    "deathplace": "丰镐（今陕西西安）",
+    "locations": [
+      "陕西"
+    ],
+    "group": ""
+  },
+  {
     "id": "qin_shihuang",
     "name": "秦始皇",
     "pinyin": "Qin Shi Huang",
@@ -540,6 +568,36 @@
       "陕西西安"
     ],
     "group": "武周政治集团"
+  },
+  {
+    "id": "sun_zhongshan",
+    "name": "孙中山",
+    "pinyin": "Sun Zhongshan",
+    "dynasty": "近现代",
+    "era": {
+      "start": 1866,
+      "end": 1925,
+      "approximate": false
+    },
+    "eraLabel": "近代",
+    "gender": "男",
+    "honor": "国父",
+    "dimension": "politics",
+    "dimensionCategory": "变法与改革",
+    "tags": [
+      "革命家",
+      "政治家",
+      "思想家"
+    ],
+    "summary": "中国民主革命先行者，中华民国临时大总统，三民主义创立者，被尊为「国父」。",
+    "birthplace": "香山（今广东中山）",
+    "deathplace": "北京（今北京）",
+    "locations": [
+      "广东",
+      "北京",
+      "日本"
+    ],
+    "group": ""
   },
   {
     "id": "guang_xu",

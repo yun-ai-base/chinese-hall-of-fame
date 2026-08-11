@@ -141,6 +141,90 @@
     ]
   },
   {
+    "id": "li_cheng",
+    "name": "李成",
+    "pinyin": "Li Cheng",
+    "dynasty": "五代",
+    "era": {
+      "start": 919,
+      "end": 967,
+      "approximate": true
+    },
+    "eraLabel": "五代宋初",
+    "gender": "男",
+    "honor": "山水画宗师",
+    "dimension": "art",
+    "dimensionCategory": "山水画",
+    "tags": [
+      "画家",
+      "山水画"
+    ],
+    "summary": "五代宋初山水画宗师，与范宽、郭熙并称「三家鼎峙」，开创「平远寒林」画风。",
+    "birthplace": "营丘（今山东青州）",
+    "deathplace": "开封（今河南开封）",
+    "locations": [
+      "山东",
+      "河南"
+    ],
+    "group": ""
+  },
+  {
+    "id": "ju_ran",
+    "name": "巨然",
+    "pinyin": "Ju Ran",
+    "dynasty": "五代",
+    "era": {
+      "start": 940,
+      "end": 1000,
+      "approximate": true
+    },
+    "eraLabel": "五代宋初",
+    "gender": "男",
+    "honor": "南派山水宗师",
+    "dimension": "art",
+    "dimensionCategory": "山水画",
+    "tags": [
+      "画家",
+      "山水画"
+    ],
+    "summary": "五代宋初画僧，与董源并称「董巨」，南派山水画两大宗师之一。",
+    "birthplace": "江宁（今江苏南京）",
+    "deathplace": "开封（今河南开封）",
+    "locations": [
+      "江苏",
+      "河南"
+    ],
+    "group": ""
+  },
+  {
+    "id": "cai_xiang",
+    "name": "蔡襄",
+    "pinyin": "Cai Xiang",
+    "dynasty": "宋",
+    "era": {
+      "start": 1012,
+      "end": 1067,
+      "approximate": false
+    },
+    "eraLabel": "北宋",
+    "gender": "男",
+    "honor": "宋四家",
+    "dimension": "art",
+    "dimensionCategory": "书法",
+    "tags": [
+      "书法家",
+      "茶学家"
+    ],
+    "summary": "北宋书法家，宋四家「苏黄米蔡」之一，楷行俱佳，兼通茶学，著《茶录》。",
+    "birthplace": "仙游（今福建仙游）",
+    "deathplace": "杭州（今浙江杭州）",
+    "locations": [
+      "福建",
+      "浙江"
+    ],
+    "group": "宋四家"
+  },
+  {
     "id": "zhao_mengfu",
     "name": "赵孟頫",
     "pinyin": "Zhao Mengfu",

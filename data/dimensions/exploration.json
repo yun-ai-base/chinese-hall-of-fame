@@ -91,6 +91,35 @@
     "group": "唐代旅人"
   },
   {
+    "id": "yi_jing",
+    "name": "义净",
+    "pinyin": "Yi Jing",
+    "dynasty": "唐",
+    "era": {
+      "start": 635,
+      "end": 713,
+      "approximate": false
+    },
+    "eraLabel": "唐",
+    "gender": "男",
+    "honor": "海路求法高僧",
+    "dimension": "exploration",
+    "dimensionCategory": "出洋先驱",
+    "tags": [
+      "高僧",
+      "翻译家",
+      "旅行家"
+    ],
+    "summary": "唐代高僧，经海路赴印度求法二十五年，与玄奘并称，著《大唐西域求法高僧传》。",
+    "birthplace": "齐州（今山东济南）",
+    "deathplace": "洛阳（今河南洛阳）",
+    "locations": [
+      "山东",
+      "河南"
+    ],
+    "group": ""
+  },
+  {
     "id": "zheng_he",
     "name": "郑和",
     "pinyin": "Zheng He",
@@ -242,6 +271,37 @@
       "意大利"
     ],
     "group": "耶稣会传教士"
+  },
+  {
+    "id": "xu_xiake",
+    "name": "徐霞客",
+    "pinyin": "Xu Xiake",
+    "dynasty": "明",
+    "era": {
+      "start": 1587,
+      "end": 1641,
+      "approximate": false
+    },
+    "eraLabel": "明",
+    "gender": "男",
+    "honor": "游圣",
+    "dimension": "exploration",
+    "dimensionCategory": "地理述异",
+    "tags": [
+      "旅行家",
+      "地理学家",
+      "探险家"
+    ],
+    "summary": "明代大旅行家，三十年足迹遍及大半个中国，著《徐霞客游记》，中国近代地理学先驱。",
+    "birthplace": "江阴（今江苏江阴）",
+    "deathplace": "江阴（今江苏江阴）",
+    "locations": [
+      "江苏",
+      "云南",
+      "贵州",
+      "广西"
+    ],
+    "group": ""
   },
   {
     "id": "tang_ruowang",
