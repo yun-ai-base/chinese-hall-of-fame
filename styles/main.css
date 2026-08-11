@@ -375,6 +375,39 @@ html, body {
   transition: background 0.15s ease;
 }
 .tl-exit:hover { background: rgba(255,255,255,0.16); }
+/* 全览复位按钮（朝代聚焦放大态下出现） */
+.tl-full {
+  margin-left: auto; align-self: center;
+  padding: 6px 12px; border-radius: 14px;
+  background: rgba(255,215,0,0.1); border: 1px solid rgba(255,215,0,0.35);
+  color: #ffe9a8; font-size: 13px; cursor: pointer;
+  transition: background 0.15s ease;
+}
+.tl-full:hover { background: rgba(255,215,0,0.2); }
+.tl-full.hidden { display: none; }
+/* 迷你详情卡（点击人物弹出；底部居中浮层，与主产品面板同风格：圆角/半透明/模糊） */
+.tl-mini {
+  position: fixed; left: 50%; bottom: 26px; transform: translateX(-50%);
+  z-index: 90; width: min(480px, 92vw);
+  padding: 14px 18px; border-radius: 14px;
+  background: rgba(10, 14, 26, 0.94);
+  border: 1px solid rgba(255,255,255,0.16);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.5);
+  backdrop-filter: blur(10px);
+  animation: tl-mini-in 0.22s ease;
+}
+.tl-mini.hidden { display: none; }
+@keyframes tl-mini-in { from { opacity: 0; transform: translateX(-50%) translateY(12px); } to { opacity: 1; transform: translateX(-50%) translateY(0); } }
+.tl-mini-head { display: flex; align-items: baseline; gap: 10px; }
+.tl-mini-name { font-size: 17px; font-weight: 700; font-family: 'Noto Serif SC', 'Songti SC', serif; }
+.tl-mini-meta { font-size: 12px; color: rgba(255,255,255,0.55); }
+.tl-mini-sum { font-size: 12.5px; line-height: 1.7; color: rgba(255,255,255,0.78); margin: 8px 0 10px; }
+.tl-mini-btn {
+  padding: 7px 16px; border-radius: 12px; font-size: 13px; cursor: pointer;
+  background: rgba(255,215,0,0.14); border: 1px solid rgba(255,215,0,0.4);
+  color: #ffe9a8; transition: background 0.15s ease;
+}
+.tl-mini-btn:hover { background: rgba(255,215,0,0.24); }
 .tl-title { font-size: 18px; font-weight: 700; color: rgba(255,255,255,0.92); letter-spacing: 2px; }
 .tl-sub { font-size: 12px; color: rgba(255,255,255,0.5); }
 .tl-canvas { flex: 1; width: 100%; cursor: crosshair; }
