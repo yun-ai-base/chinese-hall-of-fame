@@ -187,7 +187,11 @@ export class InfoPanel {
       ? (era.end ? `${era.start}—${era.end}` : `${era.start}—`)
         + (era.approximate ? '（约）' : '')
       : (d.eraLabel || '');
-    const metaParts = [d.honor, d.dynasty, eraText].filter(Boolean);
+    // 享年（生卒年齐全且合理时计算；神话人物/缺卒年不显示，避免误导）
+    const lifespan = (typeof era.start === 'number' && typeof era.end === 'number' && era.end > era.start)
+      ? `享年约${era.end - era.start}岁`
+      : '';
+    const metaParts = [d.honor, d.dynasty, eraText, lifespan].filter(Boolean);
     this.scroll.append(
       el('div', { class: 'panel-hero' },
         el('h2', { class: 'panel-title', style: `color:${dim.color}` }, d.name),
@@ -300,6 +304,26 @@ export class InfoPanel {
       // 地理坐标（detail.geo 经纬度 + 出生地名，为未来地图联动奠基）
       if (detail && detail.geo) {
         this.scroll.append(this._geoBlock(detail.geo, d));
+      }
+      // 同乡互链：按 birthPlace 省份匹配同省名人（点击跳转；无出生地信息不渲染）
+      const patriots = this.dm.getCompatriots(figureId, 8);
+      if (patriots.length) {
+        const prov = this.dm._provinceOf(d.birthplace) || '同乡';
+        const row = el('div', { class: 'related-row' });
+        for (const pt of patriots) {
+          row.append(el('button', {
+            class: 'related-chip',
+            style: `--dim-color:${pt.color}`,
+            onclick: () => this.handlers.onFigureJump && this.handlers.onFigureJump(pt.id),
+          },
+            el('span', { class: 'related-name' }, pt.name),
+            el('span', { class: 'related-dyn' }, pt.dynasty || ''),
+          ));
+        }
+        this.scroll.append(el('div', { class: 'block' },
+          el('h3', { class: 'block-title' }, `同乡 · ${prov}`),
+          row,
+        ));
       }
       // 代表作品：有全文则展示完整诗文块，否则仅列标题与简介
       if (det.works && det.works.length) {

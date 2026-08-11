@@ -51,5 +51,9 @@
       "description": "同为南宋数学家"
     }
   ],
-  "styleName": "字道古"
+  "styleName": "字道古",
+  "geo": {
+    "lat": 30.1,
+    "lng": 105.34
+  }
 }

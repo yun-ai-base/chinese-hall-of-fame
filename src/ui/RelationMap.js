@@ -1,7 +1,17 @@
 // RelationMap —— 关联人物关系图（设计 3.4 / Phase 3）。
 // 以当前名人为中心，关联人物环绕为节点，按维度色着色；节点可点击跃迁或在册/边缘处理。
+// 连线按关系类型着色（师徒=金、诗友=青、对手=红…），对抗关系用虚线——图谱"有语义"。
 // 纯 Canvas 2D 绘制，响应式宽度，设备上像素比清晰。
 import { el } from './dom.js';
+
+// 关系类型 → 连线颜色（未收录的类型回退节点维度色）
+const REL_COLORS = {
+  师徒: '#ffd700', 同窗: '#4db6ac', 好友: '#4fc3f7', 诗友: '#4fc3f7', 词友: '#4fc3f7',
+  父子: '#ff8a65', 兄弟: '#ffab91', 君臣: '#aed581', 同僚: '#b0bec5',
+  对手: '#ef5350', 敌对: '#e57373', 并称: '#ba68c8', 学术同道: '#81c784',
+  文学传承: '#8d6e63', 文学影响: '#a1887f', 词学传承: '#8d6e63', 画风传承: '#8d6e63',
+};
+const DASH_RELS = new Set(['对手', '敌对']);   // 对抗关系用虚线
 
 export function createRelationMap(resolved, handlers = {}) {
   // resolved: [{ kind, id, name, color, relation, dimId, ... }]
@@ -58,16 +68,20 @@ export function createRelationMap(resolved, handlers = {}) {
     ctx.clearRect(0, 0, W, H);
     const cx = nodes[0].x, cy = nodes[0].y;
 
-    // 连线（中心 → 关联）
+    // 连线（中心 → 关联）：按关系类型着色；对抗关系（对手/敌对）虚线
     for (let i = 1; i < nodes.length; i++) {
       const nd = nodes[i];
+      const rel = (nd.item && nd.item.relation) || '';
+      const relColor = REL_COLORS[rel] || nd.color;
       ctx.beginPath();
       ctx.moveTo(cx, cy);
       ctx.lineTo(nd.x, nd.y);
-      ctx.strokeStyle = colorOf(nd.color) + '0.45)';
-      ctx.lineWidth = 1.2;
+      ctx.strokeStyle = colorOf(relColor) + (REL_COLORS[rel] ? '0.6)' : '0.45)');
+      ctx.lineWidth = 1.3;
+      ctx.setLineDash(DASH_RELS.has(rel) ? [5, 4] : []);
       ctx.stroke();
     }
+    ctx.setLineDash([]);
 
     // 节点
     for (let i = 0; i < nodes.length; i++) {

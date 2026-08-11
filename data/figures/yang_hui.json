@@ -59,5 +59,9 @@
       "description": "同为南宋数学家"
     }
   ],
-  "styleName": "字谦光"
+  "styleName": "字谦光",
+  "geo": {
+    "lat": 30.29,
+    "lng": 120.16
+  }
 }

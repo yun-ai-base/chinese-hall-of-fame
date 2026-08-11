@@ -129,6 +129,44 @@ export class DataManager {
     return (m && m[dimId]) || '';
   }
 
+  // 同乡互链：按 birthPlace 提取省级归属匹配同省名人（纯本地，无网络）。
+  // 省份匹配：多字省名优先（内蒙古/黑龙江…），再匹配单字简称（鲁/苏/浙…）；无法识别返回 []。
+  static PROVINCES = [
+    '黑龙江', '内蒙古', '吉林', '辽宁', '河北', '河南', '山东', '山西', '陕西', '甘肃', '青海',
+    '宁夏', '新疆', '西藏', '四川', '重庆', '云南', '贵州', '广西', '广东', '湖南', '湖北',
+    '江西', '福建', '安徽', '浙江', '江苏', '上海', '北京', '天津', '海南', '台湾', '香港', '澳门',
+  ];
+  static PROVINCE_SHORT = {
+    冀: '河北', 豫: '河南', 鲁: '山东', 晋: '山西', 陕: '陕西', 甘: '甘肃',
+    蜀: '四川', 滇: '云南', 黔: '贵州', 桂: '广西', 粤: '广东', 湘: '湖南', 鄂: '湖北',
+    赣: '江西', 闽: '福建', 皖: '安徽', 浙: '浙江', 苏: '江苏', 琼: '海南',
+  };
+  _provinceOf(birthplace) {
+    if (typeof birthplace !== 'string') return '';
+    for (const p of DataManager.PROVINCES) {
+      if (birthplace.includes(p)) return p;
+    }
+    for (const [ch, prov] of Object.entries(DataManager.PROVINCE_SHORT)) {
+      if (birthplace.includes(ch)) return prov;
+    }
+    return '';
+  }
+  getCompatriots(figureId, limit = 8) {
+    const self = this.figures.get(figureId);
+    if (!self) return [];
+    const selfProv = this._provinceOf(self.basic.birthplace);
+    if (!selfProv) return [];
+    const out = [];
+    for (const [id, e] of this.figures) {
+      if (id === figureId) continue;
+      if (this._provinceOf(e.basic.birthplace) === selfProv) {
+        out.push({ id, name: e.basic.name, color: e.color, dynasty: e.basic.dynasty || '' });
+        if (out.length >= limit) break;
+      }
+    }
+    return out;
+  }
+
   // 全量扁平列表（时间线等全局视图用）：{id,name,dynasty,color,sortYear}，按 sortYear 升序
   getAllFigures() {
     const out = [];

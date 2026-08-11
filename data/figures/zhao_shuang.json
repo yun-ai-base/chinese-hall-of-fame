@@ -38,5 +38,9 @@
       "description": "同时期的数学家"
     }
   ],
-  "styleName": "字君卿"
+  "styleName": "字君卿",
+  "geo": {
+    "lat": 31.3,
+    "lng": 120.58
+  }
 }
